@@ -1,3 +1,25 @@
+// Function to handle tab switching
+function openTool(evt, toolName) {
+    var i, tabcontent, tablinks;
+
+    // Hide all tab content
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Remove active class from all buttons
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab content and add an active class to the clicked button
+    document.getElementById(toolName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Document ready function
 document.addEventListener('DOMContentLoaded', function() {
     const addPositionButton = document.getElementById('addPosition');
     const positionList = document.getElementById('positionsList');
@@ -26,6 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
             service: ['69', 'blowjob', 'handjob', 'cunnilingus', 'titfuck', 'fingering']
         }
     };
+
+    // Example: Show the 'Position' tab by default
+    document.getElementById("Position").style.display = "block";
+    document.querySelector(".tablinks").classList.add("active");
 
     // Add validation for the rhythm field
     rhythmInput.addEventListener('input', function() {
@@ -372,6 +398,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         alert('Positions saved successfully.');
     });
+
+    
 });
 
 function generateJS() {
