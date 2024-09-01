@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XCL Modder's Tools</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>X-Change™ Life Modder's Tools</h1>
+    <div class="tabs">
+        <button class="tablinks" onclick="openTool(event, 'PositionTab')">Positions</button>
+        <button class="tablinks" onclick="openTool(event, 'Outfit')">Outfits</button>
+        <button class="tablinks" onclick="openTool(event, 'MCF-Tool')">MCF Helper</button>
+        <button class="tablinks" onclick="openTool(event, 'BLK-Tool')">BLACKED Helper</button>
+    </div>
+
+    <div id="PositionTab" class="tabcontent">
+        <div class="container">
+            <h2 class="container-title">Position Javascript Generator</h2>
+
+            <!-- Wrapper for the form and position list -->
+            <div class="content-wrapper">
+                <!-- Form Container -->
+                <div class="form-container">
+                    <form id="positionForm">
+                        <!-- Character Name -->
+                        <label for="positionCharacterName">Character Name:</label>
+                        <input type="text" id="positionCharacterName" name="positionCharacterName">
+
+                        <!-- Position Name -->
+                        <label for="positionName">Position Name:</label>
+                        <input type="text" id="positionName" name="positionName">
+
+                        <!-- Position Flavor -->
+                        <label for="positionFlavor">Position Flavor:</label>
+                        <input type="text" id="positionFlavor" name="positionFlavor">
+
+                        <!-- Position Type Radio Buttons -->
+                        <label>Type:</label>
+                        <div class="radio-group">
+                            <input type="radio" id="active" name="positionType" value="active" checked>
+                            <label for="active" title="You are the active participant in the position. You are doing most of the work.">Active</label>
+
+                            <input type="radio" id="passive" name="positionType" value="passive">
+                            <label for="passive" title="You are the passive participant in the position. Your partner is doing most of the work.">Passive</label>
+                        </div>
+
+                        <!-- Subtype Radio Buttons -->
+                        <label>Subtype:</label>
+                        <div class="radio-group">
+                            <input type="radio" id="cowgirl" name="subtype" value="cowgirl" checked>
+                            <label for="cowgirl" title="Riding position">Cowgirl</label>
+
+                            <input type="radio" id="doggy" name="subtype" value="doggy">
+                            <label for="doggy" title="From behind">Doggy</label>
+
+                            <input type="radio" id="missionary" name="subtype" value="missionary">
+                            <label for="missionary" title="Classic face-to-face">Missionary</label>
+
+                            <input type="radio" id="service" name="subtype" value="service">
+                            <label for="service" title="Oral or hand service">Service</label>
+                        </div>
+
+                        <!-- Position Dropdown -->
+                        <label for="position">Position:</label>
+                        <select id="position" name="position">
+                            <option value="doggystyle">Doggystyle</option>
+                            <option value="cowgirl">Cowgirl</option>
+                            <option value="full nelson">Full Nelson</option>
+                            <option value="standing fuck">Standing Fuck</option>
+                            <option value="missionary">Missionary</option>
+                            <option value="side fuck">Side Fuck</option>
+                            <option value="pile driver">Pile Driver</option>
+                            <option value="69">69</option>
+                            <option value="handjob">Handjob</option>
+                            <option value="blowjob">Blowjob</option>
+                            <option value="cunnilingus">Cunnilingus</option>
+                            <option value="titfuck">Titfuck</option>
+                            <option value="fingering">Fingering</option>
+                            <option value="facefuck">Facefuck</option>
+                        </select>
+
+                        <!-- Sliders with Number Display -->
+                        <div class="slider-container">
+                            <label for="athletics">Athletics:</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="athletics" name="athletics" min="1" max="10" value="5">
+                            </div>
+                        </div>
+                        
+                        <div class="slider-container">
+                            <label for="roughness">Roughness:</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="roughness" name="roughness" min="1" max="10" value="5">
+                            </div>
+                        </div>
+                        
+                        <label for="pleasureFactor">Pleasure Factor:</label>
+                        <select id="pleasureFactor" name="pleasureFactor">
+                            <option value="both">Both</option>
+                            <option value="length">Length</option>
+                            <option value="width">Width</option>
+                            <option value="oral">Oral</option>
+                            <option value="none">None</option>
+                        </select>
+
+                        <div class="slider-container">
+                            <label for="yourPleasure">Your Pleasure:</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="yourPleasure" name="yourPleasure" min="0" max="10" value="5">
+                            </div>
+                        </div>                
+
+                        <div class="slider-container">
+                            <label for="hisPleasure">His Pleasure:</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="hisPleasure" name="hisPleasure" min="0" max="10" value="5">
+                            </div>
+                        </div>
+
+                        <div class="slider-container">
+                            <label for="hisSatisfaction">His Satisfaction:</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="hisSatisfaction" name="hisSatisfaction" min="0" max="10" value="5">
+                            </div>
+                        </div>
+
+                        <label for="rhythm">Rhythm:</label>
+                        <input type="number" id="rhythm" name="rhythm" min="400" max="1400">
+
+                        <!-- Tags Section -->
+                        <div class="tags-dropdown">
+                            <label for="positionTagsInput">Tags:</label>
+                            <input list="positionTagsList" id="positionTagsInput" name="positionTagsInput">
+                            <datalist id="positionTagsList">
+                                <option value="69">69</option>
+                                <option value="all fours">all fours</option>
+                                <option value="anal">anal</option>
+                                <option value="ass up">ass up</option>
+                                <option value="balance on chest">balance on chest</option>
+                                <option value="balance with feet">balance with feet</option>
+                                <option value="balls deep">balls deep</option>
+                                <option value="balls smacking">balls smacking</option>
+                                <option value="big thrusts">big thrusts</option>
+                                <option value="black">for BLACKED mod</option>
+                                <option value="blowjob">blowjob</option>
+                                <option value="boobs jiggle">boobs jiggle</option>
+                                <option value="butt jiggle">butt jiggle</option>
+                                <option value="choke">choke</option>
+                                <option value="close to crotch">close to crotch</option>
+                                <option value="cover mouth">cover mouth</option>
+                                <option value="deepthroat">deepthroat</option>
+                                <option value="degrade">degrade</option>
+                                <option value="eyes roll">eyes roll</option>
+                                <option value="facefuck">facefuck</option>
+                                <option value="grab arms">grab arms</option>
+                                <option value="grab boobs">grab boobs</option>
+                                <option value="grab butt">grab butt</option>
+                                <option value="grab face">grab face</option>
+                                <option value="grab head">grab head</option>
+                                <option value="grab neck">grab neck</option>
+                                <option value="grab sheets">grab sheets</option>
+                                <option value="grab shoulders">grab shoulders</option>
+                                <option value="grab waist">grab waist</option>
+                                <option value="hair swish">hair swish</option>
+                                <option value="handjob">handjob</option>
+                                <option value="helpless">helpless</option>
+                                <option value="kiss">kiss</option>
+                                <option value="lean against you">lean against you</option>
+                                <option value="leg up">leg up</option>
+                                <option value="legs in the air">legs in the air</option>
+                                <option value="licking">licking</option>
+                                <option value="look back">look back</option>
+                                <option value="manhandled">manhandled</option>
+                                <option value="mount">mount</option>
+                                <option value="nelson">nelson</option>
+                                <option value="oiled up">oiled up</option>
+                                <option value="prone">prone</option>
+                                <option value="pull hair">pull hair</option>
+                                <option value="romantic">romantic</option>
+                                <option value="side fuck">side fuck</option>
+                                <option value="sloppy">sloppy</option>
+                                <option value="slow">slow</option>
+                                <option value="spank">spank</option>
+                                <option value="squat">squat</option>
+                                <option value="standing">standing</option>
+                                <option value="suspended">suspended</option>
+                                <option value="titfuck">titfuck</option>
+                                <option value="tits clap">tits clap</option>
+                                <option value="tits rub">tits rub</option>
+                                <option value="touch yourself">touch yourself</option>
+                                <option value="you grab his head">you grab his head</option>
+                            </datalist>
+                            <button type="button" id="addPositionTagButton">Add Tag</button>
+						</div>
+                        <div class="tagsContainer" id="positionTagsContainer"></div>
+
+                        <!-- Skill Dropdown -->
+                        <label for="skill">Skill:</label>
+                        <select id="skill" name="skill">
+                            <option value="active sex">Active Sex</option>
+                            <option value="passive sex">Passive Sex</option>
+                            <option value="blowjob">Blowjob</option>
+                            <option value="gag reflex">Gag Reflex</option>
+                            <option value="titfuck">Titfuck</option>
+                            <option value="female masturbation">Female Masturbation</option>
+                            <option value="handjob">Handjob</option>
+                        </select>
+
+                        <div class="slider-container">
+                            <label for="skillLevel">Skill Level:</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="skillLevel" name="skillLevel" min="1" max="10" value="5">
+                            </div>                
+                        </div>
+
+                        <!-- Locations Checkboxes -->
+                        <label>Locations:</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="bed" name="positionLocations" value="bed">
+                            <label for="bed">Bed</label>
+                            <input type="checkbox" id="couch" name="positionLocations" value="couch">
+                            <label for="couch">Couch</label>
+                            <input type="checkbox" id="floor" name="positionLocations" value="floor">
+                            <label for="floor">Floor</label>
+                            <input type="checkbox" id="standing" name="positionLocations" value="standing">
+                            <label for="standing">Standing</label>
+                            <input type="checkbox" id="desk" name="positionLocations" value="desk">
+                            <label for="desk">Desk</label>
+                            <input type="checkbox" id="chair" name="positionLocations" value="chair">
+                            <label for="chair">Chair</label>
+                            <input type="checkbox" id="table" name="positionLocations" value="table">
+                            <label for="table">Table</label>
+                        </div>
+                    </form>
+                    <button type="button" id="addPosition">Add Position</button>
+                </div>
+            
+                <div class="position-list">
+                    <h3>Positions List</h3>
+                    <ul id="positionsList"></ul>
+                    <button type="button" onclick="generateJS()">Generate JavaScript</button>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <div id="Outfit" class="tabcontent">
+        <div class="container">
+            <h2 class="container-title">Outfit Javascript Generator</h2>
+
+            <!-- Wrapper for the form and outfit list -->
+            <div class="content-wrapper">
+                <!-- Form Container -->
+                <div class="form-container">
+                    <form id="outfitForm">
+                        <!-- Character Name -->
+                        <label for="outfitCharacterName">Character Name:</label>
+                        <input type="text" id="outfitCharacterName" name="outfitCharacterName">
+
+                        <!-- Outfit Name -->
+                        <label for="outfitName" title="Must match your filename exactly">Outfit Name:</label>
+                        <input type="text" id="outfitName" name="outfitName">
+
+                        <!-- Outfit Flavor -->
+                        <label for="outfitFlavor">Flavor Text:</label>
+                        <input type="text" id="outfitFlavor" name="outfitFlavor">
+
+                        <!-- Outfit Description -->
+                        <label for="outfitDescription">Outfit Description:</label>
+                        <input type="text" id="outfitDescription" name="outfitDescription">
+
+                        <!-- Outfit Category -->
+                        <label for="outfitCategory" title="This will be the directory where the outfit file is.">Outfit Category:</label>
+                        <select id="outfitCategory" name="outfitCategory">
+                            <option value="beach">Beachwear</option>
+                            <option value="office">Officewear</option>
+                            <option value="gym">Activewear</option>
+                            <option value="lounge">Loungewear</option>
+                            <option value="lingerie">Lingerie</option>
+                            <option value="casual">Casual</option>
+                            <option value="stylin">Stylish</option>
+                            <option value="fetish">Fetishwear</option>
+                        </select>
+
+                        <!-- Outfit Locations -->
+                        <label title="Locations that this outfit can be worn.">Outfit Locations:</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="beach" name="outfitLocations" value="beach">
+                            <label for="beach">Beach</label>
+                            <input type="checkbox" id="office" name="outfitLocations" value="office">
+                            <label for="office">Office</label>
+                            <input type="checkbox" id="gym" name="outfitLocations" value="gym">
+                            <label for="gym">Gym</label>
+                            <input type="checkbox" id="stylin" name="outfitLocations" value="stylin">
+                            <label for="stylin">Club/Bar</label>
+                            <input type="checkbox" id="lounge" name="outfitLocations" value="lounge">
+                            <label for="lounge">Home (Lounge)</label>
+                            <input type="checkbox" id="casual" name="outfitLocations" value="casual">
+                            <label for="casual">Home/Mall (Casual)</label>
+                            <input type="checkbox" id="fetish" name="outfitLocations" value="fetish">
+                            <label for="fetish">Bedroom (Sex)</label>
+                        </div>
+
+                        <!-- Outfit Type -->
+                        <label for="outfitType">Type:</label>
+                        <select id="outfitType" name="outfitType">
+                            <option value="beachwear">Beachwear</option>
+                            <option value="bikini">Bikini</option>
+                            <option value="one-piece swimsuit">One-Piece Swimsuit</option>
+                            <option value="gym">Gym</option>
+                            <option value="activewear">Activewear</option>
+                            <option value="office">Officewear</option>
+                            <option value="stylin">Stylish/Formal/Dressed Up/Going Out</option>
+                            <option value="casual">Casual</option>
+                            <option value="lounge">Loungewear/Pajamas/Robe/Gown</option>
+                            <option value="lingerie">Lingerie</option>
+                            <option value="fetish">Fetishwear</option>
+                        </select>
+
+                         <!-- Outfit Style -->
+                        <label for="outfitStyle">Style:</label>
+                        <select id="outfitStyle" name="outfitStyle">
+                            <option value="cute">Cute</option>
+                            <option value="sexy">Sexy</option>
+                            <option value="elegant">Elegant</option>
+                            <option value="slutty">Slutty</option>
+                            <option value="relaxed">Relaxed</option>
+                            <option value="modest">Modest</option>
+                        </select>
+
+                        <!-- Outfit Price -->
+                        <label for="outfitPrice">Outfit Price:</label>
+                        <input type="number" id="outfitPrice" name="outfitPrice" min="0">
+
+                        <!-- Sliders -->
+                        <div class="slider-container">
+                            <label for="outfitSluttiness">Sluttiness:</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="outfitSluttiness" name="outfitSluttiness" min="1" max="10" value="5" oninput="updateValue('outfitSluttiness', this.value)">
+                            </div>
+                        </div>
+
+                        <div class="slider-container">
+                            <label for="outfitComfort">Comfort:</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="outfitComfort" name="outfitComfort" min="1" max="10" value="5" oninput="updateValue('outfitComfort', this.value)">
+                            </div>
+                        </div>
+
+                        <div class="slider-container">
+                            <label for="outfitDurability">Durability:</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="outfitDurability" name="outfitDurability" min="1" max="10" value="5" oninput="updateValue('outfitDurability', this.value)">
+                            </div>
+                        </div>
+
+                        <div class="slider-container">
+                            <label for="outfitBreastSupport">Breast Support:</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="outfitBreastSupport" name="outfitBreastSupport" min="0" max="10" value="5" oninput="updateValue('outfitBreastSupport', this.value)">
+                            </div>
+                        </div> 
+
+                        <!-- One-Piece or Top/Bottom -->
+                        <label>Outfit Classification:</label>
+                        <div class="radio-group">
+                            <input type="radio" id="onePiece" name="outfitDescType" value="onePiece">
+                            <label for="onePiece" title="Outfit is one solid piece, like a bodysuit or a dress">One-Piece</label>
+
+                            <input type="radio" id="twoPiece" name="outfitDescType" value="twoPiece">
+                            <label for="twoPiece" title="Outfit has a Top and a Bottom, like a bikini or a shirt and pants">Top and Bottoms</label>
+                        </div>
+
+                        <div id="onePieceField">
+                            <label for="outfitOnePiece" title="One or Two words to classify the item. Example: 'sundress', 'swimsuit', 'bodysuit', 'latex dress'">One-Piece Description:</label>
+                            <input type="text" id="outfitOnePiece" name="outfitOnePiece">
+                        </div>
+
+                        <div id="twoPieceFields">
+                            <label for="outfitTop" title="One or a few words to classify the item. Example: 'bikini top', 'knotted crop top', 'leather bustier', 't-shirt'">Top Description:</label>
+                            <input type="text" id="outfitTop" name="outfitTop">
+
+                            <label for="outfitBottom" title="One or a few words to classify the item. Example: 'bikini bottom', 'jean shorts', 'mini skirt', 'leather booty shorts'">Bottom Description:</label>
+                            <input type="text" id="outfitBottom" name="outfitBottom">
+                        </div>
+
+                        <!-- Underwear -->
+                        <label>Underwear?</label>
+                        <div class="checkbox-group-inline">
+                            <input type="checkbox" id="braTrue" name="outfitBraUnder" value="true">
+                            <label for="braTrue" title="Bra is worn beneath outfit">Bra</label>
+                        </div>
+                        
+                        <div class="checkbox-group-inline">
+                            <input type="checkbox" id="pantiesTrue" name="outfitPantiesUnder" value="true">
+                            <label for="pantiesTrue" title="Panties are worn beneath outfit">Panties</label>
+                        </div>
+
+                        <!-- Shoes -->
+                        <label for="outfitShoes">Shoes:</label>
+                        <select id="outfitShoes" name="outfitShoes">
+                            <option value="none">None</option>
+                            <option value="flats">Flats</option>
+                            <option value="heeled wedges">Heeled Wedges</option>
+                            <option value="sandals">Sandals</option>
+                            <option value="heeled sandals">Heeled Sandals</option>
+                            <option value="heels">Heels</option>
+                            <option value="platform heels">Platform Heels</option>
+                            <option value="stiletto heels">Stiletto Heels</option>
+                            <option value="boots">Boots</option>
+                            <option value="heeled boots">Heeled Boots</option>
+                            <option value="platform boots">Platform Boots</option>
+                            <option value="thigh-high boots">Thigh-High Boots</option>
+                            <option value="sneakers">Sneakers</option>
+                        </select>
+
+                        <!-- Arrays -->
+                        <div class="tags-dropdown">
+                            <label for="colorsInput">Colors:</label>
+                            <input list="outfitColors" id="colorsInput" name="colorsInput">
+                            <datalist id="outfitColors">
+                                <option value="red">red</option>
+                                <option value="orange">orange</option>
+                                <option value="yellow">yellow</option>
+                                <option value="green">green</option>
+                                <option value="blue">blue</option>
+                                <option value="purple">purple</option>
+                                <option value="pink">pink</option>
+                                <option value="black">black</option>
+                                <option value="white">white</option>
+                                <option value="gray">gray</option>
+                                <option value="brown">brown</option>
+                                <option value="gold">gold</option>
+                                <option value="silver">silver</option>
+                                <option value="beige">beige</option>
+                                <option value="navy">navy</option>
+                                <option value="teal">teal</option>
+                                <option value="turquoise">turquoise</option>
+                                <option value="maroon">maroon</option>
+                                <option value="olive">olive</option>
+                            </datalist>
+                            <button type="button" id="addColorButton">Add</button>
+                        </div>
+                        <div class="tagsContainer" id="colorsContainer"></div>
+
+                        <div class="tags-dropdown">
+                            <label for="emphasisInput">Emphasizes:</label>
+                            <input list="outfitEmphasis" id="emphasisInput" name="emphasisInput">
+                            <datalist id="outfitEmphasis">
+                                <option value="cleavage">cleavage</option>
+                                <option value="lots of cleavage">lots of cleavage</option>
+                                <option value="boobs">boobs</option>
+                                <option value="asscheeks">asscheeks</option>
+                                <option value="butt">butt</option>
+                                <option value="legs">legs</option>
+                                <option value="tummy">tummy</option>
+                            </datalist>
+                            <button type="button" id="addEmphasisButton">Add</button>
+                        </div>
+                        <div class="tagsContainer" id="emphasisContainer"></div>
+
+                        <div class="tags-dropdown">
+                            <label for="revealsInput">Reveals:</label>
+                            <input list="outfitReveals" id="revealsInput" name="revealsInput">
+                            <datalist id="outfitReveals">
+                                <option value="cleavage">cleavage</option>
+                                <option value="lots of cleavage">lots of cleavage</option>
+                                <option value="boobs">boobs</option>
+                                <option value="asscheeks">asscheeks</option>
+                                <option value="butt">butt</option>
+                                <option value="legs">legs</option>
+                                <option value="tummy">tummy</option>
+                                <option value="shoulders">shoulders</option>
+                                <option value="underboob">underboob</option>
+                                <option value="sideboob">sideboob</option>
+                                <option value="nipples">nipples</option>
+                                <option value="pussy">pussy</option>
+                            </datalist>
+                            <button type="button" id="addRevealsButton">Add</button>
+                        </div>
+                        <div class="tagsContainer" id="revealsContainer"></div>
+
+                        <div class="tags-dropdown">
+                            <label for="outfitTagInput">Tags:</label>
+                            <input list="outfitTags" id="outfitTagInput" name="outfitTagInput">
+                            <datalist id="outfitTags">
+                                <option value="professional">Gives +1 🍀 while wearing this outfit at the office.</option>
+                                <option value="very professional">Gives +2 🍀 while wearing this outfit at the office.</option>
+                                <option value="masculine">Gives +1 🍀 while wearing this outfit with high masculinity.</option>
+                                <option value="chores">Earn a bit extra 💵 while doing chores.</option>
+                                <option value="workout">Gain 50% more XP while wearing this outfit at the gym.</option>
+                                <option value="great workout">Gain 100% more XP while wearing this outfit at the gym.</option>
+                                <option value="sleep">May get a better night's sleep while wearing this outfit.</option>
+                                <option value="great sleep">May get an exceptional night's sleep while wearing this outfit.</option>
+                                <option value="waterproof">Prevents this outfit from being stained by liquids.</option>
+                                <option value="fragile">Strong men or jerks might destroy this outfit while removing it during sex.</option>
+                                <option value="very fragile">Strong men or jerks will likely destroy this outfit while removing it during sex.</option>
+                                <option value="easy access dress">Dress can be moved out of the way instead of stripped off during sex.</option>
+                                <option value="easy access skirt">Skirt can be moved out of the way instead of stripped off during sex.</option>
+                                <option value="boobs fall out">Your breasts are likely to fall out of this outfit, and people may comment on it.</option>
+                                <option value="nude">You're considered nude while wearing the outfit.</option>
+                                <option value="basically naked">People may comment on this outfit while wearing it.</option>
+                                <option value="not serious">People tend to not take you seriously while wearing this outfit.</option>
+                                <option value="jingles">Tends to jingle while moving and wearing the outfit.</option>
+                                <option value="underwire">Uses underwire as part of the outfit.</option>
+                                <option value="long changing">Takes longer than normal to change into.</option>
+                                <option value="rich magnet">Rich people are attracted to this outfit.</option>
+                                <option value="chad magnet">Chads are attracted to this outfit.</option>
+                                <option value="fuckboy magnet">Fuckboys are attracted to this outfit.</option>
+                                <option value="jock magnet">Jocks are attracted to this outfit.</option>
+                                <option value="nerd magnet">Nerds are attracted to this outfit.</option>
+                                <option value="collar">Has a collar as part of the outfit.</option>
+                                <option value="straps">Has straps as part of the outfit.</option>
+                                <option value="garter">Has a garter as part of the outfit.</option>
+                                <option value="stockings">Has stockings as part of the outfit.</option>
+                                <option value="zipper">Has a zipper as part of the outfit.</option>
+                                <option value="strings">Has strings as part of the outfit.</option>
+                            </datalist>
+                            <button type="button" id="addOutfitTagButton">Add Tag</button>
+                        </div>
+                        <div class="tagsContainer" id="outfitTagsContainer"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="MCF-Tool" class="tabcontent">
+        <!-- MCF tool form goes here -->
+        <div class="image-container">
+        <img src = "https://c.media-amazon.com/images/I/81vw8KMSGCL._AC_SL1500_.jpg" class = "img404">
+        </div>
+    </div>
+
+    <div id="BLK-Tool" class="tabcontent">
+        <!-- Blacked tool form goes here -->
+        <div class="image-container">
+        <img src = "https://c.media-amazon.com/images/I/81vw8KMSGCL._AC_SL1500_.jpg" class = "img404">
+        </div>
+    </div>
+
+    
+    <div class ="signature">
+        <p>Modding tools by ♠️ Chloe ♠️<br>Join the Official XCL Discord <a href="https://discord.com/invite/ethWsZSbHW">here</a></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
