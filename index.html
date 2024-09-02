@@ -10,9 +10,9 @@
     <h1>X-Change™ Life Modder's Tools</h1>
     <div class="tabs">
         <button class="tablinks" onclick="openTool(event, 'PositionTab')">Positions</button>
-        <button class="tablinks" onclick="openTool(event, 'Outfit')">Outfits</button>
-        <button class="tablinks" onclick="openTool(event, 'MCF-Tool')">MCF Helper</button>
-        <button class="tablinks" onclick="openTool(event, 'BLK-Tool')">BLACKED Helper</button>
+        <button class="tablinks" onclick="openTool(event, 'OutfitTab')">Outfits</button>
+        <button class="tablinks" onclick="openTool(event, 'MCF-Tab')">MCF Helper</button>
+        <button class="tablinks" onclick="openTool(event, 'BLK-Tab')">BLACKED Helper</button>
     </div>
 
     <div id="PositionTab" class="tabcontent">
@@ -237,16 +237,16 @@
                     <button type="button" id="addPosition">Add Position</button>
                 </div>
             
-                <div class="position-list">
+                <div class="form-list">
                     <h3>Positions List</h3>
                     <ul id="positionsList"></ul>
-                    <button type="button" onclick="generateJS()">Generate JavaScript</button>
+                    <button type="button" onclick="generatePositionJS()">Generate JavaScript</button>
                 </div>
             </div>
         </div> 
     </div>
 
-    <div id="Outfit" class="tabcontent">
+    <div id="OutfitTab" class="tabcontent">
         <div class="container">
             <h2 class="container-title">Outfit Javascript Generator</h2>
 
@@ -338,28 +338,28 @@
                         <div class="slider-container">
                             <label for="outfitSluttiness">Sluttiness:</label>
                             <div class="slider-wrapper">
-                                <input type="range" id="outfitSluttiness" name="outfitSluttiness" min="1" max="10" value="5" oninput="updateValue('outfitSluttiness', this.value)">
+                                <input type="range" id="outfitSluttiness" name="outfitSluttiness" min="1" max="10" value="5">
                             </div>
                         </div>
 
                         <div class="slider-container">
                             <label for="outfitComfort">Comfort:</label>
                             <div class="slider-wrapper">
-                                <input type="range" id="outfitComfort" name="outfitComfort" min="1" max="10" value="5" oninput="updateValue('outfitComfort', this.value)">
+                                <input type="range" id="outfitComfort" name="outfitComfort" min="1" max="10" value="5">
                             </div>
                         </div>
 
                         <div class="slider-container">
                             <label for="outfitDurability">Durability:</label>
                             <div class="slider-wrapper">
-                                <input type="range" id="outfitDurability" name="outfitDurability" min="1" max="10" value="5" oninput="updateValue('outfitDurability', this.value)">
+                                <input type="range" id="outfitDurability" name="outfitDurability" min="1" max="10" value="5">
                             </div>
                         </div>
 
                         <div class="slider-container">
                             <label for="outfitBreastSupport">Breast Support:</label>
                             <div class="slider-wrapper">
-                                <input type="range" id="outfitBreastSupport" name="outfitBreastSupport" min="0" max="10" value="5" oninput="updateValue('outfitBreastSupport', this.value)">
+                                <input type="range" id="outfitBreastSupport" name="outfitBreastSupport" min="0" max="10" value="5">
                             </div>
                         </div> 
 
@@ -483,8 +483,8 @@
                         <div class="tagsContainer" id="revealsContainer"></div>
 
                         <div class="tags-dropdown">
-                            <label for="outfitTagInput">Tags:</label>
-                            <input list="outfitTags" id="outfitTagInput" name="outfitTagInput">
+                            <label for="outfitTagsInput">Tags:</label>
+                            <input list="outfitTags" id="outfitTagsInput" name="outfitTagsInput">
                             <datalist id="outfitTags">
                                 <option value="professional">Gives +1 🍀 while wearing this outfit at the office.</option>
                                 <option value="very professional">Gives +2 🍀 while wearing this outfit at the office.</option>
@@ -518,27 +518,28 @@
                                 <option value="zipper">Has a zipper as part of the outfit.</option>
                                 <option value="strings">Has strings as part of the outfit.</option>
                             </datalist>
-                            <button type="button" id="addOutfitTagButton">Add Tag</button>
+                            <button type="button" id="addOutfitTagsButton">Add Tag</button>
                         </div>
                         <div class="tagsContainer" id="outfitTagsContainer"></div>
                     </form>
+                    <button type="button" id="addOutfit">Add Outfit</button>
+                </div>
+
+                <div class="form-list">
+                    <h3>Outfits List</h3>
+                    <ul id="outfitsList"></ul>
+                    <button type="button" onclick="generateOutfitsJS()">Generate JavaScript</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="MCF-Tool" class="tabcontent">
+    <div id="MCF-Tab" class="tabcontent">
         <!-- MCF tool form goes here -->
-        <div class="image-container">
-        <img src = "https://c.media-amazon.com/images/I/81vw8KMSGCL._AC_SL1500_.jpg" class = "img404">
-        </div>
     </div>
 
-    <div id="BLK-Tool" class="tabcontent">
+    <div id="BLK-Tab" class="tabcontent">
         <!-- Blacked tool form goes here -->
-        <div class="image-container">
-        <img src = "https://c.media-amazon.com/images/I/81vw8KMSGCL._AC_SL1500_.jpg" class = "img404">
-        </div>
     </div>
 
     
