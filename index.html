@@ -9,10 +9,48 @@
 <body>
     <h1>X-Change™ Life Modder's Tools</h1>
     <div class="tabs">
+        <button class="tablinks" onclick="openTool(event, 'MCF-Tab')">Multiple Characters Framework</button>
         <button class="tablinks" onclick="openTool(event, 'PositionTab')">Positions</button>
         <button class="tablinks" onclick="openTool(event, 'OutfitTab')">Outfits</button>
-        <button class="tablinks" onclick="openTool(event, 'MCF-Tab')">MCF Helper</button>
-        <button class="tablinks" onclick="openTool(event, 'BLK-Tab')">BLACKED Helper</button>
+        <button class="tablinks" onclick="openTool(event, 'BLK-Tab')">BLACKED Module</button>
+        <button class="tablinks" onclick="openTool(event, 'MetaTab')">Meta Maker</button>
+    </div>
+
+    <div id="MCF-Tab" class="tabcontent">
+        <div class="container">
+            <h2 class="container-title">MCF Coding Assistant</h2>
+            <div class="content-wrapper">
+                <div class="form-center">
+                    <form id="mcfForm">
+                        <h3>Meta Section</h3>
+                        <div class="form-single-line">
+                            <label for="mcfModAuthor">Mod Author:</label>
+                            <input type="text" id="mcfModAuthor" name="mcfModAuthor" placeholder="You! Your @handle or name/nickname.">
+                        </div>
+                        <div class="form-single-line">
+                            <label for="mcfYourModVersion">Your Mod Version:</label>
+                            <input type="text" id="mcfYourModVersion" name="mcfYourModVersion" placeholder="0.0.1">
+                        </div>
+                        <div class="form-single-line">
+                            <label for="mcfBaseGameVersion">Current XCL Game Version:</label>
+                            <input type="text" id="mcfBaseGameVersion" name="mcfBaseGameVersion">
+                        </div>
+                        <div class="form-single-line">
+                            <label for="mcfMCFVersion">Current MCF Mod Version:</label>
+                            <input type="text" id="mcfMCFVersion" name="mcfMCFVersion">
+                        </div>
+                        <!-- Character Name -->
+                        <div class="form-single-line">
+                            <label for="mcfCharacterName">Character Name:</label>
+                            <input type="text" id="mcfCharacterName" name="mcfCharacterName" placeholder="first name only, cannot duplicate existing girls">
+                        </div>
+                        <div class="form-button-center">
+                        <button type="button" onclick="generateMCFDirectories()">Generate Folder Structure</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="PositionTab" class="tabcontent">
@@ -20,9 +58,9 @@
             <h2 class="container-title">Position Javascript Generator</h2>
 
             <!-- Wrapper for the form and position list -->
-            <div class="content-wrapper">
+            <div class="flex-wrapper">
                 <!-- Form Container -->
-                <div class="form-container">
+                <div class="form-left">
                     <form id="positionForm">
                         <!-- Character Name -->
                         <label for="positionCharacterName">Character Name:</label>
@@ -132,69 +170,72 @@
                         <!-- Tags Section -->
                         <div class="tags-dropdown">
                             <label for="positionTagsInput">Tags:</label>
-                            <input list="positionTagsList" id="positionTagsInput" name="positionTagsInput">
+                            <div class="input-container">
+                                <input list="positionTagsList" id="positionTagsInput" name="positionTagsInput">
+                                <button type="button" id="addPositionTagButton">Add Tag</button>
+                            </div>
                             <datalist id="positionTagsList">
-                                <option value="69">69</option>
-                                <option value="all fours">all fours</option>
-                                <option value="anal">anal</option>
-                                <option value="ass up">ass up</option>
-                                <option value="balance on chest">balance on chest</option>
-                                <option value="balance with feet">balance with feet</option>
-                                <option value="balls deep">balls deep</option>
-                                <option value="balls smacking">balls smacking</option>
-                                <option value="big thrusts">big thrusts</option>
+                                <option value="69"></option>
+                                <option value="all fours"></option>
+                                <option value="anal"></option>
+                                <option value="ass up"></option>
+                                <option value="balance on chest"></option>
+                                <option value="balance with feet"></option>
+                                <option value="balls deep"></option>
+                                <option value="balls smacking"></option>
+                                <option value="big thrusts"></option>
                                 <option value="black">for BLACKED mod</option>
-                                <option value="blowjob">blowjob</option>
-                                <option value="boobs jiggle">boobs jiggle</option>
-                                <option value="butt jiggle">butt jiggle</option>
-                                <option value="choke">choke</option>
-                                <option value="close to crotch">close to crotch</option>
-                                <option value="cover mouth">cover mouth</option>
-                                <option value="deepthroat">deepthroat</option>
-                                <option value="degrade">degrade</option>
-                                <option value="eyes roll">eyes roll</option>
-                                <option value="facefuck">facefuck</option>
-                                <option value="grab arms">grab arms</option>
-                                <option value="grab boobs">grab boobs</option>
-                                <option value="grab butt">grab butt</option>
-                                <option value="grab face">grab face</option>
-                                <option value="grab head">grab head</option>
-                                <option value="grab neck">grab neck</option>
-                                <option value="grab sheets">grab sheets</option>
-                                <option value="grab shoulders">grab shoulders</option>
-                                <option value="grab waist">grab waist</option>
-                                <option value="hair swish">hair swish</option>
-                                <option value="handjob">handjob</option>
-                                <option value="helpless">helpless</option>
-                                <option value="kiss">kiss</option>
-                                <option value="lean against you">lean against you</option>
-                                <option value="leg up">leg up</option>
-                                <option value="legs in the air">legs in the air</option>
-                                <option value="licking">licking</option>
-                                <option value="look back">look back</option>
-                                <option value="manhandled">manhandled</option>
-                                <option value="mount">mount</option>
-                                <option value="nelson">nelson</option>
-                                <option value="oiled up">oiled up</option>
-                                <option value="prone">prone</option>
-                                <option value="pull hair">pull hair</option>
-                                <option value="romantic">romantic</option>
-                                <option value="side fuck">side fuck</option>
-                                <option value="sloppy">sloppy</option>
-                                <option value="slow">slow</option>
-                                <option value="spank">spank</option>
-                                <option value="squat">squat</option>
-                                <option value="standing">standing</option>
-                                <option value="suspended">suspended</option>
-                                <option value="titfuck">titfuck</option>
-                                <option value="tits clap">tits clap</option>
-                                <option value="tits rub">tits rub</option>
-                                <option value="touch yourself">touch yourself</option>
-                                <option value="you grab his head">you grab his head</option>
+                                <option value="blowjob"></option>
+                                <option value="boobs jiggle"></option>
+                                <option value="butt jiggle"></option>
+                                <option value="choke"></option>
+                                <option value="close to crotch"></option>
+                                <option value="cover mouth"></option>
+                                <option value="deepthroat"></option>
+                                <option value="degrade"></option>
+                                <option value="eyes roll"></option>
+                                <option value="facefuck"></option>
+                                <option value="grab arms"></option>
+                                <option value="grab boobs"></option>
+                                <option value="grab butt"></option>
+                                <option value="grab face"></option>
+                                <option value="grab head"></option>
+                                <option value="grab neck"></option>
+                                <option value="grab sheets"></option>
+                                <option value="grab shoulders"></option>
+                                <option value="grab waist"></option>
+                                <option value="hair swish"></option>
+                                <option value="handjob"></option>
+                                <option value="helpless"></option>
+                                <option value="kiss"></option>
+                                <option value="lean against you"></option>
+                                <option value="leg up"></option>
+                                <option value="legs in the air"></option>
+                                <option value="licking"></option>
+                                <option value="look back"></option>
+                                <option value="manhandled"></option>
+                                <option value="mount">him mounting you</option>
+                                <option value="nelson"></option>
+                                <option value="oiled up"></option>
+                                <option value="prone"></option>
+                                <option value="pull hair"></option>
+                                <option value="romantic"></option>
+                                <option value="side fuck"></option>
+                                <option value="sloppy"></option>
+                                <option value="slow"></option>
+                                <option value="spank"></option>
+                                <option value="squat"></option>
+                                <option value="standing"></option>
+                                <option value="suspended"></option>
+                                <option value="titfuck"></option>
+                                <option value="tits clap"></option>
+                                <option value="tits rub"></option>
+                                <option value="touch yourself"></option>
+                                <option value="you grab his head"></option>
                             </datalist>
-                            <button type="button" id="addPositionTagButton">Add Tag</button>
 						</div>
                         <div class="tagsContainer" id="positionTagsContainer"></div>
+                        
 
                         <!-- Skill Dropdown -->
                         <label for="skill">Skill:</label>
@@ -234,13 +275,15 @@
                             <label for="table">Table</label>
                         </div>
                     </form>
+                    <div class="form-button-center">
                     <button type="button" id="addPosition">Add Position</button>
+                    </div>
                 </div>
             
-                <div class="form-list">
+                <div class="form-right">
                     <h3>Positions List</h3>
                     <ul id="positionsList"></ul>
-                    <button type="button" onclick="generatePositionJS()">Generate JavaScript</button>
+                    <button type="button" onclick="generatePositionsFile()">Generate JavaScript</button>
                 </div>
             </div>
         </div> 
@@ -251,17 +294,17 @@
             <h2 class="container-title">Outfit Javascript Generator</h2>
 
             <!-- Wrapper for the form and outfit list -->
-            <div class="content-wrapper">
+            <div class="flex-wrapper">
                 <!-- Form Container -->
-                <div class="form-container">
+                <div class="form-left">
                     <form id="outfitForm">
                         <!-- Character Name -->
                         <label for="outfitCharacterName">Character Name:</label>
                         <input type="text" id="outfitCharacterName" name="outfitCharacterName">
 
                         <!-- Outfit Name -->
-                        <label for="outfitName" title="Must match your filename exactly">Outfit Name:</label>
-                        <input type="text" id="outfitName" name="outfitName">
+                        <label for="outfitName">Outfit Name:</label>
+                        <input type="text" id="outfitName" name="outfitName" placeholder="Must match your filename exactly">
 
                         <!-- Outfit Flavor -->
                         <label for="outfitFlavor">Flavor Text:</label>
@@ -272,20 +315,20 @@
                         <input type="text" id="outfitDescription" name="outfitDescription">
 
                         <!-- Outfit Category -->
-                        <label for="outfitCategory" title="This will be the directory where the outfit file is.">Outfit Category:</label>
-                        <select id="outfitCategory" name="outfitCategory">
-                            <option value="beach">Beachwear</option>
-                            <option value="office">Officewear</option>
-                            <option value="gym">Activewear</option>
-                            <option value="lounge">Loungewear</option>
-                            <option value="lingerie">Lingerie</option>
-                            <option value="casual">Casual</option>
+                        <label for="outfitCategory">Main Category:</label>
+                        <select id="outfitCategory" name="outfitCategory" title="This will be the directory where the outfit file is.">
+                            <option value="beach">Beach</option>
+                            <option value="office">Office</option>
+                            <option value="gym">Gym</option>
                             <option value="stylin">Stylish</option>
-                            <option value="fetish">Fetishwear</option>
+                            <option value="lounge">Lounge</option>
+                            <option value="casual">Casual</option>
+                            <option value="fetish">Fetish</option>
+                            <option value="lingerie">Lingerie</option>
                         </select>
 
                         <!-- Outfit Locations -->
-                        <label title="Locations that this outfit can be worn.">Outfit Locations:</label>
+                        <label for="outfitLocations" title="Additional locations that this outfit can be worn.">Additional Categories:</label>
                         <div class="checkbox-group">
                             <input type="checkbox" id="beach" name="outfitLocations" value="beach">
                             <label for="beach">Beach</label>
@@ -294,13 +337,13 @@
                             <input type="checkbox" id="gym" name="outfitLocations" value="gym">
                             <label for="gym">Gym</label>
                             <input type="checkbox" id="stylin" name="outfitLocations" value="stylin">
-                            <label for="stylin">Club/Bar</label>
+                            <label for="stylin">Stylish</label>
                             <input type="checkbox" id="lounge" name="outfitLocations" value="lounge">
-                            <label for="lounge">Home (Lounge)</label>
+                            <label for="lounge">Lounge</label>
                             <input type="checkbox" id="casual" name="outfitLocations" value="casual">
-                            <label for="casual">Home/Mall (Casual)</label>
+                            <label for="casual">Casual</label>
                             <input type="checkbox" id="fetish" name="outfitLocations" value="fetish">
-                            <label for="fetish">Bedroom (Sex)</label>
+                            <label for="fetish">Fetish</label>
                         </div>
 
                         <!-- Outfit Type -->
@@ -374,16 +417,16 @@
                         </div>
 
                         <div id="onePieceField">
-                            <label for="outfitOnePiece" title="One or Two words to classify the item. Example: 'sundress', 'swimsuit', 'bodysuit', 'latex dress'">One-Piece Description:</label>
-                            <input type="text" id="outfitOnePiece" name="outfitOnePiece">
+                            <label for="outfitOnePiece" title="One or Two words to classify the item.">One-Piece Description:</label>
+                            <input type="text" id="outfitOnePiece" name="outfitOnePiece" placeholder="sundress, swimsuit, bodysuit, latex dress">
                         </div>
 
                         <div id="twoPieceFields">
-                            <label for="outfitTop" title="One or a few words to classify the item. Example: 'bikini top', 'knotted crop top', 'leather bustier', 't-shirt'">Top Description:</label>
-                            <input type="text" id="outfitTop" name="outfitTop">
+                            <label for="outfitTop" title="One or a few words to classify the item.">Top Description:</label>
+                            <input type="text" id="outfitTop" name="outfitTop" placeholder="bikini top, crop top, leather bustier, t-shirt">
 
-                            <label for="outfitBottom" title="One or a few words to classify the item. Example: 'bikini bottom', 'jean shorts', 'mini skirt', 'leather booty shorts'">Bottom Description:</label>
-                            <input type="text" id="outfitBottom" name="outfitBottom">
+                            <label for="outfitBottom" title="One or a few words to classify the item.">Bottom Description:</label>
+                            <input type="text" id="outfitBottom" name="outfitBottom" placeholder="jean shorts, mini skirt, leather booty shorts">
                         </div>
 
                         <!-- Underwear -->
@@ -419,7 +462,10 @@
                         <!-- Arrays -->
                         <div class="tags-dropdown">
                             <label for="colorsInput">Colors:</label>
-                            <input list="outfitColors" id="colorsInput" name="colorsInput">
+                            <div class="input-container">
+                                <input list="outfitColors" id="colorsInput" name="colorsInput">
+                                <button type="button" id="addColorButton">Add</button>
+                            </div>
                             <datalist id="outfitColors">
                                 <option value="red">red</option>
                                 <option value="orange">orange</option>
@@ -441,13 +487,15 @@
                                 <option value="maroon">maroon</option>
                                 <option value="olive">olive</option>
                             </datalist>
-                            <button type="button" id="addColorButton">Add</button>
                         </div>
                         <div class="tagsContainer" id="colorsContainer"></div>
 
                         <div class="tags-dropdown">
                             <label for="emphasisInput">Emphasizes:</label>
-                            <input list="outfitEmphasis" id="emphasisInput" name="emphasisInput">
+                            <div class="input-container">
+                                <input list="outfitEmphasis" id="emphasisInput" name="emphasisInput">
+                                <button type="button" id="addEmphasisButton">Add</button>
+                            </div>
                             <datalist id="outfitEmphasis">
                                 <option value="cleavage">cleavage</option>
                                 <option value="lots of cleavage">lots of cleavage</option>
@@ -457,13 +505,15 @@
                                 <option value="legs">legs</option>
                                 <option value="tummy">tummy</option>
                             </datalist>
-                            <button type="button" id="addEmphasisButton">Add</button>
                         </div>
                         <div class="tagsContainer" id="emphasisContainer"></div>
 
                         <div class="tags-dropdown">
                             <label for="revealsInput">Reveals:</label>
-                            <input list="outfitReveals" id="revealsInput" name="revealsInput">
+                            <div class="input-container">
+                                <input list="outfitReveals" id="revealsInput" name="revealsInput">
+                                <button type="button" id="addRevealsButton">Add</button>
+                            </div>
                             <datalist id="outfitReveals">
                                 <option value="cleavage">cleavage</option>
                                 <option value="lots of cleavage">lots of cleavage</option>
@@ -478,13 +528,15 @@
                                 <option value="nipples">nipples</option>
                                 <option value="pussy">pussy</option>
                             </datalist>
-                            <button type="button" id="addRevealsButton">Add</button>
                         </div>
                         <div class="tagsContainer" id="revealsContainer"></div>
 
                         <div class="tags-dropdown">
                             <label for="outfitTagsInput">Tags:</label>
-                            <input list="outfitTags" id="outfitTagsInput" name="outfitTagsInput">
+                            <div class="input-container">
+                                <input list="outfitTags" id="outfitTagsInput" name="outfitTagsInput">
+                                <button type="button" id="addOutfitTagsButton">Add Tag</button>
+                            </div>
                             <datalist id="outfitTags">
                                 <option value="professional">Gives +1 🍀 while wearing this outfit at the office.</option>
                                 <option value="very professional">Gives +2 🍀 while wearing this outfit at the office.</option>
@@ -507,6 +559,7 @@
                                 <option value="underwire">Uses underwire as part of the outfit.</option>
                                 <option value="long changing">Takes longer than normal to change into.</option>
                                 <option value="rich magnet">Rich people are attracted to this outfit.</option>
+                                <option value="gentleman magnet">Gentlemen are attracted to this outfit.</option>
                                 <option value="chad magnet">Chads are attracted to this outfit.</option>
                                 <option value="fuckboy magnet">Fuckboys are attracted to this outfit.</option>
                                 <option value="jock magnet">Jocks are attracted to this outfit.</option>
@@ -518,34 +571,166 @@
                                 <option value="zipper">Has a zipper as part of the outfit.</option>
                                 <option value="strings">Has strings as part of the outfit.</option>
                             </datalist>
-                            <button type="button" id="addOutfitTagsButton">Add Tag</button>
                         </div>
                         <div class="tagsContainer" id="outfitTagsContainer"></div>
                     </form>
+                    <div class="form-button-center">
                     <button type="button" id="addOutfit">Add Outfit</button>
+                    </div>
                 </div>
 
-                <div class="form-list">
+                <div class="form-right">
                     <h3>Outfits List</h3>
                     <ul id="outfitsList"></ul>
-                    <button type="button" onclick="generateOutfitsJS()">Generate JavaScript</button>
+                    <button type="button" onclick="generateOutfitsFile()">Generate JavaScript</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="MCF-Tab" class="tabcontent">
-        <!-- MCF tool form goes here -->
-    </div>
-
     <div id="BLK-Tab" class="tabcontent">
-        <!-- Blacked tool form goes here -->
+        <div class="container">
+            <h2 class="container-title">BLACKED Coding Assistant</h2>
+            <div class="content-wrapper">
+                <div class="form-center">
+                    <form id="blackedForm">
+                        <h2>Meta Section</h2>
+                        <div class="form-single-line">
+                            <label for="blkModAuthor">Mod Author:</label>
+                            <input type="text" id="blkModAuthor" name="blkModAuthor" placeholder="You! Your @handle or name/nickname.">
+                        </div>
+                        <div class="form-single-line">
+                            <label for="blkYourModName">Your MCF Mod Name:</label>
+                            <input type="text" id="blkYourModName" name="blkYourModName" placeholder="Lauren">
+                        </div>
+                        <div class="form-single-line">
+                            <label for="blkYourModVersion">Your MCF Mod Version:</label>
+                            <input type="text" id="blkYourModVersion" name="blkYourModVersion" placeholder="0.1.0">
+                        </div>
+                        <div class="form-single-line">
+                            <label for="blkYourModBLKVersion">Your MCF Mod BLACKED Version:</label>
+                            <input type="text" id="blkYourModBLKVersion" name="blkYourModBLKVersion" placeholder="0.0.1">
+                        </div>
+                        <div class="form-single-line">
+                            <label for="blkBaseGameVersion">Current XCL Game Version:</label>
+                            <input type="text" id="blkBaseGameVersion" name="blkBaseGameVersion">
+                        </div>
+                        <div class="form-single-line">
+                            <label for="blkModVersion">Current BLACKED Mod Version:</label>
+                            <input type="text" id="blkModVersion" name="blkModVersion">
+                        </div>
+                        <div class="form-single-line">
+                            <label for="blkMCFVersion">Current MCF Mod Version:</label>
+                            <input type="text" id="blkMCFVersion" name="blkMCFVersion">
+                        </div>
+                        <h2>Twee Section</h2>
+                        <!-- Character Name -->
+                        <div class="form-single-line">
+                            <label for="blkCharacterName">Character Name:</label>
+                            <input type="text" id="blkCharacterName" name="blkCharacterName" placeholder="first name only, cannot duplicate existing girls">
+                        </div>
+                        <h3>Transactional Doggy</h3>
+                        <div class="form-single-line">
+                            <label for="blkTransDoggyVid">Videos</label>
+                            <input type="number" id="blkDoggyTransVid" placeholder="4" min="1" title="Number of videos in sex/doggy/bbc/">
+                            <label for="blkDoggyTransInsImg">Insert Pictures</label>
+                            <input type="number" id="blkDoggyTransInsImg" placeholder="4" min="1" title="Number of images in sex/doggy/bbc/">
+                            <label for="blkDoggyTransMoanImg">Moan Pictures</label>
+                            <input type="number" id="blkDoggyTransMoanImg" placeholder="4" min="1" title="Number of images in sex/doggy/bbc/moan/">
+                        </div>
+                        <div class="containerTransDoggy" id="containerTransDoggy"></div>
+                        <div class="form-button-center">
+                        <button type="button" onclick="generateBlackedFolders()">Generate Folder Structure Only</button>
+                        <button type="button" onclick="generateBlackedFiles()">Generate Files and Folders</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <div id="MetaTab" class="tabcontent">
+        <div class="container">
+            <h2 class="container-title">Meta Maker</h2>
+            <p class="container-text">This is meant to be a standalone meta maker. For MCF and BLACKED Metas, use the respective tabs.</p>
+            <!-- Wrapper for the form -->
+            <div class="content-wrapper">
+                <!-- Form Container -->
+                <div class="form-center">
+                    <form id="metaForm">
+                        <!-- Mod Name -->
+                        <div class="form-single-line">
+                            <label for="metaName">Mod Name:</label>
+                            <input type="text" id="metaName" name="metaName" placeholder="My Sweet Mod">
+                        </div>
+                        <!-- Mod Version -->
+                        <div class="form-single-line">
+                            <label for="metaVersion">Mod Version:</label>
+                            <input type="text" id="metaVersion" name="metaVersion" title="Recommend semantic versioning (major.minor.patch). Example: '0.2.1' for 0 major / 2 minor / 1 patch." placeholder="0.2.1">
+                        </div>
+                        <!-- Mod Author -->
+                        <div class="form-single-line">
+                            <label for="metaAuthor">Mod Author:</label>
+                            <input type="text" id="metaAuthor" name="metaAuthor" placeholder="You! Your @handle or name/nickname.">
+                        </div>
+                        <!-- Game Version -->
+                        <div class="form-single-line">
+                            <label for="baseGameVersion">Compatible Game Version:</label>
+                            <input type="text" id="baseGameVersion" name="baseGameVersion" title="This is the earliest version of XCL that your mod is compatible with (usually the current version).">
+                        </div>
+                        <!-- Required Mods -->
+                        <div class="mod-list">
+                            <h4>Required Mods:</h4>
+                            <input type="text" id="requiredModName" placeholder="Mod Name">
+                            <input type="text" id="requiredModVersion" placeholder="Version">
+                        </div>
+                        <div class="form-button-center">
+                            <button type="button" id="addRequiredMod">Add Required Mod</button>
+                        </div>                        
+                        <div class="mod-container">
+                            <ul id="requiredModsContainer"></ul>
+                        </div>
+                        <!-- Compatible Mods -->
+                        <div class="mod-list">
+                            <h4>Compatible Mods:</h4>
+                            <input type="text" id="compatibleModName" placeholder="Mod Name">
+                            <input type="text" id="compatibleModVersion" placeholder="Version">
+                            <select id="compatibleModOrder" name="compatibleModOrder">
+                                <option value="AFTER">Your mod loads AFTER this one</option>
+                                <option value="BEFORE">Your mod loads BEFORE this one</option>  
+                            </select>
+                        </div>
+                        <div class="form-button-center">
+                            <button type="button" id="addCompatibleMod">Add Compatible Mod</button>
+                        </div>
+                        <div class="mod-container">
+                            <ul id="compatibleModsContainer"></ul>
+                        </div>
+                        <!-- Incompatible Mods -->
+                        <div class="mod-list">
+                            <h4>Incompatible Mods:</h4>
+                            <input type="text" id="incompatibleModName" placeholder="Mod Name">
+                            <input type="text" id="incompatibleModVersion" placeholder="Version">
+                        </div>
+                        <div class="form-button-center">
+                            <button type="button" id="addIncompatibleMod">Add Incompatible Mod</button>
+                        </div> 
+                        <div class="mod-container">
+                            <ul id="incompatibleModsContainer"></ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="form-button-center">
+            <button type="button" onclick="generateMetaFile()">Generate JavaScript</button>
+            </div>
+        </div>
+    </div>
     
     <div class ="signature">
         <p>Modding tools by ♠️ Chloe ♠️<br>Join the Official XCL Discord <a href="https://discord.com/invite/ethWsZSbHW">here</a></p>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script> <!-- To create ZIP files with JS -->
     <script src="script.js"></script>
 </body>
 </html>
