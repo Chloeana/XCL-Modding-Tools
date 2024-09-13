@@ -225,15 +225,60 @@ document.addEventListener("DOMContentLoaded", function () {
     radio.addEventListener("change", updatePositions);
   });
 
+
+  // Update pleasure values and skill based on position
+  document.getElementById('position').addEventListener('change', function () {
+    if (addPositionButton.dataset.editing !== "true") {
+      const selectedPosition = this.value.toLowerCase();
+      const pleasureFactor = document.getElementById('pleasureFactor');
+      const yourPleasure = document.getElementById('yourPleasure');
+      const hisPleasure = document.getElementById('hisPleasure');
+      const hisSatisfaction = document.getElementById('hisSatisfaction');
+      const skill = document.getElementById('skill');
+
+      // Set defaults in case no condition applies
+      pleasureFactor.value = 'both'; 
+      yourPleasure.value = 5; 
+      hisPleasure.value = 5;
+      hisSatisfaction.value = 5;
+
+      // Pleasure factor and related fields
+      if (['handjob', 'blowjob', 'titfuck', 'facefuck'].includes(selectedPosition)) {
+          pleasureFactor.value = 'none';
+          yourPleasure.value = 0;
+      } else if (['cunnilingus', 'fingering'].includes(selectedPosition)) {
+          pleasureFactor.value = 'oral';
+          hisPleasure.value = 0;
+          hisSatisfaction.value = 0;
+      } else if (selectedPosition === '69') {
+          pleasureFactor.value = 'oral';
+      }
+
+      // Update skill based on position
+      if (['blowjob', '69'].includes(selectedPosition)){
+        skill.value = 'blowjob';
+      } else if (selectedPosition === 'handjob') {
+        skill.value = 'handjob';
+      } else if (selectedPosition === 'facefuck') {
+          skill.value = 'gag reflex';
+      } else if (selectedPosition === 'titfuck') {
+          skill.value = 'titfuck';
+      }
+
+      // Update the displayed values next to sliders
+      updateSliderValues();
+    }
+  });
+
   // Position Tag section
   const addPositionTagButton = document.getElementById("addPositionTagButton");
+  const positionTagsInput = document.getElementById("positionTagsInput");
+  const positionTagsList = document.getElementById("positionTagsList");
   const positionTagsContainer = document.getElementById(
     "positionTagsContainer"
   );
 
   function addPositionTag() {
-    const positionTagsInput = document.getElementById("positionTagsInput");
-    const positionTagsList = document.getElementById("positionTagsList");
     const tagText = positionTagsInput.value.trim();
 
     if (tagText) {
@@ -278,6 +323,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   addPositionTagButton.addEventListener("click", addPositionTag);
 
+  // Add event listener for changes in the positionTagsInput
+  positionTagsInput.addEventListener('input', function() {
+    const inputValue = positionTagsInput.value.trim();
+    const options = Array.from(positionTagsList.options);
+    const matchingOption = options.find(option => option.value === inputValue);
+
+    // If the input matches an option from the datalist, automatically add the tag
+    if (matchingOption) {
+        addPositionTag(); // Call the existing function to add the tag
+    }
+  });
+
   // Clear position form
   function resetPositionForm() {
     document.getElementById("positionName").value = "";
@@ -302,6 +359,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document
       .querySelectorAll('input[name="positionLocations"]')
       .forEach((loc) => (loc.checked = false));
+
+    addPositionButton.textContent = "Add Position"; // Reset button text
+    delete addPositionButton.dataset.editing; // Remove editing state
 
     window.scrollTo(0, 0); // Scroll to the top of the page
   }
@@ -349,20 +409,14 @@ document.addEventListener("DOMContentLoaded", function () {
   
 
   function addPosition() {
+    console.log('addPosition function called');
     // Extracting form values
-    const characterName = document
-      .getElementById("positionCharacterName")
-      .value.toLowerCase();
+    const characterName = document.getElementById("positionCharacterName").value.toLowerCase();
     const name = document.getElementById("positionName").value;
     const flavor = document.getElementById("positionFlavor").value;
-    const type = document.querySelector(
-      'input[name="positionType"]:checked'
-    ).value;
-    const subtype = document.querySelector(
-      'input[name="subtype"]:checked'
-    ).value;
+    const type = document.querySelector('input[name="positionType"]:checked').value;
+    const subtype = document.querySelector('input[name="subtype"]:checked').value;
     const position = document.getElementById("position").value;
-    let selectedPositionItem = null;
     const athletics = document.getElementById("athletics").value;
     const roughness = document.getElementById("roughness").value;
     const yourPleasure = document.getElementById("yourPleasure").value;
@@ -372,182 +426,353 @@ document.addEventListener("DOMContentLoaded", function () {
     const rhythm = document.getElementById("rhythm").value;
     const skill = document.getElementById("skill").value;
     const skillLevel = document.getElementById("skillLevel").value;
-    const locations = Array.from(
-      document.querySelectorAll('input[name="positionLocations"]:checked')
-    ).map((loc) => loc.value);
-    const tags = Array.from(positionTagsContainer.querySelectorAll(".tag")).map((tag) =>
-        tag.textContent.replace("x", "").trim());
+    const locations = Array.from(document.querySelectorAll('input[name="positionLocations"]:checked')).map((loc) => loc.value);
+    const tags = Array.from(positionTagsContainer.querySelectorAll(".tag")).map((tag) => tag.textContent.replace("x", "").trim());
 
     // Validation: Ensure all fields are filled out
-    if (
-      !characterName ||
-      !name ||
-      !flavor ||
-      !type ||
-      !subtype ||
-      !position ||
-      !athletics ||
-      !roughness ||
-      !yourPleasure ||
-      !pleasureFactor ||
-      !hisPleasure ||
-      !hisSatisfaction ||
-      !rhythm ||
-      !skill ||
-      !skillLevel ||
-      locations.length === 0
-    ) {
-      alert("All fields must be filled out.");
-      return;
+    if (!characterName || !name || !flavor || !type || !subtype || !position || !athletics || !roughness || !yourPleasure || !pleasureFactor || !hisPleasure || !hisSatisfaction || !rhythm || !skill || !skillLevel || locations.length === 0) {
+        alert("All fields must be filled out.");
+        return;
     }
 
     const newPosition = {
-      characterName,
-      name,
-      flavor,
-      type,
-      subtype,
-      position,
-      athletics,
-      roughness,
-      yourPleasure,
-      pleasureFactor,
-      hisPleasure,
-      hisSatisfaction,
-      rhythm,
-      skill,
-      skillLevel,
-      locations,
-      tags,
+        characterName,
+        name,
+        flavor,
+        type,
+        subtype,
+        position,
+        athletics,
+        roughness,
+        yourPleasure,
+        pleasureFactor,
+        hisPleasure,
+        hisSatisfaction,
+        rhythm,
+        skill,
+        skillLevel,
+        locations,
+        tags,
     };
 
+    const positionsList = document.getElementById("positionsList");
+
     if (addPositionButton.dataset.editing === "true") {
-      // Update the existing position
-      const selectedPosition = document.querySelector("li.selected");
-      selectedPosition.dataset.position = JSON.stringify(newPosition);
-      selectedPosition.textContent = `${name} (${subtype} - ${position})`;
-      delete addPositionButton.dataset.editing;
-      addPositionButton.textContent = "Add Position"; // Change back to "Add Position"
+        // Update the existing position
+        const selectedPosition = document.querySelector("li.selected");
+        if (selectedPosition) {
+            selectedPosition.dataset.position = JSON.stringify(newPosition);
+            selectedPosition.textContent = `${name} (${type} - ${subtype})`;
 
-      // Deselect the position after saving
-      selectedPosition.classList.remove("selected");
-      selectedPositionItem = null;
+            // Re-add the remove button if missing
+            let existingRemoveBtn = selectedPosition.querySelector(".remove-position");
+            if (!existingRemoveBtn) {
+                const removeBtn = document.createElement("button");
+                removeBtn.textContent = "x";
+                removeBtn.className = "remove-position";
+                selectedPosition.appendChild(removeBtn);
+
+                removeBtn.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    selectedPosition.remove();
+                    addPositionButton.textContent = "Add Position"; // Reset button text
+                    delete addPositionButton.dataset.editing;
+                    resetPositionForm(); // Clear the form after removal
+                });
+            }
+
+            // Reset button state
+            delete addPositionButton.dataset.editing;
+            addPositionButton.textContent = "Add Position";
+            selectedPosition.classList.remove("selected");
+            selectedPositionItem = null;
+        }
     } else {
-      // Check for duplicate positions
-      const existingPositions = Array.from(
-        document.getElementById("positionsList").children
-      );
-      let positionExists = false;
-      existingPositions.forEach((pos) => {
-        const posData = JSON.parse(pos.dataset.position);
-        if (
-          posData.name === newPosition.name &&
-          posData.type === newPosition.type &&
-          posData.subtype === newPosition.subtype
-        ) {
-          positionExists = true;
+        // Check for duplicate positions
+        const existingPositions = Array.from(positionsList.children);
+        let positionExists = false;
+        existingPositions.forEach((pos) => {
+            const posData = JSON.parse(pos.dataset.position);
+            if (posData.name === newPosition.name && posData.type === newPosition.type && posData.subtype === newPosition.subtype) {
+                positionExists = true;
+            }
+        });
+
+        if (positionExists) {
+            alert("This position already exists in the list.");
+            return;
         }
-      });
 
-      if (positionExists) {
-        alert("This position already exists in the list.");
-        return;
-      }
+        // Add the new position
+        const positionItem = document.createElement("li");
+        positionItem.textContent = `${name} (${type} - ${subtype})`;
+        positionItem.dataset.position = JSON.stringify(newPosition);
 
-      // Add the new position
-      const positionItem = document.createElement("li");
-      positionItem.textContent = `${name} (${type} - ${subtype})`;
-      positionItem.dataset.position = JSON.stringify(newPosition);
+        // Add event listener for position clicks
+        positionItem.addEventListener("click", handlePositionClick);
 
-      positionItem.addEventListener("click", function () {
-        if (positionItem.classList.contains("selected")) {
-          positionItem.classList.remove("selected");
-          resetPositionForm();
-        } else {
-          addPositionButton.textContent = "Save Position"; // Change button text
-          addPositionButton.dataset.editing = "true"; // Mark as editing
-          document
-            .querySelectorAll("li")
-            .forEach((item) => item.classList.remove("selected"));
-          positionItem.classList.add("selected");
+        // Add the remove button
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "x";
+        removeBtn.className = "remove-position";
+        positionItem.appendChild(removeBtn);
 
-          // Update the form fields with the selected position's data
-          const pos = JSON.parse(positionItem.dataset.position);
-          document.getElementById("positionCharacterName").value =
-            pos.characterName;
-          document.getElementById("positionName").value = pos.name;
-          document.getElementById("positionFlavor").value = pos.flavor;
-          document.querySelector(
-            `input[name="positionType"][value="${pos.type}"]`
-          ).checked = true;
-          document.querySelector(
-            `input[name="subtype"][value="${pos.subtype}"]`
-          ).checked = true;
-          updatePositions(); // Ensure the position dropdown is updated based on type/subtype
-          document.getElementById("position").value = pos.position;
-          document.getElementById("athletics").value = pos.athletics;
-          document.getElementById("roughness").value = pos.roughness;
-          document.getElementById("yourPleasure").value = pos.yourPleasure;
-          document.getElementById("pleasureFactor").value = pos.pleasureFactor;
-          document.getElementById("hisPleasure").value = pos.hisPleasure;
-          document.getElementById("hisSatisfaction").value =
-            pos.hisSatisfaction;
-          document.getElementById("rhythm").value = pos.rhythm;
-          document.getElementById("skill").value = pos.skill;
-          document.getElementById("skillLevel").value = pos.skillLevel;
-          document
-            .querySelectorAll('input[name="positionLocations"]')
-            .forEach((loc) => {
-              loc.checked = pos.locations.includes(loc.value);
-            });
+        removeBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            positionItem.remove();
+            addPositionButton.textContent = "Add Position"; // Reset button text
+            delete addPositionButton.dataset.editing;
+            resetPositionForm(); // Clear the form after removal
+        });
 
-          // Update tags
-          positionTagsContainer.innerHTML = "";
-          pos.tags.forEach((tag) => {
-            const tagSpan = document.createElement("span");
-            tagSpan.textContent = tag;
-            tagSpan.className = "tag";
-
-            const removeBtn = document.createElement("button");
-            removeBtn.textContent = "x";
-            removeBtn.className = "remove-tag";
-            tagSpan.appendChild(removeBtn);
-            positionTagsContainer.appendChild(tagSpan);
-
-            removeBtn.addEventListener("click", function () {
-              tagSpan.remove();
-            });
-          });
-
-          // Update slider displayed numbers
-          updateSliderValues();
-
-          // Store the currently selected position
-          selectedPositionItem = positionItem;
-        }
-      });
-
-      // Remove Position
-      const removeBtn = document.createElement("button");
-      removeBtn.textContent = "x";
-      removeBtn.className = "remove-position";
-      positionItem.appendChild(removeBtn);
-
-      removeBtn.addEventListener("click", function (e) {
-        e.stopPropagation();
-        positionItem.remove();
-        addPositionButton.textContent = "Add Position"; // Reset button text
-        delete addPositionButton.dataset.editing;
-        resetPositionForm(); // Clear the form after removal
-      });
-
-      document.getElementById("positionsList").appendChild(positionItem);
+        positionsList.appendChild(positionItem);
     }
 
     resetPositionForm(); // Reset the form fields after adding or saving
+}
+
+  addPositionButton.addEventListener("click", function () {
+    if (validatePositionForm()) {
+      addPosition();
+    }
+  });
+
+  function handlePositionClick(event) {
+    const positionItem = event.currentTarget;
+
+    if (positionItem.classList.contains("selected")) {
+        // Deselect the position
+        positionItem.classList.remove("selected");
+        resetPositionForm();
+        addPositionButton.textContent = "Add Position"; // Reset button text
+        selectedPositionItem = null; // Clear the reference to the selected position
+    } else {
+        // Select the position
+        addPositionButton.textContent = "Save Position"; // Change button text
+        addPositionButton.dataset.editing = "true"; // Mark as editing
+        document.querySelectorAll("li").forEach((item) => item.classList.remove("selected"));
+        positionItem.classList.add("selected");
+
+        const pos = JSON.parse(positionItem.dataset.position);
+        loadPositionIntoForm(pos);
+
+        // Store the currently selected position
+        selectedPositionItem = positionItem;
+    }
   }
 
-  addPositionButton.addEventListener("click", addPosition);
+  function handlePositionRemove(positionItem) {
+    positionItem.remove();
+    addPositionButton.textContent = "Add Position"; // Reset button text
+    delete addPositionButton.dataset.editing;
+    resetPositionForm(); // Clear the form after removal
+  }
+
+  document.querySelectorAll('#positionsList li').forEach((positionItem) => {
+    positionItem.addEventListener("click", () => handlePositionClick(positionItem));
+    positionItem.querySelector('.remove-position')?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        handlePositionRemove(positionItem);
+    });
+  });
+
+  // Import existing position file
+  document.getElementById('importPositionsButton').addEventListener('click', function () {
+    const fileInput = document.getElementById('importPositions');
+    const file = fileInput.files[0];
+    if (!file) {
+        alert('No file selected.');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        const fileContent = event.target.result;
+
+        try {
+            parsePositionsFromJS(fileContent);
+        } catch (error) {
+            console.error("Error parsing positions: ", error);
+            alert("Error parsing positions.");
+        }
+    };
+
+    reader.readAsText(file);
+  });
+
+  function parsePositionsFromJS(content) {
+    // Regular expression to match the positions() call with one or more position objects
+    const regex = /positions\("([^"]+)", "([^"]+)", "([^"]+)",\s*((?:\{[\s\S]*?\})(?:,\s*\{[\s\S]*?\})*)\s*\)/g;
+    let match;
+    const positions = [];
+
+    while ((match = regex.exec(content)) !== null) {
+        const characterName = match[1].trim();
+        const type = match[2].trim();
+        const subtype = match[3].trim();
+        const positionsBlock = match[4].trim();
+
+        // Split positionsBlock by each position object (splitting by '} , {')
+        const positionObjects = positionsBlock.split(/\}\s*,\s*\{/);
+
+        positionObjects.forEach((positionObj, index) => {
+            // Cleanup braces and parse each position object individually
+            const cleanedPositionObj = (index === 0 ? positionObj + '}' : '{' + positionObj + '}').trim();
+            const positionData = extractPositionObject(cleanedPositionObj);
+
+            const newPosition = {
+                characterName,
+                type,
+                subtype,
+                ...positionData
+            };
+            positions.push(newPosition);
+            console.log("Extracted position: ", newPosition); // Debugging output
+        });
+    }
+
+    if (positions.length > 0) {
+        populatePositionsList(positions); // Populate list if positions exist
+    } else {
+        alert("No positions imported.");
+    }
+  }
+
+  const fieldNameMapping = {
+    "pleasure factor": "pleasureFactor",
+    "your pleasure": "yourPleasure",
+    "his pleasure": "hisPleasure",
+    "his satisfaction": "hisSatisfaction",
+    "skill level": "skillLevel"
+  };
+
+  function extractPositionObject(blockContent) {
+    const position = {};
+
+    // Improved regex to match key-value pairs, handling strings, arrays, numbers, booleans, and objects
+    const regex = /["']([\w\s]+)["']\s*:\s*(?:"([^"]*)"|'([^']*)'|\[(.*?)\]|\{(.*?)\}|(\d+(\.\d+)?)|(true|false|null))/g;
+    let match;
+
+    while ((match = regex.exec(blockContent)) !== null) {
+        const key = match[1].trim();
+        let value = match[2] || match[3]; // Extract string value if available
+
+        // If value is undefined, check for arrays, objects, numbers, booleans, or null
+        if (value === undefined) {
+            if (match[4]) {  // Array
+                value = match[4].split(',').map(item => item.trim().replace(/["']/g, '')); // Clean array items
+            } else if (match[5]) {  // Object
+                value = extractPositionObject(match[5]); // Recursively extract nested objects
+            } else if (match[6]) {  // Number
+                value = parseFloat(match[6]);
+            } else if (match[8]) {  // Boolean or null
+                value = JSON.parse(match[8]);
+            }
+        }
+
+        // Apply the field name mapping
+        const mappedKey = fieldNameMapping[key] || key;
+
+        // Assign the processed value to the position object
+        position[mappedKey] = value;
+    }
+
+    return position;
+  }
+
+  function populatePositionsList(positions) {
+    const positionsList = document.getElementById("positionsList");
+    positionsList.innerHTML = ""; // Clear existing items
+
+    if (positions.length > 0) {
+      // Set the character name only when the file is loaded
+      document.getElementById('positionCharacterName').value = positions[0].characterName;
+  }
+
+    positions.forEach((position) => {
+        const positionItem = document.createElement("li");
+        positionItem.textContent = `${position.name} (${position.type} - ${position.subtype})`;
+        positionItem.dataset.position = JSON.stringify(position);
+
+        // Add click event listener
+        positionItem.addEventListener("click", handlePositionClick);
+
+        // Add remove button
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "x";
+        removeBtn.className = "remove-position";
+        positionItem.appendChild(removeBtn);
+
+        // Event listener for remove button
+        removeBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            positionItem.remove();
+            addPositionButton.textContent = "Add Position"; // Reset button text
+            delete addPositionButton.dataset.editing;
+            resetPositionForm(); // Clear the form after removal
+        });
+
+        // Append position item to list
+        positionsList.appendChild(positionItem);
+    });
+  }
+
+
+  function loadPositionIntoForm(pos) {
+    // Update the form fields with the selected position's data
+    document.getElementById('positionCharacterName').value = pos.characterName;
+    document.getElementById('positionName').value = pos.name;
+    document.getElementById('positionFlavor').value = pos.flavor;
+
+    // Set type and subtype
+    document.querySelector(`input[name="positionType"][value="${pos.type}"]`).checked = true;
+    document.querySelector(`input[name="subtype"][value="${pos.subtype}"]`).checked = true;
+
+    // Update the position dropdown after setting type and subtype
+    updatePositions();
+
+    // Continue setting other fields
+    document.getElementById('position').value = pos.position;
+    document.getElementById('pleasureFactor').value = pos.pleasureFactor;
+    document.getElementById('rhythm').value = pos.rhythm;
+    document.getElementById('skill').value = pos.skill;
+    
+    // Set sliders
+    document.getElementById('athletics').value = pos.athletics;
+    document.getElementById('roughness').value = pos.roughness;
+    document.getElementById('yourPleasure').value = pos.yourPleasure;
+    document.getElementById('hisPleasure').value = pos.hisPleasure;
+    document.getElementById('hisSatisfaction').value = pos.hisSatisfaction;
+    document.getElementById('skillLevel').value = pos.skillLevel;
+
+    // Update slider displayed numbers
+    updateSliderValues();
+    
+    // Ensure pos.locations is an array before using .includes()
+    const locations = Array.isArray(pos.locations) ? pos.locations : [];
+    document.querySelectorAll('input[name="positionLocations"]').forEach((loc) => {
+        loc.checked = locations.includes(loc.value);
+    });
+
+    // Handle tags
+    positionTagsContainer.innerHTML = "";
+    pos.tags.forEach((tag) => {
+        const tagSpan = document.createElement("span");
+        tagSpan.textContent = tag;
+        tagSpan.className = "tag";
+
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "x";
+        removeBtn.className = "remove-tag";
+        tagSpan.appendChild(removeBtn);
+        positionTagsContainer.appendChild(tagSpan);
+
+        removeBtn.addEventListener("click", function () {
+            tagSpan.remove();
+        });
+    });
+  }
+
 
   // ----- Outfit array sections -----
   // Color tags
@@ -1235,6 +1460,56 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 }
 
+  // Function to checking input characters
+  function sanitizeInput(input) {
+    // Defined allowed characters: alphanumeric and some special characters
+    const allowedCharacters = /^[a-zA-Z0-9_\-.\s']+$/;
+    return allowedCharacters.test(input);
+  }
+
+  // Function to check if a field is empty
+  function isEmpty(input) {
+    return input.trim() === "";
+  }
+  
+  // Validate that position form is filled out and doesn't contain special characters
+  function validatePositionForm() {
+    const positionName = document.getElementById("positionName").value;
+    const otherFields = [
+      document.getElementById("positionCharacterName").value,
+      document.getElementById("positionFlavor").value,
+      document.getElementById("position").value,
+      // Add other fields here
+    ];
+
+    // Check if fields are empty
+    if (isEmpty(positionName)) {
+      alert("Position Name cannot be empty.");
+      return false;
+    }
+
+    for (const field of otherFields) {
+      if (isEmpty(field)) {
+        alert("All fields must be filled out.");
+        return false;
+      }
+    }
+  
+    // Check if positionName or any other field contains invalid characters
+    if (!sanitizeInput(positionName)) {
+      alert("Position name contains invalid characters.");
+      return false;
+    }
+  
+    for (const field of otherFields) {
+      if (!sanitizeInput(field)) {
+        alert("One or more fields contain invalid characters.");
+        return false;
+      }
+    }
+  
+    return true; // Form is valid
+  }
   
 }); // End of DOM
 
@@ -1276,44 +1551,75 @@ function collectTags(containerId) {
 }
 
 function generatePositionsFile() {
-  const positions = Array.from(
-    document.getElementById("positionsList").children
-  ).map((pos) => JSON.parse(pos.dataset.position));
+  const positions = Array.from(document.getElementById("positionsList").children)
+      .map((pos) => JSON.parse(pos.dataset.position));
 
   if (positions.length === 0) {
-    alert("No positions to generate.");
-    return;
+      alert("No positions to generate.");
+      return;
   }
+
+  // Track initialized characters
+  const initializedCharacters = new Set();
+
+  // Group positions by characterName, type, and subtype
+  const groupedPositions = {};
+  positions.forEach((position) => {
+      const key = `${position.characterName}-${position.type}-${position.subtype}`;
+      if (!groupedPositions[key]) {
+          groupedPositions[key] = [];
+      }
+      groupedPositions[key].push(position);
+  });
 
   // JavaScript content string
   let jsContent = "";
 
-  // Start with character initialization
+  // Add init_character_for_position for each unique character at the top
   positions.forEach((position) => {
-    const initLine = `init_character_for_position("${position.characterName}");\n`;
-    if (!jsContent.includes(initLine)) {
-      jsContent += initLine;
-    }
+      if (!initializedCharacters.has(position.characterName)) {
+          jsContent += `init_character_for_position("${position.characterName}")\n\n`;
+          initializedCharacters.add(position.characterName);
+      }
+  });
 
-    jsContent += `positions("${position.characterName}", "${position.type}", "${position.subtype}", {\n`;
-    jsContent += `  "name": "${position.name}",\n`;
-    jsContent += `  "flavor": "${position.flavor}",\n`;
-    jsContent += `  "athletics": ${position.athletics},\n`;
-    jsContent += `  "roughness": ${position.roughness},\n`;
-    jsContent += `  "yourPleasure": ${position.yourPleasure},\n`;
-    jsContent += `  "pleasureFactor": "${position.pleasureFactor}",\n`;
-    jsContent += `  "hisPleasure": ${position.hisPleasure},\n`;
-    jsContent += `  "hisSatisfaction": ${position.hisSatisfaction},\n`;
-    jsContent += `  "rhythm": ${position.rhythm},\n`;
-    jsContent += `  "skill": "${position.skill}",\n`;
-    jsContent += `  "skillLevel": ${position.skillLevel},\n`;
-    jsContent += `  "locations": [${position.locations
-      .map((loc) => `"${loc}"`)
-      .join(", ")}],\n`;
-    jsContent += `  "tags": [${position.tags
-      .map((tag) => `"${tag}"`)
-      .join(", ")}]\n`;
-    jsContent += `});\n\n`;
+  // Loop through grouped positions and create the position
+  Object.keys(groupedPositions).forEach((groupKey) => {
+      const [characterName, type, subtype] = groupKey.split("-");
+      const group = groupedPositions[groupKey];
+
+      // Add positions for this group
+      jsContent += `positions("${characterName}", "${type}", "${subtype}",\n`;
+
+      group.forEach((position, index) => {
+          jsContent += `    {\n`;
+          jsContent += `        "name": "${position.name}",\n`;
+          jsContent += `        "flavor": "${position.flavor}",\n`;
+          jsContent += `        "type": "${position.type}",\n`;
+          jsContent += `        "subtype": "${position.subtype}",\n`;
+          jsContent += `        "position": "${position.position}",\n`;
+          jsContent += `        "athletics": ${position.athletics},\n`;
+          jsContent += `        "roughness": ${position.roughness},\n`;
+          jsContent += `        "your pleasure": ${position.yourPleasure},\n`;
+          jsContent += `        "pleasure factor": "${position.pleasureFactor}",\n`;
+          jsContent += `        "his pleasure": ${position.hisPleasure},\n`;
+          jsContent += `        "his satisfaction": ${position.hisSatisfaction},\n`;
+          jsContent += `        "rhythm": ${position.rhythm},\n`;
+          jsContent += `        "tags": [${position.tags.map((tag) => `"${tag}"`).join(", ")}],\n`;
+          jsContent += `        "skill": "${position.skill}",\n`;
+          jsContent += `        "skill level": ${position.skillLevel},\n`;
+          jsContent += `        "locations": [${position.locations.map((loc) => `"${loc}"`).join(", ")}]\n`;
+          jsContent += `    }`;
+
+          // Add a comma for all but the last position in the group
+          if (index < group.length - 1) {
+              jsContent += `,\n`;
+          } else {
+              jsContent += `\n`;
+          }
+      });
+
+      jsContent += `);\n\n`;
   });
 
   // Create a blob and a download link

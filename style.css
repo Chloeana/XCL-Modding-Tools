@@ -218,20 +218,7 @@ span {
 
 .form-right button {
     display: inline-block;
-}
-
-.form-right h3 {
-    margin-bottom: 10px;
-    margin-top: 0;
-    color: #ffffff;
-    text-align: center;
-}
-
-.form-right li.selected {
-    background-color: #7289da;
-    color: white;
-    border-radius: 4px;
-    padding: 5px;
+    margin-bottom: 15px;
 }
 
 .form-right .remove-position {
@@ -243,21 +230,30 @@ span {
     margin-left: 10px;
 }
 
-.form-right .remove-position:hover {
-    color: red;
+.form-right .import-label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #ffffff;
 }
 
-.form-right .remove-outfit {
-    color: white;
-    background-color: transparent;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 10px;
+.form-right .import-file {
+    display: block;
+    margin: 10px auto;
+    color: #ffffff;
+    background-color: #4f545c;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ffffff;
+    width: 80%;
 }
 
-.form-right .remove-outfit:hover {
-    color: red;
+.form-right h3 {
+    margin-bottom: 10px;
+    margin-top: 0;
+    color: #ffffff;
+    text-align: center;
 }
 
 .form-single-line {

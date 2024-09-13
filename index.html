@@ -121,14 +121,14 @@
 
                         <!-- Sliders with Number Display -->
                         <div class="slider-container">
-                            <label for="athletics">Athletics:</label>
+                            <label for="athletics">Athletics: 💪</label>
                             <div class="slider-wrapper">
                                 <input type="range" id="athletics" name="athletics" min="1" max="10" value="5">
                             </div>
                         </div>
                         
                         <div class="slider-container">
-                            <label for="roughness">Roughness:</label>
+                            <label for="roughness">Roughness: 🗿</label>
                             <div class="slider-wrapper">
                                 <input type="range" id="roughness" name="roughness" min="1" max="10" value="5">
                             </div>
@@ -144,21 +144,21 @@
                         </select>
 
                         <div class="slider-container">
-                            <label for="yourPleasure">Your Pleasure:</label>
+                            <label for="yourPleasure">Your Pleasure: 💦</label>
                             <div class="slider-wrapper">
                                 <input type="range" id="yourPleasure" name="yourPleasure" min="0" max="10" value="5">
                             </div>
                         </div>                
 
                         <div class="slider-container">
-                            <label for="hisPleasure">His Pleasure:</label>
+                            <label for="hisPleasure">His Pleasure: 🍾</label>
                             <div class="slider-wrapper">
                                 <input type="range" id="hisPleasure" name="hisPleasure" min="0" max="10" value="5">
                             </div>
                         </div>
 
                         <div class="slider-container">
-                            <label for="hisSatisfaction">His Satisfaction:</label>
+                            <label for="hisSatisfaction">His Satisfaction: 😋</label>
                             <div class="slider-wrapper">
                                 <input type="range" id="hisSatisfaction" name="hisSatisfaction" min="0" max="10" value="5">
                             </div>
@@ -190,9 +190,11 @@
                                 <option value="butt jiggle"></option>
                                 <option value="choke"></option>
                                 <option value="close to crotch"></option>
+                                <option value="cowgirl"></option>
                                 <option value="cover mouth"></option>
                                 <option value="deepthroat"></option>
                                 <option value="degrade"></option>
+                                <option value="eyes contact"></option>
                                 <option value="eyes roll"></option>
                                 <option value="facefuck"></option>
                                 <option value="grab arms"></option>
@@ -219,6 +221,7 @@
                                 <option value="oiled up"></option>
                                 <option value="prone"></option>
                                 <option value="pull hair"></option>
+                                <option value="reverse cowgirl"></option>
                                 <option value="romantic"></option>
                                 <option value="side fuck"></option>
                                 <option value="sloppy"></option>
@@ -283,7 +286,11 @@
                 <div class="form-right">
                     <h3>Positions List</h3>
                     <ul id="positionsList"></ul>
-                    <button type="button" onclick="generatePositionsFile()">Generate JavaScript</button>
+                    <button type="button" onclick="generatePositionsFile()">Generate Position File</button>
+
+                    <label for="importPositions" class="import-label">Import Existing File:</label>
+                    <input type="file" id="importPositions" accept=".js">
+                    <button type="button" id="importPositionsButton">Import Positions</button>
                 </div>
             </div>
         </div> 
