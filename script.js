@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", function () {
     delete addPositionButton.dataset.editing; // Remove editing state
 
     window.scrollTo(0, 0); // Scroll to the top of the page
-  }
+  };
 
    // Clear outfit form
    function resetOutfitForm() {
@@ -402,7 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateOutfitFields();
 
     window.scrollTo(0, 0); // Scroll to the top of the page
-  }
+  };
 
   // Adding positions to the list
   const addPositionButton = document.getElementById("addPosition");
@@ -529,7 +529,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     resetPositionForm(); // Reset the form fields after adding or saving
-}
+};
 
   addPositionButton.addEventListener("click", function () {
     if (validatePositionForm()) {
@@ -559,14 +559,14 @@ document.addEventListener("DOMContentLoaded", function () {
         // Store the currently selected position
         selectedPositionItem = positionItem;
     }
-  }
+  };
 
   function handlePositionRemove(positionItem) {
     positionItem.remove();
     addPositionButton.textContent = "Add Position"; // Reset button text
     delete addPositionButton.dataset.editing;
     resetPositionForm(); // Clear the form after removal
-  }
+  };
 
   document.querySelectorAll('#positionsList li').forEach((positionItem) => {
     positionItem.addEventListener("click", () => handlePositionClick(positionItem));
@@ -636,7 +636,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         alert("No positions imported.");
     }
-  }
+  };
 
   const fieldNameMapping = {
     "pleasure factor": "pleasureFactor",
@@ -678,7 +678,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     return position;
-  }
+  };
 
   function populatePositionsList(positions) {
     const positionsList = document.getElementById("positionsList");
@@ -715,8 +715,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Append position item to list
         positionsList.appendChild(positionItem);
     });
-  }
-
+  };
 
   function loadPositionIntoForm(pos) {
     // Update the form fields with the selected position's data
@@ -771,7 +770,34 @@ document.addEventListener("DOMContentLoaded", function () {
             tagSpan.remove();
         });
     });
+  };
+
+  // Function to update position statistics
+  function updatePositionStats() {
+    const positionList = Array.from(document.getElementById("positionsList").children);
+    
+    // Calculate total, active, and passive counts
+    const totalPositions = positionList.length;
+    const activePositions = positionList.filter(pos => JSON.parse(pos.dataset.position).type === 'active').length;
+    const passivePositions = positionList.filter(pos => JSON.parse(pos.dataset.position).type === 'passive').length;
+    
+    // Update the HTML elements
+    document.getElementById("totalPositions").textContent = totalPositions;
+    document.getElementById("activePositions").textContent = activePositions;
+    document.getElementById("passivePositions").textContent = passivePositions;
   }
+
+  // Attach a MutationObserver to the positionsList
+  const positionsList = document.getElementById("positionsList");
+  const observer = new MutationObserver(() => {
+    updatePositionStats(); // Update stats whenever the list is changed
+  });
+
+  // Configure the observer to watch for changes in child elements
+  observer.observe(positionsList, { childList: true });
+
+  // Call updatePositionStats() initially to populate the stats on load
+  updatePositionStats();
 
 
   // ----- Outfit array sections -----
@@ -1462,8 +1488,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to checking input characters
   function sanitizeInput(input) {
-    // Defined allowed characters: alphanumeric and some special characters
-    const allowedCharacters = /^[a-zA-Z0-9_\-.\s']+$/;
+    const allowedCharacters = /^[a-zA-Z0-9_\-.\s()!'?,]+$/;
+    return allowedCharacters.test(input);
+  }
+
+  // Function to checking filename
+  function sanitizeFilename(input) {
+    const allowedCharacters = /^[a-zA-Z0-9_\-.()\s]+$/;
     return allowedCharacters.test(input);
   }
 
@@ -1496,7 +1527,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     // Check if positionName or any other field contains invalid characters
-    if (!sanitizeInput(positionName)) {
+    if (!sanitizeFilename(positionName)) {
       alert("Position name contains invalid characters.");
       return false;
     }

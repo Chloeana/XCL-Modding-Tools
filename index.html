@@ -282,15 +282,25 @@
                     <button type="button" id="addPosition">Add Position</button>
                     </div>
                 </div>
-            
-                <div class="form-right">
-                    <h3>Positions List</h3>
-                    <ul id="positionsList"></ul>
-                    <button type="button" onclick="generatePositionsFile()">Generate Position File</button>
 
-                    <label for="importPositions" class="import-label">Import Existing File:</label>
-                    <input type="file" id="importPositions" accept=".js">
-                    <button type="button" id="importPositionsButton">Import Positions</button>
+                <div class="form-right-wrapper">
+                    <div class="form-right-top">
+                        <p>Total Positions: <span id="totalPositions">0</span></p>
+                        <p>Active Positions: <span id="activePositions">0</span></p>
+                        <p>Passive Positions: <span id="passivePositions">0</span></p>
+                    </div>
+                
+                    <div class="form-right">
+                        <h3>Positions List</h3>
+                        <ul id="positionsList"></ul>
+                        <button type="button" onclick="generatePositionsFile()">Generate Position File</button>
+                    </div>
+
+                    <div class="form-right-bottom">
+                        <h3>Import Existing File:</h3>
+                        <input type="file" id="importPositions" accept=".js">
+                        <button type="button" id="importPositionsButton">Import Positions</button>
+                    </div>
                 </div>
             </div>
         </div> 
