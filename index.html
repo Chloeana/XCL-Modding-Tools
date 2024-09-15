@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XCL Modder's Tools</title>
+    <title>XCL Modding Tools</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>X-Change™ Life Modder's Tools</h1>
+    <h1>X-Change™ Life's Unofficial Modding Tools</h1>
     <div class="tabs">
-        <button class="tablinks" onclick="openTool(event, 'MCF-Tab')">Multiple Characters Framework</button>
+        <button class="tablinks" onclick="openTool(event, 'MCF-Tab')">Character Creator (MCF)</button>
         <button class="tablinks" onclick="openTool(event, 'PositionTab')">Positions</button>
         <button class="tablinks" onclick="openTool(event, 'OutfitTab')">Outfits</button>
         <button class="tablinks" onclick="openTool(event, 'BLK-Tab')">BLACKED Module</button>
@@ -18,7 +18,6 @@
 
     <div id="MCF-Tab" class="tabcontent">
         <div class="container">
-            <h2 class="container-title">MCF Coding Assistant</h2>
             <div class="content-wrapper">
                 <div class="form-center">
                     <form id="mcfForm">
@@ -55,8 +54,6 @@
 
     <div id="PositionTab" class="tabcontent">
         <div class="container">
-            <h2 class="container-title">Position Javascript Generator</h2>
-
             <!-- Wrapper for the form and position list -->
             <div class="flex-wrapper">
                 <!-- Form Container -->
@@ -68,10 +65,10 @@
 
                         <!-- Position Name -->
                         <label for="positionName">Position Name:</label>
-                        <input type="text" id="positionName" name="positionName">
+                        <input type="text" id="positionName" name="positionName" placeholder="Must match your filename exactly">
 
                         <!-- Position Flavor -->
-                        <label for="positionFlavor">Position Flavor:</label>
+                        <label for="positionFlavor">Flavor Text:</label>
                         <input type="text" id="positionFlavor" name="positionFlavor">
 
                         <!-- Position Type Radio Buttons -->
@@ -164,12 +161,12 @@
                             </div>
                         </div>
 
-                        <label for="rhythm">Rhythm:</label>
+                        <label for="rhythm">Rhythm: 🥁</label>
                         <input type="number" id="rhythm" name="rhythm" min="400" max="1400">
 
                         <!-- Tags Section -->
                         <div class="tags-dropdown">
-                            <label for="positionTagsInput">Tags:</label>
+                            <label for="positionTagsInput">Tags: 🏷️</label>
                             <div class="input-container">
                                 <input list="positionTagsList" id="positionTagsInput" name="positionTagsInput">
                                 <button type="button" id="addPositionTagButton">Add Tag</button>
@@ -194,7 +191,7 @@
                                 <option value="cover mouth"></option>
                                 <option value="deepthroat"></option>
                                 <option value="degrade"></option>
-                                <option value="eyes contact"></option>
+                                <option value="eye contact"></option>
                                 <option value="eyes roll"></option>
                                 <option value="facefuck"></option>
                                 <option value="grab arms"></option>
@@ -249,6 +246,7 @@
                             <option value="gag reflex">Gag Reflex</option>
                             <option value="titfuck">Titfuck</option>
                             <option value="female masturbation">Female Masturbation</option>
+                            <option value="orgasm control">Orgasm Control</option>
                             <option value="handjob">Handjob</option>
                         </select>
 
@@ -308,8 +306,6 @@
 
     <div id="OutfitTab" class="tabcontent">
         <div class="container">
-            <h2 class="container-title">Outfit Javascript Generator</h2>
-
             <!-- Wrapper for the form and outfit list -->
             <div class="flex-wrapper">
                 <!-- Form Container -->
@@ -607,7 +603,6 @@
 
     <div id="BLK-Tab" class="tabcontent">
         <div class="container">
-            <h2 class="container-title">BLACKED Coding Assistant</h2>
             <div class="content-wrapper">
                 <div class="form-center">
                     <form id="blackedForm">
@@ -668,7 +663,6 @@
 
     <div id="MetaTab" class="tabcontent">
         <div class="container">
-            <h2 class="container-title">Meta Maker</h2>
             <p class="container-text">This is meant to be a standalone meta maker. For MCF and BLACKED Metas, use the respective tabs.</p>
             <!-- Wrapper for the form -->
             <div class="content-wrapper">
@@ -745,7 +739,7 @@
     </div>
     
     <div class ="signature">
-        <p>Modding tools by ♠️ Chloe ♠️<br>Join the Official XCL Discord <a href="https://discord.com/invite/ethWsZSbHW">here</a></p>
+        <p>Made by ♠️Chloe♛<br>Join the Official XCL Discord <a href="https://discord.com/invite/ethWsZSbHW">here</a></p>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script> <!-- To create ZIP files with JS -->
     <script src="script.js"></script>

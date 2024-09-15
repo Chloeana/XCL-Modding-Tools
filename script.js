@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(error => {
         console.error('Error:', error);
       });
-  }
+  };
 
   getVersionNumbers()
 
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       outfitOnePiece.value = "";
     }
-  }
+  };
 
   // Initialize outfit fields
   updateOutfitFields();
@@ -134,141 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
         inputBox.value = slider.value; // Update the input box with the slider's value
       }
     });
-  }
-
-  function updateSkillDropdown() {
-    const selectedType = document.querySelector(
-      'input[name="positionType"]:checked'
-    ).value;
-    const skillSelect = document.getElementById("skill");
-
-    // Reset the skill options
-    skillSelect.innerHTML = "";
-    const options =
-      selectedType === "active"
-        ? [
-            "Active Sex",
-            "Blowjob",
-            "Gag Reflex",
-            "Titfuck",
-            "Female Masturbation",
-            "Handjob",
-          ]
-        : [
-            "Passive Sex",
-            "Blowjob",
-            "Gag Reflex",
-            "Titfuck",
-            "Female Masturbation",
-            "Handjob",
-          ];
-
-    options.forEach((option) => {
-      const opt = document.createElement("option");
-      opt.value = option.toLowerCase().replace(" ", "_");
-      opt.textContent = option;
-      skillSelect.appendChild(opt);
-    });
-  }
-
-  // Function to update positions based on selected type and subtype
-  const positionSelect = document.getElementById("position");
-  const subtypes = {
-    active: {
-      cowgirl: ["cowgirl", "full nelson", "standing fuck"],
-      doggy: ["doggystyle", "side fuck"],
-      missionary: ["missionary", "pile driver", "side fuck"],
-      service: ["69", "blowjob", "handjob", "titfuck"],
-    },
-    passive: {
-      cowgirl: ["cowgirl", "full nelson", "standing fuck"],
-      doggy: ["doggystyle", "side fuck"],
-      missionary: ["missionary", "pile driver", "side fuck"],
-      service: ["cunnilingus", "titfuck", "fingering", "facefuck"],
-    },
   };
-
-  function updatePositions() {
-    const selectedType = document.querySelector(
-      'input[name="positionType"]:checked'
-    ).value;
-    const selectedSubtype = document.querySelector(
-      'input[name="subtype"]:checked'
-    ).value;
-
-    const positions = subtypes[selectedType][selectedSubtype];
-
-    positionSelect.innerHTML = "";
-    positions.forEach((position) => {
-      const option = document.createElement("option");
-      option.value = position.toLowerCase();
-      option.textContent = position;
-      positionSelect.appendChild(option);
-    });
-
-    // Update Skill dropdown based on Type
-    updateSkillDropdown();
-  }
-
-  updatePositions();
-
-  // Event listeners for type and subtype changes
-  const typeRadios = document.querySelectorAll('input[name="positionType"]');
-
-  typeRadios.forEach((radio) => {
-    radio.addEventListener("change", updatePositions);
-  });
-
-  const subtypeRadios = document.querySelectorAll('input[name="subtype"]');
-
-  subtypeRadios.forEach((radio) => {
-    radio.addEventListener("change", updatePositions);
-  });
-
-
-  // Update pleasure values and skill based on position
-  document.getElementById('position').addEventListener('change', function () {
-    if (addPositionButton.dataset.editing !== "true") {
-      const selectedPosition = this.value.toLowerCase();
-      const pleasureFactor = document.getElementById('pleasureFactor');
-      const yourPleasure = document.getElementById('yourPleasure');
-      const hisPleasure = document.getElementById('hisPleasure');
-      const hisSatisfaction = document.getElementById('hisSatisfaction');
-      const skill = document.getElementById('skill');
-
-      // Set defaults in case no condition applies
-      pleasureFactor.value = 'both'; 
-      yourPleasure.value = 5; 
-      hisPleasure.value = 5;
-      hisSatisfaction.value = 5;
-
-      // Pleasure factor and related fields
-      if (['handjob', 'blowjob', 'titfuck', 'facefuck'].includes(selectedPosition)) {
-          pleasureFactor.value = 'none';
-          yourPleasure.value = 0;
-      } else if (['cunnilingus', 'fingering'].includes(selectedPosition)) {
-          pleasureFactor.value = 'oral';
-          hisPleasure.value = 0;
-          hisSatisfaction.value = 0;
-      } else if (selectedPosition === '69') {
-          pleasureFactor.value = 'oral';
-      }
-
-      // Update skill based on position
-      if (['blowjob', '69'].includes(selectedPosition)){
-        skill.value = 'blowjob';
-      } else if (selectedPosition === 'handjob') {
-        skill.value = 'handjob';
-      } else if (selectedPosition === 'facefuck') {
-          skill.value = 'gag reflex';
-      } else if (selectedPosition === 'titfuck') {
-          skill.value = 'titfuck';
-      }
-
-      // Update the displayed values next to sliders
-      updateSliderValues();
-    }
-  });
 
   // Position Tag section
   const addPositionTagButton = document.getElementById("addPositionTagButton");
@@ -319,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     }
-  }
+  };
 
   addPositionTagButton.addEventListener("click", addPositionTag);
 
@@ -529,13 +395,160 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     resetPositionForm(); // Reset the form fields after adding or saving
-};
+  };
 
   addPositionButton.addEventListener("click", function () {
     if (validatePositionForm()) {
       addPosition();
     }
   });
+
+  function updateSkillDropdown() {
+    const selectedType = document.querySelector(
+      'input[name="positionType"]:checked'
+    ).value;
+    const skillSelect = document.getElementById("skill");
+
+    // Reset the skill options
+    skillSelect.innerHTML = "";
+    const options =
+      selectedType === "active"
+      ? [
+            "Active Sex",
+            "Blowjob",
+            "Gag Reflex",
+            "Titfuck",
+            "Female Masturbation",
+            "Handjob",
+      ]
+    : [
+            "Passive Sex",
+            "Blowjob",
+            "Gag Reflex",
+            "Titfuck",
+            "Female Masturbation",
+            "Orgasm Control",
+            "Handjob",
+      ];
+
+    options.forEach((option) => {
+      const opt = document.createElement("option");
+      opt.value = option.toLowerCase();
+      opt.textContent = option;
+      skillSelect.appendChild(opt);
+      });
+  };
+
+  // Function to update positions based on selected type and subtype
+  const positionSelect = document.getElementById("position");
+const subtypes = {
+  active: {
+      cowgirl: ["Cowgirl", "Full Nelson", "Standing Fuck"],
+      doggy: ["Doggystyle", "Side Fuck"],
+      missionary: ["Missionary", "Pile Driver", "Side Fuck"],
+      service: ["69", "Blowjob", "Handjob", "Titfuck"],
+  },
+  passive: {
+      cowgirl: ["Cowgirl", "Full Nelson", "Standing Fuck"],
+      doggy: ["Doggystyle", "Side Fuck"],
+      missionary: ["Missionary", "Pile Driver", "Side Fuck"],
+      service: ["Cunnilingus", "Titfuck", "Fingering", "Facefuck"],
+  },
+};
+
+function updatePositions() {
+  const selectedType = document.querySelector(
+    'input[name="positionType"]:checked'
+  ).value;
+  const selectedSubtype = document.querySelector(
+    'input[name="subtype"]:checked'
+  ).value;
+
+    const positions = subtypes[selectedType][selectedSubtype];
+
+  positionSelect.innerHTML = "";
+  positions.forEach((position) => {
+    const option = document.createElement("option");
+    option.value = position.toLowerCase();
+    option.textContent = position;
+    positionSelect.appendChild(option);
+  });
+
+  // Update Skill dropdown based on Type
+  updateSkillDropdown();
+  updatePleasureSkills();
+  };
+
+  updatePositions();
+
+  // Event listeners for type and subtype changes
+  const typeRadios = document.querySelectorAll('input[name="positionType"]');
+
+  typeRadios.forEach((radio) => {
+    radio.addEventListener("change", updatePositions);
+  });
+
+  const subtypeRadios = document.querySelectorAll('input[name="subtype"]');
+
+  subtypeRadios.forEach((radio) => {
+    radio.addEventListener("change", updatePositions);
+  });
+
+  // Update pleasure values and skill based on position
+  function updatePleasureSkills() {
+    if (addPositionButton.dataset.editing !== "true") {
+      const selectedPosition = document.getElementById('position').value.toLowerCase();
+      const pleasureFactor = document.getElementById('pleasureFactor');
+      const yourPleasure = document.getElementById('yourPleasure');
+      const hisPleasure = document.getElementById('hisPleasure');
+      const hisSatisfaction = document.getElementById('hisSatisfaction');
+      const skill = document.getElementById('skill');
+
+      // Set pleasure/skill based on position
+      if (selectedPosition === 'titfuck') {
+        pleasureFactor.value = 'none';
+        yourPleasure.value = 0;
+        skill.value = 'titfuck';
+      }
+      else if (selectedPosition === 'facefuck') {
+        pleasureFactor.value = 'none';
+        yourPleasure.value = 0;
+        skill.value = 'gag reflex';
+      }
+      else if (selectedPosition === 'handjob') {
+        pleasureFactor.value = 'none';
+        yourPleasure.value = 0;
+        skill.value = 'handjob';
+      }
+      else if (selectedPosition === 'blowjob') {
+        pleasureFactor.value = 'none';
+        yourPleasure.value = 0;
+        skill.value = 'blowjob';
+      }
+      else if (selectedPosition === '69') {
+        pleasureFactor.value = 'oral';
+        skill.value = 'blowjob';
+      }
+      else if (['cunnilingus','fingering'].includes(selectedPosition)) {
+        pleasureFactor.value = 'oral';
+        hisPleasure.value = 0;
+        hisSatisfaction.value = 0;
+        skill.value = 'orgasm control';
+      } 
+      else { // Set defaults in case no condition applies
+        pleasureFactor.value = 'both'; 
+        yourPleasure.value = 5; 
+        hisPleasure.value = 5;
+        hisSatisfaction.value = 5;
+        updateSkillDropdown();
+      }
+
+      // Update the displayed values next to sliders
+      updateSliderValues();
+    }
+  };
+
+  document.getElementById('position').addEventListener('change', updatePleasureSkills);
 
   function handlePositionClick(event) {
     const positionItem = event.currentTarget;
@@ -785,7 +798,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("totalPositions").textContent = totalPositions;
     document.getElementById("activePositions").textContent = activePositions;
     document.getElementById("passivePositions").textContent = passivePositions;
-  }
+  };
 
   // Attach a MutationObserver to the positionsList
   const positionsList = document.getElementById("positionsList");
@@ -850,7 +863,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     }
-  }
+  };
 
   addColorButton.addEventListener("click", addOutfitColors);
 
@@ -903,7 +916,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     }
-  }
+  };
 
   addEmphasisButton.addEventListener("click", addOutfitEmphasis);
 
@@ -956,7 +969,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     }
-  }
+  };
 
   addRevealsButton.addEventListener("click", addOutfitReveals);
 
@@ -1009,7 +1022,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     }
-  }
+  };
 
   addOutfitTagsButton.addEventListener("click", addOutfitOutfitTags);
 
@@ -1275,7 +1288,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("outfitsList").appendChild(outfitItem);
     }
     resetOutfitForm(); // Reset the form fields after adding or saving
-  }
+  };
 
   addOutfitButton.addEventListener("click", addOutfit);
 
@@ -1371,7 +1384,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   });
 
-
   // Auto expand tag fields dynamically
   function generateTagFields(videoCount, containerId, tagOptions = []) {
     const container = document.getElementById(containerId);
@@ -1415,8 +1427,7 @@ document.addEventListener("DOMContentLoaded", function () {
         tagField.appendChild(input);
         container.appendChild(tagField);
     }
-}
-
+  };
 
   // Auto expand tag fields for Transactional Doggy
   document.getElementById('blkDoggyTransVid').addEventListener('input', generateTransDoggyFields);
@@ -1484,25 +1495,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
       container.appendChild(tagField);
     }
-}
+  };
 
   // Function to checking input characters
   function sanitizeInput(input) {
     const allowedCharacters = /^[a-zA-Z0-9_\-.\s()!'?,]+$/;
     return allowedCharacters.test(input);
-  }
+  };
 
-  // Function to checking filename
+  // Function to checking filename for valid characters
   function sanitizeFilename(input) {
     const allowedCharacters = /^[a-zA-Z0-9_\-.()\s]+$/;
     return allowedCharacters.test(input);
-  }
+  };
 
   // Function to check if a field is empty
   function isEmpty(input) {
     return input.trim() === "";
-  }
-  
+  };
+
   // Validate that position form is filled out and doesn't contain special characters
   function validatePositionForm() {
     const positionName = document.getElementById("positionName").value;
@@ -1540,7 +1551,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     return true; // Form is valid
-  }
+  };
   
 }); // End of DOM
 
@@ -1845,8 +1856,8 @@ function generateMetaFile() {
   });
 }
 
-// ----- BLACKED Functions -----
 
+// ----- BLACKED Functions -----
 let blkzip = '' // default value for BLACKED Zip var
 
 // Generate Blacked Zip
