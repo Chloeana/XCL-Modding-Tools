@@ -1595,11 +1595,17 @@ function collectTags(containerId) {
 function generatePositionsFile() {
   const positions = Array.from(document.getElementById("positionsList").children)
       .map((pos) => JSON.parse(pos.dataset.position));
+  const activePositions = positions.filter(pos => pos.type === 'active').length;
 
   if (positions.length === 0) {
       alert("No positions to generate.");
       return;
   }
+
+  if (activePositions < 3) {
+    alert("A character must include at least 3 active positions.");
+    return;
+}
 
   // Track initialized characters
   const initializedCharacters = new Set();
@@ -2010,7 +2016,6 @@ function generateBlackedFolders() {
   gatherBlackedDirectories();
   generateBlackedZip();
 }
-
 
 // Generate MCF directories
 function generateMCFZIP(){
