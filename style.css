@@ -68,9 +68,23 @@ span {
 }
 
 h1 {
-    font-size: 48px;
     text-align: center;
     color: #ffffff;
+}
+
+.title {
+    color: #fff;
+    font-size: 5vmin;
+    text-align: center;
+    text-shadow: 
+    0 0 0 #899cd5, 
+    1px 1px 0 #788bc4, 
+    2px 2px 0 #5e71aa, 
+    3px 3px 0 #32457e, 
+    4px 4px 0 #071a53, 
+    5px 5px 5px #000, 
+    5px 5px 1px rgba(0, 0, 0, .5), 
+    0 0 5px rgba(0, 0, 0, .2);
 }
 
 label {
@@ -78,6 +92,31 @@ label {
     margin: 10px 0 5px;
     font-weight: bold;
     color: #ffffff;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+li {
+    list-style: none;
+    text-align: center;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e27087;
+    padding: 0 5px;
+    border-radius: 15px;
+    margin-bottom: 5px;
+    height: auto;
+}
+
+li.selected {
+    background-color: #b25b6e;
+    font-weight: bold;
 }
 
 input[type="text"] {
@@ -117,9 +156,10 @@ datalist {
     box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
 }
 
-/* Default slider */
+/* Fancy Sliders Section */
 input[type="range"] {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     height: 6px;
     background: #23272a;
@@ -158,10 +198,17 @@ input[type="range"]:hover::-webkit-slider-thumb {
 input[type="range"]:active::-webkit-slider-thumb {
     background-color: #fb94b2;
 }
+/* ------------------- */
 
 input:disabled {
     background-color: #000000;
     cursor: not-allowed;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tablinks {
@@ -291,6 +338,8 @@ input:disabled {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border: 2px solid #e27087;
     border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    -webkit-box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+    box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
 }
 
 .form-center {
@@ -300,12 +349,14 @@ input:disabled {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border: 2px solid #e27087;
     border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    -webkit-box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+    box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
 }
 
 .form-right-top,
 .form-right-bottom,
 .form-right {
-    width: 90%;
+    width: 100%;
     background-color: #334c9e;
     margin-left: 20px;
     margin-bottom: 20px;
@@ -314,6 +365,8 @@ input:disabled {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border: 2px solid #e27087;
     border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    -webkit-box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+    box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
 }
 
 .form-center h2, 
@@ -343,21 +396,6 @@ input:disabled {
     margin-top: 0;
     color: #ffffff;
     text-align: center;
-}
-
-.form-right .remove-position {
-    color: white;
-    background-color: transparent;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-.form-right-top li,
-.form-right li {
-    list-style: none;
-    cursor: pointer;
 }
 
 .form-single-line {
@@ -481,6 +519,10 @@ input:disabled {
     cursor: pointer;
     color: #ffffff;
     padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
 }
 
 .tagsContainer span .remove-tag:hover,
@@ -489,7 +531,22 @@ input:disabled {
 }
 
 .remove-position {
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    border: none;
+    padding-top: 15px;
+    border-radius: 15px;
     cursor: pointer;
+    margin-left: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+.remove-position:hover {
+    color: #334c9e
 }
 
 .mod-list {
@@ -519,6 +576,12 @@ input:disabled {
     margin-bottom: 5px;
     display: inline-block;
     list-style: none;
+}
+
+#positionsList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 #onePieceField, #twoPieceFields {
