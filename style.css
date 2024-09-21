@@ -1,11 +1,12 @@
 /* 
-#334c9e     blue
+#334c9e     background blue
 #787bff     bright blue
-#b25b6e     dark pink
+#b25b6e     background pink
 #fb94b2     pastel pink
 #ff69b4     bright pink
 #e27087     button pink
 #4a2424     shadow
+#ffe4c4	    bisque (yellowish text)
 */
 
 body {
@@ -34,6 +35,7 @@ button[type="button"] {
     -webkit-box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
     box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
     text-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+    line-height: 1; /* Ensure button text is centered */
 }
 
 input[type="file"]::-webkit-file-upload-button:hover,
@@ -57,14 +59,15 @@ input[type="file"]{
 }
 
 input::placeholder {
-    color: #334c9e;
-    opacity: 1;     /* Ensures the color is fully opaque */
+    color: #ffe4c4;
+    opacity: 0.8;
+    text-shadow: none
 }
 
 span {
-    font-weight: normal;
-    font-size: 14px;
-    color: #b9bbbe;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffe4c4;
 }
 
 h1 {
@@ -74,7 +77,7 @@ h1 {
 
 .title {
     color: #fff;
-    font-size: 5vmin;
+    font-size: 4.5vmin;
     text-align: center;
     text-shadow: 
     0 0 0 #899cd5, 
@@ -94,24 +97,37 @@ label {
     color: #ffffff;
 }
 
+p {
+    display: block;
+    margin: 10px 0 5px;
+    color: #ffffff;
+    text-shadow: -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+}
+
 ul {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 5px;
+    margin: 0;
+    padding: 0;
 }
 
 li {
     list-style: none;
-    text-align: center;
     cursor: pointer;
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-color: #e27087;
-    padding: 0 5px;
-    border-radius: 15px;
-    margin-bottom: 5px;
+    padding: 5px 10px;
+    border-radius: 25px;
+    margin: 0;
+    font-size: 14px;
+    box-shadow: 3px 3px 0 #4a2424;
     height: auto;
+    text-shadow: -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+    line-height: 1.2;
 }
 
 li.selected {
@@ -129,6 +145,7 @@ input[type="text"] {
     border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
     -webkit-box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
     box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+    text-shadow: -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
 }
 
 input[type="number"] {
@@ -136,11 +153,14 @@ input[type="number"] {
     padding: 8px;
     margin-bottom: 10px;
     background-color: #e27087;
-    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffe4c4;
     border: 2px solid #b25b6e;
     border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
     -webkit-box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
     box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+    text-shadow: -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
 }
 
 select,
@@ -154,6 +174,7 @@ datalist {
     border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
     -webkit-box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
     box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+    text-shadow: -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
 }
 
 /* Fancy Sliders Section */
@@ -239,8 +260,8 @@ input:disabled {
 }
 
 .tabs .tablinks.active {
-    border: 2px solid #334c9e;
-    background-color: #334c9e;
+    border: 2px solid #787bff;
+    background-color: #787bff;
     color: #fff;
 }
 
@@ -508,7 +529,11 @@ input:disabled {
     border-radius: 15px;
     margin-right: 5px;
     margin-bottom: 5px;
-    display: inline-block;
+    display: inline-block; 
+    font-weight: normal;
+    text-shadow: -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+    -webkit-box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+    box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
 }
 
 .tagsContainer span .remove-tag,
@@ -533,20 +558,20 @@ input:disabled {
 .remove-position {
     color: white;
     background-color: transparent;
-    text-align: center;
     border: none;
-    padding-top: 15px;
-    border-radius: 15px;
-    cursor: pointer;
     margin-left: 10px;
+    margin-bottom: 0 !important;
+    cursor: pointer;
     display: inline-flex;
-    align-items: center;
+    align-items: center; /* Center button's content vertically */
     justify-content: center;
-    height: auto;
+    font-size: 16px;
+    height: 100%; /* Ensures full height of the li element */
+    padding: 0 5px; /* Padding inside button, but minimal */
 }
 
 .remove-position:hover {
-    color: #334c9e
+    color: #334c9e;
 }
 
 .mod-list {
@@ -576,12 +601,6 @@ input:disabled {
     margin-bottom: 5px;
     display: inline-block;
     list-style: none;
-}
-
-#positionsList {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
 }
 
 #onePieceField, #twoPieceFields {

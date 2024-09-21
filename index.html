@@ -192,9 +192,11 @@
                                 <option value="cover mouth"></option>
                                 <option value="deepthroat"></option>
                                 <option value="degrade"></option>
+                                <option value="doggy"></option>
                                 <option value="eye contact"></option>
                                 <option value="eyes roll"></option>
                                 <option value="facefuck"></option>
+                                <option value="fingering"></option>
                                 <option value="grab arms"></option>
                                 <option value="grab boobs"></option>
                                 <option value="grab butt"></option>
@@ -211,9 +213,11 @@
                                 <option value="lean against you"></option>
                                 <option value="leg up"></option>
                                 <option value="legs in the air"></option>
+                                <option value="legs together"></option>
                                 <option value="licking"></option>
                                 <option value="look back"></option>
                                 <option value="manhandled"></option>
+                                <option value="missionary"></option>
                                 <option value="mount">him mounting you</option>
                                 <option value="nelson"></option>
                                 <option value="oiled up"></option>
@@ -254,12 +258,12 @@
                         <div class="slider-container">
                             <label for="skillLevel">Skill Level:</label>
                             <div class="slider-wrapper">
-                                <input type="range" id="skillLevel" name="skillLevel" min="1" max="10" value="5">
+                                <input type="range" id="skillLevel" name="skillLevel" min="1" max="10" value="3">
                             </div>                
                         </div>
 
                         <!-- Locations Checkboxes -->
-                        <label>Locations:</label>
+                        <label for="positionLocations" title="You may choose multiple. If a clip is angled in a way it could work for Bed and Couch, then choose both.">Locations:</label>
                         <div class="checkbox-group">
                             <input type="checkbox" id="bed" name="positionLocations" value="bed">
                             <label for="bed">Bed</label>
@@ -290,9 +294,9 @@
                     </div>
                 
                     <div class="form-right">
-                        <h3>Positions List</h3>
+                        <h3>Position List</h3>
                         <ul id="positionsList"></ul>
-                        <button type="button" onclick="generatePositionsFile()">Generate Position File</button>
+                        <button type="button" id="generatePositionsFileButton">Generate Position File</button>
                     </div>
 
                     <div class="form-right-bottom">
@@ -446,13 +450,13 @@
                         <!-- Underwear -->
                         <label>Underwear?</label>
                         <div class="checkbox-group-inline">
-                            <input type="checkbox" id="braTrue" name="outfitBraUnder" value="true">
-                            <label for="braTrue" title="Bra is worn beneath outfit">Bra</label>
+                            <input type="checkbox" id="outfitBraTrue" name="outfitBraUnder" value="true">
+                            <label for="outfitBraTrue" title="Bra is worn beneath outfit">Bra</label>
                         </div>
                         
                         <div class="checkbox-group-inline">
-                            <input type="checkbox" id="pantiesTrue" name="outfitPantiesUnder" value="true">
-                            <label for="pantiesTrue" title="Panties are worn beneath outfit">Panties</label>
+                            <input type="checkbox" id="outfitPantiesTrue" name="outfitPantiesUnder" value="true">
+                            <label for="outfitPantiesTrue" title="Panties are worn beneath outfit">Panties</label>
                         </div>
 
                         <!-- Shoes -->
@@ -475,9 +479,9 @@
 
                         <!-- Arrays -->
                         <div class="tags-dropdown">
-                            <label for="colorsInput">Colors:</label>
+                            <label for="outfitColorsInput">Colors:</label>
                             <div class="input-container">
-                                <input list="outfitColors" id="colorsInput" name="colorsInput">
+                                <input list="outfitColors" id="outfitColorsInput" name="outfitColorsInput">
                                 <button type="button" id="addColorButton">Add</button>
                             </div>
                             <datalist id="outfitColors">
@@ -502,12 +506,12 @@
                                 <option value="olive">olive</option>
                             </datalist>
                         </div>
-                        <div class="tagsContainer" id="colorsContainer"></div>
+                        <div class="tagsContainer" id="outfitColorsContainer"></div>
 
                         <div class="tags-dropdown">
-                            <label for="emphasisInput">Emphasizes:</label>
+                            <label for="outfitEmphasisInput">Emphasizes:</label>
                             <div class="input-container">
-                                <input list="outfitEmphasis" id="emphasisInput" name="emphasisInput">
+                                <input list="outfitEmphasis" id="outfitEmphasisInput" name="outfitEmphasisInput">
                                 <button type="button" id="addEmphasisButton">Add</button>
                             </div>
                             <datalist id="outfitEmphasis">
@@ -520,12 +524,12 @@
                                 <option value="tummy">tummy</option>
                             </datalist>
                         </div>
-                        <div class="tagsContainer" id="emphasisContainer"></div>
+                        <div class="tagsContainer" id="outfitEmphasisContainer"></div>
 
                         <div class="tags-dropdown">
-                            <label for="revealsInput">Reveals:</label>
+                            <label for="outfitRevealsInput">Reveals:</label>
                             <div class="input-container">
-                                <input list="outfitReveals" id="revealsInput" name="revealsInput">
+                                <input list="outfitReveals" id="outfitRevealsInput" name="outfitRevealsInput">
                                 <button type="button" id="addRevealsButton">Add</button>
                             </div>
                             <datalist id="outfitReveals">
@@ -543,13 +547,13 @@
                                 <option value="pussy">pussy</option>
                             </datalist>
                         </div>
-                        <div class="tagsContainer" id="revealsContainer"></div>
+                        <div class="tagsContainer" id="outfitRevealsContainer"></div>
 
                         <div class="tags-dropdown">
                             <label for="outfitTagsInput">Tags:</label>
                             <div class="input-container">
                                 <input list="outfitTags" id="outfitTagsInput" name="outfitTagsInput">
-                                <button type="button" id="addOutfitTagsButton">Add Tag</button>
+                                <button type="button" id="addOutfitTagsButton">Add</button>
                             </div>
                             <datalist id="outfitTags">
                                 <option value="professional">Gives +1 🍀 while wearing this outfit at the office.</option>
@@ -651,7 +655,7 @@
                             <label for="blkDoggyTransMoanImg">Moan Pictures</label>
                             <input type="number" id="blkDoggyTransMoanImg" placeholder="4" min="1" title="Number of images in sex/doggy/bbc/moan/">
                         </div>
-                        <div class="containerTransDoggy" id="containerTransDoggy"></div>
+                        <div class="containerTransDoggy" id="containerBLKTransDoggy"></div>
                         <div class="form-button-center">
                         <button type="button" onclick="generateBlackedFolders()">Generate Folder Structure Only</button>
                         <button type="button" onclick="generateBlackedFiles()">Generate Files and Folders</button>
@@ -687,8 +691,8 @@
                         </div>
                         <!-- Game Version -->
                         <div class="form-single-line">
-                            <label for="baseGameVersion">Compatible Game Version:</label>
-                            <input type="text" id="baseGameVersion" name="baseGameVersion" title="This is the earliest version of XCL that your mod is compatible with (usually the current version).">
+                            <label for="metaGameVersion">Compatible Game Version:</label>
+                            <input type="text" id="metaGameVersion" name="metaGameVersion" title="This is the earliest version of XCL that your mod is compatible with (usually the current version).">
                         </div>
                         <!-- Required Mods -->
                         <div class="mod-list">
@@ -700,7 +704,7 @@
                             <button type="button" id="addRequiredMod">Add Required Mod</button>
                         </div>                        
                         <div class="mod-container">
-                            <ul id="requiredModsContainer"></ul>
+                            <ul id="metaRequiredModsContainer"></ul>
                         </div>
                         <!-- Compatible Mods -->
                         <div class="mod-list">
@@ -716,7 +720,7 @@
                             <button type="button" id="addCompatibleMod">Add Compatible Mod</button>
                         </div>
                         <div class="mod-container">
-                            <ul id="compatibleModsContainer"></ul>
+                            <ul id="metaCompatibleModsContainer"></ul>
                         </div>
                         <!-- Incompatible Mods -->
                         <div class="mod-list">
@@ -728,7 +732,7 @@
                             <button type="button" id="addIncompatibleMod">Add Incompatible Mod</button>
                         </div> 
                         <div class="mod-container">
-                            <ul id="incompatibleModsContainer"></ul>
+                            <ul id="metaIncompatibleModsContainer"></ul>
                         </div>
                     </form>
                 </div>
