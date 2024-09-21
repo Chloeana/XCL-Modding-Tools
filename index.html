@@ -9,13 +9,14 @@
 <body>
     <div id="title" class="title" data-raw="">X-Change™ Life's Unofficial Modding Tools</div>
     <div class="tabs">
-        <button class="tablinks" onclick="openTool(event, 'MCF-Tab')">Character Creator (MCF)</button>
-        <button class="tablinks" onclick="openTool(event, 'PositionTab')">Positions</button>
-        <button class="tablinks" onclick="openTool(event, 'OutfitTab')">Outfits</button>
-        <button class="tablinks" onclick="openTool(event, 'BLK-Tab')">BLACKED Module</button>
-        <button class="tablinks" onclick="openTool(event, 'BG-Tab')">Bar Girl</button>
-        <button class="tablinks" onclick="openTool(event, 'MetaTab')">Meta Maker</button>
+        <button class="tablinks" data-tool="MCF-Tab">Character Creator (MCF)</button>
+        <button class="tablinks" data-tool="PositionTab">Positions</button>
+        <button class="tablinks" data-tool="OutfitTab">Outfits</button>
+        <button class="tablinks" data-tool="BLK-Tab">BLACKED Module</button>
+        <button class="tablinks" data-tool="BG-Tab">Bar Girl</button>
+        <button class="tablinks" data-tool="MetaTab">Meta Maker</button>
     </div>
+      
 
     <div id="MCF-Tab" class="tabcontent">
         <div class="container">
@@ -45,7 +46,7 @@
                             <input type="text" id="mcfCharacterName" name="mcfCharacterName" placeholder="first name only, cannot duplicate existing girls">
                         </div>
                         <div class="form-button-center">
-                        <button type="button" onclick="generateMCFDirectories()">Generate Folder Structure</button>
+                        <button type="button" id="generateMCFDirectoriesButton">Generate Folder Structure</button>
                         </div>
                     </form>
                 </div>
@@ -600,7 +601,7 @@
                 <div class="form-right">
                     <h3>Outfits List</h3>
                     <ul id="outfitsList"></ul>
-                    <button type="button" onclick="generateOutfitsFile()">Generate JavaScript</button>
+                    <button type="button" id="generateOutfitsFileButton">Generate Outfits File</button>
                 </div>
             </div>
         </div>
@@ -657,8 +658,8 @@
                         </div>
                         <div class="containerTransDoggy" id="containerBLKTransDoggy"></div>
                         <div class="form-button-center">
-                        <button type="button" onclick="generateBlackedFolders()">Generate Folder Structure Only</button>
-                        <button type="button" onclick="generateBlackedFiles()">Generate Files and Folders</button>
+                        <button type="button" id="generateBlackedFoldersButton">Generate Folder Structure Only</button>
+                        <button type="button" id="generateBlackedFilesButton">Generate Files and Folders</button>
                         </div>
                     </form>
                 </div>
@@ -738,7 +739,7 @@
                 </div>
             </div>
             <div class="form-button-center">
-            <button type="button" onclick="generateMetaFile()">Generate JavaScript</button>
+            <button type="button" id="generateMetaFileButton">Generate JavaScript</button>
             </div>
         </div>
     </div>

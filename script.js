@@ -4,11 +4,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // #region --- Vars - General
   const sliders = document.querySelectorAll('input[type="range"]'); // Refers to all Sliders
+  const tabcontent = document.getElementsByClassName("tabcontent");
+  const tablinks = document.getElementsByClassName("tablinks");
+
   // #endregion --- Vars - General
 
   // #region --- Vars - MCF ---
-  const mcfBaseGameVersion = document.getElementById('mcfBaseGameVersion'); // XCL Version on MCF Tab
-  const mcfMCFVersion = document.getElementById('mcfMCFVersion'); // MCF Version on MCF Tab
+  const mcfBaseGameVersion = document.getElementById("mcfBaseGameVersion"); // XCL Version on MCF Tab
+  const mcfMCFVersion = document.getElementById("mcfMCFVersion"); // MCF Version on MCF Tab
+  const generateMCFDirectoriesButton = document.getElementById("generateMCFDirectoriesButton"); 
   // #endregion --- MCF ---
   
   // #region --- Vars - Positions ---
@@ -55,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // #region --- Vars - Outfits ---
   const addOutfitButton = document.getElementById("addOutfit");
+  const generateOutfitsFileButton = document.getElementById("generateOutfitsFileButton");
   const outfitCharacterName = document.getElementById("outfitCharacterName");
   const outfitCategory = document.getElementById("outfitCategory");
   const outfitName = document.getElementById("outfitName");
@@ -106,13 +111,15 @@ document.addEventListener("DOMContentLoaded", function () {
   // #endregion --- Outfits ---
 
   // #region --- Vars - BLACKED ---
-  const blkYourModBLKVersion = document.getElementById('blkYourModBLKVersion');
-  const blkModAuthor = document.getElementById('blkModAuthor');
-  const blkBaseGameVersion = document.getElementById('blkBaseGameVersion');
-  const blkMCFVersion = document.getElementById('blkMCFVersion');
-  const blkModVersion = document.getElementById('blkModVersion');
-  const blkYourModName = document.getElementById('blkYourModName');
-  const blkYourModVersion = document.getElementById('blkYourModVersion');
+  const blkYourModBLKVersion = document.getElementById("blkYourModBLKVersion");
+  const blkModAuthor = document.getElementById("blkModAuthor");
+  const blkBaseGameVersion = document.getElementById("blkBaseGameVersion");
+  const blkMCFVersion = document.getElementById("blkMCFVersion");
+  const blkModVersion = document.getElementById("blkModVersion");
+  const blkYourModName = document.getElementById("blkYourModName");
+  const blkYourModVersion = document.getElementById("blkYourModVersion");
+  const generateBlackedFoldersButton = document.getElementById("generateBlackedFoldersButton");
+  const generateBlackedFilesButton = document.getElementById("generateBlackedFilesButton");
   let blkzip = '' // default value for BLACKED Zip var
   // #endregion --- BLACKED ---
 
@@ -120,14 +127,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // #endregion --- Bar Girl ---
 
   // #region --- Vars - MetaMaker ---
-  const metaName = document.getElementById('metaName');
-  const metaVersion = document.getElementById('metaVersion');
-  const metaAuthor = document.getElementById('metaAuthor');
-  const metaGameVersion = document.getElementById('metaGameVersion');
-  const metaRequiredMods = document.getElementById('metaRequiredModsContainer');
-  const metaIncompatibleMods = document.getElementById('metaIncompatibleModsContainer');
-  const metaCompatibleMods = document.getElementById('metaCompatibleModsContainer');
+  const metaName = document.getElementById("metaName");
+  const metaVersion = document.getElementById("metaVersion");
+  const metaAuthor = document.getElementById("metaAuthor");
+  const metaGameVersion = document.getElementById("metaGameVersion");
+  const metaRequiredMods = document.getElementById("metaRequiredModsContainer");
+  const metaIncompatibleMods = document.getElementById("metaIncompatibleModsContainer");
+  const metaCompatibleMods = document.getElementById("metaCompatibleModsContainer");
+  const generateMetaFileButton = document.getElementById("generateMetaFileButton");
   // #endregion --- MetaMaker ---
+  
   // #endregion ----- Variables -----
 
 
@@ -164,6 +173,24 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(error => {
         console.error('Error:', error);
       });
+  };
+
+  // Function to handle tab switching
+  function openTool(evt, toolName) {
+
+    // Hide all tab content
+    for (let i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+
+    // Remove active class from all buttons
+    for (let i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab content and add an active class to the clicked button
+    document.getElementById(toolName).style.display = "block";
+    evt.currentTarget.className += " active";
   };
 
   // Force update displayed number in each slider's input box (Used after slider gets set by means other than input)
@@ -259,7 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // #region --- Functions - MCF
 
   // Generate MCF directories
-  function generateMCFZIP(){
+  function generateMCFDirectories(){
     var zip = new JSZip();
 
     const characterName = document.getElementById('mcfCharacterName').value;
@@ -1968,16 +1995,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   // #endregion --- Functions - MetaMaker
-
+  
   // #endregion ----- Functions Section -----
 
 
   // #region ----- Event Listeners -----
 
   // #region --- Listeners - General
+
+  // Handle tab switching
+  for (let i = 0; i < tablinks.length; i++) {
+    tablinks[i].addEventListener("click", function (event) {
+      const toolName = this.getAttribute("data-tool");
+      openTool(event, toolName);
+    });
+  };
   // #endregion --- Listeners - General
 
   // #region --- Listeners - MCF
+
+  // Generate MCF Directories Only
+  generateMCFDirectoriesButton.addEventListener("click", generateMCFDirectories);
   // #endregion --- Listeners - MCF
 
   // #region --- Listeners - Positions
@@ -2095,9 +2133,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Click for Adding Outfit Tags
   addOutfitTagsButton.addEventListener("click", addOutfitTags);
+
+  // Generate Outfits File
+  generateOutfitsFileButton.addEventListener("click", generateOutfitsFile);
+
   // #endregion --- Listeners - Outfits
 
   // #region --- Listeners - Blacked
+
+  // Generate Blacked Directories Only
+  generateBlackedFoldersButton.addEventListener("click", generateBlackedFolders);
+
+  // Generate Blacked Files and Directories
+  generateBlackedFilesButton.addEventListener("click", generateBlackedFiles);
 
   // Build tag fields for BLACKED - Transactional Doggy
   document.getElementById('blkDoggyTransVid').addEventListener('input', generateBLKTransDoggyFields);
@@ -2107,6 +2155,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // #endregion --- Listeners - Bar Girl
 
   // #region --- Listeners - MetaMaker
+
+  // Generate Meta File
+  generateMetaFileButton.addEventListener("click", generateMetaFile);
 
   // Adding Required Mods
   document.getElementById('addRequiredMod').addEventListener('click', function() {
@@ -2200,7 +2251,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   });
   // #endregion --- Listeners - MetaMaker
-
+  
   // #endregion ----- Event Listeners -----
 
 
@@ -2251,24 +2302,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // #endregion ----- Initialization -----
 }); // DOM End Line
-
-
-// Function to handle tab switching
-function openTool(evt, toolName) {
-  const tabcontent = document.getElementsByClassName("tabcontent");
-  const tablinks = document.getElementsByClassName("tablinks");
-
-  // Hide all tab content
-  for (let i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-
-  // Remove active class from all buttons
-  for (let i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  // Show the current tab content and add an active class to the clicked button
-  document.getElementById(toolName).style.display = "block";
-  evt.currentTarget.className += " active";
-};
