@@ -90,22 +90,22 @@ document.addEventListener("DOMContentLoaded", function () {
   // Tags section
   const addOutfitTagsButton = document.getElementById("addOutfitTagsButton");
   const outfitTagsContainer = document.getElementById("outfitTagsContainer");
-  const outfitTags = document.getElementById("outfitTags");
+  const outfitTagsList = document.getElementById("outfitTagsList");
   const outfitTagsInput = document.getElementById("outfitTagsInput");
 
   const addColorButton = document.getElementById("addColorButton");
   const outfitColorsContainer = document.getElementById("outfitColorsContainer");
-  const outfitColors = document.getElementById("outfitColors");
+  const outfitColorsList = document.getElementById("outfitColorsList");
   const outfitColorsInput = document.getElementById("outfitColorsInput");
 
   const addRevealsButton = document.getElementById("addRevealsButton");
   const outfitRevealsContainer = document.getElementById("outfitRevealsContainer");
-  const outfitReveals = document.getElementById("outfitReveals");
+  const outfitRevealsList = document.getElementById("outfitRevealsList");
   const outfitRevealsInput = document.getElementById("outfitRevealsInput");
 
   const addEmphasisButton = document.getElementById("addEmphasisButton");
   const outfitEmphasisContainer = document.getElementById("outfitEmphasisContainer");
-  const outfitEmphasis = document.getElementById("outfitEmphasis");
+  const outfitEmphasisList = document.getElementById("outfitEmphasisList");
   const outfitEmphasisInput = document.getElementById("outfitEmphasisInput");
   
   // #endregion --- Outfits ---
@@ -215,14 +215,80 @@ document.addEventListener("DOMContentLoaded", function () {
     return allowedCharacters.test(input);
   };
 
-  // Function to check if a field is empty
+  // Helper function to check if a field is empty
   function isEmpty(input) {
     return input.trim() === "";
   };
 
-  // Collect tags from dynamic tag sections
-  function collectTags(containerId) {
-    const container = document.getElementById(containerId);
+  // Reusable function to handle tagging events
+  function handleTagInput(inputElement, datalistElement, addTagFunction) {
+    inputElement.addEventListener('input', function () {
+      const inputValue = inputElement.value.trim();
+      const options = Array.from(datalistElement.options);
+      const matchingOption = options.find(option => option.value === inputValue);
+
+      // If the input matches an option from the datalist, automatically add the tag
+      if (matchingOption) {
+        addTagFunction(inputValue); // Call the respective add function
+        inputElement.value = ''; // Clear the input field
+      }
+    });
+  }
+
+  // Add Tags to a Tag Container
+  function addTag(tagInput, tagContainer, tagList) {
+    let tagText;
+  
+    // Check if tagInput is a string or an element
+    if (typeof tagInput === "string") {
+      tagText = tagInput.trim(); // Use the string directly
+    } else {
+      tagText = tagInput.value.trim(); // Use the input element's value
+    }
+  
+    if (tagText) {
+      // Check if the tag already exists
+      const existingTags = Array.from(tagContainer.getElementsByClassName("tag"));
+      let tagExists = existingTags.some(
+        (tag) => tag.textContent.replace("x", "").trim() === tagText
+      );
+  
+      if (!tagExists) {
+        // Create a new option in the datalist if it doesn't already exist
+        let optionExists = Array.from(tagList.options).some(
+          (option) => option.value === tagText
+        );
+        if (!optionExists) {
+          const newOption = document.createElement("option");
+          newOption.value = tagText;
+          tagList.appendChild(newOption);
+        }
+  
+        // Add the tag to the container
+        const tagSpan = document.createElement("span");
+        tagSpan.textContent = tagText;
+        tagSpan.className = "tag";
+  
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "x";
+        removeBtn.className = "remove-tag";
+        tagSpan.appendChild(removeBtn);
+        tagContainer.appendChild(tagSpan);
+  
+        // Clear the input
+        tagInput.value = "";
+  
+        // Handle tag removal
+        removeBtn.addEventListener("click", function () {
+          tagSpan.remove();
+        });
+      }
+    }
+  };
+
+  // Collect tags from dynamic video sections
+  function collectTags(tagContainer) {
+    const container = document.getElementById(tagContainer);
     const tagFields = container.querySelectorAll('input[type="text"], select');
     const tags = [];
 
@@ -237,9 +303,9 @@ document.addEventListener("DOMContentLoaded", function () {
     return tags;
   }
 
-  // Build tagging fields dynamically
-  function generateTagFields(videoCount, containerId, tagOptions = []) {
-    const container = document.getElementById(containerId);
+  // Build video tagging fields dynamically
+  function generateTagFields(videoCount, tagContainer, tagOptions = []) {
+    const container = document.getElementById(tagContainer);
     container.innerHTML = ''; // Clear any existing fields
 
     for (let i = 1; i <= videoCount; i++) {
@@ -419,46 +485,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Adds tags to position container for tags
   function addPositionTag(tagText) {
-    tagText = tagText.trim();
-  
-    if (tagText) {
-      // Check if the tag already exists
-      const existingTags = Array.from(
-        positionTagsContainer.getElementsByClassName("tag")
-      );
-      let tagExists = existingTags.some(
-        (tag) => tag.textContent.replace("x", "").trim() === tagText
-      );
-  
-      if (!tagExists) { 
-        // Create a new option in the datalist if it doesn't already exist
-        let optionExists = Array.from(positionTagsList.options).some(
-          (option) => option.value === tagText
-        );
-        if (!optionExists) {
-          const newOption = document.createElement("option");
-          newOption.value = tagText;
-          positionTagsList.appendChild(newOption);
-        }
-
-        // Add the tag to the container
-        const tagSpan = document.createElement("span");
-        tagSpan.textContent = tagText;
-        tagSpan.className = "tag";
-  
-        const removeBtn = document.createElement("button");
-        removeBtn.textContent = "x";
-        removeBtn.className = "remove-tag";
-        tagSpan.appendChild(removeBtn);
-        positionTagsContainer.appendChild(tagSpan);
-
-        positionTagsInput.value = "";
-  
-        removeBtn.addEventListener("click", function () {
-          tagSpan.remove();
-        });
-      }
-    }
+    addTag(tagText, positionTagsContainer, positionTagsList);
   };
 
   // Clear position form
@@ -1150,188 +1177,24 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // Add Colors tags
-  function addOutfitColors() {
-    const tagText = outfitColorsInput.value.trim();
-
-    if (tagText) {
-      // Check if the tag already exists
-      const existingTags = Array.from(
-        outfitColorsContainer.getElementsByClassName("tag")
-      );
-      let tagExists = existingTags.some(
-        (tag) => tag.textContent.replace("x", "").trim() === tagText
-      );
-
-      if (!tagExists) {
-        // Create a new option in the datalist if it doesn't already exist
-        let optionExists = Array.from(outfitColors.options).some(
-          (option) => option.value === tagText
-        );
-        if (!optionExists) {
-          const newOption = document.createElement("option");
-          newOption.value = tagText;
-          outfitColors.appendChild(newOption);
-        }
-
-        // Add the tag to the container
-        const tagSpan = document.createElement("span");
-        tagSpan.textContent = tagText;
-        tagSpan.className = "tag";
-
-        const removeBtn = document.createElement("button");
-        removeBtn.textContent = "x";
-        removeBtn.className = "remove-tag";
-        tagSpan.appendChild(removeBtn);
-        outfitColorsContainer.appendChild(tagSpan);
-
-        // Clear the input
-        outfitColorsInput.value = "";
-
-        // Handle tag removal
-        removeBtn.addEventListener("click", function () {
-          tagSpan.remove();
-        });
-      }
-    }
+  function addOutfitColors(tagText) {
+    addTag(tagText, outfitColorsContainer, outfitColorsList);
   };
 
   // Add Emphasis tags
-  function addOutfitEmphasis() {
-    const tagText = outfitEmphasisInput.value.trim();
-
-    if (tagText) {
-      // Check if the tag already exists
-      const existingTags = Array.from(
-        outfitEmphasisContainer.getElementsByClassName("tag")
-      );
-      let tagExists = existingTags.some(
-        (tag) => tag.textContent.replace("x", "").trim() === tagText
-      );
-
-      if (!tagExists) {
-        // Create a new option in the datalist if it doesn't already exist
-        let optionExists = Array.from(outfitEmphasis.options).some(
-          (option) => option.value === tagText
-        );
-        if (!optionExists) {
-          const newOption = document.createElement("option");
-          newOption.value = tagText;
-          outfitEmphasis.appendChild(newOption);
-        }
-
-        // Add the tag to the container
-        const tagSpan = document.createElement("span");
-        tagSpan.textContent = tagText;
-        tagSpan.className = "tag";
-
-        const removeBtn = document.createElement("button");
-        removeBtn.textContent = "x";
-        removeBtn.className = "remove-tag";
-        tagSpan.appendChild(removeBtn);
-        outfitEmphasisContainer.appendChild(tagSpan);
-
-        // Clear the input
-        outfitEmphasisInput.value = "";
-
-        // Handle tag removal
-        removeBtn.addEventListener("click", function () {
-          tagSpan.remove();
-        });
-      }
-    }
+  function addOutfitEmphasis(tagText) {
+    addTag(tagText, outfitEmphasisContainer, outfitEmphasisList);
   };
 
   // Add Reveals tags
-  function addOutfitReveals() {
-    const tagText = outfitRevealsInput.value.trim();
-
-    if (tagText) {
-      // Check if the tag already exists
-      const existingTags = Array.from(
-        outfitRevealsContainer.getElementsByClassName("tag")
-      );
-      let tagExists = existingTags.some(
-        (tag) => tag.textContent.replace("x", "").trim() === tagText
-      );
-
-      if (!tagExists) {
-        // Create a new option in the datalist if it doesn't already exist
-        let optionExists = Array.from(outfitReveals.options).some(
-          (option) => option.value === tagText
-        );
-        if (!optionExists) {
-          const newOption = document.createElement("option");
-          newOption.value = tagText;
-          outfitReveals.appendChild(newOption);
-        }
-
-        // Add the tag to the container
-        const tagSpan = document.createElement("span");
-        tagSpan.textContent = tagText;
-        tagSpan.className = "tag";
-
-        const removeBtn = document.createElement("button");
-        removeBtn.textContent = "x";
-        removeBtn.className = "remove-tag";
-        tagSpan.appendChild(removeBtn);
-        outfitRevealsContainer.appendChild(tagSpan);
-
-        // Clear the input
-        outfitRevealsInput.value = "";
-
-        // Handle tag removal
-        removeBtn.addEventListener("click", function () {
-          tagSpan.remove();
-        });
-      }
-    }
+  function addOutfitReveals(tagText) {
+    addTag(tagText, outfitRevealsContainer, outfitRevealsList);
   };
 
   // Add Outfit tags
-  function addOutfitTags() {
-    const tagText = outfitTagsInput.value.trim();
-
-    if (tagText) {
-      // Check if the tag already exists
-      const existingTags = Array.from(
-        outfitTagsContainer.getElementsByClassName("tag")
-      );
-      let tagExists = existingTags.some(
-        (tag) => tag.textContent.replace("x", "").trim() === tagText
-      );
-
-      if (!tagExists) {
-        // Create a new option in the datalist if it doesn't already exist
-        let optionExists = Array.from(outfitTags.options).some(
-          (option) => option.value === tagText
-        );
-        if (!optionExists) {
-          const newOption = document.createElement("option");
-          newOption.value = tagText;
-          outfitTags.appendChild(newOption);
-        }
-
-        // Add the tag to the container
-        const tagSpan = document.createElement("span");
-        tagSpan.textContent = tagText;
-        tagSpan.className = "tag";
-
-        const removeBtn = document.createElement("button");
-        removeBtn.textContent = "x";
-        removeBtn.className = "remove-tag";
-        tagSpan.appendChild(removeBtn);
-        outfitTagsContainer.appendChild(tagSpan);
-
-        // Clear the input
-        outfitTagsInput.value = "";
-
-        // Handle tag removal
-        removeBtn.addEventListener("click", function () {
-          tagSpan.remove();
-        });
-      }
-    }
-  };
+  function addOutfitTags(tagText) {
+    addTag(tagText, outfitTagsContainer, outfitTagsList);
+  };  
 
   // Add outfit to the list
   function addOutfit() {
@@ -2037,18 +1900,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Manually add position tag to container
   addPositionTagButton.addEventListener("click", function() {
     addPositionTag(positionTagsInput.value);
-  });
-
-  // Adds position tag if clicked from list or typed (and matches)
-  positionTagsInput.addEventListener('input', function() {
-    const inputValue = positionTagsInput.value.trim();
-    const options = Array.from(positionTagsList.options);
-    const matchingOption = options.find(option => option.value === inputValue);
-
-    // If the input matches an option from the datalist, automatically add the tag
-    if (matchingOption) {
-        addPositionTag(inputValue); // Call the existing function to add the tag
-    }
+    positionTagsInput.value = '';
   });
 
   // Clicking add position button
@@ -2299,6 +2151,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Set up outfit fields
   updateOutfitFields();
+
+  // Sets up tagging sections
+  handleTagInput(positionTagsInput, positionTagsList, addPositionTag);
+  handleTagInput(outfitColorsInput, outfitColorsList, addOutfitColors);
+  handleTagInput(outfitTagsInput, outfitTagsList, addOutfitTags);
+  handleTagInput(outfitEmphasisInput, outfitEmphasisList, addOutfitEmphasis);
+  handleTagInput(outfitRevealsInput, outfitRevealsList, addOutfitReveals);
 
   // #endregion ----- Initialization -----
 }); // DOM End Line

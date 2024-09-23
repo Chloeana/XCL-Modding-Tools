@@ -177,7 +177,6 @@ datalist {
     text-shadow: -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
 }
 
-/* Fancy Sliders Section */
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
@@ -219,7 +218,6 @@ input[type="range"]:hover::-webkit-slider-thumb {
 input[type="range"]:active::-webkit-slider-thumb {
     background-color: #fb94b2;
 }
-/* ------------------- */
 
 input:disabled {
     background-color: #000000;
@@ -555,6 +553,7 @@ input:disabled {
     color: #787bff;
 }
 
+.remove-outfit,
 .remove-position {
     color: white;
     background-color: transparent;
@@ -570,6 +569,7 @@ input:disabled {
     padding: 0 5px; /* Padding inside button, but minimal */
 }
 
+.remove-outfit:hover,
 .remove-position:hover {
     color: #334c9e;
 }
