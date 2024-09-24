@@ -289,9 +289,9 @@
 
                 <div class="form-right-wrapper">
                     <div class="form-right-top">
-                        <h3>Total Positions: <span id="totalPositions">0</span></h3>
-                        <h3>Active Positions: <span id="activePositions">0</span></h3>
-                        <h3>Passive Positions: <span id="passivePositions">0</span></h3>
+                        <h3>Total Positions: <span id="countTotalPositions">0</span></h3>
+                        <h3>Active Positions: <span id="countActivePositions">0</span></h3>
+                        <h3>Passive Positions: <span id="countPassivePositions">0</span></h3>
                     </div>
                 
                     <div class="form-right">
@@ -428,11 +428,11 @@
                         <!-- One-Piece or Top/Bottom -->
                         <label>Outfit Classification:</label>
                         <div class="radio-group">
-                            <input type="radio" id="onePiece" name="outfitDescType" value="onePiece">
-                            <label for="onePiece" title="Outfit is one solid piece, like a bodysuit or a dress">One-Piece</label>
+                            <input type="radio" id="onePieceRadio" name="outfitDescType" value="onePieceRadio">
+                            <label for="onePieceRadio" title="Outfit is one solid piece, like a bodysuit or a dress">One-Piece</label>
 
-                            <input type="radio" id="twoPiece" name="outfitDescType" value="twoPiece">
-                            <label for="twoPiece" title="Outfit has a Top and a Bottom, like a bikini or a shirt and pants">Top and Bottoms</label>
+                            <input type="radio" id="twoPieceRadio" name="outfitDescType" value="twoPieceRadio">
+                            <label for="twoPieceRadio" title="Outfit has a Top and a Bottom, like a bikini or a shirt and pants">Top and Bottoms</label>
                         </div>
 
                         <div id="onePieceField">
@@ -597,11 +597,33 @@
                     <button type="button" id="addOutfit">Add Outfit</button>
                     </div>
                 </div>
-
-                <div class="form-right">
-                    <h3>Outfits List</h3>
-                    <ul id="outfitsList"></ul>
-                    <button type="button" id="generateOutfitsFileButton">Generate Outfits File</button>
+                    <div class="form-right-wrapper">
+                        <div class="form-right-top">
+                            <h3>Total Outfits: <span id="countTotalOutfits">0</span></h3>
+                            <div class="form-right-top-grid">
+                                <h3>Beach: <span id="countBeachOutfits">0</span></h3>
+                                <h3>Casual: <span id="countCasualOutfits">0</span></h3>
+                                <h3>Fetish: <span id="countFetishOutfits">0</span></h3>
+                                <h3>Gym: <span id="countGymOutfits">0</span></h3>
+                                <h3>Lingerie: <span id="countLingerieOutfits">0</span></h3>
+                                <h3>Lounge: <span id="countLoungeOutfits">0</span></h3>
+                                <h3>Office: <span id="countOfficeOutfits">0</span></h3>
+                                <h3>Stylish: <span id="countStylishOutfits">0</span></h3>
+                            </div>
+                        </div>
+                    
+                        <div class="form-right">
+                            <h3>Outfit List</h3>
+                            <ul id="outfitsList"></ul>
+                            <button type="button" id="generateOutfitsFileButton">Generate Outfits File</button>
+                        </div>
+    
+                        <div class="form-right-bottom">
+                            <h3>Import Existing File:</h3>
+                            <input type="file" id="importOutfits" accept=".js">
+                            <button type="button" id="importOutfitsButton">Import Outfits</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

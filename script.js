@@ -58,8 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // #endregion --- Positions ---
 
   // #region --- Vars - Outfits ---
-  const addOutfitButton = document.getElementById("addOutfit");
-  const generateOutfitsFileButton = document.getElementById("generateOutfitsFileButton");
   const outfitCharacterName = document.getElementById("outfitCharacterName");
   const outfitCategory = document.getElementById("outfitCategory");
   const outfitName = document.getElementById("outfitName");
@@ -75,17 +73,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const outfitPantiesTrue = document.getElementById("outfitPantiesTrue");
   const outfitBreastSupport = document.getElementById("outfitBreastSupport");
   const outfitShoes = document.getElementById("outfitShoes");
-
   const outfitOnePiece = document.getElementById("outfitOnePiece");
   const outfitTop = document.getElementById("outfitTop");
   const outfitBottom = document.getElementById("outfitBottom");
+  const outfitsList = document.getElementById("outfitsList");
+  const addOutfitButton = document.getElementById("addOutfit");
+  const generateOutfitsFileButton = document.getElementById("generateOutfitsFileButton");
 
 
   // Div for hiding or showing fields based on radio check
   const onePieceField = document.getElementById("onePieceField"); 
   const twoPieceFields = document.getElementById("twoPieceFields");
-  const onePieceRadio = document.getElementById("onePiece");
-  const twoPieceRadio = document.getElementById("twoPiece");
+  const onePieceRadio = document.getElementById("onePieceRadio");
+  const twoPieceRadio = document.getElementById("twoPieceRadio");
 
   // Tags section
   const addOutfitTagsButton = document.getElementById("addOutfitTagsButton");
@@ -286,6 +286,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  // Import Tags (from File) to a Tag Container
+  function importTags(tagsArray, tagContainer) {
+    tagContainer.innerHTML = '';
+    tagsArray.forEach((tag) => {
+        const tagSpan = document.createElement("span");
+        tagSpan.textContent = tag;
+        tagSpan.className = "tag";
+
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "x";
+        removeBtn.className = "remove-tag";
+        tagSpan.appendChild(removeBtn);
+        tagContainer.appendChild(tagSpan);
+
+        removeBtn.addEventListener("click", function () {
+            tagSpan.remove();
+        });
+    });
+  }
+
   // Collect tags from dynamic video sections
   function collectTags(tagContainer) {
     const container = document.getElementById(tagContainer);
@@ -483,10 +503,10 @@ document.addEventListener("DOMContentLoaded", function () {
     positionTagsContainer.innerHTML = "";
   }
 
-  // Adds tags to position container for tags
-  function addPositionTag(tagText) {
-    addTag(tagText, positionTagsContainer, positionTagsList);
-  };
+  // Helper for clearing position tag input
+  function clearPositionTagInput(){
+    positionTagsInput.value = "";
+  }
 
   // Clear position form
   function resetPositionForm() {
@@ -519,6 +539,11 @@ document.addEventListener("DOMContentLoaded", function () {
     window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
+  // Adds tags to position container for tags
+  function addPositionTag(tagText) {
+    addTag(tagText, positionTagsContainer, positionTagsList);
+  };
+
   // Adding positions to the list
   function addPosition() {
     // Extracting form values
@@ -541,7 +566,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const tags = Array.from(positionTagsContainer.querySelectorAll(".tag")).map((tag) => tag.textContent.replace("x", "").trim());
 
     // Validation: Ensure all fields are filled out
-    if (!characterName || !name || !flavor || !type || !subtype || !position || !athletics || !roughness || !yourPleasure || !pleasureFactor || !hisPleasure || !hisSatisfaction || !rhythm || !skill || !skillLevel || locations.length === 0) {
+    if (
+      !characterName || 
+      !name || 
+      !flavor || 
+      !type || 
+      !subtype || 
+      !position || 
+      !athletics || 
+      !roughness || 
+      !yourPleasure || 
+      !pleasureFactor || 
+      !hisPleasure || 
+      !hisSatisfaction || 
+      !rhythm || 
+      !skill || 
+      !skillLevel || 
+      locations.length === 0
+    ) {
         alert("All fields must be filled out.");
         return;
     }
@@ -595,7 +637,7 @@ document.addEventListener("DOMContentLoaded", function () {
             delete addPositionButton.dataset.editing;
             addPositionButton.textContent = "Add Position";
             selectedPosition.classList.remove("selected");
-            selectedPosition = null; // changed from selectedPositionItem
+            selectedPositionItem = null; // changed from selectedPositionItem
         }
     } else {
         // Check for duplicate positions
@@ -976,22 +1018,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Handle tags
-    clearPositionTags();
-    pos.tags.forEach((tag) => {
-        const tagSpan = document.createElement("span");
-        tagSpan.textContent = tag;
-        tagSpan.className = "tag";
-
-        const removeBtn = document.createElement("button");
-        removeBtn.textContent = "x";
-        removeBtn.className = "remove-tag";
-        tagSpan.appendChild(removeBtn);
-        positionTagsContainer.appendChild(tagSpan);
-
-        removeBtn.addEventListener("click", function () {
-            tagSpan.remove();
-        });
-    });
+    importTags(pos.tags, positionTagsContainer);
   };
 
   // Function to update position statistics
@@ -999,28 +1026,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const positionList = Array.from(positionsList.children);
     
     // Calculate total, active, and passive counts
-    const totalPositions = positionList.length;
-    const activePositions = positionList.filter(pos => JSON.parse(pos.dataset.position).type === 'active').length;
-    const passivePositions = positionList.filter(pos => JSON.parse(pos.dataset.position).type === 'passive').length;
+    const countTotalPositions = positionList.length;
+    const countActivePositions = positionList.filter(pos => JSON.parse(pos.dataset.position).type === 'active').length;
+    const countPassivePositions = positionList.filter(pos => JSON.parse(pos.dataset.position).type === 'passive').length;
     
     // Update the HTML elements
-    document.getElementById("totalPositions").textContent = totalPositions;
-    document.getElementById("activePositions").textContent = activePositions;
-    document.getElementById("passivePositions").textContent = passivePositions;
+    document.getElementById("countTotalPositions").textContent = countTotalPositions;
+    document.getElementById("countActivePositions").textContent = countActivePositions;
+    document.getElementById("countPassivePositions").textContent = countPassivePositions;
   };
 
   // Generate Position File
   function generatePositionsFile() {
     const positions = Array.from(positionsList.children)
         .map((pos) => JSON.parse(pos.dataset.position));
-    const activePositions = positions.filter(pos => pos.type === 'active').length;
+    const countActivePositions = positions.filter(pos => pos.type === 'active').length;
 
     if (positions.length === 0) {
         alert("No positions to generate.");
         return;
     }
 
-    if (activePositions < 3) {
+    if (countActivePositions < 3) {
       const proceed = confirm("Warning: A character should include at least 3 active positions for the file to work properly. Do you want to proceed?");
       if (!proceed) {
         return; // Stop the process if the user clicks "Cancel"
@@ -1116,23 +1143,20 @@ document.addEventListener("DOMContentLoaded", function () {
       slider.value = 5;
     });
     updateSliderValues();
-    document.getElementById("outfitCategory").selectedIndex = 0;
-    document.getElementById("outfitName").value = "";
-    document.getElementById("outfitFlavor").value = "";
-    document.getElementById("outfitDescription").value = "";
-    document.getElementById("outfitPrice").value = "";
-    document.getElementById("outfitType").value = "";
-    document.getElementById("outfitStyle").value = "";
+    outfitCategory.selectedIndex = 0;
+    outfitName.value = "";
+    outfitFlavor.value = "";
+    outfitDescription.value = "";
+    outfitPrice.value = "";
+    outfitType.value = "";
+    outfitStyle.value = "";
     outfitOnePiece.value = "";
     outfitTop.value = "";
     outfitBottom.value = "";
-    document.getElementById("outfitShoes").value = "";
-    document.getElementById("outfitPantiesTrue").value = "";
-    document.getElementById("outfitBraTrue").value = "";
-    document.getElementById("onePiece").checked = false;
-    document.getElementById("twoPiece").checked = false;
-    document.getElementById("outfitBraTrue").checked = false;
-    document.getElementById("outfitPantiesTrue").checked = false;
+    onePieceRadio.checked = false;
+    twoPieceRadio.checked = false;
+    outfitBraTrue.checked = false;
+    outfitPantiesTrue.checked = false;
 
     document
       .querySelectorAll('input[name="outfitLocations"]')
@@ -1281,34 +1305,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (addOutfitButton.dataset.editing === "true") {
       // Update the existing outfit
-      const selectedOutfit = outfitsList.querySelector("li.selected");
-      selectedOutfit.dataset.outfit = JSON.stringify(newOutfit);
-      selectedOutfit.textContent = `${category} - ${name}`;
-      delete addOutfitButton.dataset.editing;
-      addOutfitButton.textContent = "Add Outfit";
+      const selectedOutfit = document.querySelector("li.selected");
+      if (selectedOutfit) {
+        selectedOutfit.dataset.outfit = JSON.stringify(newOutfit);
+        selectedOutfit.textContent = `${category} - ${name}`;
 
-      // Deselect the outfit after saving
-      selectedOutfit.classList.remove("selected");
-      selectedOutfitItem = null;
+        // Re-add the remove button if missing
+        let existingRemoveBtn = selectedOutfit.querySelector(".remove-outfit");
+        if (!existingRemoveBtn) {
+            const removeBtn = document.createElement("button");
+            removeBtn.textContent = "x";
+            removeBtn.className = "remove-outfit";
+            selectedOutfit.appendChild(removeBtn);
+
+            removeBtn.addEventListener("click", function (e) {
+                e.stopPropagation();
+                selectedOutfit.remove();
+                addOutfitButton.textContent = "Add Outfit"; // Reset button text
+                delete addOutfitButton.dataset.editing;
+                resetOutfitForm(); // Clear the form after removal
+            });
+        }
+
+        // Reset button state
+        delete addOutfitButton.dataset.editing;
+        addOutfitButton.textContent = "Add Outfit";
+        selectedOutfit.classList.remove("selected");
+        selectedOutfitItem = null;
+      }
+
     } else {
-      // Check for duplicate outfits
-      const existingOutfits = Array.from(
-        document.getElementById("outfitsList").children
-      );
+    // Check for duplicate outfits
+    const existingOutfits = Array.from(outfitsList.children);
       let outfitExists = false;
       existingOutfits.forEach((out) => {
-        const outData = JSON.parse(out.dataset.outfit);
-        if (
-          outData.category === newOutfit.category &&
-          outData.name === newOutfit.name
-        ) {
-          outfitExists = true;
-        }
+          const outData = JSON.parse(out.dataset.outfit);
+          if (outData.name === newOutfit.name && outData.type === newOutfit.type && outData.subtype === newOutfit.subtype) {
+            outfitExists = true;
+          }
       });
 
       if (outfitExists) {
-        alert("This outfit already exists in the list.");
-        return;
+          alert("This outfit already exists in the list.");
+          return;
       }
 
       // Add the new outfit
@@ -1316,243 +1355,375 @@ document.addEventListener("DOMContentLoaded", function () {
       outfitItem.textContent = `${category} - ${name}`;
       outfitItem.dataset.outfit = JSON.stringify(newOutfit);
 
-      outfitItem.addEventListener("click", function () {
-        if (outfitItem.classList.contains("selected")) {
-          outfitItem.classList.remove("selected");
-          resetOutfitForm();
-        } else {
-          addOutfitButton.textContent = "Save Outfit"; // Change button text
-          addOutfitButton.dataset.editing = "true"; // Mark as editing
-          outfitsList
-            .querySelectorAll("li")
-            .forEach((item) => item.classList.remove("selected"));
-            outfitItem.classList.add("selected");
+      // Add event listener for outfit clicks
+      outfitItem.addEventListener("click", handleOutfitClick);
 
-            // Update the form fields with the selected outfit's data
-            const out = JSON.parse(outfitItem.dataset.outfit);
-            outfitCharacterName.value = out.characterName;
-            outfitCategory.value = out.category;
-            outfitName.value = out.name;
-            outfitFlavor.value = out.flavor;
-            outfitDescription.value = out.description;
-            outfitPrice.value = out.price;
-            outfitType.value = out.type;
-            outfitSluttiness.value = out.sluttiness;
-            outfitComfort.value = out.comfort;
-            outfitDurability.value = out.durability;
-            outfitStyle.value = out.style;
-            outfitBraTrue.checked = out.braUnder === "true";
-            outfitPantiesTrue.checked = out.pantiesUnder === "true";
-            outfitBreastSupport.value = out.breastSupport;
-            document.querySelector(`input[name="outfitDescType"][value="${out.descType}"]`).checked = true;
-            outfitOnePiece.value = out.onepiece;
-            outfitTop.value = out.top;
-            outfitBottom.value = out.bottom;
-            outfitShoes.value = out.shoes;
-            document.querySelectorAll('input[name="outfitLocations"]')
-            .forEach((loc) => {
-              loc.checked = out.locations.includes(loc.value);
-            });
-
-            updateOutfitFields()
-
-            // Update form arrays with selected outfit data
-            outfitTagsContainer.innerHTML = "";
-            outfitColorsContainer.innerHTML = "";
-            outfitEmphasisContainer.innerHTML = "";
-            outfitRevealsContainer.innerHTML = "";
-
-            out.tags.forEach((tag) => {
-              const tagSpan = document.createElement("span");
-              tagSpan.textContent = tag;
-              tagSpan.className = "tag";
-  
-              const removeBtn = document.createElement("button");
-              removeBtn.textContent = "x";
-              removeBtn.className = "remove-tag";
-              tagSpan.appendChild(removeBtn);
-              outfitTagsContainer.appendChild(tagSpan);
-  
-              removeBtn.addEventListener("click", function () {
-                tagSpan.remove();
-              });
-            });
-
-            out.colors.forEach((tag) => {
-              const tagSpan = document.createElement("span");
-              tagSpan.textContent = tag;
-              tagSpan.className = "tag";
-  
-              const removeBtn = document.createElement("button");
-              removeBtn.textContent = "x";
-              removeBtn.className = "remove-tag";
-              tagSpan.appendChild(removeBtn);
-              outfitColorsContainer.appendChild(tagSpan);
-  
-              removeBtn.addEventListener("click", function () {
-                tagSpan.remove();
-              });
-            });
-
-            out.emphasizes.forEach((tag) => {
-              const tagSpan = document.createElement("span");
-              tagSpan.textContent = tag;
-              tagSpan.className = "tag";
-  
-              const removeBtn = document.createElement("button");
-              removeBtn.textContent = "x";
-              removeBtn.className = "remove-tag";
-              tagSpan.appendChild(removeBtn);
-              outfitEmphasisContainer.appendChild(tagSpan);
-  
-              removeBtn.addEventListener("click", function () {
-                tagSpan.remove();
-              });
-            });
-
-            out.reveals.forEach((tag) => {
-              const tagSpan = document.createElement("span");
-              tagSpan.textContent = tag;
-              tagSpan.className = "tag";
-  
-              const removeBtn = document.createElement("button");
-              removeBtn.textContent = "x";
-              removeBtn.className = "remove-tag";
-              tagSpan.appendChild(removeBtn);
-              outfitRevealsContainer.appendChild(tagSpan);
-  
-              removeBtn.addEventListener("click", function () {
-                tagSpan.remove();
-              });
-            });
-
-            // Update slider displayed numbers
-          updateSliderValues();
-
-          // Store the currently selected outfit
-          selectedOutfitItem = outfitItem;
-        }
-      });
-
-      // Remove Outfit
+      // Add the remove button
       const removeBtn = document.createElement("button");
       removeBtn.textContent = "x";
       removeBtn.className = "remove-outfit";
       outfitItem.appendChild(removeBtn);
 
       removeBtn.addEventListener("click", function (e) {
-        e.stopPropagation();
-        outfitItem.remove();
-        addOutfitButton.textContent = "Add Outfit"; // Reset button text
-        delete addOutfitButton.dataset.editing;
-        resetOutfitForm(); // Clear the form after removal
+          e.stopPropagation();
+          outfitItem.remove();
+          addOutfitButton.textContent = "Add Outfit"; // Reset button text
+          delete addOutfitButton.dataset.editing;
+          resetOutfitForm()(); // Clear the form after removal
       });
 
-      document.getElementById("outfitsList").appendChild(outfitItem);
+      outfitsList.appendChild(outfitItem);
+      
     }
     resetOutfitForm(); // Reset the form fields after adding or saving
   };
 
-  // Generate Outfits File
-  function generateOutfitsFile() {
-    const outfits = Array.from(
-      document.getElementById("outfitsList").children
-    ).map((out) => JSON.parse(out.dataset.outfit));
+  // Handling outfit selection
+  function handleOutfitClick(event) {
+    const outfitItem = event.currentTarget;
 
-    if (outfits.length === 0) {
-      alert("No outfits to generate.");
-      return;
+    if (outfitItem.classList.contains("selected")) {
+        // Deselect the outfit
+        outfitItem.classList.remove("selected");
+        resetOutfitForm();
+        addOutfitButton.textContent = "Add Outfit"; // Reset button text
+        selectedOutfitItem = null; // Clear the reference to the selected outfit
+    } else {
+        // Select the outfit
+        addOutfitButton.textContent = "Save Outfit"; // Change button text
+        addOutfitButton.dataset.editing = "true"; // Mark as editing
+        document.querySelectorAll("li").forEach((item) => item.classList.remove("selected"));
+        outfitItem.classList.add("selected");
+
+        const out = JSON.parse(outfitItem.dataset.outfit);
+        loadOutfitIntoForm(out);
+
+        // Store the currently selected outfit
+        selectedOutfitItem = outfitItem;
+    }
+  };
+
+  // Handling removing outfit
+  function handleOutfitRemove(outfitItem) {
+    outfitItem.remove();
+    addOutfitButton.textContent = "Add Outfit"; // Reset button text
+    delete addOutfitButton.dataset.editing;
+    resetOutfitForm(); // Clear the form after removal
+  };
+
+  // Parse imported outfit file
+  function parseOutfitsFromJS(content) {
+
+    // Updated regex to capture booleans (true/false), strings, and objects
+    const regex = /outfits\("([^"]+)", "([^"]+)",\s*((?:\{[\s\S]*?\})(?:,\s*\{[\s\S]*?\})*)\s*\)/g;
+
+    let match;
+    const outfits = [];
+
+    while ((match = regex.exec(content)) !== null) {
+        const characterName = match[1].trim();
+        const category = match[2].trim();
+        const outfitsBlock = match[3].trim();
+
+        // Split outfitsBlock by each outfit object (splitting by '} , {')
+        const outfitObjects = outfitsBlock.split(/\}\s*,\s*\{/);
+
+        outfitObjects.forEach((outfitObj, index) => {
+            // Cleanup braces and parse each outfit object individually
+            const cleanedOutfitObj = (index === 0 ? outfitObj + '}' : '{' + outfitObj + '}').trim();
+
+            // Updated extraction to handle unquoted booleans (true/false)
+            const outfitData = extractOutfitObject(cleanedOutfitObj);
+
+            const newOutfit = {
+                characterName,
+                category,
+                ...outfitData
+            };
+            outfits.push(newOutfit);
+
+            console.log("Extracted outfit: ", newOutfit); // Debugging output
+        });
     }
 
-    // Object to store category counts
-    const categoryCounts = {};
-    
-    // Populate categoryCounts with the number of outfits per category
-    outfits.forEach((outfit) => {
-      const category = outfit.category;
-      if (categoryCounts[category]) {
-        categoryCounts[category] += 1;
-      } else {
-        categoryCounts[category] = 1;
-      }
-    });
+    if (outfits.length > 0) {
+        populateOutfitsList(outfits); // Populate list if outfits exist
+    } else {
+        alert("No outfits imported.");
+    }
+}
 
-    // Create the init_character line
-    let initLine = `init_character("${outfits[0].characterName}", {\n`;
+  // Extract outfit details from imported outfit and assign values
+  function extractOutfitObject(blockContent) {
+    const outfit = {};
+    const fieldNameMapping = {
+      "panties under": "pantiesUnder",
+      "bra under": "braUnder",
+      "breast support": "breastSupport"
+    };
 
-    Object.keys(categoryCounts).forEach((category, index, array) => {
-      initLine += `  "${category}": ${categoryCounts[category]}`;
-      if (index < array.length - 1) {
-        initLine += ",";
-      }
-      initLine += "\n";
-    });
+    // Regex to match key-value pairs, handling strings, arrays, numbers, booleans, and objects
+    const regex = /["']([\w\s]+)["']\s*:\s*(?:"([^"]*)"|'([^']*)'|\[(.*?)\]|\{(.*?)\}|(\d+(\.\d+)?)|(true|false|null))/g;
 
-    initLine += `});\n`;
+    let match;
 
-    let jsContent = initLine;
+    while ((match = regex.exec(blockContent)) !== null) {
+        const key = match[1].trim();
+        let value = match[2] || match[3]; // Extract string value if available
 
-    // Generate the outfits JavaScript content
-    outfits.forEach((outfit) => {
-      jsContent += `outfits("${outfit.characterName}", "${outfit.category}", {\n`;
-      jsContent += `  "name": "${outfit.name}",\n`;
-      jsContent += `  "flavor": "${outfit.flavor}",\n`;
-      jsContent += `  "description": "${outfit.description}",\n`;
-      jsContent += `  "price": ${outfit.price},\n`;
-      jsContent += `  "type": "${outfit.type}",\n`;
-      jsContent += `  "sluttiness": ${outfit.sluttiness},\n`;
-      jsContent += `  "comfort": ${outfit.comfort},\n`;
-      jsContent += `  "durability": ${outfit.durability},\n`;
-      jsContent += `  "style": "${outfit.style}",\n`;
-      jsContent += `  "breast support": ${outfit.breastSupport},\n`;
-      jsContent += `  "bra under": ${outfit.braUnder},\n`;
-      jsContent += `  "panties under": ${outfit.pantiesUnder},\n`;
-      jsContent += `  "shoes": "${outfit.shoes}",\n`;
-
-      // Conditional logic based on descType
-      if (outfit.descType === "onePiece") {
-        jsContent += `  "onepiece": "${outfit.onepiece}",\n`;
-      } else if (outfit.descType === "twoPiece") {
-        jsContent += `  "top": "${outfit.top}",\n`;
-        jsContent += `  "bottom": "${outfit.bottom}",\n`;
-      }
-
-      jsContent += `  "locations": [${(function() {
-        // If locations are not provided or empty, default to outfit.category
-        let locations = outfit.locations && outfit.locations.length > 0 ? outfit.locations : [outfit.category];
-    
-        // Ensure outfit.category is in the locations list without duplication
-        if (!locations.includes(outfit.category)) {
-          locations.push(outfit.category);
+        // Handle non-string values
+        if (value === undefined) {
+            if (match[4]) { // Array
+                value = match[4].split(',').map(item => item.trim().replace(/["']/g, ''));
+            } else if (match[5]) { // Object
+                value = extractOutfitObject(match[5]); // Recursively extract nested objects
+            } else if (match[6]) { // Number
+                value = parseFloat(match[6]);
+            } else if (match[8]) { // Boolean
+                value = match[8] === 'true'; // Ensure boolean is properly interpreted
+            }
         }
+
+        // Apply field name mapping
+        const mappedKey = fieldNameMapping[key] || key;
+
+        // Assign the processed value to the outfit object
+        outfit[mappedKey] = value;
+
+        // Debugging output
+
+    }
+
+    return outfit;
+  };
+
+  // Populate Outfit List from extracted Object
+  function populateOutfitsList(outfits) {
+    outfitsList.innerHTML = ""; // Clear existing items
+
+    if (outfits.length > 0) {
+      // Set the character name before looping through outfits
+      outfitCharacterName.value = outfits[0].characterName;
+  }
+
+    outfits.forEach((outfit) => {
+        const outfitItem = document.createElement("li");
+        outfitItem.textContent = `${outfit.category} - ${outfit.name}`;
+        outfitItem.dataset.outfit = JSON.stringify(outfit);
+
+        // Add click event listener
+        outfitItem.addEventListener("click", handleOutfitClick);
+
+        // Add remove button
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "x";
+        removeBtn.className = "remove-outfit";
+        outfitItem.appendChild(removeBtn);
+
+        // Event listener for remove button
+        removeBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            outfitItem.remove();
+            addOutfitButton.textContent = "Add Outfit"; // Reset button text
+            delete addOutfitButton.dataset.editing;
+            resetOutfitForm(); // Clear the form after removal
+        });
+
+        // Append outfit item to list
+        outfitsList.appendChild(outfitItem);
+    });
+  };
+
+  // Populate Outfit Form with Selected Outfit's details
+  function loadOutfitIntoForm(out) {
+
+    // Set inputs
+    outfitCharacterName.value = out.characterName;
+    outfitName.value = out.name;
+    outfitFlavor.value = out.flavor;
+    outfitDescription.value = out.description;
+    outfitCategory.value = out.category.toLowerCase();
+    outfitType.value = out.type.toLowerCase();
+    outfitStyle.value = out.style.toLowerCase();
+    outfitShoes.value = out.shoes !== undefined ? out.shoes : 'none'; // if out.shoes is undefined, set to 'none'
+    outfitPrice.value = out.price;
+
+    outfitOnePiece.value = out.onepiece || '';  // Set the value or default to an empty string
+    outfitTop.value = out.top || '';            // Same for top
+    outfitBottom.value = out.bottom || '';      // Same for bottom
+
+    // Check which outfit type is selected and set radio button accordingly
+    if (outfitOnePiece.value !== '') {
+        document.querySelector(`input[id="onePieceRadio"]`).checked = true;
+    } else {
+        document.querySelector(`input[id="twoPieceRadio"]`).checked = true;
+    }
+
+    updateOutfitFields();
+
+    // Set checkboxes for braUnder and pantiesUnder
+    document.querySelector(`input[id="outfitBraTrue"]`).checked = out.braUnder === true;
+    document.querySelector(`input[id="outfitPantiesTrue"]`).checked = out.pantiesUnder === true;
+
+    // updateOutfitType();
+
+    // Set sliders
+    outfitSluttiness.value = out.sluttiness;
+    outfitComfort.value = out.comfort;
+    outfitDurability.value = out.durability;
+    outfitBreastSupport.value = out.breastSupport !== undefined ? out.breastSupport : 0; // if out.breastSupport is undefined, set to 0
+
+    // Update slider displayed numbers
+    updateSliderValues();
     
-        // Return the formatted locations array
-        return locations.map((loc) => `"${loc}"`).join(", ");
-      })()}],\n`;
+    // set checkboxes
+    const locations = Array.isArray(out.locations) ? out.locations : [];
+    document.querySelectorAll('input[name="outfitLocations"]').forEach((loc) => {
+        loc.checked = locations.includes(loc.value);
+    });
+
+    // Handle tags
+    importTags(out.tags, outfitTagsContainer);
+    importTags(out.reveals, outfitRevealsContainer);
+    importTags(out.emphasizes, outfitEmphasisContainer);
+    importTags(out.colors, outfitColorsContainer);
+
+  };
+
+  // Function to update outfit statistics
+  function updateOutfitStats() {
+    const outfitList = Array.from(outfitsList.children);
     
+    // Calculate total, active, and passive counts
+    const countTotalOutfits = outfitList.length;
+    const countBeachOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'beach').length;
+    const countCasualOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'casual').length;
+    const countFetishOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'fetish').length;
+    const countGymOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'gym').length;
+    const countLingerieOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'lingerie').length;
+    const countLoungeOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'lounge').length;
+    const countOfficeOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'office').length;
+    const countStylishOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'stylin').length;
+    
+    // Update the HTML elements
+    document.getElementById("countTotalOutfits").textContent = countTotalOutfits;
+    document.getElementById("countBeachOutfits").textContent = countBeachOutfits;
+    document.getElementById("countCasualOutfits").textContent = countCasualOutfits;
+    document.getElementById("countFetishOutfits").textContent = countFetishOutfits;
+    document.getElementById("countGymOutfits").textContent = countGymOutfits;
+    document.getElementById("countLingerieOutfits").textContent = countLingerieOutfits;
+    document.getElementById("countLoungeOutfits").textContent = countLoungeOutfits;
+    document.getElementById("countOfficeOutfits").textContent = countOfficeOutfits;
+    document.getElementById("countStylishOutfits").textContent = countStylishOutfits;
+  };
 
-      jsContent += `  "tags": [${(outfit.tags || [])
-        .map((tag) => `"${tag}"`)
-        .join(", ")}],\n`;
+  function generateOutfitsFile() {
+    const outfits = Array.from(document.getElementById("outfitsList").children)
+        .map((out) => JSON.parse(out.dataset.outfit));
 
-      jsContent += `  "colors": [${(outfit.colors || [])
-        .map((color) => `"${color}"`)
-        .join(", ")}],\n`;
+    if (outfits.length === 0) {
+        alert("No outfits to generate.");
+        return;
+    }
 
-      jsContent += `  "emphasizes": [${(outfit.emphasizes || [])
-        .map((emphasize) => `"${emphasize}"`)
-        .join(", ")}],\n`;
+    // Track initialized characters
+    const initializedCharacters = new Set();
 
-      jsContent += `  "reveals": [${(outfit.reveals || [])
-        .map((reveal) => `"${reveal}"`)
-        .join(", ")}],\n`;
+    // Group outfits by characterName and category
+    const groupedOutfits = {};
+    outfits.forEach((outfit) => {
+        const key = `${outfit.characterName}-${outfit.category}`;
+        if (!groupedOutfits[key]) {
+            groupedOutfits[key] = [];
+        }
+        groupedOutfits[key].push(outfit);
+    });
 
-      jsContent += `});\n\n`;
+    // JavaScript content string
+    let jsContent = "";
+
+    // Add init_character for each unique character at the top
+    outfits.forEach((outfit) => {
+        if (!initializedCharacters.has(outfit.characterName)) {
+            // Generate init_character only once per character
+            const categoryCounts = outfits.reduce((acc, currOutfit) => {
+                if (currOutfit.characterName === outfit.characterName) {
+                    acc[currOutfit.category] = (acc[currOutfit.category] || 0) + 1;
+                }
+                return acc;
+            }, {});
+            
+            let initLine = `init_character("${outfit.characterName}", {\n`;
+            Object.keys(categoryCounts).forEach((category, index, array) => {
+                initLine += `  "${category}": ${categoryCounts[category]}`;
+                if (index < array.length - 1) {
+                    initLine += ",";
+                }
+                initLine += "\n";
+            });
+            initLine += `});\n\n`;
+
+            jsContent += initLine;
+            initializedCharacters.add(outfit.characterName);
+        }
+    });
+
+    // Loop through grouped outfits and create the outfit block
+    Object.keys(groupedOutfits).forEach((groupKey) => {
+        const [characterName, category] = groupKey.split("-");
+        const group = groupedOutfits[groupKey];
+
+        // Add outfits for this group
+        jsContent += `outfits("${characterName}", "${category}",\n`;
+
+        group.forEach((outfit, index) => {
+            jsContent += `  {\n`;
+            jsContent += `    "name": "${outfit.name}",\n`;
+            jsContent += `    "flavor": "${outfit.flavor}",\n`;
+            jsContent += `    "description": "${outfit.description}",\n`;
+            jsContent += `    "price": ${outfit.price},\n`;
+            jsContent += `    "type": "${outfit.type}",\n`;
+            jsContent += `    "sluttiness": ${outfit.sluttiness},\n`;
+            jsContent += `    "comfort": ${outfit.comfort},\n`;
+            jsContent += `    "durability": ${outfit.durability},\n`;
+            jsContent += `    "style": "${outfit.style}",\n`;
+
+            // Optional fields with default values
+            jsContent += `    "breast support": ${outfit.breastSupport !== undefined ? outfit.breastSupport : 0},\n`;
+            jsContent += `    "bra under": ${outfit.braUnder !== undefined ? outfit.braUnder : false},\n`;
+            jsContent += `    "panties under": ${outfit.pantiesUnder !== undefined ? outfit.pantiesUnder : false},\n`;
+            jsContent += `    "shoes": "${outfit.shoes !== undefined ? outfit.shoes : "none"}",\n`;
+
+            // Conditional logic based on descType
+            if (outfit.descType === "onePiece") {
+                jsContent += `    "onepiece": "${outfit.onepiece}",\n`;
+            } else if (outfit.descType === "twoPiece") {
+                jsContent += `    "top": "${outfit.top}",\n`;
+                jsContent += `    "bottom": "${outfit.bottom}",\n`;
+            }
+
+            jsContent += `    "locations": [${(outfit.locations || [outfit.category]).map((loc) => `"${loc}"`).join(", ")}],\n`;
+            jsContent += `    "tags": [${(outfit.tags || []).map((tag) => `"${tag}"`).join(", ")}],\n`;
+            jsContent += `    "colors": [${(outfit.colors || []).map((color) => `"${color}"`).join(", ")}],\n`;
+            jsContent += `    "emphasizes": [${(outfit.emphasizes || []).map((emphasize) => `"${emphasize}"`).join(", ")}],\n`;
+            jsContent += `    "reveals": [${(outfit.reveals || []).map((reveal) => `"${reveal}"`).join(", ")}]\n`;
+
+            jsContent += `  }`;
+
+            // Add a comma for all but the last outfit in the group
+            if (index < group.length - 1) {
+                jsContent += `,\n`;
+            } else {
+                jsContent += `\n`;
+            }
+        });
+
+        jsContent += `);\n\n`;
     });
 
     // Create a blob and a download link
     const blob = new Blob([jsContent], {
-      type: "text/javascript",
+        type: "text/javascript",
     });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
@@ -1564,7 +1735,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Remove the link from the document
     document.body.removeChild(link);
-  };
+  }
+
 
   // #endregion --- Functions - Outfits
 
@@ -1900,7 +2072,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Manually add position tag to container
   addPositionTagButton.addEventListener("click", function() {
     addPositionTag(positionTagsInput.value);
-    positionTagsInput.value = '';
+    clearPositionTagInput();
   });
 
   // Clicking add position button
@@ -1988,6 +2160,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Generate Outfits File
   generateOutfitsFileButton.addEventListener("click", generateOutfitsFile);
+
+  // Adds listeners for outfit list handling
+  document.querySelectorAll('#outfitsList li').forEach((outfitItem) => {
+    outfitItem.addEventListener("click", () => handleOutfitClick(outfitItem));
+    outfitItem.querySelector('.remove-outfit')?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        handleOutfitRemove(outfitItem);
+    });
+  });
+
+  // Import existing outfit file
+  document.getElementById('importOutfitsButton').addEventListener('click', function () {
+    const fileInput = document.getElementById('importOutfits');
+    const file = fileInput.files[0];
+    if (!file) {
+        alert('No file selected.');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        const fileContent = event.target.result;
+
+        try {
+            parseOutfitsFromJS(fileContent);
+        } catch (error) {
+            console.error("Error parsing outfits: ", error);
+            alert("Error parsing outfits.");
+        }
+    };
+
+    reader.readAsText(file);
+  });
+
+  // Attach a MutationObserver to the positionsList
+  const outfitObserver = new MutationObserver(() => {
+    updateOutfitStats(); // Update stats whenever the list is changed
+  });
+
+  // Configure the observer to watch for changes in child elements
+  outfitObserver.observe(outfitsList, { childList: true });
 
   // #endregion --- Listeners - Outfits
 

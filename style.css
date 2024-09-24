@@ -388,6 +388,14 @@ input:disabled {
     box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
 }
 
+.form-right-top-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    justify-items: center;
+    text-align: center;
+}
+
 .form-center h2, 
 .form-center h3, 
 .form-center h4 {
