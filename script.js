@@ -2413,6 +2413,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Tooltips
   tippy.setDefaultProps({
+    theme: 'xcl',
     animation: 'scale',
     arrow: true,
     placement: 'right',
@@ -2428,7 +2429,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   tippy([mcfModAuthor, blkModAuthor, metaAuthor],{
-    content: 'You! Your @handle or name/nickname. <br><br> Example: "Chloe"'
+    content: 'You! <br>You can put your @handle, your name or nickname. However you would like people to know you.<br><br> Example: "Chloe"'
   })
 
   tippy([blkYourModVersion],{
@@ -2439,13 +2440,17 @@ document.addEventListener("DOMContentLoaded", function () {
     content: "This is the name of YOUR MCF mod. Usually it is the girl's name. <br><b>It should match exactly what is in your mod's meta</b>. <br><br>Example: Bonnie"
   })
 
-  tippy([],{
-    content: ''
+  tippy([positionName],{
+    content: 'This is the name of the position that will show up in game. It must match the file name. <br>It is not case sensitive, however formatting in the game defaults to "Proper Case" for this. <br><br> This means that: "wHaT aRe YoU dOiNg StEpDaD" will get normalized out to "What Are You Doing Stepdad".'
+  })
+
+  tippy([positionFlavor],{
+    content: "This is the flavor text that shows up under the position. It can be descriptive, informative, 90's song lyrics or movie quotes... whatever you want it to say."
   })
 
   /*
   tippy([],{
-    content:
+    content: ''
   })
   */
 

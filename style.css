@@ -224,6 +224,20 @@ input:disabled {
     cursor: not-allowed;
 }
 
+.tippy-box[data-theme~='xcl'] {
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
+    color: #fff;
+    font-family: Helvetica;
+    font-weight: 600;
+    text-shadow: -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+    border:1px solid #fff;
+    -webkit-box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+    box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+
 .tabs {
     display: flex;
     justify-content: center;
