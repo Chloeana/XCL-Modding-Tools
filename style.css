@@ -362,14 +362,21 @@ input:disabled {
 }
 
 .form-center {
-    width: 80%;
+    width: 100%;
     background-color: #334c9e;
-    padding: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border: 2px solid #e27087;
     border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
     -webkit-box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
     box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
+}
+
+.form-center-wrapper {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-right-top,
@@ -434,27 +441,93 @@ input:disabled {
 .form-single-line label {
     width: 300px;
     margin-right: 10px;
+    padding: 5px;
+    align-items: center;
     text-align: right;
 }
 
 .form-single-line input {
     width: 300px;
-    padding: 8px;
+    padding: 5px;
     background-color: #e27087;
     color: #ffffff;
     border: 2px solid #b25b6e;
     border-radius: 5px;
-    box-sizing: border-box;
+    align-items: center;
+    box-sizing: content-box;
 }
 
 .form-single-line input[type="number"] {
     width: 10%;
-    padding: 8px;
     margin-bottom: 10px;
+}
+
+.form-grid {
+    display: grid;
+    gap: 10px;
+    padding: 5px;
+}
+
+.form-1x2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.form-1x3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.form-1x4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.form-1x5 {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.form-1x6 {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.form-2x2 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto); /* 2 rows, height auto-adjusts */
+}
+
+.form-2x4 {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+}
+
+.form-grid label {
+    text-align: right;
+    padding-right: 5px;
+}
+
+.form-grid input {
+    width: 150px;
+    padding: 5px;
+    background-color: #e27087;
+    color: #ffffff;
+    border: 2px solid #b25b6e;
+    border-radius: 5px;
+}
+
+.form-grid .directory {
+    width: 400px;
+    padding: 5px;
+    background-color: #e27087;
+    color: #ffffff;
+    border: 2px solid #b25b6e;
+    border-radius: 5px;
+}
+
+.form-grid input[type="number"] {
+    width: 30%;
 }
 
 .form-button-center {
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .slider-container {

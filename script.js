@@ -10,9 +10,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // #endregion --- Vars - General
 
   // #region --- Vars - MCF ---
-  const mcfBaseGameVersion = document.getElementById("mcfBaseGameVersion"); // XCL Version on MCF Tab
-  const mcfMCFVersion = document.getElementById("mcfMCFVersion"); // MCF Version on MCF Tab
+  const mcfBaseGameVersion = document.getElementById("mcfBaseGameVersion");
+  const mcfMCFVersion = document.getElementById("mcfMCFVersion");
+  const mcfYourModVersion = document.getElementById("mcfYourModVersion");
+  const mcfModAuthor = document.getElementById("mcfModAuthor");
   const generateMCFDirectoriesButton = document.getElementById("generateMCFDirectoriesButton"); 
+  const mcfCharacterName = document.getElementById("mcfCharacterName");
+
   // #endregion --- MCF ---
   
   // #region --- Vars - Positions ---
@@ -111,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // #endregion --- Outfits ---
 
   // #region --- Vars - BLACKED ---
+  const blkCharacterName = document.getElementById("blkCharacterName")
   const blkYourModBLKVersion = document.getElementById("blkYourModBLKVersion");
   const blkModAuthor = document.getElementById("blkModAuthor");
   const blkBaseGameVersion = document.getElementById("blkBaseGameVersion");
@@ -120,6 +125,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const blkYourModVersion = document.getElementById("blkYourModVersion");
   const generateBlackedFoldersButton = document.getElementById("generateBlackedFoldersButton");
   const generateBlackedFilesButton = document.getElementById("generateBlackedFilesButton");
+
+  const blkTransDoggyContainer = document.getElementById("blkTransDoggyContainer");
+  const blkTransDoggyPath = document.getElementById("blkTransDoggyPath");
+  const blkTransDoggyVid = document.getElementById("blkTransDoggyVid");
+  const blkTransDoggyVidPrefix = document.getElementById("blkTransDoggyVidPrefix");
+  const blkTransDoggyInsertImg = document.getElementById("blkTransDoggyInsertImg");
+  const blkTransDoggyInsertImgPrefix = document.getElementById("blkTransDoggyInsertImgPrefix");
+  const blkTransDoggyMoanImg = document.getElementById("blkTransDoggyMoanImg");
+  const blkTransDoggyMoanImgPrefix = document.getElementById("blkTransDoggyMoanImgPrefix");
+  
+
   let blkzip = '' // default value for BLACKED Zip var
   // #endregion --- BLACKED ---
 
@@ -233,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function () {
         inputElement.value = ''; // Clear the input field
       }
     });
-  }
+  };
 
   // Add Tags to a Tag Container
   function addTag(tagInput, tagContainer, tagList) {
@@ -304,7 +320,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tagSpan.remove();
         });
     });
-  }
+  };
 
   // Collect tags from dynamic video sections
   function collectTags(tagContainer) {
@@ -501,12 +517,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // Helper for clearing position tags
   function clearPositionTags(){
     positionTagsContainer.innerHTML = "";
-  }
+  };
 
   // Helper for clearing position tag input
   function clearPositionTagInput(){
     positionTagsInput.value = "";
-  }
+  };
 
   // Clear position form
   function resetPositionForm() {
@@ -1451,7 +1467,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         alert("No outfits imported.");
     }
-}
+  };
 
   // Extract outfit details from imported outfit and assign values
   function extractOutfitObject(blockContent) {
@@ -1735,12 +1751,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Remove the link from the document
     document.body.removeChild(link);
-  }
-
+  };
 
   // #endregion --- Functions - Outfits
 
   // #region --- Functions - Blacked
+
+  // Set up Default Values
+  function setBlkDefaultValues() {
+    const name = blkCharacterName.value;
+
+    blkTransDoggyVidPrefix.value = "transactional"
+    blkTransDoggyInsertImgPrefix.value = "transactional insert"
+    blkTransDoggyMoanImgPrefix.value = "moan"
+  };
+
+  // Add Character name into directories
+  function setBlkDefaultDirectories() {
+    const name = blkCharacterName.value;
+
+    blkTransDoggyPath.value = `${name}/sex/doggy/bbc/`
+ 
+  };
+
 
   // Generate Blacked Zip
   function generateBlackedZip(){
@@ -1749,7 +1782,7 @@ document.addEventListener("DOMContentLoaded", function () {
     blkzip.generateAsync({ type: "blob" }).then(function (content) {
       const link = document.createElement("a");
       link.href = URL.createObjectURL(content);
-      link.download = `BLACKED_${characterName}.zip`; // Name of the ZIP file
+      link.download = `BLACKED_${characterName}.zip`;
       link.click();
     });
   }
@@ -1764,9 +1797,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const characterName = document.getElementById('blkCharacterName').value;
 
     if (!characterName) {
-      console.error("Character Name is required."); // Log an error to the console
-      alert("Please enter a character name."); // Alert the user
-      return; // Stop further execution if character name is missing
+      console.error("Character Name is required.");
+      alert("Please enter a character name.");
+      return;
     }
     
     // Add directories to the ZIP
@@ -1798,7 +1831,8 @@ document.addEventListener("DOMContentLoaded", function () {
       gatherBlackedDirectories();
     } 
 
-    // Collect meta input values from the form
+    // Collect input values from forms
+    const characterName = blkCharacterName.value;
     const version = blkYourModBLKVersion.value;
     const author = blkModAuthor.value;
     const baseGameVersion = blkBaseGameVersion.value;
@@ -1807,9 +1841,53 @@ document.addEventListener("DOMContentLoaded", function () {
     const MCFModName = blkYourModName.value;
     const MCFModVersion = blkYourModVersion.value;
 
+    // Transactional Doggy
+    const blkTransDoggyVidInt = parseInt(blkTransDoggyVid.value);
+    const blkTransDoggyInsertImgInt = parseInt(blkTransDoggyInsertImg.value);
+    const blkTransDoggyMoanImgInt = parseInt(blkTransDoggyMoanImg.value);
+    const tagsTransDoggy = [];
+    const rhythmTransDoggy = [];
+
+
+    // Field validation
+    if (!characterName) {
+      console.error("Character Name is required.");
+      alert("Please enter a character name.");
+      return;
+    }
+
     if (!version || !author || !baseGameVersion || !MCFVersion || !BLKVersion || !MCFModName || !MCFModVersion) {
       alert("All meta fields are required. Please fill out the fields.");
-      return; // Stop execution if any field is empty
+      return; 
+    }
+
+    if (!blkTransDoggyVidInt || !blkTransDoggyInsertImgInt || !blkTransDoggyMoanImgInt) {
+      console.error("Transactional Doggy fields are required."); 
+      alert("Transactional Doggy fields are required.");
+      return;
+    }
+
+    
+    // Collect tag data from each video
+    for (let i = 1; i <= blkTransDoggyVidInt; i++) {
+      // Collect tags from dropdowns
+      const transDoggyTagLocation = blkTransDoggyContainer.querySelector(`#location_tag_${i}`)?.value || '';
+      const additionalTagsTransDoggyElements = [
+        blkTransDoggyContainer.querySelector(`#tag_${i}_1`),
+        blkTransDoggyContainer.querySelector(`#tag_${i}_2`),
+        blkTransDoggyContainer.querySelector(`#tag_${i}_3`)
+    ];
+      // Extract and filter tags
+      const additionalTagsTransDoggy = additionalTagsTransDoggyElements
+      .map(tag => tag ? tag.value.trim() : '')  // Get values and trim whitespace
+      .filter(tag => tag); // Filter out empty values
+
+      // Combine location tag with additional tags
+      const tagArrayTransDoggy = [transDoggyTagLocation, ...additionalTagsTransDoggy].filter(tag => tag); // Filter out empty strings
+
+      // Format tags for Twee
+      tagsTransDoggy.push(`"${characterName}/sex/doggy/bbc/transactional ${i}", (a:"${tagArrayTransDoggy.join('","')}")`);
+      rhythmTransDoggy.push(`"${characterName}/sex/doggy/bbc/transactional ${i}",500`);
     }
 
     // Create the meta content string
@@ -1823,63 +1901,18 @@ document.addEventListener("DOMContentLoaded", function () {
     metaContent += `   - name: "${MCFModName}"\n    version:\n      atLeast: "${MCFModVersion}"\n`;
     metaContent += `   - name: "BLACKED"\n    version:\n      atLeast: "${BLKVersion}"\n`;
     
-    // Collect remaining input values
-    const characterName = document.getElementById('blkCharacterName').value;
-
-    if (!characterName) {
-      console.error("Character Name is required.");
-      alert("Please enter a character name.");
-      return;
-    }
-
-    // twee building
+    // twee building section
     let tweeContent = `:: blacked compatibility [around]\n{(display:_around)\n(set:$blacked_compatible_list to it + (dm:"${characterName}",1))}\n\n`;
-    
+
     // Transactional Doggy
-    const containerTransDoggy = document.getElementById('containerTransDoggy');
-    const vidsTransDoggy = parseInt(document.getElementById('blkDoggyTransVid').value);
-    const imgTransDoggy = parseInt(document.getElementById('blkDoggyTransInsImg').value);
-    const imgTransDoggyMoan = parseInt(document.getElementById('blkDoggyTransMoanImg').value);
-    const tagsTransDoggy = [];
-    const rhythmTransDoggy = [];
-
-    if (!vidsTransDoggy || !imgTransDoggy || !imgTransDoggyMoan) {
-      console.error("Transactional Doggy fields are required."); 
-      alert("Transactional Doggy fields are required.");
-      return;
-    }
-
-    // Collect tag data from each video
-    for (let i = 1; i <= vidsTransDoggy; i++) {
-      // Collect tags from dropdowns
-      const tagLocationTransDoggy = containerTransDoggy.querySelector(`#location_tag_${i}`)?.value || '';
-      const additionalTagsTransDoggyElements = [
-        containerTransDoggy.querySelector(`#tag_${i}_1`),
-        containerTransDoggy.querySelector(`#tag_${i}_2`),
-        containerTransDoggy.querySelector(`#tag_${i}_3`)
-    ];
-      // Extract and filter tags
-      const additionalTagsTransDoggy = additionalTagsTransDoggyElements
-      .map(tag => tag ? tag.value.trim() : '')  // Get values and trim whitespace
-      .filter(tag => tag); // Filter out empty values
-
-      // Combine location tag with additional tags
-      const tagArrayTransDoggy = [tagLocationTransDoggy, ...additionalTagsTransDoggy].filter(tag => tag); // Filter out empty strings
-
-      // Format tags for Twee
-      tagsTransDoggy.push(`"${characterName}/sex/doggy/bbc/transactional ${i}", (a:"${tagArrayTransDoggy.join('","')}")`);
-      rhythmTransDoggy.push(`"${characterName}/sex/doggy/bbc/transactional ${i}",500`);
-    }
-
-    // Add to twee
     tweeContent += `:: sex doggy transactional ${characterName} [around]\n`;
-    tweeContent += `{(if:(dm-names:$npc) contains "race")[(if:($npc's "race" is "black"))[\n`;
-    tweeContent += `(set:$img to "${characterName}/sex/doggy/bbc/transactional " + (text:(twist:1,${vidsTransDoggy}))) \n`;
+    tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
+    tweeContent += `(set:$img to "${characterName}/sex/doggy/bbc/transactional " + (text:(twist:1,${blkTransDoggyVidInt}))) \n`;
     tweeContent += `(set:$doggy_pic to "<img class='greyborder' src='img/scenes/characters/${characterName}/sex/doggy/bbc/transactional insert " + (text:(twist:1,${imgTransDoggy})) + ".jpg' width=100% height=auto>") \n`;
     tweeContent += `(set:$doggy_moan_pic to "<img class='greyborder' src='img/scenes/characters/${characterName}/sex/doggy/bbc/moan " + (text:(twist:1,${imgTransDoggyMoan})) + ".jpg' width=100% height=auto>")\n`;
     tweeContent += `(set:$doggy_rhythm to $img of (dm:${rhythmTransDoggy.join(',')}))\n`;
     tweeContent += `(set:$text to $img of (dm:${tagsTransDoggy.join(',')}))\n`;
-    tweeContent += `](else:)[(display:_around)]](else:)[(display:_around)]}\n\n`
+    tweeContent += `](else:)[(display:_around)]\n}\n\n`;
 
     // Add directories to the ZIP
     blkzip.folder("metas").file(`${characterName}.meta`, metaContent);
@@ -1896,10 +1929,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Build tag fields for BLACKED - Transactional Doggy
   function generateBLKTransDoggyFields() {
-    const container = document.getElementById('containerBLKTransDoggy');
-    container.innerHTML = ''; // Clear any existing fields
+    blkTransDoggyContainer.innerHTML = ''; // Clear any existing fields
 
-    const numVideos = parseInt(document.getElementById('blkDoggyTransVid').value) || 0;
+    const numVideos = parseInt(blkTransDoggyVid.value) || 0;
 
     // Define the location options for the first tag
     const locationOptions = ["bed", "couch", "desk", "floor", "wall", "standing"];
@@ -1956,7 +1988,7 @@ document.addEventListener("DOMContentLoaded", function () {
         tagField.appendChild(dropdownTag);
       }
 
-      container.appendChild(tagField);
+      blkTransDoggyContainer.appendChild(tagField);
     }
   };
   // #endregion --- Functions - Blacked
@@ -2028,7 +2060,7 @@ document.addEventListener("DOMContentLoaded", function () {
       link.download = `${name}_meta.zip`; // Name of the ZIP file
       link.click();
     });
-  }
+  };
   // #endregion --- Functions - MetaMaker
   
   // #endregion ----- Functions Section -----
@@ -2206,6 +2238,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // #region --- Listeners - Blacked
 
+  // Set up Blacked Defaults after Character Input
+  blkCharacterName.addEventListener("input", setBlkDefaultDirectories);
+
   // Generate Blacked Directories Only
   generateBlackedFoldersButton.addEventListener("click", generateBlackedFolders);
 
@@ -2213,7 +2248,7 @@ document.addEventListener("DOMContentLoaded", function () {
   generateBlackedFilesButton.addEventListener("click", generateBlackedFiles);
 
   // Build tag fields for BLACKED - Transactional Doggy
-  document.getElementById('blkDoggyTransVid').addEventListener('input', generateBLKTransDoggyFields);
+  document.getElementById('blkTransDoggyVid').addEventListener('input', generateBLKTransDoggyFields);
   // #endregion --- Listeners - Blacked
 
   // #region --- Listeners - Bar Girl
@@ -2365,12 +2400,56 @@ document.addEventListener("DOMContentLoaded", function () {
   // Set up outfit fields
   updateOutfitFields();
 
+  // Set up Blacked defaults
+  setBlkDefaultDirectories();
+  setBlkDefaultValues();
+
   // Sets up tagging sections
   handleTagInput(positionTagsInput, positionTagsList, addPositionTag);
   handleTagInput(outfitColorsInput, outfitColorsList, addOutfitColors);
   handleTagInput(outfitTagsInput, outfitTagsList, addOutfitTags);
   handleTagInput(outfitEmphasisInput, outfitEmphasisList, addOutfitEmphasis);
   handleTagInput(outfitRevealsInput, outfitRevealsList, addOutfitReveals);
+
+  // Tooltips
+  tippy.setDefaultProps({
+    animation: 'scale',
+    arrow: true,
+    placement: 'right',
+    allowHTML: true,
+  });
+
+  tippy([blkCharacterName, outfitCharacterName, positionCharacterName, mcfCharacterName], {
+    content: 'This is also the "id" for your character. It is usually their first name, in all lowercase. <br><br>It could be "lauren", for example.',
+  })
+
+  tippy([metaVersion, blkYourModBLKVersion, mcfYourModVersion],{
+    content: 'This is the version of your mod. You will need to increase it when you release updates. <br><br>Recommend semantic versioning (major.minor.patch).<br> Example: "0.2.1" for 0 major / 2 minor / 1 patch.'
+  })
+
+  tippy([mcfModAuthor, blkModAuthor, metaAuthor],{
+    content: 'You! Your @handle or name/nickname. <br><br> Example: "Chloe"'
+  })
+
+  tippy([blkYourModVersion],{
+    content: 'This is the version of YOUR MCF mod, for the girl that you are making. <br><br>Example: If your MCF mod is for "Bonnie", then whatever version "Bonnie" is on, will go in this box.'
+  })
+
+  tippy([blkYourModName],{
+    content: "This is the name of YOUR MCF mod. Usually it is the girl's name. <br><b>It should match exactly what is in your mod's meta</b>. <br><br>Example: Bonnie"
+  })
+
+  tippy([],{
+    content: ''
+  })
+
+  /*
+  tippy([],{
+    content:
+  })
+  */
+
+  
 
   // #endregion ----- Initialization -----
 }); // DOM End Line
