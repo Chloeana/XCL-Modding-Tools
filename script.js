@@ -26,7 +26,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const positionTypeRadios = document.querySelectorAll('input[name="positionType"]');
   const positionSubtypeRadios = document.querySelectorAll('input[name="subtype"]');
   const positionType = document.querySelector('input[name="positionType"]:checked');
+  const positionTypeActive = document.getElementById('active');
+  const positionTypePassive = document.getElementById('passive');
   const positionSubType = document.querySelector('input[name="subtype"]:checked');
+  const positionSubTypeCowgirl = document.getElementById('cowgirl');
+  const positionSubTypeDoggy = document.getElementById('doggy');
+  const positionSubTypeMissionary = document.getElementById('missionary');
+  const positionSubTypeService = document.getElementById('service');
   const positionSubtypeOptions = {
     active: {
         cowgirl: ["Cowgirl", "Full Nelson", "Standing Fuck"],
@@ -51,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const positionSkillType = document.getElementById("skill");
   const positionSkillLevel = document.getElementById("skillLevel");
   const positionsList = document.getElementById("positionsList");
+  const positionsLocations = document.getElementById("positionLocationCheckboxes");
   const addPositionButton = document.getElementById("addPosition");
   const generatePositionsFileButton = document.getElementById("generatePositionsFileButton");
 
@@ -1285,8 +1292,7 @@ document.addEventListener("DOMContentLoaded", function () {
       !durability ||
       !style ||
       !breastSupport ||
-      !descType ||
-      locations.length === 0
+      !descType
     ) {
       alert("All fields above Underwear must be filled out.");
       return;
@@ -1610,7 +1616,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateOutfitStats() {
     const outfitList = Array.from(outfitsList.children);
     
-    // Calculate total, active, and passive counts
+    // Calculate total outfit counts
     const countTotalOutfits = outfitList.length;
     const countBeachOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'beach').length;
     const countCasualOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'casual').length;
@@ -2421,11 +2427,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   tippy([blkCharacterName, outfitCharacterName, positionCharacterName, mcfCharacterName], {
-    content: 'This is also the "id" for your character. It is usually their first name, in all lowercase. <br><br>It could be "lauren", for example.',
+    content: "This is also the <i>id</i> for your character. It is <i>usually</i> their first name, in all lowercase. <br><br>It could be 'bonnie', for example."
   })
 
   tippy([metaVersion, blkYourModBLKVersion, mcfYourModVersion],{
-    content: 'This is the version of your mod. You will need to increase it when you release updates. <br><br>Recommend semantic versioning (major.minor.patch).<br> Example: "0.2.1" for 0 major / 2 minor / 1 patch.'
+    content: "This is the version of your mod. You will need to increase it when you release updates. <br><br>Recommend semantic versioning (major.minor.patch).<br> Example: <i>0.2.1</i> for 0 major / 2 minor / 1 patch."
   })
 
   tippy([mcfModAuthor, blkModAuthor, metaAuthor],{
@@ -2433,24 +2439,105 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   tippy([blkYourModVersion],{
-    content: 'This is the version of YOUR MCF mod, for the girl that you are making. <br><br>Example: If your MCF mod is for "Bonnie", then whatever version "Bonnie" is on, will go in this box.'
+    content: "This is the version of YOUR MCF mod, for the girl that you are making. <br><br>Example: If your MCF mod is for 'Bonnie', then whatever version 'Bonnie' is on, will go in this box."
   })
 
   tippy([blkYourModName],{
-    content: "This is the name of YOUR MCF mod. Usually it is the girl's name. <br><b>It should match exactly what is in your mod's meta</b>. <br><br>Example: Bonnie"
+    content: "This is the name of YOUR MCF mod. Usually it is the girl's name. <br><i>It should match exactly what is in your mod's meta</i>. <br><br>Example: Bonnie"
   })
 
   tippy([positionName],{
-    content: 'This is the name of the position that will show up in game. It must match the file name. <br>It is not case sensitive, however formatting in the game defaults to "Proper Case" for this. <br><br> This means that: "wHaT aRe YoU dOiNg StEpDaD" will get normalized out to "What Are You Doing Stepdad".'
+    content: "This is the name of the position that will show up in game. It must match the file name. <br>It is not case sensitive, however formatting in the game defaults to <i>Proper Case</i> for this. <br><br> This means that: 'wHaT aRe YoU dOiNg StEpDaD' will get normalized out to 'What Are You Doing Stepdad'."
+  })
+
+  tippy([outfitName],{
+    content: "This is the name of the outfit that will show up in game. It must match the file name. <br>It is not case sensitive, however formatting in the game defaults to <i>Proper Case</i> for this. <br><br> This means that: 'A fine mASSterpiece' will get normalized out to 'A fine massterpiece'."
   })
 
   tippy([positionFlavor],{
     content: "This is the flavor text that shows up under the position. It can be descriptive, informative, 90's song lyrics or movie quotes... whatever you want it to say."
   })
 
+  tippy([outfitFlavor],{
+    content: "This is the flavor text that shows up under the outfit. It can be descriptive, informative, 90's song lyrics or movie quotes... whatever you want it to say."
+  })
+
+  tippy([positionTypeActive],{
+    content: "An <i>ACTIVE</i> position means that your character is the <u>active</u> participant. Meaning they are doing all or most of the work."
+  })
+
+  tippy([positionTypePassive],{
+    content: "A <i>PASSIVE</i> position means that your character is the <u>passive</u> participant. Meaning your partner is doing all or most of the work."
+  })
+
+  tippy([positionSubTypeCowgirl],{
+    content: "Where your character is on top of their partner. Can also include standing up.<br><br> It is where you are <i>riding</i> them."
+  })
+
+  tippy([positionSubTypeDoggy],{
+    content: "Where your character is facing away from their partner. Can include standing or sideways.<br><br> Your partner is behind you."
+  })
+
+  tippy([positionSubTypeMissionary],{
+    content: "Where your character is lying on their back, facing their partner.<br><br> Classic face-to-face position."
+  })
+
+  tippy([positionSubTypeService],{
+    content: "Where your character is servicing their partner (or getting serviced by their partner), usually with their mouth or other body parts (like hand, tits, feet, etc)."
+  })
+
+  tippy([positionAthletics, positionAthletics.nextElementSibling],{
+    content: "In <u>Active</u> positions, Athletics plays a role in calculating the stamina cost⚡ (along with your fitness💪)<br><br>In <u>Passive</u> positions, Athletics determines your partner's eligible positions (along with your partner's fitness)."
+  })
+
+  tippy([positionRoughness, positionRoughness.nextElementSibling],{
+    content: "Roughness affects the rate at which you gain or lose control. <br><br>In <u>Only Passive</u> positions, Roughness determines your partner's eligible positions (along with their dominance)."
+  })
+
+  tippy([positionPleasureFactor],{
+    content: "Pleasure Factor determines the method in which the rate that you gain pleasure is calculated.<br><br>- Oral is based on your partner's oral skill.<br>- Width is based on your partner's cock's girth.<br>- Length is based on your partner's cock's length.<br>- Both is based on your partner's cock's rating.<br>- None means you gain no pleasure."
+  })
+
+  tippy([positionYourPleasure, positionYourPleasure.nextElementSibling],{
+    content: "Another component of how your pleasure💦 gains happen.<br><br> It is calculated as <i>this number</i> times the number returned by the pleasure factor calculation."
+  })
+
+  tippy([positionHisPleasure, positionHisPleasure.nextElementSibling],{
+    content: "Affects the rate at which your partner gains pleasure🍾.<br><br> It is <i>this number</i> divided by 2.<br> Example: A position with a 6 in this field would fill up your partner's pleasure bar by 3 (bar is 0-10)."
+  })
+
+  tippy([positionHisSatisfaction, positionHisSatisfaction.nextSibling],{
+    content: "Affects the rate at which your partner gains satisfaction😋.<br><br> Normal rate is <i>this number</i> divided by 2. Depending on your actions, this can be doubled or halfed.<br>His satisfaction is what lets you increase their stats after bedroom sex."
+  })
+
+  tippy([positionDropdown],{
+    content: "Position may sometimes match the SubType, but can differeniate certain positions within the SubType as well.<br><br>Example: The SubType may be Doggy, but if the couple is standing then the Position would be 'Standing Fuck'."
+  })
+
+  tippy([positionRhythmInput],{
+    content: "This is the Beats Per Minute (BPM) of the position, measured in milliseconds. Take 60000 divided by BPM to convert.<br><br>Example: 60 BPM = 1000 rhythm, 120 BPM = 500 rhythm, etc.<br><br> Rhythm is used in the minigames."
+  })
+
+  tippy([positionTagsInput],{
+    content: "Tags are used to drive on screen flavor text and descriptions. Some mods may also lean on tags for filtering purposes."
+  })
+
+  tippy([positionSkillType],{
+    content: "This is the type of skill that this position requires. It will also reward experience for using that skill. On skill checks, this is what determines the pass and fail values. <br><br>It is also used independantly with skill levels.<br>For example, if the position's skill is 'Blowjob', and you have a skill level of 3 for the blowjob skill, you'll earn experience towards reaching level 4 in blowjob skill, but only in that skill."
+  })
+
+  tippy([positionSkillLevel, positionSkillLevel.nextElementSibling],{
+    content: "This is the level of skill that this position requires.<br><br>For example, if the position's skill is 'Blowjob' and the skill level is 5, but you have a skill level of 3, you won't be able to earn this position yet. Only when you reach level 5 or higher will this be an eligible position to be learned."
+  })
+
+  tippy([positionsLocations],{
+    content: "Places where this position can happen. Most positions will have this set to 'bed', but some may include things like 'couch','floor', etc. Locations will have different furniture tagged as well."
+  })
+
+
   /*
   tippy([],{
-    content: ''
+    content: ""
   })
   */
 
