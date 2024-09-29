@@ -89,6 +89,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const outfitBottom = document.getElementById("outfitBottom");
   const outfitsList = document.getElementById("outfitsList");
   const addOutfitButton = document.getElementById("addOutfit");
+  const outfitLocationCheckboxes = document.getElementById("outfitLocationCheckboxes");
+  const outfitBeach = document.getElementById("beach");
+  const outfitOffice = document.getElementById("office");
+  const outfitGym = document.getElementById("gym");
+  const outfitStylin = document.getElementById("stylin");
+  const outfitLounge = document.getElementById("lounge");
+  const outfitCasual = document.getElementById("casual");
+  const outfitFetish = document.getElementById("fetish");
   const generateOutfitsFileButton = document.getElementById("generateOutfitsFileButton");
 
 
@@ -99,25 +107,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const twoPieceRadio = document.getElementById("twoPieceRadio");
 
   // Tags section
-  const addOutfitTagsButton = document.getElementById("addOutfitTagsButton");
-  const outfitTagsContainer = document.getElementById("outfitTagsContainer");
-  const outfitTagsList = document.getElementById("outfitTagsList");
-  const outfitTagsInput = document.getElementById("outfitTagsInput");
-
   const addColorButton = document.getElementById("addColorButton");
   const outfitColorsContainer = document.getElementById("outfitColorsContainer");
   const outfitColorsList = document.getElementById("outfitColorsList");
   const outfitColorsInput = document.getElementById("outfitColorsInput");
+
+  const addEmphasisButton = document.getElementById("addEmphasisButton");
+  const outfitEmphasisContainer = document.getElementById("outfitEmphasisContainer");
+  const outfitEmphasisList = document.getElementById("outfitEmphasisList");
+  const outfitEmphasisInput = document.getElementById("outfitEmphasisInput");
 
   const addRevealsButton = document.getElementById("addRevealsButton");
   const outfitRevealsContainer = document.getElementById("outfitRevealsContainer");
   const outfitRevealsList = document.getElementById("outfitRevealsList");
   const outfitRevealsInput = document.getElementById("outfitRevealsInput");
 
-  const addEmphasisButton = document.getElementById("addEmphasisButton");
-  const outfitEmphasisContainer = document.getElementById("outfitEmphasisContainer");
-  const outfitEmphasisList = document.getElementById("outfitEmphasisList");
-  const outfitEmphasisInput = document.getElementById("outfitEmphasisInput");
+  const addOutfitTagsButton = document.getElementById("addOutfitTagsButton");
+  const outfitTagsContainer = document.getElementById("outfitTagsContainer");
+  const outfitTagsList = document.getElementById("outfitTagsList");
+  const outfitTagsInput = document.getElementById("outfitTagsInput");
+
+  
   
   // #endregion --- Outfits ---
 
@@ -2463,26 +2473,32 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   tippy([positionTypeActive],{
+    triggerTarget: [positionTypeActive, document.querySelector(`label[for="${positionTypeActive.id}"]`)],
     content: "An <i>ACTIVE</i> position means that your character is the <u>active</u> participant. Meaning they are doing all or most of the work."
   })
 
   tippy([positionTypePassive],{
+    triggerTarget: [positionTypePassive, document.querySelector(`label[for="${positionTypePassive.id}"]`)],
     content: "A <i>PASSIVE</i> position means that your character is the <u>passive</u> participant. Meaning your partner is doing all or most of the work."
   })
 
   tippy([positionSubTypeCowgirl],{
+    triggerTarget: [positionSubTypeCowgirl, document.querySelector(`label[for="${positionSubTypeCowgirl.id}"]`)],
     content: "Where your character is on top of their partner. Can also include standing up.<br><br> It is where you are <i>riding</i> them."
   })
 
   tippy([positionSubTypeDoggy],{
+    triggerTarget: [positionSubTypeDoggy, document.querySelector(`label[for="${positionSubTypeDoggy.id}"]`)],
     content: "Where your character is facing away from their partner. Can include standing or sideways.<br><br> Your partner is behind you."
   })
 
   tippy([positionSubTypeMissionary],{
+    triggerTarget: [positionSubTypeMissionary, document.querySelector(`label[for="${positionSubTypeMissionary.id}"]`)],
     content: "Where your character is lying on their back, facing their partner.<br><br> Classic face-to-face position."
   })
 
   tippy([positionSubTypeService],{
+    triggerTarget: [positionSubTypeService, document.querySelector(`label[for="${positionSubTypeService.id}"]`)],
     content: "Where your character is servicing their partner (or getting serviced by their partner), usually with their mouth or other body parts (like hand, tits, feet, etc)."
   })
 
@@ -2519,7 +2535,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   tippy([positionTagsInput],{
-    content: "Tags are used to drive on screen flavor text and descriptions. Some mods may also lean on tags for filtering purposes."
+    content: "Tags are used to drive on screen flavor text and descriptions. Some mods may also lean on tags for filtering purposes.<br><br>If you don't see a tag to fit your video, type one out yourself and add it using the 'Add Tag' button!"
   })
 
   tippy([positionSkillType],{
@@ -2531,17 +2547,186 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   tippy([positionsLocations],{
+    placement: 'top',
     content: "Places where this position can happen. Most positions will have this set to 'bed', but some may include things like 'couch','floor', etc. Locations will have different furniture tagged as well."
   })
 
+  tippy([outfitDescription],{
+    content: "This is a very short description of the outfit (a few words). It doesn't show up when you look at the outfit in the store or your wardrobe, but it is used in the game when referring to the outfit.<br><br> For example, you might see this text in game: 'As you walk around the house in your ($outfit's description)'.<br>So something like 'leopard print bikini' or 'pink cutoff'."
+  })
+
+  tippy([outfitCategory],{
+    content: "This correlates with the 8 locations where the outfit images are stored. It should be considered their main intented use scenario. A bikini for the Beach, for example.<br><br> If an outfit can be worn in multiple scenarios, like say some activeware you could wear at the beach or the gym, make the main category match where the file is actually located, then use the additional categories to add it to the other locations."
+  })
+
+  tippy([outfitLocationCheckboxes],{
+    placement: 'top',
+    content: "This would be used when selecting additional categories for the outfit. A fetish outfit that could also be used as going out (stylish)."
+  })
+
+  tippy([outfitBeach],{
+    placement: 'bottom',
+    triggerTarget: [outfitBeach, document.querySelector(`label[for="${outfitBeach.id}"]`)],
+    content: "Outfits that should be worn to the Beach."
+  })
+
+  tippy([outfitOffice],{
+    placement: 'bottom',
+    triggerTarget: [outfitOffice, document.querySelector(`label[for="${outfitOffice.id}"]`)],
+    content: "Outfits that should be worn to the Office."
+  })
+
+  tippy([outfitGym],{
+    placement: 'bottom',
+    triggerTarget: [outfitGym, document.querySelector(`label[for="${outfitGym.id}"]`)],
+    content: "Outfits that should be worn to the Gym."
+  })
+
+  tippy([outfitStylin],{
+    placement: 'bottom',
+    triggerTarget: [outfitStylin, document.querySelector(`label[for="${outfitStylin.id}"]`)],
+    content: "Outfits that should be worn when you go out at night (to the bar, to the club, etc)."
+  })
+
+  tippy([outfitLounge],{
+    placement: 'bottom',
+    triggerTarget: [outfitLounge, document.querySelector(`label[for="${outfitLounge.id}"]`)],
+    content: "Outfits that should be worn when lounging around the house."
+  })
+
+  tippy([outfitCasual],{
+    placement: 'bottom',
+    triggerTarget: [outfitCasual, document.querySelector(`label[for="${outfitCasual.id}"]`)],
+    content: "Outfits that should be worn during the day time when you leave the house (to the mall, or other afternoon activity)."
+  })
+
+  tippy([outfitFetish],{
+    placement: 'bottom',
+    triggerTarget: [outfitFetish, document.querySelector(`label[for="${outfitFetish.id}"]`)],
+    content: "Outfits that should be worn in the bedroom when you invite someone over 😏."
+  })
+
+  tippy([outfitType],{
+    content: "This classifies the type of outfit. It is used in game to make sure you are dressed in appropiate attire for certain events.<br><br>For example, if you show up to the club in a bikini, you'll be turned away."
+  })
+
+  tippy([outfitStyle],{
+    content: "This is mostly used in conversations when people are referring to your outfit, and for matching handbag styles.<br><br>Your stepsis jokes with you about your outfit under your bathrobe when you invite someone over:<br>'Is prince charming taking you to the ball?' she jokes at your ($outfit's style) outfit."
+  })
+
+  tippy([outfitPrice],{
+    content: "How much the outfit will cost when the player goes to buy it."
+  })
+
+  tippy([outfitSluttiness, outfitSluttiness.nextElementSibling],{
+    content: "Sluttiness👄 affects other's reactions and mainly guides conversations. <br><br>Stat wise, it can also impact affection, sexual reputation at work, etc."
+  })
+
+  tippy([outfitComfort, outfitComfort.nextElementSibling],{
+    content: "Comfort😌 affects your mood. <br>Comfortable clothes can reduce negative mood stats. <br>Uncomfortable clothes can make your mood worse."
+  })
+
+  tippy([outfitBreastSupport, outfitBreastSupport.nextElementSibling],{
+    content: "Breast Support👙 affects soreness in characters with cup sizes of C or higher. Having sore breasts can lead to a negative fitness debuff."
+  })
+
+  tippy([outfitDurability, outfitDurability.nextElementSibling],{
+    content: "Durability affects how easily your clothes can be ripped. Lower durability clothes are more likely to be ripped when being taken off you.<br>Certain npc personalities are more likely to try to rip your outfit on purpose.<br><br>Special note: if the outfit has the 'very fragile' tag, durability gets overwritten and becomes 2. <br>If it has the 'fragile' tag, it gets overwritten to 4."
+  })
+
+  tippy([onePieceRadio],{
+    placement: 'right-end',
+    triggerTarget: [onePieceRadio, document.querySelector(`label[for="${onePieceRadio.id}"]`)],
+    content: "This indicates the outfit is one continuous piece, meaning it will have one description.<br><br>Like a swimsuit, a dress, bath robe, romper, etc."
+  })
+
+  tippy([twoPieceRadio],{
+    placement: 'right-end',
+    triggerTarget: [twoPieceRadio, document.querySelector(`label[for="${twoPieceRadio.id}"]`)],
+    content: "This is for when an outfit has a top and a bottom, meaning it will have two descriptions.<br><br>A two piece swimsuit, a top with a skirt, sports bra + yoga pants, etc."
+  })
+
+  tippy([outfitOnePiece],{
+    content: "This is the very short description of the outfit. <br><br>'Sundress', 'Bodysuit', 'Latex Dress', etc"
+  })
+
+  tippy([outfitTop],{
+    content: "This is the very short description of the top piece of the outfit.<br><br>Example: 'Bikini Top', 'Red Jacket', etc."
+  })
+
+  tippy([outfitBottom],{
+    content: "This is the very short description of the bottom piece of the outfit.<br><br>Example: 'Bikini Bottom', 'Black Skirt', etc."
+  })
+
+  tippy([outfitBraTrue],{
+    placement: 'right-end',
+    triggerTarget: [outfitBraTrue, document.querySelector(`label[for="${outfitBraTrue.id}"]`)],
+    content: "Check this box if the character would be wearing a bra underneath of the outfit. <br><br>This determines if your character has additional layers to remove during sex scenes, as well as sets description values tied to lingerie, and also impacts breast support."
+  })
+
+  tippy([outfitPantiesTrue],{
+    placement: 'right-end',
+    triggerTarget: [outfitPantiesTrue, document.querySelector(`label[for="${outfitPantiesTrue.id}"]`)],
+    content: "Check this box if the character would be wearing panties underneath of the outfit. <br><br>This behaves the same way as Bra, without the breast support."
+  })
+
+  tippy([outfitShoes],{
+    content: "The type of shoes being worn with the outfit. <br><br>Mostly used for descriptive purposes, but the heeled ones can trigger a walking on heels sound effect."
+  })
+
+  tippy([outfitColorsInput],{
+    content: "Optional. This drives the cum on clothes image. <br>If nothing is specified you'll get an image of cum on black fabric."
+  })
+
+  tippy([outfitEmphasisInput],{
+    content: "Optional. This drives dialog triggers.<br><br> Example. For 'Asscheeks' it might trigger the thought: 'He's staring at my butt', etc."
+  })
+
+  tippy([outfitRevealsInput],{
+    content: "Optional. Similar to Emphasizes, this drives dialog.<br><br>Example: If your outfit reveals 'boobs' might cause your coworkers to say that 'your cleavage is like a sales magnet'."
+  })
+
+  tippy([outfitTagsInput],{
+    content: "Optional. Tags can impact a lot of things. Stat buffs, sound effects, npc personality, descriptions, actions.<br><br>Refer to the tags in the list for more information."
+  })
+
+  tippy([],{
+    content: ""
+  })
+
+  tippy([],{
+    content: ""
+  })
+
+  tippy([],{
+    content: ""
+  })
+
+  tippy([],{
+    content: ""
+  })
+
+  tippy([],{
+    content: ""
+  })
+
+  tippy([],{
+    content: ""
+  })
+
+  tippy([],{
+    content: ""
+  })
+
+  tippy([],{
+    content: ""
+  })
 
   /*
   tippy([],{
     content: ""
   })
   */
-
-  
 
   // #endregion ----- Initialization -----
 }); // DOM End Line
