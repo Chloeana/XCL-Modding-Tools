@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XCL Modding Tools</title>
+    <link rel="icon" href="https://x-change.life/img/favicon.ico" type="image/ico">
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6.3.7/animations/scale.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,7 +14,7 @@
         <button class="tablinks" data-tool="MCF-Tab">Character Creator (MCF)</button>
         <button class="tablinks" data-tool="PositionTab">Positions</button>
         <button class="tablinks" data-tool="OutfitTab">Outfits</button>
-        <button class="tablinks" data-tool="BLK-Tab">BLACKED Module</button>
+        <button class="tablinks" data-tool="BLK-Tab">BLACKED AddOn</button>
         <button class="tablinks" data-tool="BG-Tab">Bar Girl</button>
         <button class="tablinks" data-tool="MetaTab">Meta Maker</button>
     </div>
@@ -22,9 +23,10 @@
     <div id="MCF-Tab" class="tabcontent">
         <div class="container">
             <div class="content-wrapper">
-                <div class="form-center">
-                    <form id="mcfForm">
-                        <h3>Meta Section</h3>
+                <form id="mcfForm">
+                    <div class="form-center">
+                    
+                        <h2>Meta Section</h2>
                         <div class="form-single-line">
                             <label for="mcfModAuthor">Mod Author:</label>
                             <input type="text" id="mcfModAuthor" name="mcfModAuthor">
@@ -49,8 +51,8 @@
                         <div class="form-button-center">
                         <button type="button" id="generateMCFDirectoriesButton">Generate Folder Structure</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -635,6 +637,10 @@
             <div class="content-wrapper">
                 <div class="form-center-wrapper">
                     <form id="blackedForm">
+                        <div class="form-note">
+                            <p>This tab is intended to expand MCF characters to be able to work with the BLACKED mod.</p>
+                            <p>For complete instructions on adding a BLACKED version of your character, please visit my <a href="https://github.com/Chloeana/XCL-Blacked/tree/main/Blacked-Template" target="_blank">walkthrough</a>.</p>
+                        </div>
                         <div class="form-center">
                             <h2>Meta Section</h2>
                             <div class="form-single-line">
@@ -672,35 +678,184 @@
                         </div>
                         <div class="form-button-center">
                             <button type="button" id="generateBlackedFoldersButton">Generate Folder Structure Only</button>
+                            <button type="button" id="generateBlackedMetaButton">Generate Meta Only</button>
                         </div>
                         <div class="form-center">
-                            <h2>Transactional Doggy</h2>
-                            <div class="form-single-line">
-                                <label for="blkTransDoggyPath">File Path:</label>
-                                <input type="text" id="blkTransDoggyPath" class="directory">
+                            <h2>Doggy (Transactional)</h2>
+                            <div class="form-single-line-directory">
+                                <label for="blkDoggyPath">Folder Path:</label>
+                                <p>/img/scenes/characters/</p>
+                                <input type="text" id="blkDoggyPath" class="directory">
                             </div>
-                            <div class="form-grid form-1x4">
-                                <label for="blkTransDoggyInsertImg">Insert Pictures</label>
-                                <input type="number" id="blkTransDoggyInsertImg" placeholder="4" min="1">
-                                <label for="blkTransDoggyInsertImgPrefix">File Prefix:</label>
-                                <input type="text" id="blkTransDoggyInsertImgPrefix">
+                            <div class="form-grid w-70" id="blkDoggyGrid">
+                                <label for="blkDoggyInsertImgPrefix" style="grid-column: 1;">Insert:</label>
+                                <input type="text" id="blkDoggyInsertImgPrefix" style="grid-column: 2;">
+                                <label for="blkDoggyInsertImg" style="grid-column: 3;">Pictures</label>
+                                <input type="number" id="blkDoggyInsertImg" placeholder="4" min="1" style="grid-column: 4;">
+                                
+                                <label for="blkDoggyMoanImgPrefix" style="grid-column: 1;">Moan:</label>
+                                <input type="text" id="blkDoggyMoanImgPrefix" style="grid-column: 2;">
+                                <label for="blkDoggyMoanImg" style="grid-column: 3;">Pictures</label>
+                                <input type="number" id="blkDoggyMoanImg" placeholder="4" min="1" style="grid-column: 4;">
+
+                                <label for="blkDoggyVidPrefix" style="grid-column: 1;">Doggy:</label>
+                                <input type="text" id="blkDoggyVidPrefix" style="grid-column: 2;">
+                                <label for="blkDoggyVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="blkDoggyVid" placeholder="4" min="1" style="grid-column: 4;">                            
                             </div>
-                            <div class="form-grid form-1x4">
-                                <label for="blkTransDoggyMoanImg">Moan Pictures</label>
-                                <input type="number" id="blkTransDoggyMoanImg" placeholder="4" min="1">
-                                <label for="blkTransDoggyMoanImgPrefix">File Prefix:</label>
-                                <input type="text" id="blkTransDoggyMoanImgPrefix">
-                            </div>
-                            <div class="form-grid form-1x4">
-                                <label for="blkTransDoggyVid">Doggy Videos</label>
-                                <input type="number" id="blkTransDoggyVid" placeholder="4" min="1">
-                                <label for="blkTransDoggyVidPrefix">File Prefix:</label>
-                                <input type="text" id="blkTransDoggyVidPrefix">
-                            </div>
-                            <div class="containerTransDoggy" id="blkTransDoggyContainer"></div>
+                            <div class="containerDoggy" id="blkDoggyContainer"></div>
                         </div>
+
+                        <div class="form-center">
+                            <h2>Blowjob (Transactional)</h2>
+                            <div class="form-single-line-directory">
+                                <label for="blkBJPath">Folder Path:</label><p>/img/scenes/characters/</p>
+                                <input type="text" id="blkBJPath" class="directory">
+                            </div>
+                            <div class="form-grid w-70" id="blkBJGrid">
+                                <label for="blkBJVidPrefix" style="grid-column: 1;">BJ:</label>
+                                <input type="text" id="blkBJVidPrefix" style="grid-column: 2;">
+                                <label for="blkBJVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="blkBJVid" placeholder="4" min="1" style="grid-column: 4;">
+                            </div>
+                        </div>
+
+                        <div class="form-center">
+                            <h2>Facefuck (Transactional)</h2>
+                            <div class="form-single-line-directory">
+                                <label for="blkFacefuckPath">Folder Path:</label><p>/img/scenes/characters/</p>
+                                <input type="text" id="blkFacefuckPath" class="directory">
+                            </div>
+                            <div class="form-grid w-70" id="blkFacefuckGrid">
+                                <label for="blkFacefuckVidPrefix" style="grid-column: 1;">Facefuck:</label>
+                                <input type="text" id="blkFacefuckVidPrefix" style="grid-column: 2;">
+                                <label for="blkFacefuckVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="blkFacefuckVid" placeholder="4" min="1" style="grid-column: 4;">
+                            </div>
+                            <div class="containerFacefuck" id="blkFacefuckContainer"></div>
+                        </div>
+
+                        <div class="form-center">
+                            <h2>Oral</h2>
+                            <div class="form-single-line-directory">
+                                <label for="blkOralPath">Folder Path:</label><p>/img/scenes/characters/</p>
+                                <input type="text" id="blkOralPath" class="directory">
+                            </div>
+                            <div class="form-grid w-70" id="blkOralGrid">
+                                <label for="blkOralVidPrefix" style="grid-column: 1;">Oral:</label>
+                                <input type="text" id="blkOralVidPrefix" style="grid-column: 2;">
+                                <label for="blkOralVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="blkOralVid" placeholder="4" min="1" style="grid-column: 4;">
+                            </div>
+                            <div class="containerOral" id="blkOralContainer"></div>
+                        </div>
+
+                        <div class="form-center">
+                            <h2>Foreplay</h2>
+                            <div class="form-single-line-directory">
+                                <label for="blkForeplayPath">Folder Path:</label><p>/img/scenes/characters/</p>
+                                <input type="text" id="blkForeplayPath" class="directory">
+                            </div>
+                            <div class="form-grid w-70" id="blkForeplayGrid">
+                                <label for="blkGropeTitsVidPrefix" style="grid-column: 1;">Grope Tits:</label>
+                                <input type="text" id="blkGropeTitsVidPrefix" style="grid-column: 2;">
+                                <label for="blkGropeTitsVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="blkGropeTitsVid" placeholder="1" min="0" style="grid-column: 4;">
+                                <label for="blkGropeAssVidPrefix" style="grid-column: 1;">Grope Ass:</label>
+                                <input type="text" id="blkGropeAssVidPrefix" style="grid-column: 2;">
+                                <label for="blkGropeAssVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="blkGropeAssVid" placeholder="1" min="0" style="grid-column: 4;">
+                                <label for="blkKissVidPrefix" style="grid-column: 1;">Kiss:</label>
+                                <input type="text" id="blkKissVidPrefix" style="grid-column: 2;">
+                                <label for="blkKissVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="blkKissVid" placeholder="1" min="0" style="grid-column: 4;">
+                            </div>
+                        </div>
+
+                        <div class="form-center">
+                            <h2>Cum</h2>
+                            <div class="form-single-line-directory">
+                                <label for="blkCumPath">Folder Path:</label><p>/img/scenes/characters/</p>
+                                <input type="text" id="blkCumPath" class="directory">
+                            </div>
+                            <div class="form-grid w-70" id="blkCumGrid">
+                                <label for="blkCreampieVidPrefix" style="grid-column: 1;">Creampie:</label>
+                                <input type="text" id="blkCreampieVidPrefix" style="grid-column: 2;">
+                                <label for="blkCreampieVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="blkCreampieVid" placeholder="4" min="1" style="grid-column: 4;">
+
+                                <label for="blkFacialVidPrefix" style="grid-column: 1;">Facial:</label>
+                                <input type="text" id="blkFacialVidPrefix" style="grid-column: 2;">
+                                <label for="blkFacialVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="blkFacialVid" placeholder="4" min="1" style="grid-column: 4;">
+
+                                <label for="blkMouthVidPrefix" style="grid-column: 1;">Mouth:</label>
+                                <input type="text" id="blkMouthVidPrefix" style="grid-column: 2;">
+                                <label for="blkMouthVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="blkMouthVid" placeholder="4" min="1" style="grid-column: 4;">
+                            </div>
+                            <div class="containerFacial" id="blkFacialContainer"></div>
+                            <div class="containerMouth" id="blkMouthContainer"></div>
+                        </div>
+
+                        <div class="form-center">
+                            <h2>Pull Out</h2>
+                            <div class="form-grid w-70" id="blkPullOutGrid">
+                                <label for="blkPullOutBodyVidPrefix" style="grid-column: 1;">Body:</label>
+                                <input type="text" id="blkPullOutBodyVidPrefix" style="grid-column: 2;">
+                                <label for="blkPullOutBodyVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="blkPullOutBodyVid" placeholder="1" min="1" style="grid-column: 4;">
+
+                                <label for="blkPullOutButtVidPrefix" style="grid-column: 1;">Butt:</label>
+                                <input type="text" id="blkPullOutButtVidPrefix" style="grid-column: 2;">
+                                <label for="blkPullOutButtVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="blkPullOutButtVid" placeholder="1" min="1" style="grid-column: 4;">
+
+                                <label for="blkPullOutTitsVidPrefix" style="grid-column: 1;">Tits:</label>
+                                <input type="text" id="blkPullOutTitsVidPrefix" style="grid-column: 2;">
+                                <label for="blkPullOutTitsVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="blkPullOutTitsVid" placeholder="1" min="1" style="grid-column: 4;">
+
+                                <label for="blkGenericRadio" style="grid-column: 2;">Use Generic Clips:</label>
+                                <div class="radio-group">
+                                    <input type="radio" id="blkGenericRadioTrue" name="blkGenericRadio" value="false" checked="true">
+                                    <label for="blkGenericRadioTrue">No</label>
+
+                                    <input type="radio" id="blkGenericRadioFalse" name="blkGenericRadio" value="true">
+                                    <label for="blkGenericRadioFalse">Yes</label>
+                                </div>
+                            </div>
+
+                            <div id="blkGenericPullOut">
+                                <h3>Select your character's body type to help with generic clip selection</h3>
+                                <div class="form-grid">
+                                    <label for="blkGenericBodyStats">Body Style</label>
+                                    <select id="blkGenericBodyStats" name="blkGenericBodyStats">
+                                        <option value="w1">White Girl (Petite)</option>
+                                        <option value="w2">White Girl (Average)</option>
+                                        <option value="w3">White Girl (Thicc)</option>
+                                        <option value="c1">Black Girl (Petite)</option>
+                                        <option value="c2">Black Girl (Average)</option>
+                                    </select>
+
+                                    <label for="blkGenericCupSize">Breast Size</label>
+                                    <select id="blkGenericCupSize" name="blkGenericCupSize">
+                                        <option value="b">Small (A/B)</option>
+                                        <option value="c">Medium (B/C)</option>
+                                        <option value="d">Large (C/D)</option>
+                                        <option value="e">Larger (E+)</option>
+                                    </select>
+                                </div>
+                                <p>**Don't worry if the body description don't accurately capture your character. 
+                                    Generic clips will never be a perfect representation of your character.
+                                    They only exist to add variety to the game.
+                                </p>
+                            </div>
+                        </div>
+
                         <div class="form-button-center">
-                            <button type="button" id="generateBlackedFilesButton">Generate Files and Folders</button>
+                            <button type="button" id="generateBlackedFilesOnlyButton">Generate Files Only</button>
+                            <button type="button" id="generateBlackedFilesButton">Generate All Files and Folders</button>
                         </div>
                     </form>
                 </div>
@@ -710,33 +865,28 @@
 
     <div id="MetaTab" class="tabcontent">
         <div class="container">
-            <p class="container-text">This is meant to be a standalone meta maker. For MCF and BLACKED Metas, use the respective tabs.</p>
-            <!-- Wrapper for the form -->
+            <div class="form-note">
+                <p>This is meant to be a standalone meta maker. The other tabs have their own respective metas.</p>
+            </div>
             <div class="content-wrapper">
-                <!-- Form Container -->
                 <div class="form-center">
                     <form id="metaForm">
-                        <!-- Mod Name -->
                         <div class="form-single-line">
                             <label for="metaName">Mod Name:</label>
                             <input type="text" id="metaName" name="metaName" placeholder="My Sweet Mod">
                         </div>
-                        <!-- Mod Version -->
                         <div class="form-single-line">
                             <label for="metaVersion">Mod Version:</label>
                             <input type="text" id="metaVersion" name="metaVersion" placeholder="0.2.1">
                         </div>
-                        <!-- Mod Author -->
                         <div class="form-single-line">
                             <label for="metaAuthor">Mod Author:</label>
                             <input type="text" id="metaAuthor" name="metaAuthor">
                         </div>
-                        <!-- Game Version -->
                         <div class="form-single-line">
                             <label for="metaGameVersion">Compatible Game Version:</label>
                             <input type="text" id="metaGameVersion" name="metaGameVersion">
                         </div>
-                        <!-- Required Mods -->
                         <div class="mod-list">
                             <h4>Required Mods:</h4>
                             <input type="text" id="requiredModName" placeholder="Mod Name">
@@ -748,7 +898,6 @@
                         <div class="mod-container">
                             <ul id="metaRequiredModsContainer"></ul>
                         </div>
-                        <!-- Compatible Mods -->
                         <div class="mod-list">
                             <h4>Compatible Mods:</h4>
                             <input type="text" id="compatibleModName" placeholder="Mod Name">
@@ -764,7 +913,6 @@
                         <div class="mod-container">
                             <ul id="metaCompatibleModsContainer"></ul>
                         </div>
-                        <!-- Incompatible Mods -->
                         <div class="mod-list">
                             <h4>Incompatible Mods:</h4>
                             <input type="text" id="incompatibleModName" placeholder="Mod Name">

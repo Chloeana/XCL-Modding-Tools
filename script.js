@@ -143,14 +143,59 @@ document.addEventListener("DOMContentLoaded", function () {
   const generateBlackedFoldersButton = document.getElementById("generateBlackedFoldersButton");
   const generateBlackedFilesButton = document.getElementById("generateBlackedFilesButton");
 
-  const blkTransDoggyContainer = document.getElementById("blkTransDoggyContainer");
-  const blkTransDoggyPath = document.getElementById("blkTransDoggyPath");
-  const blkTransDoggyVid = document.getElementById("blkTransDoggyVid");
-  const blkTransDoggyVidPrefix = document.getElementById("blkTransDoggyVidPrefix");
-  const blkTransDoggyInsertImg = document.getElementById("blkTransDoggyInsertImg");
-  const blkTransDoggyInsertImgPrefix = document.getElementById("blkTransDoggyInsertImgPrefix");
-  const blkTransDoggyMoanImg = document.getElementById("blkTransDoggyMoanImg");
-  const blkTransDoggyMoanImgPrefix = document.getElementById("blkTransDoggyMoanImgPrefix");
+  const blkDoggyContainer = document.getElementById("blkDoggyContainer");
+  const blkDoggyPath = document.getElementById("blkDoggyPath");
+  const blkDoggyVid = document.getElementById("blkDoggyVid");
+  const blkDoggyVidPrefix = document.getElementById("blkDoggyVidPrefix");
+  const blkDoggyInsertImg = document.getElementById("blkDoggyInsertImg");
+  const blkDoggyInsertImgPrefix = document.getElementById("blkDoggyInsertImgPrefix");
+  const blkDoggyMoanImg = document.getElementById("blkDoggyMoanImg");
+  const blkDoggyMoanImgPrefix = document.getElementById("blkDoggyMoanImgPrefix");
+
+  const blkBJPath = document.getElementById("blkBJPath");
+  const blkBJVid = document.getElementById("blkBJVid");
+  const blkBJVidPrefix = document.getElementById("blkBJVidPrefix");
+  
+  const blkFacefuckPath = document.getElementById("blkFacefuckPath");
+  const blkFacefuckVid = document.getElementById("blkFacefuckVid");
+  const blkFacefuckVidPrefix = document.getElementById("blkFacefuckVidPrefix");
+  const blkFacefuckContainer = document.getElementById("blkFacefuckContainer");
+
+  const blkOralPath = document.getElementById("blkOralPath");
+  const blkOralVidPrefix = document.getElementById("blkOralVidPrefix");
+  const blkOralVid = document.getElementById("blkOralVid");
+
+  const blkForeplayPath = document.getElementById("blkForeplayPath");
+  const blkGropeTitsVid = document.getElementById("blkGropeTitsVid");
+  const blkGropeTitsVidPrefix = document.getElementById("blkGropeTitsVidPrefix");
+  const blkGropeAssVid = document.getElementById("blkGropeAssVid");
+  const blkGropeAssVidPrefix = document.getElementById("blkGropeAssVidPrefix");
+  const blkGropeKissVid = document.getElementById("blkGropeKissVid");
+  const blkGropeKissVidPrefix = document.getElementById("blkKissVidPrefix");
+
+  const blkCumPath = document.getElementById("blkCumPath");
+  const blkCreampieVidPrefix = document.getElementById("blkCreampieVidPrefix");
+  const blkCreampieVid = document.getElementById("blkCreampieVid");
+  const blkFacialVidPrefix = document.getElementById("blkFacialVidPrefix");
+  const blkFacialVid = document.getElementById("blkFacialVid");
+  const blkFacialContainer = document.getElementById("blkFacialContainer");
+  const blkMouthVidPrefix = document.getElementById("blkMouthVidPrefix");
+  const blkMouthVid = document.getElementById("blkMouthVid");
+  const blkMouthContainer = document.getElementById("blkMouthContainer");
+
+  const blkPullOutBodyVidPrefix = document.getElementById("blkPullOutBodyVidPrefix");
+  const blkPullOutBodyVid = document.getElementById("blkPullOutBodyVid");
+  const blkPullOutButtVidPrefix = document.getElementById("blkPullOutButtVidPrefix");
+  const blkPullOutButtVid = document.getElementById("blkPullOutButtVid");
+  const blkPullOutTitsVidPrefix = document.getElementById("blkPullOutTitsVidPrefix");
+  const blkPullOutTitsVid = document.getElementById("blkPullOutTitsVid");
+
+  const blkGenericRadio = document.querySelector('input[name="blkGenericRadio"]:checked');
+  const blkGenericRadioTrue = document.getElementById("blkGenericRadioTrue");
+  const blkGenericRadioFalse = document.getElementById("blkGenericRadioFalse");
+
+
+
   
 
   let blkzip = '' // default value for BLACKED Zip var
@@ -1777,17 +1822,33 @@ document.addEventListener("DOMContentLoaded", function () {
   function setBlkDefaultValues() {
     const name = blkCharacterName.value;
 
-    blkTransDoggyVidPrefix.value = "transactional"
-    blkTransDoggyInsertImgPrefix.value = "transactional insert"
-    blkTransDoggyMoanImgPrefix.value = "moan"
+    blkDoggyVidPrefix.value = "transactional"
+    blkDoggyInsertImgPrefix.value = "transactional insert"
+    blkDoggyMoanImgPrefix.value = "moan"
+    blkBJVidPrefix.value = "transactional"
+    blkFacefuckVidPrefix.value = "rough"
+    blkOralVidPrefix.value = "oral"
+    blkGropeTitsVidPrefix.value = "tits"
+    blkGropeAssVidPrefix.value = "ass"
+    blkGropeKissVidPrefix.value = "kiss"
+    blkCreampieVidPrefix.value = "creampie"
+    blkFacialVidPrefix.value = "facial"
+    blkMouthVidPrefix.value = "mouth"
+    blkPullOutBodyVidPrefix.value = "body"
+    blkPullOutButtVidPrefix.value = "butt"
+    blkPullOutTitsVidPrefix.value = "tits"
   };
 
   // Add Character name into directories
   function setBlkDefaultDirectories() {
-    const name = blkCharacterName.value;
+    const name = blkCharacterName.value.trim() || "character_id";
 
-    blkTransDoggyPath.value = `${name}/sex/doggy/bbc/`
- 
+    blkDoggyPath.value = `${name}/sex/doggy/bbc/`
+    blkBJPath.value = `${name}/bj/bbc/`
+    blkFacefuckPath.value = `${name}/bj/bbc/`
+    blkForeplayPath.value = `${name}/foreplay/bbc/`
+    blkOralPath.value = `${name}/oral/bbc/`
+    blkCumPath.value = `${name}/cum/bbc/`
   };
 
 
@@ -1858,11 +1919,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const MCFModVersion = blkYourModVersion.value;
 
     // Transactional Doggy
-    const blkTransDoggyVidInt = parseInt(blkTransDoggyVid.value);
-    const blkTransDoggyInsertImgInt = parseInt(blkTransDoggyInsertImg.value);
-    const blkTransDoggyMoanImgInt = parseInt(blkTransDoggyMoanImg.value);
-    const tagsTransDoggy = [];
-    const rhythmTransDoggy = [];
+    const blkDoggyVidInt = parseInt(blkDoggyVid.value);
+    const blkDoggyInsertImgInt = parseInt(blkDoggyInsertImg.value);
+    const blkDoggyMoanImgInt = parseInt(blkDoggyMoanImg.value);
+    const tagsDoggy = [];
+    const rhythmDoggy = [];
 
 
     // Field validation
@@ -1877,7 +1938,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return; 
     }
 
-    if (!blkTransDoggyVidInt || !blkTransDoggyInsertImgInt || !blkTransDoggyMoanImgInt) {
+    if (!blkDoggyVidInt || !blkDoggyInsertImgInt || !blkDoggyMoanImgInt) {
       console.error("Transactional Doggy fields are required."); 
       alert("Transactional Doggy fields are required.");
       return;
@@ -1885,25 +1946,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     
     // Collect tag data from each video
-    for (let i = 1; i <= blkTransDoggyVidInt; i++) {
+    for (let i = 1; i <= blkDoggyVidInt; i++) {
       // Collect tags from dropdowns
-      const transDoggyTagLocation = blkTransDoggyContainer.querySelector(`#location_tag_${i}`)?.value || '';
-      const additionalTagsTransDoggyElements = [
-        blkTransDoggyContainer.querySelector(`#tag_${i}_1`),
-        blkTransDoggyContainer.querySelector(`#tag_${i}_2`),
-        blkTransDoggyContainer.querySelector(`#tag_${i}_3`)
+      const DoggyTagLocation = blkDoggyContainer.querySelector(`#location_tag_${i}`)?.value || '';
+      const additionalTagsDoggyElements = [
+        blkDoggyContainer.querySelector(`#tag_${i}_1`),
+        blkDoggyContainer.querySelector(`#tag_${i}_2`),
+        blkDoggyContainer.querySelector(`#tag_${i}_3`)
     ];
       // Extract and filter tags
-      const additionalTagsTransDoggy = additionalTagsTransDoggyElements
+      const additionalTagsDoggy = additionalTagsDoggyElements
       .map(tag => tag ? tag.value.trim() : '')  // Get values and trim whitespace
       .filter(tag => tag); // Filter out empty values
 
       // Combine location tag with additional tags
-      const tagArrayTransDoggy = [transDoggyTagLocation, ...additionalTagsTransDoggy].filter(tag => tag); // Filter out empty strings
+      const tagArrayDoggy = [DoggyTagLocation, ...additionalTagsDoggy].filter(tag => tag); // Filter out empty strings
 
       // Format tags for Twee
-      tagsTransDoggy.push(`"${characterName}/sex/doggy/bbc/transactional ${i}", (a:"${tagArrayTransDoggy.join('","')}")`);
-      rhythmTransDoggy.push(`"${characterName}/sex/doggy/bbc/transactional ${i}",500`);
+      tagsDoggy.push(`"${characterName}/sex/doggy/bbc/transactional ${i}", (a:"${tagArrayDoggy.join('","')}")`);
+      rhythmDoggy.push(`"${characterName}/sex/doggy/bbc/transactional ${i}",500`);
     }
 
     // Create the meta content string
@@ -1923,11 +1984,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Transactional Doggy
     tweeContent += `:: sex doggy transactional ${characterName} [around]\n`;
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
-    tweeContent += `(set:$img to "${characterName}/sex/doggy/bbc/transactional " + (text:(twist:1,${blkTransDoggyVidInt}))) \n`;
-    tweeContent += `(set:$doggy_pic to "<img class='greyborder' src='img/scenes/characters/${characterName}/sex/doggy/bbc/transactional insert " + (text:(twist:1,${imgTransDoggy})) + ".jpg' width=100% height=auto>") \n`;
-    tweeContent += `(set:$doggy_moan_pic to "<img class='greyborder' src='img/scenes/characters/${characterName}/sex/doggy/bbc/moan " + (text:(twist:1,${imgTransDoggyMoan})) + ".jpg' width=100% height=auto>")\n`;
-    tweeContent += `(set:$doggy_rhythm to $img of (dm:${rhythmTransDoggy.join(',')}))\n`;
-    tweeContent += `(set:$text to $img of (dm:${tagsTransDoggy.join(',')}))\n`;
+    tweeContent += `(set:$img to "${characterName}/sex/doggy/bbc/transactional " + (text:(twist:1,${blkDoggyVidInt}))) \n`;
+    tweeContent += `(set:$doggy_pic to "<img class='greyborder' src='img/scenes/characters/${characterName}/sex/doggy/bbc/transactional insert " + (text:(twist:1,${imgDoggy})) + ".jpg' width=100% height=auto>") \n`;
+    tweeContent += `(set:$doggy_moan_pic to "<img class='greyborder' src='img/scenes/characters/${characterName}/sex/doggy/bbc/moan " + (text:(twist:1,${imgDoggyMoan})) + ".jpg' width=100% height=auto>")\n`;
+    tweeContent += `(set:$doggy_rhythm to $img of (dm:${rhythmDoggy.join(',')}))\n`;
+    tweeContent += `(set:$text to $img of (dm:${tagsDoggy.join(',')}))\n`;
     tweeContent += `](else:)[(display:_around)]\n}\n\n`;
 
     // Add directories to the ZIP
@@ -1944,10 +2005,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Build tag fields for BLACKED - Transactional Doggy
-  function generateBLKTransDoggyFields() {
-    blkTransDoggyContainer.innerHTML = ''; // Clear any existing fields
+  function generateBLKDoggyFields() {
+    blkDoggyContainer.innerHTML = ''; // Clear any existing fields
 
-    const numVideos = parseInt(blkTransDoggyVid.value) || 0;
+    const numVideos = parseInt(blkDoggyVid.value) || 0;
 
     // Define the location options for the first tag
     const locationOptions = ["bed", "couch", "desk", "floor", "wall", "standing"];
@@ -2004,7 +2065,7 @@ document.addEventListener("DOMContentLoaded", function () {
         tagField.appendChild(dropdownTag);
       }
 
-      blkTransDoggyContainer.appendChild(tagField);
+      blkDoggyContainer.appendChild(tagField);
     }
   };
   // #endregion --- Functions - Blacked
@@ -2105,17 +2166,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Generate Positions File
   generatePositionsFileButton.addEventListener("click", generatePositionsFile);
-
-  // Add validation for the rhythm field
-  positionRhythmInput.addEventListener("input", function () {
-    const value = parseInt(positionRhythmInput.value, 10);
-    if (isNaN(value) || value < 400 || value > 1400) {
-      positionRhythmInput.setCustomValidity("Rhythm must be between 400 and 1400.");
-    } else {
-      positionRhythmInput.setCustomValidity("");
-    }
-    positionRhythmInput.reportValidity(); // This will trigger the validity check and show the error message if invalid
-  });
 
   // Manually add position tag to container
   addPositionTagButton.addEventListener("click", function() {
@@ -2264,7 +2314,7 @@ document.addEventListener("DOMContentLoaded", function () {
   generateBlackedFilesButton.addEventListener("click", generateBlackedFiles);
 
   // Build tag fields for BLACKED - Transactional Doggy
-  document.getElementById('blkTransDoggyVid').addEventListener('input', generateBLKTransDoggyFields);
+  document.getElementById('blkDoggyVid').addEventListener('input', generateBLKDoggyFields);
   // #endregion --- Listeners - Blacked
 
   // #region --- Listeners - Bar Girl
@@ -2417,8 +2467,8 @@ document.addEventListener("DOMContentLoaded", function () {
   updateOutfitFields();
 
   // Set up Blacked defaults
-  setBlkDefaultDirectories();
   setBlkDefaultValues();
+  setBlkDefaultDirectories()
 
   // Sets up tagging sections
   handleTagInput(positionTagsInput, positionTagsList, addPositionTag);
@@ -2531,7 +2581,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   tippy([positionRhythmInput],{
-    content: "This is the Beats Per Minute (BPM) of the position, measured in milliseconds. Take 60000 divided by BPM to convert.<br><br>Example: 60 BPM = 1000 rhythm, 120 BPM = 500 rhythm, etc.<br><br> Rhythm is used in the minigames."
+    content: "This is the Beats Per Minute (BPM) of the position, measured in milliseconds. Take 60000 divided by BPM to convert.<br><br>Example: 60 BPM = 1000 rhythm, 120 BPM = 500 rhythm, etc. Generally speaking, rhythm should be between 400 and 1400 bpm.<br><br> Rhythm is used in the minigames."
   })
 
   tippy([positionTagsInput],{
@@ -2667,7 +2717,7 @@ document.addEventListener("DOMContentLoaded", function () {
   tippy([outfitPantiesTrue],{
     placement: 'right-end',
     triggerTarget: [outfitPantiesTrue, document.querySelector(`label[for="${outfitPantiesTrue.id}"]`)],
-    content: "Check this box if the character would be wearing panties underneath of the outfit. <br><br>This behaves the same way as Bra, without the breast support."
+    content: "Check this box if the character would be wearing panties underneath of the outfit. <br><br>This determines if your character has additional layers to remove during sex scenes, as well as sets description values tied to lingerie."
   })
 
   tippy([outfitShoes],{
@@ -2683,7 +2733,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   tippy([outfitRevealsInput],{
-    content: "Optional. Similar to Emphasizes, this drives dialog.<br><br>Example: If your outfit reveals 'boobs' might cause your coworkers to say that 'your cleavage is like a sales magnet'."
+    content: "Optional. Similar to Emphasizes, this drives dialog.<br><br>Example: If your outfit reveals 'boobs', this might cause your coworkers to say that 'your cleavage is like a sales magnet'."
   })
 
   tippy([outfitTagsInput],{
