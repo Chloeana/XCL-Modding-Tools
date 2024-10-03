@@ -454,36 +454,42 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // Collect tags from dynamic video sections
+  // Collect tags and rhythm from dynamic video sections
   function collectTags(tagContainer, vidPrefix) {
     const prefix = vidPrefix.value;
-    const tagFields = tagContainer.querySelectorAll(`select[id^="${prefix}_tag_"]`);
+    const tagFields = tagContainer.querySelectorAll(`select[id^="${prefix}_tag_"], input[id^="${prefix}_rhythm_"]`);
     const tagsByVideo = {};
 
     tagFields.forEach((field) => {
+        // Extract the video index from the ID
+        const idParts = field.id.split('_'); // Split by underscore
+        const videoIndex = idParts[2]; // This should be the index
+
+        console.log(`Found field for video index: ${videoIndex}, value: ${field.value}`); // Debugging log
+
+        // Ensure we are using a number for indexing
+        const numericIndex = parseInt(videoIndex, 10); // Convert to a number
+
+        // Initialize entry for this video index if not already done
+        if (!tagsByVideo[numericIndex]) {
+            tagsByVideo[numericIndex] = { tags: [], rhythm: null }; // Initialize structure for tags and rhythm
+        }
+
         if (field.tagName === 'SELECT' && field.value) {
-
-            // Extract the video index from the ID
-            const idParts = field.id.split('_'); // Split by underscore
-            const videoIndex = idParts[2]; // This should be the index
-
-            console.log(`Found tag for video index: ${videoIndex}, value: ${field.value}`); // Debugging log
-            
-            // Ensure we are using a number for indexing
-            const numericIndex = parseInt(videoIndex, 10); // Convert to a number
-
-            // Initialize entry for this video index if not already done
-            if (!tagsByVideo[numericIndex]) {
-                tagsByVideo[numericIndex] = []; // Initialize an array for this video index
-            }
-            tagsByVideo[numericIndex].push(field.value); // Add the tag to the corresponding video index
+            // Collect tags
+            tagsByVideo[numericIndex].tags.push(field.value); // Add the tag to the corresponding video index
+        } else if (field.tagName === 'INPUT' && field.type === 'number') {
+            // Collect rhythm if it's an input of type number
+            const rhythmValue = parseInt(field.value, 10) || 500; // Default rhythm value if not provided
+            tagsByVideo[numericIndex].rhythm = rhythmValue; // Add the rhythm value to the video index
         }
     });
 
-    // Convert to array of entries [ { videoIndex: 1, tags: [...] }, ... ]
-    const result = Object.entries(tagsByVideo).map(([videoIndex, tags]) => ({
+    // Convert to array of entries [ { videoIndex: 1, tags: [...], rhythm: 500 }, ... ]
+    const result = Object.entries(tagsByVideo).map(([videoIndex, { tags, rhythm }]) => ({
         videoIndex: parseInt(videoIndex, 10), // Convert index to number
         tags,
+        rhythm: rhythm !== null ? rhythm : 500, // Ensure rhythm is set, default to 500 if not present
     }));
 
     return result;
@@ -525,7 +531,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Create a dropdown for the first tag (location)
       const dropdownLocation = document.createElement("select");
-      dropdownLocation.id = `${vidPrefix}_location_tag_${i}`;
+      dropdownLocation.id = `${vidPrefix}_tag_${i}`;
       
       locationTagOptions.forEach(option => {
         const optionElement = document.createElement("option");
@@ -2211,32 +2217,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     
     // Collect tag data from Transactional Doggy
-    for (let i = 1; i <= doggyVidInt; i++) {
-      // Collect tags from dropdowns
-      const locationTag = blkDoggyContainer.querySelector(`#${doggyVidPrefix}_location_tag_${i}`)?.value || '';
-      
-      const additionalTagsElements = [
-          blkDoggyContainer.querySelector(`#${doggyVidPrefix}_tag_${i}_1`),
-          blkDoggyContainer.querySelector(`#${doggyVidPrefix}_tag_${i}_2`),
-          blkDoggyContainer.querySelector(`#${doggyVidPrefix}_tag_${i}_3`)
-      ];
-  
-      // Extract and filter tags
-      const additionalTags = additionalTagsElements
-          .map(tag => tag ? tag.value.trim() : '')  // Get values and trim whitespace
-          .filter(tag => tag); // Filter out empty values
-  
-      // Combine location tag with additional tags
-      const tagArray = [locationTag, ...additionalTags].filter(tag => tag); // Filter out empty strings      
+    const doggyTags = collectTags(blkDoggyContainer, blkDoggyVidPrefix);
+    const doggyLines = [];
+    const doggyRhythmLines = [];
 
-      // Format tags for Twee
-      tagArrayDoggy.push(`\n            "${doggyPath}${doggyVidPrefix} ${i}", (a:"${tagArray.join('","')}")`);
-  
-      // Collect rhythm input if it exists
-      const rhythmInput = blkDoggyContainer.querySelector(`#${doggyVidPrefix}_rhythm_${i}`);
-      const rhythmValue = rhythmInput ? rhythmInput.value || 500 : 500; // Default to 500 if not present or empty
-      rhythmArrayDoggy.push(`\n            "${doggyPath}${doggyVidPrefix} ${i}",${rhythmValue}`);
-    }
+    doggyTags.forEach(({ videoIndex, tags, rhythm }) => {
+      const tagsString = tags.join('","');
+      doggyLines.push(`\n            "${doggyPath}${doggyVidPrefix} ${videoIndex}", (a:"${tagsString}")`);
+      doggyRhythmLines.push(`\n            "${doggyPath}${doggyVidPrefix} ${videoIndex}", ${rhythm}`);
+      })
+    tagArrayDoggy.push(doggyLines.join(', '));
+    rhythmArrayDoggy.push(doggyRhythmLines.join(', '));
 
     // Collect tag data from Facefuck
     const faceFuckTags  = collectTags(blkFacefuckContainer, blkFacefuckVidPrefix);
@@ -2251,18 +2242,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Collect tag data from Oral
     const oralTags = collectTags(blkOralContainer, blkOralVidPrefix);
     const oralLines = []
+    const oralRhythmLines = []
 
-    oralTags.forEach(({ videoIndex, tags }) => {
+    oralTags.forEach(({ videoIndex, tags, rhythm }) => {
       const tagsString = tags.join('","'); 
       oralLines.push(`\n            "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}", "${tagsString}"`);
+      oralRhythmLines.push(`\n            "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}.mp4", ${rhythm}`)
     });
     tagArrayOral.push(oralLines.join(', '));
-
-    // Collect rhythm data from Oral
-    const oralRhythmTags = collectRhythm(blkOralContainer, blkOralVidPrefix);
-    const oralRhythmLines = oralRhythmTags.map((rhythmtags, index) => {
-      return `\n            "scenes/characters/${oralPath}${oralPrefix} ${index + 1}.mp4", ${rhythmtags}`;
-    });
     rhythmArrayOral.push(oralRhythmLines.join(', '));
 
     // Collect tag data from Mouth
