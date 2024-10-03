@@ -6,12 +6,36 @@ document.addEventListener("DOMContentLoaded", function () {
   const sliders = document.querySelectorAll('input[type="range"]'); // Refers to all Sliders
   const tabcontent = document.getElementsByClassName("tabcontent");
   const tablinks = document.getElementsByClassName("tablinks");
+  let zip = '' // For MCF and Meta Zip
+
+  // Used in both MCF and BLACKED
+  const doggyTagOptions = [
+    "grab neck", "grab arms", "grab shoulders", "grab boobs", "grab face",
+    "grab head", "grab butt", "grab waist", "pull hair", "mount", "stabilize",
+    "spank", "lean against you", "cover mouth", "look back", "leg up", "tits clap",
+    "push down", "standing", "tits rub", "big thrusts", "eyes roll", "nelson",
+    "balls smacking"
+  ]; 
+  const locationTagOptions = [
+    "bed", "floor", "couch", "desk", "chair", "wall", "counter", "table"
+  ];
+  const facialTagOptions = [
+    "spurt", "spray", "ooze", "cumdump", "runny", "spatter", "big load", "unwilling",
+    "jerk", "gag", "nose", "forehead", "cheek", "tongue", "upper lip", "hair",
+    "chin", "lips", "tits", "neck", "held", "open mouth", "lying", "close eyes" 
+  ];
+  const mouthTagOptions = [
+    "internal", "external", "direct", "kneeling", "lying", "pulsating", "no mess", 
+    "messy", "spit", "held", "in mouth", "tongue", "chin", "clothes", "nose", "lick", "jerk"
+  ];
+  const bigLoadOptions = ["big load", "cumdump"];
+  const unwillingLoadOptions = ["unwilling", "gag"];
+
 
   // #endregion --- Vars - General
 
   // #region --- Vars - MCF ---
   const mcfBaseGameVersion = document.getElementById("mcfBaseGameVersion");
-  const mcfMCFVersion = document.getElementById("mcfMCFVersion");
   const mcfYourModVersion = document.getElementById("mcfYourModVersion");
   const mcfModAuthor = document.getElementById("mcfModAuthor");
   const generateMCFDirectoriesButton = document.getElementById("generateMCFDirectoriesButton"); 
@@ -136,14 +160,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const blkYourModBLKVersion = document.getElementById("blkYourModBLKVersion");
   const blkModAuthor = document.getElementById("blkModAuthor");
   const blkBaseGameVersion = document.getElementById("blkBaseGameVersion");
-  const blkMCFVersion = document.getElementById("blkMCFVersion");
   const blkModVersion = document.getElementById("blkModVersion");
   const blkYourModName = document.getElementById("blkYourModName");
   const blkYourModVersion = document.getElementById("blkYourModVersion");
+  const generateBlackedMetaButton = document.getElementById("generateBlackedMetaButton");
   const generateBlackedFoldersButton = document.getElementById("generateBlackedFoldersButton");
-  const generateBlackedFilesButton = document.getElementById("generateBlackedFilesButton");
-
-  const blkDoggyContainer = document.getElementById("blkDoggyContainer");
+  const generateBlackedFilesOnlyButton = document.getElementById("generateBlackedFilesOnlyButton");
+  const generateBlackedAllFilesButton = document.getElementById("generateBlackedAllFilesButton");
   const blkDoggyPath = document.getElementById("blkDoggyPath");
   const blkDoggyVid = document.getElementById("blkDoggyVid");
   const blkDoggyVidPrefix = document.getElementById("blkDoggyVidPrefix");
@@ -151,53 +174,48 @@ document.addEventListener("DOMContentLoaded", function () {
   const blkDoggyInsertImgPrefix = document.getElementById("blkDoggyInsertImgPrefix");
   const blkDoggyMoanImg = document.getElementById("blkDoggyMoanImg");
   const blkDoggyMoanImgPrefix = document.getElementById("blkDoggyMoanImgPrefix");
-
+  const blkDoggyContainer = document.getElementById("blkDoggyContainer");
   const blkBJPath = document.getElementById("blkBJPath");
   const blkBJVid = document.getElementById("blkBJVid");
   const blkBJVidPrefix = document.getElementById("blkBJVidPrefix");
-  
   const blkFacefuckPath = document.getElementById("blkFacefuckPath");
   const blkFacefuckVid = document.getElementById("blkFacefuckVid");
   const blkFacefuckVidPrefix = document.getElementById("blkFacefuckVidPrefix");
   const blkFacefuckContainer = document.getElementById("blkFacefuckContainer");
-
   const blkOralPath = document.getElementById("blkOralPath");
-  const blkOralVidPrefix = document.getElementById("blkOralVidPrefix");
   const blkOralVid = document.getElementById("blkOralVid");
-
+  const blkOralVidPrefix = document.getElementById("blkOralVidPrefix");
+  const blkOralContainer = document.getElementById("blkOralContainer");
   const blkForeplayPath = document.getElementById("blkForeplayPath");
   const blkGropeTitsVid = document.getElementById("blkGropeTitsVid");
   const blkGropeTitsVidPrefix = document.getElementById("blkGropeTitsVidPrefix");
   const blkGropeAssVid = document.getElementById("blkGropeAssVid");
   const blkGropeAssVidPrefix = document.getElementById("blkGropeAssVidPrefix");
-  const blkGropeKissVid = document.getElementById("blkGropeKissVid");
-  const blkGropeKissVidPrefix = document.getElementById("blkKissVidPrefix");
-
+  const blkKissVid = document.getElementById("blkKissVid");
+  const blkKissVidPrefix = document.getElementById("blkKissVidPrefix");
   const blkCumPath = document.getElementById("blkCumPath");
-  const blkCreampieVidPrefix = document.getElementById("blkCreampieVidPrefix");
   const blkCreampieVid = document.getElementById("blkCreampieVid");
-  const blkFacialVidPrefix = document.getElementById("blkFacialVidPrefix");
+  const blkCreampieVidPrefix = document.getElementById("blkCreampieVidPrefix");
   const blkFacialVid = document.getElementById("blkFacialVid");
-  const blkFacialContainer = document.getElementById("blkFacialContainer");
-  const blkMouthVidPrefix = document.getElementById("blkMouthVidPrefix");
+  const blkFacialVidPrefix = document.getElementById("blkFacialVidPrefix");
   const blkMouthVid = document.getElementById("blkMouthVid");
+  const blkMouthVidPrefix = document.getElementById("blkMouthVidPrefix");
+  const blkFacialContainer = document.getElementById("blkFacialContainer");
   const blkMouthContainer = document.getElementById("blkMouthContainer");
-
-  const blkPullOutBodyVidPrefix = document.getElementById("blkPullOutBodyVidPrefix");
   const blkPullOutBodyVid = document.getElementById("blkPullOutBodyVid");
-  const blkPullOutButtVidPrefix = document.getElementById("blkPullOutButtVidPrefix");
+  const blkPullOutBodyVidPrefix = document.getElementById("blkPullOutBodyVidPrefix");
+  const blkPullOutBodyContainer = document.getElementById("blkPullOutBodyContainer");
   const blkPullOutButtVid = document.getElementById("blkPullOutButtVid");
-  const blkPullOutTitsVidPrefix = document.getElementById("blkPullOutTitsVidPrefix");
+  const blkPullOutButtVidPrefix = document.getElementById("blkPullOutButtVidPrefix");
+  const blkPullOutButtContainer = document.getElementById("blkPullOutButtContainer");
   const blkPullOutTitsVid = document.getElementById("blkPullOutTitsVid");
-
-  const blkGenericRadio = document.querySelector('input[name="blkGenericRadio"]:checked');
+  const blkPullOutTitsVidPrefix = document.getElementById("blkPullOutTitsVidPrefix");
+  const blkPullOutTitsContainer = document.getElementById("blkPullOutTitsContainer");
   const blkGenericRadioTrue = document.getElementById("blkGenericRadioTrue");
   const blkGenericRadioFalse = document.getElementById("blkGenericRadioFalse");
-
-
-
-  
-
+  const blkGenericPullOut = document.getElementById("blkGenericPullOut");
+  const blkGenericBodyStats = document.getElementById("blkGenericBodyStats");
+  const blkGenericCupSize = document.getElementById("blkGenericCupSize");
   let blkzip = '' // default value for BLACKED Zip var
   // #endregion --- BLACKED ---
 
@@ -229,7 +247,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(response => response.json())
       .then(data => {
         const versionXCL = data['XCL'];
-        const versionMCF = data['MCF'];
         const versionBLK = data['BLK'];
       
       // Update fields with looked up mod versions
@@ -237,11 +254,6 @@ document.addEventListener("DOMContentLoaded", function () {
         metaGameVersion.value = versionXCL;
         mcfBaseGameVersion.value = versionXCL;
         blkBaseGameVersion.value = versionXCL;
-      }
-
-      if (versionMCF) {
-        blkMCFVersion.value = versionMCF;
-        mcfMCFVersion.value = versionMCF;
       }
 
       if (versionBLK) {
@@ -300,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Reusable function to handle tagging events
   function handleTagInput(inputElement, datalistElement, addTagFunction) {
-    inputElement.addEventListener('input', function () {
+    inputElement.addEventListener("input", function () {
       const inputValue = inputElement.value.trim();
       const options = Array.from(datalistElement.options);
       const matchingOption = options.find(option => option.value === inputValue);
@@ -384,49 +396,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   };
 
-  // Collect tags from dynamic video sections
-  function collectTags(tagContainer) {
-    const container = document.getElementById(tagContainer);
-    const tagFields = container.querySelectorAll('input[type="text"], select');
-    const tags = [];
+  // #endregion --- Functions - General
 
-    tagFields.forEach(field => {
-        if (field.type === 'text' && field.value) {
-            tags.push(field.value.split(',').map(tag => tag.trim()));
-        } else if (field.tagName === 'SELECT') {
-            tags.push(field.value);
-        }
-    });
+  // #region --- Functions - MCF
 
-    return tags;
-  }
-
-  // Build video tagging fields dynamically
-  function generateTagFields(videoCount, tagContainer, tagOptions = []) {
-    const container = document.getElementById(tagContainer);
+   // Build video tagging fields dynamically
+   function generateTagFields(vidCountField, vidPrefixField, tagContainer, tagOptions = [], tagFieldCount = 1, hasRhythmField = false) {
+    const container = tagContainer;
+    const videoCount = parseInt(vidCountField.value) || 0;
+    const vidPrefix = vidPrefixField.value || "Video";
     container.innerHTML = ''; // Clear any existing fields
 
     for (let i = 1; i <= videoCount; i++) {
-        const tagField = document.createElement('div');
-        tagField.className = 'form-single-line';
+        const tagField = document.createElement("div");
+        tagField.className = "containerVideoTags";
         
         // Create label for the tags
-        const label = document.createElement('label');
-        label.textContent = `Tags for Video ${i}:`;
+        const label = document.createElement("label");
+        label.textContent = `${vidPrefix} ${i}:`;
+        tagField.appendChild(label);
 
         // Create dropdowns for tag options
-        for (let j = 0; j < 3; j++) {
-            const dropdown = document.createElement('select');
-            dropdown.id = `tag_${i}_${j}`;
+        for (let j = 0; j < tagFieldCount; j++) {
+            const dropdown = document.createElement("select");
+            dropdown.id = `${vidPrefix}_tag_${i}_${j}`;
             
             // Add a default option for the dropdown
-            const defaultOption = document.createElement('option');
-            defaultOption.textContent = `Select tag ${j + 1}`;
+            const defaultOption = document.createElement("option");
+            defaultOption.value = '';
+            defaultOption.textContent = `Select a tag`;
             dropdown.appendChild(defaultOption);
 
             // Add options to the dropdown
             tagOptions.forEach(tag => {
-                const optionElement = document.createElement('option');
+                const optionElement = document.createElement("option");
                 optionElement.value = tag;
                 optionElement.textContent = tag;
                 dropdown.appendChild(optionElement);
@@ -435,19 +438,137 @@ document.addEventListener("DOMContentLoaded", function () {
             tagField.appendChild(dropdown);
         }
 
-        // Optionally add a text input for additional tags
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.id = `additional_tags_${i}`;
-        input.placeholder = `Enter additional tags for video ${i} (comma separated)`;
+        // Optionally add a number input field for rhythm after the last tag field
+        if (hasRhythmField) {
+            const rhythmInput = document.createElement("input");
+            rhythmInput.type = "number";
+            rhythmInput.id = `${vidPrefix}_rhythm_${i}`;
+            rhythmInput.placeholder = "Rhythm";
+            rhythmInput.min = 400;
+            rhythmInput.max = 1400;
 
-        tagField.appendChild(input);
+            tagField.appendChild(rhythmInput);
+        }
+
         container.appendChild(tagField);
     }
   };
-  // #endregion --- Functions - General
 
-  // #region --- Functions - MCF
+  // Collect tags from dynamic video sections
+  function collectTags(tagContainer, vidPrefix) {
+    const prefix = vidPrefix.value;
+    const tagFields = tagContainer.querySelectorAll(`select[id^="${prefix}_tag_"]`);
+    const tagsByVideo = {};
+
+    tagFields.forEach((field) => {
+        if (field.tagName === 'SELECT' && field.value) {
+
+            // Extract the video index from the ID
+            const idParts = field.id.split('_'); // Split by underscore
+            const videoIndex = idParts[2]; // This should be the index
+
+            console.log(`Found tag for video index: ${videoIndex}, value: ${field.value}`); // Debugging log
+            
+            // Ensure we are using a number for indexing
+            const numericIndex = parseInt(videoIndex, 10); // Convert to a number
+
+            // Initialize entry for this video index if not already done
+            if (!tagsByVideo[numericIndex]) {
+                tagsByVideo[numericIndex] = []; // Initialize an array for this video index
+            }
+            tagsByVideo[numericIndex].push(field.value); // Add the tag to the corresponding video index
+        }
+    });
+
+    // Convert to array of entries [ { videoIndex: 1, tags: [...] }, ... ]
+    const result = Object.entries(tagsByVideo).map(([videoIndex, tags]) => ({
+        videoIndex: parseInt(videoIndex, 10), // Convert index to number
+        tags,
+    }));
+
+    return result;
+  };
+
+
+  // Collect tags from dynamic video sections
+  function collectRhythm(tagContainer, vidPrefix) {
+    const prefix = vidPrefix.value;
+    const tagFields = tagContainer.querySelectorAll(`input[id^="${prefix}_rhythm_"]`);
+    const rhythmtags = [];
+
+    tagFields.forEach((field, index) => {
+        if (field.type === 'number') {
+            const rhythmValue = parseInt(field.value, 10) || 500; // Default rhythm value
+            rhythmtags.push(rhythmValue);
+        }
+    });
+
+    return rhythmtags; // Return collected tags as an array
+  };
+ 
+
+  // Build video tagging fields for Doggy Transactional (different because one tag is location)
+  function generateDoggyTagFields(vidCountField, vidPrefixField, tagContainer) {
+    const container = tagContainer;
+    const videoCount = parseInt(vidCountField.value) || 0;
+    const vidPrefix = vidPrefixField.value || "Video";
+    container.innerHTML = ''; // Clear any existing fields
+
+    for (let i = 1; i <= videoCount; i++) {
+      const tagField = document.createElement("div");
+      tagField.className = "containerVideoTags";
+      
+      // Create label for tags
+      const label = document.createElement("label");
+      label.for = `tags_${i}`;
+      label.textContent = `${vidPrefix} ${i}:`;
+
+      // Create a dropdown for the first tag (location)
+      const dropdownLocation = document.createElement("select");
+      dropdownLocation.id = `${vidPrefix}_location_tag_${i}`;
+      
+      locationTagOptions.forEach(option => {
+        const optionElement = document.createElement("option");
+        optionElement.value = option;
+        optionElement.textContent = option;
+        dropdownLocation.appendChild(optionElement);
+      });
+
+      tagField.appendChild(label);
+      tagField.appendChild(dropdownLocation);
+
+      // Create additional dropdowns for each tag in tagOptions
+      for (let j = 1; j <= 2; j++) { 
+        const dropdownTag = document.createElement("select");
+        dropdownTag.id = `${vidPrefix}_tag_${i}_${j}`;
+        
+        const emptyOption = document.createElement("option");
+        emptyOption.value = '';
+        emptyOption.textContent = "Select a tag";
+        dropdownTag.appendChild(emptyOption);
+
+        doggyTagOptions.forEach(option => {
+          const optionElement = document.createElement("option");
+          optionElement.value = option;
+          optionElement.textContent = option;
+          dropdownTag.appendChild(optionElement);
+        });
+
+        tagField.appendChild(dropdownTag);
+      }
+
+      const rhythmInput = document.createElement("input");
+      rhythmInput.type = "number";
+      rhythmInput.id = `${vidPrefix}_rhythm_${i}`;
+      rhythmInput.placeholder = "Rhythm";
+      rhythmInput.min = 400;
+      rhythmInput.max = 1400;
+
+      tagField.appendChild(rhythmInput);
+
+      container.appendChild(tagField);
+    }
+  };
 
   // Generate MCF directories
   function generateMCFDirectories(){
@@ -1128,7 +1249,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (countActivePositions < 3) {
       const proceed = confirm("Warning: A character should include at least 3 active positions for the file to work properly. Do you want to proceed?");
       if (!proceed) {
-        return; // Stop the process if the user clicks "Cancel"
+        return; // Stop the process if the user doesn't confirm
       }
     }
 
@@ -1673,14 +1794,14 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Calculate total outfit counts
     const countTotalOutfits = outfitList.length;
-    const countBeachOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'beach').length;
-    const countCasualOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'casual').length;
-    const countFetishOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'fetish').length;
-    const countGymOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'gym').length;
-    const countLingerieOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'lingerie').length;
-    const countLoungeOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'lounge').length;
-    const countOfficeOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'office').length;
-    const countStylishOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === 'stylin').length;
+    const countBeachOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === "beach").length;
+    const countCasualOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === "casual").length;
+    const countFetishOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === "fetish").length;
+    const countGymOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === "gym").length;
+    const countLingerieOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === "lingerie").length;
+    const countLoungeOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === "lounge").length;
+    const countOfficeOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === "office").length;
+    const countStylishOutfits = outfitList.filter(out => JSON.parse(out.dataset.outfit).category === "stylin").length;
     
     // Update the HTML elements
     document.getElementById("countTotalOutfits").textContent = countTotalOutfits;
@@ -1820,8 +1941,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Set up Default Values
   function setBlkDefaultValues() {
-    const name = blkCharacterName.value;
-
     blkDoggyVidPrefix.value = "transactional"
     blkDoggyInsertImgPrefix.value = "transactional insert"
     blkDoggyMoanImgPrefix.value = "moan"
@@ -1830,7 +1949,7 @@ document.addEventListener("DOMContentLoaded", function () {
     blkOralVidPrefix.value = "oral"
     blkGropeTitsVidPrefix.value = "tits"
     blkGropeAssVidPrefix.value = "ass"
-    blkGropeKissVidPrefix.value = "kiss"
+    blkKissVidPrefix.value = "kiss"
     blkCreampieVidPrefix.value = "creampie"
     blkFacialVidPrefix.value = "facial"
     blkMouthVidPrefix.value = "mouth"
@@ -1851,10 +1970,77 @@ document.addEventListener("DOMContentLoaded", function () {
     blkCumPath.value = `${name}/cum/bbc/`
   };
 
+  // Show/Hide Generic Pull Out Section
+  function updateGenericPullout(){
+    blkGenericBodyStats.value = "";
+    blkGenericCupSize.value = "";
+    blkGenericPullOut.style.display = "block";
+
+    if (blkGenericRadioTrue.checked) {
+      blkGenericPullOut.style.display = "none";
+      blkGenericBodyStats.value = "";
+      blkGenericCupSize.value = "";
+      blkGenericBodyStats.disabled = true;
+      blkGenericCupSize.disabled = true;
+
+    } else {
+      blkGenericPullOut.style.display = "block";
+      blkGenericBodyStats.value = "";
+      blkGenericCupSize.value = "";
+      blkGenericBodyStats.disabled = false;
+      blkGenericCupSize.disabled = false;
+    }
+  };
+
+  // Build tag fields for BLACKED - Doggy
+  function generateBLKDoggyFields() {
+    generateDoggyTagFields(blkDoggyVid, blkDoggyVidPrefix, blkDoggyContainer)
+  };
+
+  // Build tag fields for BLACKED - Facefuck
+  function generateBLKFacefuckFields() {
+    generateTagFields(blkFacefuckVid, blkFacefuckVidPrefix, blkFacefuckContainer, locationTagOptions, 1)
+  };
+
+  // Build tag fields for BLACKED - Oral
+  function generateBLKOralFields() {
+    generateTagFields(blkOralVid, blkOralVidPrefix, blkOralContainer, ["missionary","doggy"], 1, true)
+  };
+
+  // Build tag fields for BLACKED - Facial
+  function generateBLKFacialFields() {
+    generateTagFields(blkFacialVid, blkFacialVidPrefix, blkFacialContainer, facialTagOptions, 4)
+  };
+
+  // Build tag fields for BLACKED - Mouth
+  function generateBLKMouthFields() {
+    generateTagFields(blkMouthVid, blkMouthVidPrefix, blkMouthContainer, mouthTagOptions, 4)
+  };
+
+  // Build tag fields for BLACKED - Pull Out Tits
+  function generateBLKPullOutTitsFields() {
+    generateTagFields(blkPullOutTitsVid, blkPullOutTitsVidPrefix, blkPullOutTitsContainer, ["lying","kneeling"], 1)
+  };
+
+  // Build tag fields for BLACKED - Pull Out Body
+  function generateBLKPullOutBodyFields() {
+    generateTagFields(blkPullOutBodyVid, blkPullOutBodyVidPrefix, blkPullOutBodyContainer, locationTagOptions, 1)
+  };
+
+  // Build tag fields for BLACKED - Pull Out Butt
+  function generateBLKPullOutButtFields() {
+    generateTagFields(blkPullOutButtVid, blkPullOutButtVidPrefix, blkPullOutButtContainer, locationTagOptions, 1)
+  };
 
   // Generate Blacked Zip
-  function generateBlackedZip(){
-    const characterName = document.getElementById('blkCharacterName').value;
+  function generateBlackedZip() {
+    const characterName = blkCharacterName.value;
+
+    // Check if there are any files in the ZIP before generating
+    if (Object.keys(blkzip.files).length === 0) {
+      console.error("No files added to the ZIP. Cannot generate a ZIP file.");
+      return;
+    }
 
     blkzip.generateAsync({ type: "blob" }).then(function (content) {
       const link = document.createElement("a");
@@ -1862,16 +2048,63 @@ document.addEventListener("DOMContentLoaded", function () {
       link.download = `BLACKED_${characterName}.zip`;
       link.click();
     });
-  }
+  };
 
-  // Generate BLACKED directories to blkzip
-  function gatherBlackedDirectories(){
+  // Gather BLACKED Meta and add to blkzip
+  function gatherBlackedMeta() {
+
+    if (!blkzip) {
+      blkzip = new JSZip();
+    } 
+
+    // Collect input values from forms
+    const characterName = blkCharacterName.value;
+    const version = blkYourModBLKVersion.value;
+    const author = blkModAuthor.value;
+    const baseGameVersion = blkBaseGameVersion.value;
+    const BLKVersion = blkModVersion.value;
+    const MCFModName = blkYourModName.value;
+    const MCFModVersion = blkYourModVersion.value;
+
+    if (!characterName) {
+      console.error("Character Name is required.");
+      alert("Please enter a character name.");
+      return;
+    }
+
+    if (!version || !author || !baseGameVersion || !BLKVersion || !MCFModName || !MCFModVersion) {
+      alert("All meta fields are required. Please fill out the fields.");
+      return; 
+    }
+
+    // Create the meta content string
+    let metaContent = `metaVersion: 1\n`;
+    metaContent += `name: "${MCFModName} - BLACKED"\n`;
+    metaContent += `version: "${version}"\n`;
+    metaContent += `author: "${author}"\n`;
+    metaContent += `baseGameVersion:\n  atLeast: "${baseGameVersion}"\n`;
+    metaContent += `requiredMods:\n`;
+    metaContent += `   - name: "${MCFModName}"\n    version:\n      atLeast: "${MCFModVersion}"\n`;
+    metaContent += `   - name: "BLACKED"\n    version:\n      atLeast: "${BLKVersion}"\n`;
+
+    // Add meta to the ZIP
+    blkzip.folder("metas").file(`${characterName}.meta`, metaContent);
+  };
+
+  // Generate BLACKED Meta file ONLY
+  function generateBlackedMeta() {
+    gatherBlackedMeta();
+    generateBlackedZip();
+  };
+
+  // Gather BLACKED directories and add to blkzip
+  function gatherBlackedDirectories() {
     if (!blkzip) {
       blkzip = new JSZip();
     } 
 
     // Collect input values from the form
-    const characterName = document.getElementById('blkCharacterName').value;
+    const characterName = blkCharacterName.value;
 
     if (!characterName) {
       console.error("Character Name is required.");
@@ -1886,12 +2119,11 @@ document.addEventListener("DOMContentLoaded", function () {
     blkzip.folder(`img/characters/sex/doggy/moan/bbc`)
     blkzip.folder(`img/characters/sex/insert/bbc`)
     blkzip.folder(`img/characters/sex/missionary/moan/bbc`)
-    blkzip.folder(`img/scenes/characters/${characterName}/bj/bbc`)
-    blkzip.folder(`img/scenes/characters/${characterName}/cum/bbc`)
-    blkzip.folder(`img/scenes/characters/${characterName}/cum/bbc/creampie`)
-    blkzip.folder(`img/scenes/characters/${characterName}/foreplay/bbc`)
-    blkzip.folder(`img/scenes/characters/${characterName}/oral/bbc`)
-    blkzip.folder(`img/scenes/characters/${characterName}/sex/doggy/bbc`)
+    blkzip.folder(`img/scenes/characters/${blkBJPath}`)
+    blkzip.folder(`img/scenes/characters/${blkCumPath}`)
+    blkzip.folder(`img/scenes/characters/${blkForeplayPath}`)
+    blkzip.folder(`img/scenes/characters/${blkOralPath}`)
+    blkzip.folder(`img/scenes/characters/${blkDoggyPath}`)
     blkzip.folder(`img/scenes/characters/${characterName}/sex/active/cowgirl`)
     blkzip.folder(`img/scenes/characters/${characterName}/sex/active/doggy`)
     blkzip.folder(`img/scenes/characters/${characterName}/sex/active/missionary`)
@@ -1900,31 +2132,75 @@ document.addEventListener("DOMContentLoaded", function () {
     blkzip.folder(`img/scenes/characters/${characterName}/sex/passive/doggy`)
     blkzip.folder(`img/scenes/characters/${characterName}/sex/passive/missionary`)
     blkzip.folder(`img/scenes/characters/${characterName}/sex/passive/service`)
-  }
+  };
 
-  // Generate BLACKED Files
-  function generateBlackedFiles(){
+  // Generate BLACKED Directories ONLY
+  function generateBlackedDirectories() {
+    gatherBlackedDirectories();
+    generateBlackedZip();
+  };
+
+  // Gather BLACKED File Values and add to blkzip
+  function gatherBlackedFiles() {
+
     if (!blkzip) {
-      gatherBlackedDirectories();
+      blkzip = new JSZip();
     } 
 
     // Collect input values from forms
     const characterName = blkCharacterName.value;
-    const version = blkYourModBLKVersion.value;
-    const author = blkModAuthor.value;
-    const baseGameVersion = blkBaseGameVersion.value;
-    const MCFVersion = blkMCFVersion.value;
-    const BLKVersion = blkModVersion.value;
-    const MCFModName = blkYourModName.value;
-    const MCFModVersion = blkYourModVersion.value;
 
-    // Transactional Doggy
-    const blkDoggyVidInt = parseInt(blkDoggyVid.value);
-    const blkDoggyInsertImgInt = parseInt(blkDoggyInsertImg.value);
-    const blkDoggyMoanImgInt = parseInt(blkDoggyMoanImg.value);
-    const tagsDoggy = [];
-    const rhythmDoggy = [];
+    // Paths
+    const doggyPath = blkDoggyPath.value;
+    const bjPath = blkBJPath.value;
+    const facefuckPath = blkFacefuckPath.value;
+    const oralPath = blkOralPath.value;
+    const cumPath = blkCumPath.value;
 
+    // Prefixes
+    const doggyVidPrefix = blkDoggyVidPrefix.value;
+    const doggyInsertPrefix = blkDoggyInsertImgPrefix.value;
+    const doggyMoanPrefix = blkDoggyMoanImgPrefix.value;
+    const bjPrefix = blkBJVidPrefix.value;
+    const facefuckPrefix = blkFacefuckVidPrefix.value;
+    const gropeTitsPrefix = blkGropeTitsVidPrefix.value;
+    const gropeAssPrefix = blkGropeAssVidPrefix.value;
+    const kissPrefix = blkKissVidPrefix.value;
+    const oralPrefix = blkOralVidPrefix.value;
+    const creampiePrefix = blkCreampieVidPrefix.value;
+    const facialPrefix = blkFacialVidPrefix.value;
+    const mouthPrefix = blkMouthVidPrefix.value;
+    const pulloutBodyPrefx = blkPullOutBodyVidPrefix.value;
+    const pulloutButtPrefix = blkPullOutButtVidPrefix.value;
+    const pulloutTitsPrefix = blkPullOutTitsVidPrefix.value;
+
+    // Containers
+    const tagArrayDoggy = [];
+    const rhythmArrayDoggy = [];
+    const tagArrayFacefuck = [];
+    const tagArrayFacial = [];
+    const tagArrayBigLoad = [];
+    const tagArrayUnwilling = [];
+    const tagArrayMouth = [];
+    const tagArrayOral = [];
+    const rhythmArrayOral = [];
+
+    // Integers
+    const doggyVidInt = parseInt(blkDoggyVid.value);
+    const doggyInsertImgInt = parseInt(blkDoggyInsertImg.value);
+    const doggyMoanImgInt = parseInt(blkDoggyMoanImg.value);
+    const bjVidInt = parseInt(blkBJVid.value);
+    const facefuckVidInt = parseInt(blkFacefuckVid.value);
+    const gropeTitsVidInt = parseInt(blkGropeTitsVid.value);
+    const gropeAssVidInt = parseInt(blkGropeAssVid.value);
+    const kissVidInt = parseInt(blkKissVid.value);
+    const oralVidInt = parseInt(blkOralVid.value);
+    const creampieVidInt = parseInt(blkCreampieVid.value);
+    const facialVidInt = parseInt(blkFacialVid.value);
+    const mouthVidInt = parseInt(blkMouthVid.value);
+    const pulloutBodyVidInt = parseInt(blkPullOutBodyVid.value);
+    const pulloutButtVidInt = parseInt(blkPullOutButtVid.value);
+    const pulloutTitsVidInt = parseInt(blkPullOutTitsVid.value);
 
     // Field validation
     if (!characterName) {
@@ -1933,141 +2209,301 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (!version || !author || !baseGameVersion || !MCFVersion || !BLKVersion || !MCFModName || !MCFModVersion) {
-      alert("All meta fields are required. Please fill out the fields.");
-      return; 
-    }
-
-    if (!blkDoggyVidInt || !blkDoggyInsertImgInt || !blkDoggyMoanImgInt) {
-      console.error("Transactional Doggy fields are required."); 
-      alert("Transactional Doggy fields are required.");
-      return;
-    }
-
     
-    // Collect tag data from each video
-    for (let i = 1; i <= blkDoggyVidInt; i++) {
+    // Collect tag data from Transactional Doggy
+    for (let i = 1; i <= doggyVidInt; i++) {
       // Collect tags from dropdowns
-      const DoggyTagLocation = blkDoggyContainer.querySelector(`#location_tag_${i}`)?.value || '';
-      const additionalTagsDoggyElements = [
-        blkDoggyContainer.querySelector(`#tag_${i}_1`),
-        blkDoggyContainer.querySelector(`#tag_${i}_2`),
-        blkDoggyContainer.querySelector(`#tag_${i}_3`)
-    ];
+      const locationTag = blkDoggyContainer.querySelector(`#${doggyVidPrefix}_location_tag_${i}`)?.value || '';
+      
+      const additionalTagsElements = [
+          blkDoggyContainer.querySelector(`#${doggyVidPrefix}_tag_${i}_1`),
+          blkDoggyContainer.querySelector(`#${doggyVidPrefix}_tag_${i}_2`),
+          blkDoggyContainer.querySelector(`#${doggyVidPrefix}_tag_${i}_3`)
+      ];
+  
       // Extract and filter tags
-      const additionalTagsDoggy = additionalTagsDoggyElements
-      .map(tag => tag ? tag.value.trim() : '')  // Get values and trim whitespace
-      .filter(tag => tag); // Filter out empty values
-
+      const additionalTags = additionalTagsElements
+          .map(tag => tag ? tag.value.trim() : '')  // Get values and trim whitespace
+          .filter(tag => tag); // Filter out empty values
+  
       // Combine location tag with additional tags
-      const tagArrayDoggy = [DoggyTagLocation, ...additionalTagsDoggy].filter(tag => tag); // Filter out empty strings
+      const tagArray = [locationTag, ...additionalTags].filter(tag => tag); // Filter out empty strings      
 
       // Format tags for Twee
-      tagsDoggy.push(`"${characterName}/sex/doggy/bbc/transactional ${i}", (a:"${tagArrayDoggy.join('","')}")`);
-      rhythmDoggy.push(`"${characterName}/sex/doggy/bbc/transactional ${i}",500`);
+      tagArrayDoggy.push(`\n            "${doggyPath}${doggyVidPrefix} ${i}", (a:"${tagArray.join('","')}")`);
+  
+      // Collect rhythm input if it exists
+      const rhythmInput = blkDoggyContainer.querySelector(`#${doggyVidPrefix}_rhythm_${i}`);
+      const rhythmValue = rhythmInput ? rhythmInput.value || 500 : 500; // Default to 500 if not present or empty
+      rhythmArrayDoggy.push(`\n            "${doggyPath}${doggyVidPrefix} ${i}",${rhythmValue}`);
     }
 
-    // Create the meta content string
-    let metaContent = `metaVersion: 1\n`;
-    metaContent += `name: "${MCFModName} - BLACKED"\n`;
-    metaContent += `version: "${version}"\n`;
-    metaContent += `author: "${author}"\n`;
-    metaContent += `baseGameVersion:\n  atLeast: "${baseGameVersion}"\n`;
-    metaContent += `requiredMods:\n`;
-    metaContent += `   - name: "MultipleCharacters"\n    version:\n      atLeast: "${MCFVersion}"\n`;
-    metaContent += `   - name: "${MCFModName}"\n    version:\n      atLeast: "${MCFModVersion}"\n`;
-    metaContent += `   - name: "BLACKED"\n    version:\n      atLeast: "${BLKVersion}"\n`;
+    // Collect tag data from Facefuck
+    const faceFuckTags  = collectTags(blkFacefuckContainer, blkFacefuckVidPrefix);
+    const facefuckLines = []
+
+    faceFuckTags.forEach(({ videoIndex, tags }) => {
+        const tagsString = tags.join('","'); 
+        facefuckLines.push(`\n            "${facefuckPath}${facefuckPrefix} ${videoIndex}", "${tagsString}"`);
+    });
+    tagArrayFacefuck.push(facefuckLines.join(', '));
+    
+    // Collect tag data from Oral
+    const oralTags = collectTags(blkOralContainer, blkOralVidPrefix);
+    const oralLines = []
+
+    oralTags.forEach(({ videoIndex, tags }) => {
+      const tagsString = tags.join('","'); 
+      oralLines.push(`\n            "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}", "${tagsString}"`);
+    });
+    tagArrayOral.push(oralLines.join(', '));
+
+    // Collect rhythm data from Oral
+    const oralRhythmTags = collectRhythm(blkOralContainer, blkOralVidPrefix);
+    const oralRhythmLines = oralRhythmTags.map((rhythmtags, index) => {
+      return `\n            "scenes/characters/${oralPath}${oralPrefix} ${index + 1}.mp4", ${rhythmtags}`;
+    });
+    rhythmArrayOral.push(oralRhythmLines.join(', '));
+
+    // Collect tag data from Mouth
+    const mouthTags = collectTags(blkMouthContainer, blkMouthVidPrefix);
+    const mouthLines = [];
+
+    mouthTags.forEach(({ videoIndex, tags }) => {
+        const tagsString = tags.join('","'); 
+        mouthLines.push(`\n            "/characters/${cumPath}${mouthPrefix} ${videoIndex}", (a:"${tagsString}")`);
+    });
+    tagArrayMouth.push(mouthLines.join(', '));
+
+    // Collect tag data from Facials
+    const facialTagArray = collectTags(blkFacialContainer, blkFacialVidPrefix);
+    const facialLines = [];
+
+    facialTagArray.forEach(({ videoIndex, tags }) => {
+      const tagsString = tags.join('","'); 
+      facialLines.push(`\n            "/characters/${cumPath}${facialPrefix} ${videoIndex}", (a:"${tagsString}")`);
+    });
+    tagArrayFacial.push(facialLines.join(','));
+
+    // Now process filtering for big loads and unwilling loads
+    const bigLoadInts = [];
+    const unwillingLoadInts = [];
+
+    // Loop through the facialTagArray to determine indices for big load and unwilling tags
+    facialTagArray.forEach(({ videoIndex, tags }) => {
+      const hasBigLoad = tags.some(tag => bigLoadOptions.some(searchTerm => tag.includes(searchTerm)));
+      if (hasBigLoad) {
+          bigLoadInts.push(videoIndex); // Push the video index
+      }
+
+      const hasUnwillingLoad = tags.some(tag => unwillingLoadOptions.some(searchTerm => tag.includes(searchTerm)));
+      if (hasUnwillingLoad) {
+          unwillingLoadInts.push(videoIndex); // Push the video index
+      }
+    });
+    tagArrayBigLoad.push(bigLoadInts.join(','));
+    tagArrayUnwilling.push(unwillingLoadInts.join(','));
+
+
+
+
+
     
     // twee building section
-    let tweeContent = `:: blacked compatibility [around]\n{(display:_around)\n(set:$blacked_compatible_list to it + (dm:"${characterName}",1))}\n\n`;
+    let tweeContent = `:: blacked compatibility [around]\n{\n(display:_around)\n(set:$blacked_compatible_list to it + (dm:"${characterName}",1))\n}\n\n`;
 
     // Transactional Doggy
     tweeContent += `:: sex doggy transactional ${characterName} [around]\n`;
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
-    tweeContent += `(set:$img to "${characterName}/sex/doggy/bbc/transactional " + (text:(twist:1,${blkDoggyVidInt}))) \n`;
-    tweeContent += `(set:$doggy_pic to "<img class='greyborder' src='img/scenes/characters/${characterName}/sex/doggy/bbc/transactional insert " + (text:(twist:1,${imgDoggy})) + ".jpg' width=100% height=auto>") \n`;
-    tweeContent += `(set:$doggy_moan_pic to "<img class='greyborder' src='img/scenes/characters/${characterName}/sex/doggy/bbc/moan " + (text:(twist:1,${imgDoggyMoan})) + ".jpg' width=100% height=auto>")\n`;
-    tweeContent += `(set:$doggy_rhythm to $img of (dm:${rhythmDoggy.join(',')}))\n`;
-    tweeContent += `(set:$text to $img of (dm:${tagsDoggy.join(',')}))\n`;
+    if (doggyVidInt === 1) {
+      tweeContent += `    (set:$img to "${doggyPath}${doggyVidPrefix}")\n`;
+    } else {
+      tweeContent += `    (set:$img to "${doggyPath}${doggyVidPrefix} " + (text:(twist:1,${doggyVidInt})))\n`;
+    }
+    if (doggyInsertImgInt === 1) {
+      tweeContent += `    (set:$doggy_pic to "<img class='greyborder' src='img/scenes/characters/${doggyPath}${doggyInsertPrefix} 1.jpg' width=100% height=auto>")\n`;
+    } else {
+      tweeContent += `    (set:$doggy_pic to "<img class='greyborder' src='img/scenes/characters/${doggyPath}${doggyInsertPrefix} " + (text:(twist:1,${doggyInsertImgInt})) + ".jpg' width=100% height=auto>")\n`;
+    }
+    if (doggyMoanImgInt === 1) {
+      tweeContent += `    (set:$doggy_moan_pic to "<img class='greyborder' src='img/scenes/characters/${doggyPath}${doggyMoanPrefix} 1.jpg' width=100% height=auto>")\n`;
+    } else {
+      tweeContent += `    (set:$doggy_moan_pic to "<img class='greyborder' src='img/scenes/characters/${doggyPath}${doggyMoanPrefix} " + (text:(twist:1,${doggyMoanImgInt})) + ".jpg' width=100% height=auto>")\n`;
+    }
+    tweeContent += `    (set:$doggy_rhythm to $img of\n`;
+    tweeContent += `        (dm: ${rhythmArrayDoggy.join(',')}))\n`;
+    tweeContent += `    (set:$text to $img of\n`;
+    tweeContent += `        (dm: ${tagArrayDoggy.join(',')}))\n`;
     tweeContent += `](else:)[(display:_around)]\n}\n\n`;
 
-    // Add directories to the ZIP
-    blkzip.folder("metas").file(`${characterName}.meta`, metaContent);
-    blkzip.file(`${characterName}.twee`, tweeContent);
-    
-    generateBlackedZip();
-  }
-
-  // Generate BLACKED Directories AND Files
-  function generateBlackedFolders() {
-    gatherBlackedDirectories();
-    generateBlackedZip();
-  }
-
-  // Build tag fields for BLACKED - Transactional Doggy
-  function generateBLKDoggyFields() {
-    blkDoggyContainer.innerHTML = ''; // Clear any existing fields
-
-    const numVideos = parseInt(blkDoggyVid.value) || 0;
-
-    // Define the location options for the first tag
-    const locationOptions = ["bed", "couch", "desk", "floor", "wall", "standing"];
-
-    // Define the additional tag options
-    const tagOptions = [
-      "grab neck", "grab arms", "grab shoulders", "grab boobs", "grab face",
-      "grab head", "grab butt", "grab waist", "pull hair", "mount", "stabilize",
-      "spank", "lean against you", "cover mouth", "look back", "leg up", "tits clap",
-      "push down", "standing", "tits rub", "big thrusts", "eyes roll", "nelson",
-      "balls smacking"
-    ];
-
-    for (let i = 1; i <= numVideos; i++) {
-      const tagField = document.createElement('div');
-      tagField.className = 'form-single-line';
-      
-      // Create label for tags
-      const label = document.createElement('label');
-      label.for = `tags_${i}`;
-      label.textContent = `Tags for Video ${i}:`;
-
-      // Create a dropdown for the first tag (location)
-      const dropdownLocation = document.createElement('select');
-      dropdownLocation.id = `location_tag_${i}`;
-      
-      locationOptions.forEach(option => {
-        const optionElement = document.createElement('option');
-        optionElement.value = option;
-        optionElement.textContent = option;
-        dropdownLocation.appendChild(optionElement);
-      });
-
-      tagField.appendChild(label);
-      tagField.appendChild(dropdownLocation);
-
-      // Create additional dropdowns for each tag in tagOptions
-      for (let j = 1; j <= 3; j++) { // Adjust this to the number of additional tags you want
-        const dropdownTag = document.createElement('select');
-        dropdownTag.id = `tag_${i}_${j}`; // Unique ID for each tag dropdown
-        
-        const emptyOption = document.createElement('option');
-        emptyOption.value = '';
-        emptyOption.textContent = 'Select a tag';
-        dropdownTag.appendChild(emptyOption);
-
-        tagOptions.forEach(option => {
-          const optionElement = document.createElement('option');
-          optionElement.value = option;
-          optionElement.textContent = option;
-          dropdownTag.appendChild(optionElement);
-        });
-
-        tagField.appendChild(dropdownTag);
-      }
-
-      blkDoggyContainer.appendChild(tagField);
+    // Facefuck
+    tweeContent += `:: blowjob transactional facefuck ${characterName} [around]\n`;
+    tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
+    if (facefuckVidInt === 1) {
+      tweeContent += `    (set:$img to "${facefuckPath}${facefuckPrefix}")\n`;
+    } else {
+      tweeContent += `    (set:$img to "${facefuckPath}${facefuckPrefix} " + (text:(twist:1,${facefuckVidInt})))\n`;
     }
+    tweeContent += `    (set:$text to $img of\n`;
+    tweeContent += `        (dm: ${tagArrayFacefuck.join(',')}))\n`;
+    tweeContent += `](else:)[(display:_around)]\n}\n\n`;
+
+    tweeContent += `:: facefuck transactional ${characterName} [around]\n`; // Only called once, submited merge request to consolidate
+    tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
+    if (facefuckVidInt === 1) {
+      tweeContent += `    (set:$img to "${facefuckPath}${facefuckPrefix}")\n`;
+    } else {
+      tweeContent += `    (set:$img to "${facefuckPath}${facefuckPrefix} " + (text:(twist:1,${facefuckVidInt})))\n`;
+    }
+    tweeContent += `    (set:$text to $img of\n`;
+    tweeContent += `        (dm: ${tagArrayFacefuck.join(',')}))\n`;
+    tweeContent += `](else:)[(display:_around)]\n}\n\n`;
+
+    // Blowjob
+    tweeContent += `:: blowjob transactional initialize ${characterName} [around]\n`;
+    tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
+    if (bjVidInt === 1) {
+      tweeContent += `    (set:$img to "scenes/characters/${bjPath}${bjPrefix}.mp4") \n`;
+    } else {
+      tweeContent += `    (set:$img to "scenes/characters/${bjPath}${bjPrefix} " + (text:(twist:1,${bjVidInt})) + ".mp4")\n`;
+    }
+    tweeContent += `](else:)[(display:_around)]\n}\n\n`;
+
+    tweeContent += `:: sex transactional blowjob ${characterName} [around]\n`;
+    tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
+    if (bjVidInt === 1) {
+      tweeContent += `    (set:$img to "scenes/characters/${bjPath}${bjPrefix}.mp4") \n`;
+    } else {
+      tweeContent += `    (set:$img to "scenes/characters/${bjPath}${bjPrefix} " + (text:(twist:1,${bjVidInt})) + ".mp4")\n`;
+    }
+    tweeContent += `](else:)[(display:_around)]\n}\n\n`;
+
+    // Grope
+    tweeContent += `:: sex transactional grope ${characterName} [around]\n`;
+    tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
+    if (gropeTitsVidInt > 0 && gropeAssVidInt > 0) {
+      tweeContent += `    (set:$grope to (twirl:"tits","ass"))\n\n`;
+      tweeContent += `    (if:$grope is "tits")[\n`;
+      if (gropeTitsVidInt === 1) {
+        tweeContent += `        (set:$grope_img to "${gropeTitsPrefix}")]\n`;
+      } else {
+        tweeContent += `        (set:$grope_img to "${gropeTitsPrefix} " + (text:(twist:1,${gropeTitsVidInt})))]\n`;
+      }
+      tweeContent += `    (else-if:$grope is "ass")[\n`;
+      if (gropeAssVidInt === 1) {
+        tweeContent += `        (set:$grope_img to "${gropeAssPrefix}")]\n`;
+      } else {
+        tweeContent += `        (set:$grope_img to "${gropeAssPrefix} " + (text:(twist:1,${gropeAssVidInt})))]\n`;
+      }
+    } else if (gropeTitsVidInt > 0) {
+      tweeContent += `    (set:$grope to "tits")\n\n`;
+      if (gropeTitsVidInt === 1) {
+        tweeContent += `    (set:$grope_img to "${gropeTitsPrefix}")\n`
+      } else {
+        tweeContent += `    (set:$grope_img to "${gropeTitsPrefix} " + (text:(twist:1,${gropeTitsVidInt})))\n`;
+      }
+    } else if (gropeAssVidInt > 0) {
+      tweeContent += `    (set:$grope to "ass")\n\n`;
+      if (gropeAssVidInt === 1) {
+        tweeContent += `    (set:$grope_img to "${gropeAssPrefix}")\n`;
+      } else {
+        tweeContent += `    (set:$grope_img to "${gropeAssPrefix} " + (text:(twist:1,${gropeAssVidInt})))\n`;
+      }
+    }
+    tweeContent += `](else:)[(display:_around)]\n}\n\n`;
+
+    // Kiss
+    tweeContent += `:: sex transactional kiss ${characterName} [around]\n`;
+    tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
+    if (kissVidInt === 1){
+      tweeContent += `    (set:$kiss_variant to "${kissPrefix}")\n`;
+    } else {
+      tweeContent += `    (set:$kiss_variant to "${kissPrefix} " + (text:(twist:1,${kissVidInt})))\n`;
+    }
+    tweeContent += `](else:)[(display:_around)]\n}\n\n`;
+    
+    // Oral
+    tweeContent += `:: sex oral ${characterName} [around]\n`;
+    tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
+    if (oralVidInt === 1) {
+      tweeContent += `    (set:$oral_img to "scenes/characters/${oralPath}${oralPrefix}.mp4")\n`;
+    } else {
+      tweeContent += `    (set:$oral_img to "scenes/characters/${oralPath}${oralPrefix} " + (text:(twist:1,${oralVidInt})) + ".mp4")\n\n`;
+    }
+    tweeContent += `    (set:$oral_rhythm to $oral_img of\n`;
+    tweeContent += `        (dm: ${rhythmArrayOral.join(',')}))\n`;
+    tweeContent += `    (set:$oral_position to $oral_img of\n`;
+    tweeContent += `        (dm: ${tagArrayOral.join(',')}))\n\n`;
+    tweeContent += `    (set:$sex_loop to $sex_loop + (text:(twist:1,2)))\n`;
+    tweeContent += `](else:)[(display:_around)]\n}\n\n`;
+
+    // Creampie
+    tweeContent += `:: sex creampie image ${characterName} [around]\n`;
+    tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
+    if (creampieVidInt === 1) {
+      tweeContent += `    (set:$img to "/characters/${cumPath}${creampiePrefix}")\n`;
+    } else {
+      tweeContent += `    (set:$img to "/characters/${cumPath}${creampiePrefix} " + (text:(twist:1,${creampieVidInt})))\n`;
+    }
+    tweeContent += `](else:)[(display:_around)]\n}\n\n`;
+    
+    // Facial
+    tweeContent += `:: sex cum on face ${characterName} [around]\n`;
+    tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
+
+    if (facialTagArray.length === 1) {
+        tweeContent += `    (set:$img to "/characters/${cumPath}${facialPrefix}")\n`;
+    } else {
+        tweeContent += `    (set:$img to "/characters/${cumPath}${facialPrefix} " + (text:(twist:1,${facialTagArray.length})))\n`;
+    }
+
+    if (tagArrayBigLoad.length > 0 && tagArrayBigLoad[0] !== "") {
+        tweeContent += `    (if:$load is "big")[(set:$img to "/characters/${cumPath}${facialPrefix} " + (twirl:${tagArrayBigLoad}))]\n`
+    }
+    if (tagArrayUnwilling.length > 0 && tagArrayUnwilling[0] !== "") {
+        tweeContent += `    (if:$load is "unwilling")[(set:$img to "/characters/${cumPath}${facialPrefix} " + (twirl:${tagArrayUnwilling}))]\n`
+    }
+
+    tweeContent += `\n    (set:$cum_face to\n`;
+    tweeContent += `        (dm: ${tagArrayFacial.join(',')}))\n\n`;
+    tweeContent += `](else:)[(display:_around)]\n}\n\n`;
+
+    // Mouth
+    tweeContent += `:: sex cum in mouth ${characterName} [around]\n`;
+    tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
+    if (mouthVidInt < 1 ) {
+      tweeContent += `    (set:$cum_mouth_generic to 1)\n`
+    } else {
+      tweeContent += `    (if:(twist:1,4) is 1)[(set:$cum_mouth_generic to 1)]\n    (else:)[\n`
+      if (mouthVidInt === 1) {
+        tweeContent += `        (set:$img to "/characters/${cumPath}${mouthPrefix}")\n`;
+      } else {
+        tweeContent += `        (set:$img to "/characters/${cumPath}${mouthPrefix} " + (text:(twist:1,${mouthVidInt})))\n`;
+      }
+      tweeContent += `\n    (set:$cum_mouth to\n`;
+      tweeContent += `        (dm: ${tagArrayMouth.join(',')}))\n]\n\n`;
+    }
+    tweeContent += `](else:)[(display:_around)]\n}\n\n`;
+
+
+    // Add files to the ZIP
+    blkzip.file(`${characterName}-BLACKED.twee`, tweeContent);
   };
+
+  // Generate BLACKED Files ONLY
+  function generateBlackedFiles(){
+    gatherBlackedFiles();
+    generateBlackedZip();
+  };
+
+  //Generate ALL BLACKED Files and Directories
+  function generateBlackedAll(){
+    gatherBlackedMeta();
+    gatherBlackedDirectories();
+    gatherBlackedFiles();
+    generateBlackedZip();
+  };
+
   // #endregion --- Functions - Blacked
 
   // #region --- Functions - Bar Girl
@@ -2191,23 +2627,23 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Populate skill (and other) values when position changes
-  positionDropdown.addEventListener('change', setDefaultsByPosition);
+  positionDropdown.addEventListener("change", setDefaultsByPosition);
 
   // Adds listeners for position list handling
-  document.querySelectorAll('#positionsList li').forEach((positionItem) => {
+  document.querySelectorAll("#positionsList li").forEach((positionItem) => {
     positionItem.addEventListener("click", () => handlePositionClick(positionItem));
-    positionItem.querySelector('.remove-position')?.addEventListener("click", (e) => {
+    positionItem.querySelector(".remove-position")?.addEventListener("click", (e) => {
         e.stopPropagation();
         handlePositionRemove(positionItem);
     });
   });
 
   // Import existing position file
-  document.getElementById('importPositionsButton').addEventListener('click', function () {
-    const fileInput = document.getElementById('importPositions');
+  document.getElementById("importPositionsButton").addEventListener("click", function () {
+    const fileInput = document.getElementById("importPositions");
     const file = fileInput.files[0];
     if (!file) {
-        alert('No file selected.');
+        alert("No file selected.");
         return;
     }
 
@@ -2260,20 +2696,20 @@ document.addEventListener("DOMContentLoaded", function () {
   generateOutfitsFileButton.addEventListener("click", generateOutfitsFile);
 
   // Adds listeners for outfit list handling
-  document.querySelectorAll('#outfitsList li').forEach((outfitItem) => {
+  document.querySelectorAll("#outfitsList li").forEach((outfitItem) => {
     outfitItem.addEventListener("click", () => handleOutfitClick(outfitItem));
-    outfitItem.querySelector('.remove-outfit')?.addEventListener("click", (e) => {
+    outfitItem.querySelector(".remove-outfit")?.addEventListener("click", (e) => {
         e.stopPropagation();
         handleOutfitRemove(outfitItem);
     });
   });
 
   // Import existing outfit file
-  document.getElementById('importOutfitsButton').addEventListener('click', function () {
-    const fileInput = document.getElementById('importOutfits');
+  document.getElementById("importOutfitsButton").addEventListener("click", function () {
+    const fileInput = document.getElementById("importOutfits");
     const file = fileInput.files[0];
     if (!file) {
-        alert('No file selected.');
+        alert("No file selected.");
         return;
     }
 
@@ -2307,14 +2743,46 @@ document.addEventListener("DOMContentLoaded", function () {
   // Set up Blacked Defaults after Character Input
   blkCharacterName.addEventListener("input", setBlkDefaultDirectories);
 
+  // Show/Hide Generic Pullout Section
+  blkGenericRadioFalse.addEventListener("input", updateGenericPullout);
+  blkGenericRadioTrue.addEventListener("input", updateGenericPullout);
+
+  // Generate Blacked Meta Only
+  generateBlackedMetaButton.addEventListener("click", generateBlackedMeta);
+
   // Generate Blacked Directories Only
-  generateBlackedFoldersButton.addEventListener("click", generateBlackedFolders);
+  generateBlackedFoldersButton.addEventListener("click", generateBlackedDirectories);
 
-  // Generate Blacked Files and Directories
-  generateBlackedFilesButton.addEventListener("click", generateBlackedFiles);
+  // Generate Blacked Files Only
+  generateBlackedFilesOnlyButton.addEventListener("click", generateBlackedFiles);
 
-  // Build tag fields for BLACKED - Transactional Doggy
-  document.getElementById('blkDoggyVid').addEventListener('input', generateBLKDoggyFields);
+  // Generate All Blacked Files and Directories
+  generateBlackedAllFilesButton.addEventListener("click", generateBlackedAll);
+
+  // Build tag fields for BLACKED - Doggy
+  blkDoggyVid.addEventListener("input", generateBLKDoggyFields);
+
+  // Build tag fields for BLACKED - Facefuck
+  blkFacefuckVid.addEventListener("input", generateBLKFacefuckFields);
+
+  // Build tag fields for BLACKED - Oral
+  blkOralVid.addEventListener("input", generateBLKOralFields);
+
+  // Build tag fields for BLACKED - Facial
+  blkFacialVid.addEventListener("input", generateBLKFacialFields);
+
+  // Build tag fields for BLACKED - Mouth
+  blkMouthVid.addEventListener("input", generateBLKMouthFields);
+
+  // Build tag fields for BLACKED - Pull Out Tits
+  blkPullOutTitsVid.addEventListener("input", generateBLKPullOutTitsFields);
+
+  // Build tag fields for BLACKED - Pull Out Body
+  blkPullOutBodyVid.addEventListener("input", generateBLKPullOutBodyFields);
+
+  // Build tag fields for BLACKED - Pull Out Butt
+  blkPullOutButtVid.addEventListener("input", generateBLKPullOutButtFields);
+
   // #endregion --- Listeners - Blacked
 
   // #region --- Listeners - Bar Girl
@@ -2326,92 +2794,92 @@ document.addEventListener("DOMContentLoaded", function () {
   generateMetaFileButton.addEventListener("click", generateMetaFile);
 
   // Adding Required Mods
-  document.getElementById('addRequiredMod').addEventListener('click', function() {
-    const modName = document.getElementById('requiredModName').value.trim();
-    const modVersion = document.getElementById('requiredModVersion').value.trim();
+  document.getElementById("addRequiredMod").addEventListener("click", function() {
+    const modName = document.getElementById("requiredModName").value.trim();
+    const modVersion = document.getElementById("requiredModVersion").value.trim();
 
     if (modName && modVersion) {
-        const modContainer = document.getElementById('requiredModsContainer');
-        const modItem = document.createElement('li');
+        const modContainer = document.getElementById("metaRequiredModsContainer");
+        const modItem = document.createElement("li");
         modItem.textContent = `${modName} - v ${modVersion}`;
         modItem.dataset.mod = JSON.stringify({ name: modName, version: modVersion });
 
-        const removeBtn = document.createElement('button');
-        removeBtn.textContent = 'x';
-        removeBtn.className = 'remove-tag';
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "x";
+        removeBtn.className = "remove-tag";
         modItem.appendChild(removeBtn);
 
         modContainer.appendChild(modItem);
 
-        removeBtn.addEventListener('click', function() {
+        removeBtn.addEventListener("click", function() {
             modItem.remove();
         });
 
         // Clear input fields
-        document.getElementById('requiredModName').value = '';
-        document.getElementById('requiredModVersion').value = '';
+        document.getElementById("requiredModName").value = '';
+        document.getElementById("requiredModVersion").value = '';
       } else {
           alert("Please enter both mod name and version.");
       }
   });
 
   // Adding Compatible Mods
-  document.getElementById('addCompatibleMod').addEventListener('click', function() {
-      const modName = document.getElementById('compatibleModName').value.trim();
-      const modVersion = document.getElementById('compatibleModVersion').value.trim();
-      const modOrder = document.getElementById('compatibleModOrder').value.trim();
+  document.getElementById("addCompatibleMod").addEventListener("click", function() {
+      const modName = document.getElementById("compatibleModName").value.trim();
+      const modVersion = document.getElementById("compatibleModVersion").value.trim();
+      const modOrder = document.getElementById("compatibleModOrder").value.trim();
 
       if (modName && modVersion && modOrder) {
-          const modContainer = document.getElementById('compatibleModsContainer');
-          const modItem = document.createElement('li');
+          const modContainer = document.getElementById("compatibleModsContainer");
+          const modItem = document.createElement("li");
           modItem.textContent = `${modName} - v ${modVersion} (${modOrder})`;
           modItem.dataset.mod = JSON.stringify({ name: modName, version: modVersion, loadOrder: modOrder });
 
-          const removeBtn = document.createElement('button');
-          removeBtn.textContent = 'x';
-          removeBtn.className = 'remove-tag';
+          const removeBtn = document.createElement("button");
+          removeBtn.textContent = "x";
+          removeBtn.className = "remove-tag";
           modItem.appendChild(removeBtn);
 
           modContainer.appendChild(modItem);
 
-          removeBtn.addEventListener('click', function() {
+          removeBtn.addEventListener("click", function() {
               modItem.remove();
           });
 
           // Clear input fields
-          document.getElementById('compatibleModName').value = '';
-          document.getElementById('compatibleModVersion').value = '';
-          document.getElementById('compatibleModOrder').value = '';
+          document.getElementById("compatibleModName").value = '';
+          document.getElementById("compatibleModVersion").value = '';
+          document.getElementById("compatibleModOrder").value = '';
       } else {
           alert("Please enter mod name, version, and load order.");
       }
   });
 
   // Adding Incompatible Mods
-  document.getElementById('addIncompatibleMod').addEventListener('click', function() {
-      const modName = document.getElementById('incompatibleModName').value.trim();
-      const modVersion = document.getElementById('incompatibleModVersion').value.trim();
+  document.getElementById("addIncompatibleMod").addEventListener("click", function() {
+      const modName = document.getElementById("incompatibleModName").value.trim();
+      const modVersion = document.getElementById("incompatibleModVersion").value.trim();
 
       if (modName && modVersion) {
-          const modContainer = document.getElementById('incompatibleModsContainer');
-          const modItem = document.createElement('li');
+          const modContainer = document.getElementById("incompatibleModsContainer");
+          const modItem = document.createElement("li");
           modItem.textContent = `${modName} - v ${modVersion}`;
           modItem.dataset.mod = JSON.stringify({ name: modName, version: modVersion });
 
-          const removeBtn = document.createElement('button');
-          removeBtn.textContent = 'x';
-          removeBtn.className = 'remove-tag';
+          const removeBtn = document.createElement("button");
+          removeBtn.textContent = "x";
+          removeBtn.className = "remove-tag";
           modItem.appendChild(removeBtn);
 
           modContainer.appendChild(modItem);
 
-          removeBtn.addEventListener('click', function() {
+          removeBtn.addEventListener("click", function() {
               modItem.remove();
           });
 
           // Clear input fields
-          document.getElementById('incompatibleModName').value = '';
-          document.getElementById('incompatibleModVersion').value = '';
+          document.getElementById("incompatibleModName").value = '';
+          document.getElementById("incompatibleModVersion").value = '';
       } else {
           alert("Please enter both mod name and version.");
       }
@@ -2468,7 +2936,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Set up Blacked defaults
   setBlkDefaultValues();
-  setBlkDefaultDirectories()
+  setBlkDefaultDirectories();
+  updateGenericPullout();
 
   // Sets up tagging sections
   handleTagInput(positionTagsInput, positionTagsList, addPositionTag);
@@ -2479,10 +2948,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Tooltips
   tippy.setDefaultProps({
-    theme: 'xcl',
-    animation: 'scale',
+    theme: "xcl",
+    animation: "scale",
     arrow: true,
-    placement: 'right',
+    placement: "right",
     allowHTML: true,
   });
 
@@ -2495,15 +2964,15 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   tippy([mcfModAuthor, blkModAuthor, metaAuthor],{
-    content: 'You! <br>You can put your @handle, your name or nickname. However you would like people to know you.<br><br> Example: "Chloe"'
+    content: "You! <br>You can put your @handle, your name or nickname. However you would like people to know you.<br><br> Example: 'Chloe'"
   })
 
   tippy([blkYourModVersion],{
-    content: "This is the version of YOUR MCF mod, for the girl that you are making. <br><br>Example: If your MCF mod is for 'Bonnie', then whatever version 'Bonnie' is on, will go in this box."
+    content: "This is the version of YOUR Playable Character mod, for the girl that you are making. <br><br>Example: If your Playable Character mod is for 'Bonnie', then whatever version 'Bonnie' is on, will go in this box."
   })
 
   tippy([blkYourModName],{
-    content: "This is the name of YOUR MCF mod. Usually it is the girl's name. <br><i>It should match exactly what is in your mod's meta</i>. <br><br>Example: Bonnie"
+    content: "This is the name of YOUR Playable Character mod. Usually it is the girl's name. <br><i>It should match exactly what is in your mod's meta</i>. <br><br>Example: Bonnie"
   })
 
   tippy([positionName],{
