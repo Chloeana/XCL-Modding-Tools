@@ -211,11 +211,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const blkPullOutTitsVid = document.getElementById("blkPullOutTitsVid");
   const blkPullOutTitsVidPrefix = document.getElementById("blkPullOutTitsVidPrefix");
   const blkPullOutTitsContainer = document.getElementById("blkPullOutTitsContainer");
-  const blkGenericRadioTrue = document.getElementById("blkGenericRadioTrue");
-  const blkGenericRadioFalse = document.getElementById("blkGenericRadioFalse");
-  const blkGenericPullOut = document.getElementById("blkGenericPullOut");
-  const blkGenericBodyStats = document.getElementById("blkGenericBodyStats");
-  const blkGenericCupSize = document.getElementById("blkGenericCupSize");
   let blkzip = '' // default value for BLACKED Zip var
   // #endregion --- BLACKED ---
 
@@ -413,7 +408,11 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // Create label for the tags
         const label = document.createElement("label");
-        label.textContent = `${vidPrefix} ${i}:`;
+        if (videoCount > 1) {
+          label.textContent = `${vidPrefix} ${i}:`;
+        } else {
+          label.textContent = `${vidPrefix}:`;
+        }
         tagField.appendChild(label);
 
         // Create dropdowns for tag options
@@ -454,65 +453,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // Collect tags and rhythm from dynamic video sections
-  function collectTags(tagContainer, vidPrefix) {
-    const prefix = vidPrefix.value;
-    const tagFields = tagContainer.querySelectorAll(`select[id^="${prefix}_tag_"], input[id^="${prefix}_rhythm_"]`);
-    const tagsByVideo = {};
-
-    tagFields.forEach((field) => {
-        // Extract the video index from the ID
-        const idParts = field.id.split('_'); // Split by underscore
-        const videoIndex = idParts[2]; // This should be the index
-
-        console.log(`Found field for video index: ${videoIndex}, value: ${field.value}`); // Debugging log
-
-        // Ensure we are using a number for indexing
-        const numericIndex = parseInt(videoIndex, 10); // Convert to a number
-
-        // Initialize entry for this video index if not already done
-        if (!tagsByVideo[numericIndex]) {
-            tagsByVideo[numericIndex] = { tags: [], rhythm: null }; // Initialize structure for tags and rhythm
-        }
-
-        if (field.tagName === 'SELECT' && field.value) {
-            // Collect tags
-            tagsByVideo[numericIndex].tags.push(field.value); // Add the tag to the corresponding video index
-        } else if (field.tagName === 'INPUT' && field.type === 'number') {
-            // Collect rhythm if it's an input of type number
-            const rhythmValue = parseInt(field.value, 10) || 500; // Default rhythm value if not provided
-            tagsByVideo[numericIndex].rhythm = rhythmValue; // Add the rhythm value to the video index
-        }
-    });
-
-    // Convert to array of entries [ { videoIndex: 1, tags: [...], rhythm: 500 }, ... ]
-    const result = Object.entries(tagsByVideo).map(([videoIndex, { tags, rhythm }]) => ({
-        videoIndex: parseInt(videoIndex, 10), // Convert index to number
-        tags,
-        rhythm: rhythm !== null ? rhythm : 500, // Ensure rhythm is set, default to 500 if not present
-    }));
-
-    return result;
-  };
-
-
-  // Collect tags from dynamic video sections
-  function collectRhythm(tagContainer, vidPrefix) {
-    const prefix = vidPrefix.value;
-    const tagFields = tagContainer.querySelectorAll(`input[id^="${prefix}_rhythm_"]`);
-    const rhythmtags = [];
-
-    tagFields.forEach((field, index) => {
-        if (field.type === 'number') {
-            const rhythmValue = parseInt(field.value, 10) || 500; // Default rhythm value
-            rhythmtags.push(rhythmValue);
-        }
-    });
-
-    return rhythmtags; // Return collected tags as an array
-  };
- 
-
   // Build video tagging fields for Doggy Transactional (different because one tag is location)
   function generateDoggyTagFields(vidCountField, vidPrefixField, tagContainer) {
     const container = tagContainer;
@@ -527,12 +467,23 @@ document.addEventListener("DOMContentLoaded", function () {
       // Create label for tags
       const label = document.createElement("label");
       label.for = `tags_${i}`;
-      label.textContent = `${vidPrefix} ${i}:`;
+      if (videoCount > 1) {
+        label.textContent = `${vidPrefix} ${i}:`;
+      } else {
+        label.textContent = `${vidPrefix}:`;
+      }
 
       // Create a dropdown for the first tag (location)
       const dropdownLocation = document.createElement("select");
       dropdownLocation.id = `${vidPrefix}_tag_${i}`;
-      
+
+      // Create and add a default option for the location dropdown
+      const defaultLocationOption = document.createElement("option");
+      defaultLocationOption.value = '';
+      defaultLocationOption.textContent = "Select a location";
+      dropdownLocation.appendChild(defaultLocationOption);
+
+      // Add the other location options
       locationTagOptions.forEach(option => {
         const optionElement = document.createElement("option");
         optionElement.value = option;
@@ -574,6 +525,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
       container.appendChild(tagField);
     }
+  };
+
+  // Collect tags and rhythm from dynamic video sections
+  function collectTags(tagContainer, vidPrefix) {
+    const prefix = vidPrefix.value;
+    const tagFields = tagContainer.querySelectorAll(`select[id^="${prefix}_tag_"], input[id^="${prefix}_rhythm_"]`);
+    const tagsByVideo = {};
+
+    tagFields.forEach((field) => {
+        // Extract the video index from the ID
+        const idParts = field.id.split('_'); // Split by underscore
+        const videoIndex = idParts[2]; // This should be the index
+
+        // Ensure we are using a number for indexing
+        const numericIndex = parseInt(videoIndex, 10); // Convert to a number
+
+        // Initialize entry for this video index if not already done
+        if (!tagsByVideo[numericIndex]) {
+            tagsByVideo[numericIndex] = { tags: [], rhythm: null }; // Initialize structure for tags and rhythm
+        }
+
+        if (field.tagName === 'SELECT' && field.value) {
+            // Collect tags
+            tagsByVideo[numericIndex].tags.push(field.value); // Add the tag to the corresponding video index
+        } else if (field.tagName === 'INPUT' && field.type === 'number') {
+            // Collect rhythm if it's an input of type number
+            const rhythmValue = parseInt(field.value, 10) || 500; // Default rhythm value if not provided
+            tagsByVideo[numericIndex].rhythm = rhythmValue; // Add the rhythm value to the video index
+        }
+    });
+
+    // Convert to array of entries [ { videoIndex: 1, tags: [...], rhythm: 500 }, ... ]
+    const result = Object.entries(tagsByVideo).map(([videoIndex, { tags, rhythm }]) => ({
+        videoIndex: parseInt(videoIndex, 10), // Convert index to number
+        tags,
+        rhythm: rhythm !== null ? rhythm : 500, // Ensure rhythm is set, default to 500 if not present
+    }));
+
+    return result;
   };
 
   // Generate MCF directories
@@ -1976,28 +1966,6 @@ document.addEventListener("DOMContentLoaded", function () {
     blkCumPath.value = `${name}/cum/bbc/`
   };
 
-  // Show/Hide Generic Pull Out Section
-  function updateGenericPullout(){
-    blkGenericBodyStats.value = "";
-    blkGenericCupSize.value = "";
-    blkGenericPullOut.style.display = "block";
-
-    if (blkGenericRadioTrue.checked) {
-      blkGenericPullOut.style.display = "none";
-      blkGenericBodyStats.value = "";
-      blkGenericCupSize.value = "";
-      blkGenericBodyStats.disabled = true;
-      blkGenericCupSize.disabled = true;
-
-    } else {
-      blkGenericPullOut.style.display = "block";
-      blkGenericBodyStats.value = "";
-      blkGenericCupSize.value = "";
-      blkGenericBodyStats.disabled = false;
-      blkGenericCupSize.disabled = false;
-    }
-  };
-
   // Build tag fields for BLACKED - Doggy
   function generateBLKDoggyFields() {
     generateDoggyTagFields(blkDoggyVid, blkDoggyVidPrefix, blkDoggyContainer)
@@ -2176,7 +2144,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const creampiePrefix = blkCreampieVidPrefix.value;
     const facialPrefix = blkFacialVidPrefix.value;
     const mouthPrefix = blkMouthVidPrefix.value;
-    const pulloutBodyPrefx = blkPullOutBodyVidPrefix.value;
+    const pulloutBodyPrefix = blkPullOutBodyVidPrefix.value;
     const pulloutButtPrefix = blkPullOutButtVidPrefix.value;
     const pulloutTitsPrefix = blkPullOutTitsVidPrefix.value;
 
@@ -2190,23 +2158,59 @@ document.addEventListener("DOMContentLoaded", function () {
     const tagArrayMouth = [];
     const tagArrayOral = [];
     const rhythmArrayOral = [];
+    const tagArrayPulloutBody = [];
+    const tagArrayPulloutButt = [];
+    const tagArrayPulloutTits = [];
+
+    // Lines
+    const doggyLines = [];
+    const doggyRhythmLines = [];
+    const facefuckLines = [];
+    const oralLines = [];
+    const oralRhythmLines = [];
+    const facialLines = [];
+    const mouthLines = [];
+    const pulloutBodyLines = [];
+    const pulloutButtLines = [];
+    const pulloutTitsLines = [];
 
     // Integers
-    const doggyVidInt = parseInt(blkDoggyVid.value);
-    const doggyInsertImgInt = parseInt(blkDoggyInsertImg.value);
-    const doggyMoanImgInt = parseInt(blkDoggyMoanImg.value);
-    const bjVidInt = parseInt(blkBJVid.value);
-    const facefuckVidInt = parseInt(blkFacefuckVid.value);
-    const gropeTitsVidInt = parseInt(blkGropeTitsVid.value);
-    const gropeAssVidInt = parseInt(blkGropeAssVid.value);
-    const kissVidInt = parseInt(blkKissVid.value);
-    const oralVidInt = parseInt(blkOralVid.value);
-    const creampieVidInt = parseInt(blkCreampieVid.value);
-    const facialVidInt = parseInt(blkFacialVid.value);
-    const mouthVidInt = parseInt(blkMouthVid.value);
-    const pulloutBodyVidInt = parseInt(blkPullOutBodyVid.value);
-    const pulloutButtVidInt = parseInt(blkPullOutButtVid.value);
-    const pulloutTitsVidInt = parseInt(blkPullOutTitsVid.value);
+    const doggyVidInt = parseInt(blkDoggyVid.value) || 0;
+    const doggyInsertImgInt = parseInt(blkDoggyInsertImg.value) || 0;
+    const doggyMoanImgInt = parseInt(blkDoggyMoanImg.value) || 0;
+    const bjVidInt = parseInt(blkBJVid.value) || 0;
+    const facefuckVidInt = parseInt(blkFacefuckVid.value) || 0;
+    const gropeTitsVidInt = parseInt(blkGropeTitsVid.value) || 0;
+    const gropeAssVidInt = parseInt(blkGropeAssVid.value) || 0;
+    const kissVidInt = parseInt(blkKissVid.value) || 0;
+    const oralVidInt = parseInt(blkOralVid.value) || 0;
+    const creampieVidInt = parseInt(blkCreampieVid.value) || 0;
+    const facialVidInt = parseInt(blkFacialVid.value) || 0;
+    const mouthVidInt = parseInt(blkMouthVid.value) || 0;
+    const pulloutBodyVidInt = parseInt(blkPullOutBodyVid.value) || 0;
+    const pulloutButtVidInt = parseInt(blkPullOutButtVid.value) || 0;
+    const pulloutTitsVidInt = parseInt(blkPullOutTitsVid.value) || 0;
+    const bigLoadInts = [];
+    const unwillingLoadInts = [];
+
+    console.log({
+      doggyVidInt,
+      doggyInsertImgInt,
+      doggyMoanImgInt,
+      bjVidInt,
+      facefuckVidInt,
+      gropeTitsVidInt,
+      gropeAssVidInt,
+      kissVidInt,
+      oralVidInt,
+      creampieVidInt,
+      facialVidInt,
+      mouthVidInt,
+      pulloutBodyVidInt,
+      pulloutButtVidInt,
+      pulloutTitsVidInt
+      });
+  
 
     // Field validation
     if (!characterName) {
@@ -2215,11 +2219,44 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    if (doggyVidInt === 0 || doggyInsertImgInt === 0 || doggyMoanImgInt === 0) {
+      console.error("Doggy fields are required."); 
+      alert("Doggy fields are required.");
+      return;
+    }
+
+    if (bjVidInt === 0) {
+      console.error("BJ fields are required."); 
+      alert("BJ fields are required.");
+      return;
+    }
+
+    if (facefuckVidInt === 0) {
+      console.error("Facefuck fields are required."); 
+      alert("Facefuck fields are required.");
+      return;
+    }
+
+    if (oralVidInt === 0) {
+      console.error("Oral fields are required."); 
+      alert("Oral fields are required.");
+      return;
+    }
+
+    if (kissVidInt === 0) {
+      console.error("Kiss field are required."); 
+      alert("At least one kiss is required.");
+      return;
+    }
+
+    if (gropeTitsVidInt === 0 && gropeAssVidInt === 0) {
+      console.error("Foreplay fields are required."); 
+      alert("At least one foreplay field is required. You must have an ass or tits grope, or both.");
+      return;
+    }
     
     // Collect tag data from Transactional Doggy
     const doggyTags = collectTags(blkDoggyContainer, blkDoggyVidPrefix);
-    const doggyLines = [];
-    const doggyRhythmLines = [];
 
     doggyTags.forEach(({ videoIndex, tags, rhythm }) => {
       const tagsString = tags.join('","');
@@ -2227,13 +2264,13 @@ document.addEventListener("DOMContentLoaded", function () {
       doggyRhythmLines.push(`\n            "${doggyPath}${doggyVidPrefix} ${videoIndex}", ${rhythm}`);
       })
     tagArrayDoggy.push(doggyLines.join(', '));
-    rhythmArrayDoggy.push(doggyRhythmLines.join(', '));
+    rhythmArrayDoggy.push(doggyRhythmLines.join(', '));    
+
 
     // Collect tag data from Facefuck
-    const faceFuckTags  = collectTags(blkFacefuckContainer, blkFacefuckVidPrefix);
-    const facefuckLines = []
+    const facefuckTags  = collectTags(blkFacefuckContainer, blkFacefuckVidPrefix);
 
-    faceFuckTags.forEach(({ videoIndex, tags }) => {
+    facefuckTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
         facefuckLines.push(`\n            "${facefuckPath}${facefuckPrefix} ${videoIndex}", "${tagsString}"`);
     });
@@ -2241,9 +2278,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Collect tag data from Oral
     const oralTags = collectTags(blkOralContainer, blkOralVidPrefix);
-    const oralLines = []
-    const oralRhythmLines = []
-
+    
     oralTags.forEach(({ videoIndex, tags, rhythm }) => {
       const tagsString = tags.join('","'); 
       oralLines.push(`\n            "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}", "${tagsString}"`);
@@ -2253,49 +2288,109 @@ document.addEventListener("DOMContentLoaded", function () {
     rhythmArrayOral.push(oralRhythmLines.join(', '));
 
     // Collect tag data from Mouth
-    const mouthTags = collectTags(blkMouthContainer, blkMouthVidPrefix);
-    const mouthLines = [];
+    if (mouthVidInt > 0) {
+      const mouthTags = collectTags(blkMouthContainer, blkMouthVidPrefix);
+      console.log("mouthTags:", mouthTags)
 
-    mouthTags.forEach(({ videoIndex, tags }) => {
-        const tagsString = tags.join('","'); 
-        mouthLines.push(`\n            "/characters/${cumPath}${mouthPrefix} ${videoIndex}", (a:"${tagsString}")`);
-    });
-    tagArrayMouth.push(mouthLines.join(', '));
-
-    // Collect tag data from Facials
-    const facialTagArray = collectTags(blkFacialContainer, blkFacialVidPrefix);
-    const facialLines = [];
-
-    facialTagArray.forEach(({ videoIndex, tags }) => {
-      const tagsString = tags.join('","'); 
-      facialLines.push(`\n            "/characters/${cumPath}${facialPrefix} ${videoIndex}", (a:"${tagsString}")`);
-    });
-    tagArrayFacial.push(facialLines.join(','));
-
-    // Now process filtering for big loads and unwilling loads
-    const bigLoadInts = [];
-    const unwillingLoadInts = [];
-
-    // Loop through the facialTagArray to determine indices for big load and unwilling tags
-    facialTagArray.forEach(({ videoIndex, tags }) => {
-      const hasBigLoad = tags.some(tag => bigLoadOptions.some(searchTerm => tag.includes(searchTerm)));
-      if (hasBigLoad) {
-          bigLoadInts.push(videoIndex); // Push the video index
-      }
-
-      const hasUnwillingLoad = tags.some(tag => unwillingLoadOptions.some(searchTerm => tag.includes(searchTerm)));
-      if (hasUnwillingLoad) {
-          unwillingLoadInts.push(videoIndex); // Push the video index
-      }
-    });
-    tagArrayBigLoad.push(bigLoadInts.join(','));
-    tagArrayUnwilling.push(unwillingLoadInts.join(','));
-
-
-
-
-
+      mouthTags.forEach(({ videoIndex, tags }) => {
+          const tagsString = tags.join('","'); 
+          mouthLines.push(`\n            "/characters/${cumPath}${mouthPrefix} ${videoIndex}", (a:"${tagsString}")`);
+      });
+      tagArrayMouth.push(mouthLines.join(', '));
+    }
     
+    // Collect tag data from Facials
+    if (facialVidInt > 0) {
+      const facialTags = collectTags(blkFacialContainer, blkFacialVidPrefix);
+      console.log("facialTags:", facialTags)
+
+      facialTags.forEach(({ videoIndex, tags }) => {
+        const tagsString = tags.join('","'); 
+        facialLines.push(`\n            "/characters/${cumPath}${facialPrefix} ${videoIndex}", (a:"${tagsString}")`);
+      });
+      tagArrayFacial.push(facialLines.join(','));   
+      
+      // Loop through the facialTags to determine indices for big load and unwilling tags
+      facialTags.forEach(({ videoIndex, tags }) => {
+        const hasBigLoad = tags.some(tag => bigLoadOptions.some(searchTerm => tag.includes(searchTerm)));
+        if (hasBigLoad) {
+            bigLoadInts.push(videoIndex); // Push the video index
+        }
+
+        const hasUnwillingLoad = tags.some(tag => unwillingLoadOptions.some(searchTerm => tag.includes(searchTerm)));
+        if (hasUnwillingLoad) {
+            unwillingLoadInts.push(videoIndex); // Push the video index
+        }
+      });
+      tagArrayBigLoad.push(bigLoadInts.join(','));
+      tagArrayUnwilling.push(unwillingLoadInts.join(','));
+    }
+
+    // Collect tag data from Pull Out
+    if (pulloutBodyVidInt > 0) {
+      const pulloutBodyTags  = collectTags(blkPullOutBodyContainer, pulloutBodyPrefix);
+      console.log("pulloutBodyTags:", pulloutBodyTags)
+      
+      pulloutBodyTags.forEach(({ videoIndex, tags }) => {
+        const tagsString = tags.join('","'); 
+        pulloutBodyLines.push(`\n            "/characters/${cumPath}${pulloutBodyPrefix} ${videoIndex}", (a:"body","${tagsString}"`);
+      });
+      tagArrayPulloutBody.push(pulloutBodyLines.join(', '));
+    }
+    
+    if (pulloutButtVidInt > 0) {
+      const pulloutButtTags  = collectTags(blkPullOutButtContainer, pulloutButtPrefix);
+      console.log("pulloutButtTags:", pulloutButtTags)
+      
+      pulloutButtTags.forEach(({ videoIndex, tags }) => {
+        const tagsString = tags.join('","'); 
+        pulloutButtLines.push(`\n            "/characters/${cumPath}${pulloutButtPrefix} ${videoIndex}", (a:"butt","${tagsString}"`);
+      });
+      tagArrayPulloutButt.push(pulloutButtLines.join(', '));
+    }
+
+    if (pulloutTitsVidInt > 0) {
+      const pulloutTitsTags  = collectTags(blkPullOutTitsContainer, pulloutTitsPrefix);
+      console.log("pulloutTitsTags:", pulloutTitsTags)
+      
+      pulloutTitsTags.forEach(({ videoIndex, tags }) => {
+        const tagsString = tags.join('","'); 
+        pulloutTitsLines.push(`\n            "/characters/${cumPath}${pulloutTitsPrefix} ${videoIndex}", (a:"tits","${tagsString}"`);
+      });
+      tagArrayPulloutTits.push(pulloutTitsLines.join(', '));
+    }
+
+    // Log tags for debugging
+    /* 
+    console.log("doggyTags:", doggyTags) 
+    console.log("facefuckTags:", facefuckTags)
+    console.log("oralTags:", oralTags)
+    console.log("tagArrayDoggy:", tagArrayDoggy)
+    console.log("rhythmArrayDoggy:", rhythmArrayDoggy)
+    console.log("tagArrayFacefuck:", tagArrayFacefuck)
+    console.log("tagArrayOral:", tagArrayOral)
+    console.log("rhythmArrayOral:", rhythmArrayOral)
+    console.log("tagArrayMouth:", tagArrayMouth)
+    console.log("tagArrayFacial:", tagArrayFacial) 
+    console.log("tagArrayBigLoad:", tagArrayBigLoad) 
+    console.log("tagArrayUnwilling:", tagArrayUnwilling)
+    console.log("tagArrayPulloutBody:", tagArrayPulloutBody)
+    console.log("tagArrayPulloutButt:", tagArrayPulloutButt)
+    console.log("tagArrayPulloutTits:", tagArrayPulloutTits)
+    */
+
+    // Tag Validation
+    const isDoggyTagsEmpty = doggyTags.every(tag => tag.tags.length === 0);
+    const isFacefuckTagsEmpty = facefuckTags .every(tag => tag.tags.length === 0);
+    const isOralTagsEmpty = oralTags.every(tag => tag.tags.length === 0);
+    
+    if (isDoggyTagsEmpty && isFacefuckTagsEmpty && isOralTagsEmpty) {
+      console.error("At least one tag field is required.");
+      alert("Please select at least one tag.");
+      return;
+    }
+    
+
     // twee building section
     let tweeContent = `:: blacked compatibility [around]\n{\n(display:_around)\n(set:$blacked_compatible_list to it + (dm:"${characterName}",1))\n}\n\n`;
 
@@ -2400,7 +2495,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tweeContent += `](else:)[(display:_around)]\n}\n\n`;
 
     // Kiss
-    tweeContent += `:: sex transactional kiss ${characterName} [around]\n`;
+    tweeContent += `:: sex transactional kiss ${characterName} \n`;
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
     if (kissVidInt === 1){
       tweeContent += `    (set:$kiss_variant to "${kissPrefix}")\n`;
@@ -2427,10 +2522,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Creampie
     tweeContent += `:: sex creampie image ${characterName} [around]\n`;
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
-    if (creampieVidInt === 1) {
+    if (blkCreampieVid.value && creampieVidInt === 1) {
       tweeContent += `    (set:$img to "/characters/${cumPath}${creampiePrefix}")\n`;
-    } else {
+    } else if (blkCreampieVid.value && creampieVidInt > 1) {
       tweeContent += `    (set:$img to "/characters/${cumPath}${creampiePrefix} " + (text:(twist:1,${creampieVidInt})))\n`;
+    } else {
+      tweeContent += `    (set:$generic_creampie_variant to 1)\n`;
     }
     tweeContent += `](else:)[(display:_around)]\n}\n\n`;
     
@@ -2438,21 +2535,26 @@ document.addEventListener("DOMContentLoaded", function () {
     tweeContent += `:: sex cum on face ${characterName} [around]\n`;
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
 
-    if (facialTagArray.length === 1) {
-        tweeContent += `    (set:$img to "/characters/${cumPath}${facialPrefix}")\n`;
+    if (!blkFacialVid.value) {
+      tweeContent += `    (set:$cum_face to (dm:))\n`;
+      tweeContent += `    (set:$img to "/generic/sex/cum/bbc facial " + (text:(twist:1,5)))\n`;
     } else {
-        tweeContent += `    (set:$img to "/characters/${cumPath}${facialPrefix} " + (text:(twist:1,${facialTagArray.length})))\n`;
-    }
-
-    if (tagArrayBigLoad.length > 0 && tagArrayBigLoad[0] !== "") {
+      if (blkFacialVid.value && facialVidInt === 1) {
+        tweeContent += `    (set:$img to "/characters/${cumPath}${facialPrefix}")\n`;
+      } else if (blkFacialVid.value && facialVidInt > 1) {
+        tweeContent += `    (set:$img to "/characters/${cumPath}${facialPrefix} " + (text:(twist:1,${facialVidInt})))\n`;
+      }
+      if (tagArrayBigLoad.length > 0 && tagArrayBigLoad[0] !== "") {
         tweeContent += `    (if:$load is "big")[(set:$img to "/characters/${cumPath}${facialPrefix} " + (twirl:${tagArrayBigLoad}))]\n`
-    }
-    if (tagArrayUnwilling.length > 0 && tagArrayUnwilling[0] !== "") {
-        tweeContent += `    (if:$load is "unwilling")[(set:$img to "/characters/${cumPath}${facialPrefix} " + (twirl:${tagArrayUnwilling}))]\n`
-    }
+      }
+      if (tagArrayUnwilling.length > 0 && tagArrayUnwilling[0] !== "") {
+          tweeContent += `    (if:$load is "unwilling")[(set:$img to "/characters/${cumPath}${facialPrefix} " + (twirl:${tagArrayUnwilling}))]\n`
+      }
 
-    tweeContent += `\n    (set:$cum_face to\n`;
-    tweeContent += `        (dm: ${tagArrayFacial.join(',')}))\n\n`;
+      tweeContent += `\n    (set:$cum_face to\n`;
+      tweeContent += `        (dm: ${tagArrayFacial.join(',')}))\n\n`;
+    } 
+    
     tweeContent += `](else:)[(display:_around)]\n}\n\n`;
 
     // Mouth
@@ -2470,6 +2572,57 @@ document.addEventListener("DOMContentLoaded", function () {
       tweeContent += `\n    (set:$cum_mouth to\n`;
       tweeContent += `        (dm: ${tagArrayMouth.join(',')}))\n]\n\n`;
     }
+    tweeContent += `](else:)[(display:_around)]\n}\n\n`;
+
+
+    // Pull Out
+    tweeContent += `:: sex pull out ${characterName} [around]\n`;
+    tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
+    const imgPaths = [];
+
+    // Collect Tits
+    if (blkPullOutTitsVid.value && pulloutTitsVidInt !== 0) {
+      if (pulloutTitsVidInt === 1) {
+        imgPaths.push(`/characters/${cumPath}${pulloutTitsPrefix}`);
+      } else {
+        for (let i = 1; i <= pulloutTitsVidInt; i++) {
+          imgPaths.push(`/characters/${cumPath}${pulloutTitsPrefix} ${i}`);
+        }
+      }
+    }
+
+    // Collect Body
+    if (blkPullOutBodyVid.value && pulloutBodyVidInt !== 0) {
+      if (pulloutBodyVidInt === 1) {
+        imgPaths.push(`/characters/${cumPath}${pulloutBodyPrefix}`);
+      } else {
+        for (let i = 1; i <= pulloutBodyVidInt; i++) {
+          imgPaths.push(`/characters/${cumPath}${pulloutBodyPrefix} ${i}`);
+        }
+      }
+    }
+
+    // Collect Butt
+    if (blkPullOutButtVid.value && pulloutButtVidInt !== 0) {
+      if (pulloutButtVidInt === 1) {
+        imgPaths.push(`/characters/${cumPath}${pulloutButtPrefix}`);
+      } else {
+        for (let i = 1; i <= pulloutButtVidInt; i++) {
+          imgPaths.push(`/characters/${cumPath}${pulloutButtPrefix} ${i}`);
+        }
+      }
+    }
+
+    if (imgPaths.length > 0) {
+      tweeContent += `    (set:$img to (twirl:\n`;
+      imgPaths.forEach((path, index) => {
+        tweeContent += `        "${path}"${index < imgPaths.length - 1 ? ',' : ''}\n`;
+      });
+      tweeContent += `    ))\n`;
+    } else {
+      tweeContent += `    (set:$pullout_variant to 1)\n`;
+    }
+
     tweeContent += `](else:)[(display:_around)]\n}\n\n`;
 
 
@@ -2730,10 +2883,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Set up Blacked Defaults after Character Input
   blkCharacterName.addEventListener("input", setBlkDefaultDirectories);
 
-  // Show/Hide Generic Pullout Section
-  blkGenericRadioFalse.addEventListener("input", updateGenericPullout);
-  blkGenericRadioTrue.addEventListener("input", updateGenericPullout);
-
   // Generate Blacked Meta Only
   generateBlackedMetaButton.addEventListener("click", generateBlackedMeta);
 
@@ -2883,7 +3032,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".tablinks").classList.add("active");
 
   // Fetch Version numbers from Lovers Lab
-  getVersionNumbers()
+  getVersionNumbers();
 
   // Set up slider input boxes next to all sliders
   sliders.forEach((slider) => {
@@ -2924,7 +3073,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Set up Blacked defaults
   setBlkDefaultValues();
   setBlkDefaultDirectories();
-  updateGenericPullout();
 
   // Sets up tagging sections
   handleTagInput(positionTagsInput, positionTagsList, addPositionTag);
