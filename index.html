@@ -6,6 +6,7 @@
     <title>XCL Modding Tools</title>
     <link rel="icon" href="https://x-change.life/img/favicon.ico" type="image/ico">
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6.3.7/animations/scale.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -632,7 +633,8 @@
                 <div class="form-center-wrapper">
                     <form id="blackedForm">
                         <div class="form-note">
-                            <p>This tab is intended to expand playable characters to work with the BLACKED mod.</p>
+                            <p>This tool is for expanding a playable character to work with the BLACKED mod.<br>It is intended to serve as a coding assistant, to facilitate working with the code files.</p>
+                            <p>Select tags that match the video on the related line.<br>If you only have 1 media file for a section, you must end the filename with a 1. <br>"Kiss 1.mp4" instead of just "Kiss.mp4", even if you only have 1 kiss file.</p>
                             <p>For complete instructions on adding a BLACKED version of your character, please visit the <a href="https://github.com/Chloeana/XCL-Blacked/tree/main/Blacked-Template" target="_blank">walkthrough</a>.</p>
                         </div>
                         <div class="form-center">
@@ -671,6 +673,7 @@
                             <button type="button" id="generateBlackedMetaButton">Generate Meta Only</button>
                         </div>
                         <div class="form-center">
+                            <i class="fa fa-question-circle" id="blkDoggyHelp"></i>
                             <h2>Doggy (Transactional)</h2>
                             <div class="form-single-line-directory">
                                 <label for="blkDoggyPath">Folder Path:</label>
@@ -697,6 +700,7 @@
                         </div>
 
                         <div class="form-center">
+                            <i class="fa fa-question-circle" id="blkBJHelp"></i>
                             <h2>Blowjob (Transactional)</h2>
                             <div class="form-single-line-directory">
                                 <label for="blkBJPath">Folder Path:</label><p>/img/scenes/characters/</p>
@@ -711,6 +715,7 @@
                         </div>
 
                         <div class="form-center">
+                            <i class="fa fa-question-circle" id="blkFacefuckHelp"></i>
                             <h2>Facefuck (Transactional)</h2>
                             <div class="form-single-line-directory">
                                 <label for="blkFacefuckPath">Folder Path:</label><p>/img/scenes/characters/</p>
@@ -726,6 +731,7 @@
                         </div>
 
                         <div class="form-center">
+                            <i class="fa fa-question-circle" id="blkOralHelp"></i>
                             <h2>Oral</h2>
                             <div class="form-single-line-directory">
                                 <label for="blkOralPath">Folder Path:</label><p>/img/scenes/characters/</p>
@@ -741,6 +747,7 @@
                         </div>
 
                         <div class="form-center">
+                            <i class="fa fa-question-circle" id="blkForeplayHelp"></i>
                             <h2>Foreplay</h2>
                             <div class="form-single-line-directory">
                                 <label for="blkForeplayPath">Folder Path:</label><p>/img/scenes/characters/</p>
@@ -763,6 +770,7 @@
                         </div>
 
                         <div class="form-center">
+                            <i class="fa fa-question-circle" id="blkCumHelp"></i>
                             <h2>Cum</h2>
                             <div class="form-single-line-directory">
                                 <label for="blkCumPath">Folder Path:</label><p>/img/scenes/characters/</p>
@@ -789,6 +797,7 @@
                         </div>
 
                         <div class="form-center">
+                            <i class="fa fa-question-circle" id="blkPullOutHelp"></i>
                             <h2>Pull Out</h2>
                             <div class="form-grid w-70" id="blkPullOutGrid">
                                 <label for="blkPullOutBodyVidPrefix" style="grid-column: 1;">Body:</label>

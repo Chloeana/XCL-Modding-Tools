@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "balls smacking"
   ]; 
   const locationTagOptions = [
-    "bed", "floor", "couch", "desk", "chair", "wall", "counter", "table"
+    "bed", "floor", "couch", "desk", "chair", "standing", "counter", "table"
   ];
   const facialTagOptions = [
     "spurt", "spray", "ooze", "cumdump", "runny", "spatter", "big load", "unwilling",
@@ -211,6 +211,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const blkPullOutTitsVid = document.getElementById("blkPullOutTitsVid");
   const blkPullOutTitsVidPrefix = document.getElementById("blkPullOutTitsVidPrefix");
   const blkPullOutTitsContainer = document.getElementById("blkPullOutTitsContainer");
+  const blkDoggyHelp = document.getElementById("blkDoggyHelp");
+  const blkBJHelp = document.getElementById("blkBJHelp");
+  const blkFacefuckHelp = document.getElementById("blkFacefuckHelp");
+  const blkOralHelp = document.getElementById("blkOralHelp");
+  const blkForeplayHelp = document.getElementById("blkForeplayHelp");
+  const blkCumHelp = document.getElementById("blkCumHelp");
+  const blkPullOutHelp = document.getElementById("blkPulloutHelp");
   let blkzip = '' // default value for BLACKED Zip var
   // #endregion --- BLACKED ---
 
@@ -408,11 +415,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // Create label for the tags
         const label = document.createElement("label");
-        if (videoCount > 1) {
-          label.textContent = `${vidPrefix} ${i}:`;
-        } else {
-          label.textContent = `${vidPrefix}:`;
-        }
+        label.textContent = `${vidPrefix} ${i}:`;
         tagField.appendChild(label);
 
         // Create dropdowns for tag options
@@ -467,11 +470,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Create label for tags
       const label = document.createElement("label");
       label.for = `tags_${i}`;
-      if (videoCount > 1) {
-        label.textContent = `${vidPrefix} ${i}:`;
-      } else {
-        label.textContent = `${vidPrefix}:`;
-      }
+      label.textContent = `${vidPrefix} ${i}:`;
 
       // Create a dropdown for the first tag (location)
       const dropdownLocation = document.createElement("select");
@@ -2158,6 +2157,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const tagArrayMouth = [];
     const tagArrayOral = [];
     const rhythmArrayOral = [];
+    const tagArrayPullout = [];
     const tagArrayPulloutBody = [];
     const tagArrayPulloutButt = [];
     const tagArrayPulloutTits = [];
@@ -2281,7 +2281,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     oralTags.forEach(({ videoIndex, tags, rhythm }) => {
       const tagsString = tags.join('","'); 
-      oralLines.push(`\n            "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}", "${tagsString}"`);
+      oralLines.push(`\n            "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}.mp4", "${tagsString}"`);
       oralRhythmLines.push(`\n            "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}.mp4", ${rhythm}`)
     });
     tagArrayOral.push(oralLines.join(', '));
@@ -2290,11 +2290,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Collect tag data from Mouth
     if (mouthVidInt > 0) {
       const mouthTags = collectTags(blkMouthContainer, blkMouthVidPrefix);
-      console.log("mouthTags:", mouthTags)
 
       mouthTags.forEach(({ videoIndex, tags }) => {
           const tagsString = tags.join('","'); 
-          mouthLines.push(`\n            "/characters/${cumPath}${mouthPrefix} ${videoIndex}", (a:"${tagsString}")`);
+          mouthLines.push(`\n                "/characters/${cumPath}${mouthPrefix} ${videoIndex}", (a:"${tagsString}")`);
       });
       tagArrayMouth.push(mouthLines.join(', '));
     }
@@ -2302,7 +2301,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Collect tag data from Facials
     if (facialVidInt > 0) {
       const facialTags = collectTags(blkFacialContainer, blkFacialVidPrefix);
-      console.log("facialTags:", facialTags)
 
       facialTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
@@ -2328,40 +2326,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Collect tag data from Pull Out
     if (pulloutBodyVidInt > 0) {
-      const pulloutBodyTags  = collectTags(blkPullOutBodyContainer, pulloutBodyPrefix);
-      console.log("pulloutBodyTags:", pulloutBodyTags)
+      const pulloutBodyTags  = collectTags(blkPullOutBodyContainer, blkPullOutBodyVidPrefix);
       
       pulloutBodyTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
-        pulloutBodyLines.push(`\n            "/characters/${cumPath}${pulloutBodyPrefix} ${videoIndex}", (a:"body","${tagsString}"`);
+        
+        pulloutBodyLines.push(`\n            "/characters/${cumPath}${pulloutBodyPrefix} ${videoIndex}", (a:"body","${tagsString}")`);
       });
-      tagArrayPulloutBody.push(pulloutBodyLines.join(', '));
+      tagArrayPullout.push(pulloutBodyLines.join(', '));
     }
     
     if (pulloutButtVidInt > 0) {
-      const pulloutButtTags  = collectTags(blkPullOutButtContainer, pulloutButtPrefix);
-      console.log("pulloutButtTags:", pulloutButtTags)
+      const pulloutButtTags  = collectTags(blkPullOutButtContainer, blkPullOutButtVidPrefix);
       
       pulloutButtTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
-        pulloutButtLines.push(`\n            "/characters/${cumPath}${pulloutButtPrefix} ${videoIndex}", (a:"butt","${tagsString}"`);
+        pulloutButtLines.push(`\n            "/characters/${cumPath}${pulloutButtPrefix} ${videoIndex}", (a:"butt","${tagsString}")`);
       });
-      tagArrayPulloutButt.push(pulloutButtLines.join(', '));
+      tagArrayPullout.push(pulloutButtLines.join(', '));
     }
 
     if (pulloutTitsVidInt > 0) {
-      const pulloutTitsTags  = collectTags(blkPullOutTitsContainer, pulloutTitsPrefix);
-      console.log("pulloutTitsTags:", pulloutTitsTags)
-      
+      const pulloutTitsTags  = collectTags(blkPullOutTitsContainer, blkPullOutTitsVidPrefix);
+
       pulloutTitsTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
-        pulloutTitsLines.push(`\n            "/characters/${cumPath}${pulloutTitsPrefix} ${videoIndex}", (a:"tits","${tagsString}"`);
+        pulloutTitsLines.push(`\n            "/characters/${cumPath}${pulloutTitsPrefix} ${videoIndex}", (a:"tits","${tagsString}")`);
       });
-      tagArrayPulloutTits.push(pulloutTitsLines.join(', '));
+      tagArrayPullout.push(pulloutTitsLines.join(', '));
     }
 
     // Log tags for debugging
-    /* 
+
     console.log("doggyTags:", doggyTags) 
     console.log("facefuckTags:", facefuckTags)
     console.log("oralTags:", oralTags)
@@ -2374,10 +2370,11 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("tagArrayFacial:", tagArrayFacial) 
     console.log("tagArrayBigLoad:", tagArrayBigLoad) 
     console.log("tagArrayUnwilling:", tagArrayUnwilling)
+    console.log("tagArrayPullout:", tagArrayPullout)
     console.log("tagArrayPulloutBody:", tagArrayPulloutBody)
     console.log("tagArrayPulloutButt:", tagArrayPulloutButt)
     console.log("tagArrayPulloutTits:", tagArrayPulloutTits)
-    */
+
 
     // Tag Validation
     const isDoggyTagsEmpty = doggyTags.every(tag => tag.tags.length === 0);
@@ -2398,7 +2395,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tweeContent += `:: sex doggy transactional ${characterName} [around]\n`;
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
     if (doggyVidInt === 1) {
-      tweeContent += `    (set:$img to "${doggyPath}${doggyVidPrefix}")\n`;
+      tweeContent += `    (set:$img to "${doggyPath}${doggyVidPrefix} 1")\n`;
     } else {
       tweeContent += `    (set:$img to "${doggyPath}${doggyVidPrefix} " + (text:(twist:1,${doggyVidInt})))\n`;
     }
@@ -2422,7 +2419,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tweeContent += `:: blowjob transactional facefuck ${characterName} [around]\n`;
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
     if (facefuckVidInt === 1) {
-      tweeContent += `    (set:$img to "${facefuckPath}${facefuckPrefix}")\n`;
+      tweeContent += `    (set:$img to "${facefuckPath}${facefuckPrefix} 1")\n`;
     } else {
       tweeContent += `    (set:$img to "${facefuckPath}${facefuckPrefix} " + (text:(twist:1,${facefuckVidInt})))\n`;
     }
@@ -2433,7 +2430,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tweeContent += `:: facefuck transactional ${characterName} [around]\n`; // Only called once, submited merge request to consolidate
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
     if (facefuckVidInt === 1) {
-      tweeContent += `    (set:$img to "${facefuckPath}${facefuckPrefix}")\n`;
+      tweeContent += `    (set:$img to "${facefuckPath}${facefuckPrefix} 1")\n`;
     } else {
       tweeContent += `    (set:$img to "${facefuckPath}${facefuckPrefix} " + (text:(twist:1,${facefuckVidInt})))\n`;
     }
@@ -2445,7 +2442,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tweeContent += `:: blowjob transactional initialize ${characterName} [around]\n`;
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
     if (bjVidInt === 1) {
-      tweeContent += `    (set:$img to "scenes/characters/${bjPath}${bjPrefix}.mp4") \n`;
+      tweeContent += `    (set:$img to "scenes/characters/${bjPath}${bjPrefix} 1.mp4") \n`;
     } else {
       tweeContent += `    (set:$img to "scenes/characters/${bjPath}${bjPrefix} " + (text:(twist:1,${bjVidInt})) + ".mp4")\n`;
     }
@@ -2454,7 +2451,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tweeContent += `:: sex transactional blowjob ${characterName} [around]\n`;
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
     if (bjVidInt === 1) {
-      tweeContent += `    (set:$img to "scenes/characters/${bjPath}${bjPrefix}.mp4") \n`;
+      tweeContent += `    (set:$img to "scenes/characters/${bjPath}${bjPrefix} 1.mp4") \n`;
     } else {
       tweeContent += `    (set:$img to "scenes/characters/${bjPath}${bjPrefix} " + (text:(twist:1,${bjVidInt})) + ".mp4")\n`;
     }
@@ -2467,27 +2464,27 @@ document.addEventListener("DOMContentLoaded", function () {
       tweeContent += `    (set:$grope to (twirl:"tits","ass"))\n\n`;
       tweeContent += `    (if:$grope is "tits")[\n`;
       if (gropeTitsVidInt === 1) {
-        tweeContent += `        (set:$grope_img to "${gropeTitsPrefix}")]\n`;
+        tweeContent += `        (set:$grope_img to "${gropeTitsPrefix} 1")]\n`;
       } else {
         tweeContent += `        (set:$grope_img to "${gropeTitsPrefix} " + (text:(twist:1,${gropeTitsVidInt})))]\n`;
       }
       tweeContent += `    (else-if:$grope is "ass")[\n`;
       if (gropeAssVidInt === 1) {
-        tweeContent += `        (set:$grope_img to "${gropeAssPrefix}")]\n`;
+        tweeContent += `        (set:$grope_img to "${gropeAssPrefix} 1")]\n`;
       } else {
         tweeContent += `        (set:$grope_img to "${gropeAssPrefix} " + (text:(twist:1,${gropeAssVidInt})))]\n`;
       }
     } else if (gropeTitsVidInt > 0) {
       tweeContent += `    (set:$grope to "tits")\n\n`;
       if (gropeTitsVidInt === 1) {
-        tweeContent += `    (set:$grope_img to "${gropeTitsPrefix}")\n`
+        tweeContent += `    (set:$grope_img to "${gropeTitsPrefix} 1")\n`
       } else {
         tweeContent += `    (set:$grope_img to "${gropeTitsPrefix} " + (text:(twist:1,${gropeTitsVidInt})))\n`;
       }
     } else if (gropeAssVidInt > 0) {
       tweeContent += `    (set:$grope to "ass")\n\n`;
       if (gropeAssVidInt === 1) {
-        tweeContent += `    (set:$grope_img to "${gropeAssPrefix}")\n`;
+        tweeContent += `    (set:$grope_img to "${gropeAssPrefix} 1")\n`;
       } else {
         tweeContent += `    (set:$grope_img to "${gropeAssPrefix} " + (text:(twist:1,${gropeAssVidInt})))\n`;
       }
@@ -2498,7 +2495,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tweeContent += `:: sex transactional kiss ${characterName} \n`;
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
     if (kissVidInt === 1){
-      tweeContent += `    (set:$kiss_variant to "${kissPrefix}")\n`;
+      tweeContent += `    (set:$kiss_variant to "${kissPrefix} 1")\n`;
     } else {
       tweeContent += `    (set:$kiss_variant to "${kissPrefix} " + (text:(twist:1,${kissVidInt})))\n`;
     }
@@ -2508,7 +2505,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tweeContent += `:: sex oral ${characterName} [around]\n`;
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
     if (oralVidInt === 1) {
-      tweeContent += `    (set:$oral_img to "scenes/characters/${oralPath}${oralPrefix}.mp4")\n`;
+      tweeContent += `    (set:$oral_img to "scenes/characters/${oralPath}${oralPrefix} 1.mp4")\n`;
     } else {
       tweeContent += `    (set:$oral_img to "scenes/characters/${oralPath}${oralPrefix} " + (text:(twist:1,${oralVidInt})) + ".mp4")\n\n`;
     }
@@ -2522,9 +2519,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Creampie
     tweeContent += `:: sex creampie image ${characterName} [around]\n`;
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
-    if (blkCreampieVid.value && creampieVidInt === 1) {
-      tweeContent += `    (set:$img to "/characters/${cumPath}${creampiePrefix}")\n`;
-    } else if (blkCreampieVid.value && creampieVidInt > 1) {
+    if (creampieVidInt === 1) {
+      tweeContent += `    (set:$img to "/characters/${cumPath}${creampiePrefix} 1")\n`;
+    } else if (creampieVidInt > 1) {
       tweeContent += `    (set:$img to "/characters/${cumPath}${creampiePrefix} " + (text:(twist:1,${creampieVidInt})))\n`;
     } else {
       tweeContent += `    (set:$generic_creampie_variant to 1)\n`;
@@ -2539,9 +2536,9 @@ document.addEventListener("DOMContentLoaded", function () {
       tweeContent += `    (set:$cum_face to (dm:))\n`;
       tweeContent += `    (set:$img to "/generic/sex/cum/bbc facial " + (text:(twist:1,5)))\n`;
     } else {
-      if (blkFacialVid.value && facialVidInt === 1) {
-        tweeContent += `    (set:$img to "/characters/${cumPath}${facialPrefix}")\n`;
-      } else if (blkFacialVid.value && facialVidInt > 1) {
+      if (facialVidInt === 1) {
+        tweeContent += `    (set:$img to "/characters/${cumPath}${facialPrefix} 1")\n`;
+      } else if (facialVidInt > 1) {
         tweeContent += `    (set:$img to "/characters/${cumPath}${facialPrefix} " + (text:(twist:1,${facialVidInt})))\n`;
       }
       if (tagArrayBigLoad.length > 0 && tagArrayBigLoad[0] !== "") {
@@ -2558,19 +2555,19 @@ document.addEventListener("DOMContentLoaded", function () {
     tweeContent += `](else:)[(display:_around)]\n}\n\n`;
 
     // Mouth
-    tweeContent += `:: sex cum in mouth ${characterName} [around]\n`;
+    tweeContent += `:: sex cum in mouth load ${characterName} [around]\n`;
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
     if (mouthVidInt < 1 ) {
       tweeContent += `    (set:$cum_mouth_generic to 1)\n`
     } else {
       tweeContent += `    (if:(twist:1,4) is 1)[(set:$cum_mouth_generic to 1)]\n    (else:)[\n`
       if (mouthVidInt === 1) {
-        tweeContent += `        (set:$img to "/characters/${cumPath}${mouthPrefix}")\n`;
+        tweeContent += `        (set:$img to "/characters/${cumPath}${mouthPrefix} 1")\n`;
       } else {
         tweeContent += `        (set:$img to "/characters/${cumPath}${mouthPrefix} " + (text:(twist:1,${mouthVidInt})))\n`;
       }
-      tweeContent += `\n    (set:$cum_mouth to\n`;
-      tweeContent += `        (dm: ${tagArrayMouth.join(',')}))\n]\n\n`;
+      tweeContent += `\n        (set:$cum_mouth to\n`;
+      tweeContent += `            (dm: ${tagArrayMouth.join(',')}))]\n`;
     }
     tweeContent += `](else:)[(display:_around)]\n}\n\n`;
 
@@ -2582,34 +2579,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Collect Tits
     if (blkPullOutTitsVid.value && pulloutTitsVidInt !== 0) {
-      if (pulloutTitsVidInt === 1) {
-        imgPaths.push(`/characters/${cumPath}${pulloutTitsPrefix}`);
-      } else {
-        for (let i = 1; i <= pulloutTitsVidInt; i++) {
-          imgPaths.push(`/characters/${cumPath}${pulloutTitsPrefix} ${i}`);
-        }
+      for (let i = 1; i <= pulloutTitsVidInt; i++) {
+        imgPaths.push(`/characters/${cumPath}${pulloutTitsPrefix} ${i}`);
       }
     }
 
     // Collect Body
     if (blkPullOutBodyVid.value && pulloutBodyVidInt !== 0) {
-      if (pulloutBodyVidInt === 1) {
-        imgPaths.push(`/characters/${cumPath}${pulloutBodyPrefix}`);
-      } else {
-        for (let i = 1; i <= pulloutBodyVidInt; i++) {
-          imgPaths.push(`/characters/${cumPath}${pulloutBodyPrefix} ${i}`);
-        }
+      for (let i = 1; i <= pulloutBodyVidInt; i++) {
+        imgPaths.push(`/characters/${cumPath}${pulloutBodyPrefix} ${i}`);
       }
     }
 
     // Collect Butt
     if (blkPullOutButtVid.value && pulloutButtVidInt !== 0) {
-      if (pulloutButtVidInt === 1) {
-        imgPaths.push(`/characters/${cumPath}${pulloutButtPrefix}`);
-      } else {
-        for (let i = 1; i <= pulloutButtVidInt; i++) {
-          imgPaths.push(`/characters/${cumPath}${pulloutButtPrefix} ${i}`);
-        }
+      for (let i = 1; i <= pulloutButtVidInt; i++) {
+        imgPaths.push(`/characters/${cumPath}${pulloutButtPrefix} ${i}`);
       }
     }
 
@@ -2619,6 +2604,8 @@ document.addEventListener("DOMContentLoaded", function () {
         tweeContent += `        "${path}"${index < imgPaths.length - 1 ? ',' : ''}\n`;
       });
       tweeContent += `    ))\n`;
+      tweeContent += `    (set:$text to $img of\n`;
+      tweeContent += `        (dm: ${tagArrayPullout.join(',')}))\n`;
     } else {
       tweeContent += `    (set:$pullout_variant to 1)\n`;
     }
@@ -3085,7 +3072,7 @@ document.addEventListener("DOMContentLoaded", function () {
   tippy.setDefaultProps({
     theme: "xcl",
     animation: "scale",
-    arrow: true,
+    arrow: false,
     placement: "right",
     allowHTML: true,
   });
@@ -3344,8 +3331,40 @@ document.addEventListener("DOMContentLoaded", function () {
     content: "Optional. Tags can impact a lot of things. Stat buffs, sound effects, npc personality, descriptions, actions.<br><br>Refer to the tags in the list for more information."
   })
 
-  tippy([],{
-    content: ""
+  tippy([blkDoggyHelp],{
+    content: "This section is for 'Transactional' sex (non-bedroom sexual encounters, like a bar or club hookups), which are doggystyle.<br><br> Set the path to the exact location where the images and videos are located, or move your media files into the location specified.<br><br> Set the prefixes to match exactly what the files are named.<br> Example: For 'doggy insert 1.jpg' and 'doggy insert 2.jpg', your prefix would be 'doggy insert'."
+  })
+
+  tippy([blkDoggyInsertImgPrefix],{
+    content: "Insert images are where the cock is being just inserted at the beginning of the sexual encounter."
+  })
+
+  tippy([blkDoggyMoanImgPrefix],{
+    content: "Moan images play during an orgasm."
+  })
+
+  tippy([blkBJHelp],{
+    content: "This transactional section is for Blowjobs.<br><br>Set the path to the exact location where the videos are located, or move your media files into the location specified.<br> Set the prefixes to match exactly what the files are named.<br> Example: For 'bj 1.jpg' and 'bj 2.jpg', your prefix would be 'bj'."
+  })
+
+  tippy([blkFacefuckHelp],{
+    content: "Same as blowjobs, but for facefucking (or rough blowjobs). Usually in the same location with the 'rough' prefix, but this is customizable."
+  })
+
+  tippy([blkOralHelp],{
+    content: "This section is for when your partner goes down on female you. The tag is for which position you are in."
+  })
+
+  tippy([blkForeplayHelp],{
+    content: "This section is for groping and kissing. You need to have at least 1 kiss video and either an ass or tits grope.<br> You can have multiples of each.<br><br>This path is hardcoded for character_id/foreplay/bbc. Please ensure your media files are in this location."
+  })
+
+  tippy([blkCumHelp],{
+    content: "This is the cum section, where there are only happy endings.<br> Facial and Mouth can by similar and ultimately your choice, just name appropiately."
+  })
+
+  tippy([blkPullOutHelp],{
+    content: "For pull outs, Body is usually a missionary or riding (cowgirl) position where he just pulls out and cums on your pelvis/belly. Technically could be a backshot if it were doggy. <br>It would be tits if he gets off and aims for your tits. <br> And butt for doggy, where he just pulls out and cums."
   })
 
   tippy([],{
@@ -3371,10 +3390,7 @@ document.addEventListener("DOMContentLoaded", function () {
   tippy([],{
     content: ""
   })
-
-  tippy([],{
-    content: ""
-  })
+  
 
   /*
   tippy([],{
