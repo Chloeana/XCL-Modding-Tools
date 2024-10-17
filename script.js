@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const sliders = document.querySelectorAll('input[type="range"]'); // Refers to all Sliders
   const tabcontent = document.getElementsByClassName("tabcontent");
   const tablinks = document.getElementsByClassName("tablinks");
-  let zip = '' // For MCF and Meta Zip
 
   // Used in both MCF and BLACKED
   const doggyTagOptions = [
@@ -38,8 +37,190 @@ document.addEventListener("DOMContentLoaded", function () {
   const mcfBaseGameVersion = document.getElementById("mcfBaseGameVersion");
   const mcfYourModVersion = document.getElementById("mcfYourModVersion");
   const mcfModAuthor = document.getElementById("mcfModAuthor");
-  const generateMCFDirectoriesButton = document.getElementById("generateMCFDirectoriesButton"); 
+  const generateMCFFoldersButton = document.getElementById("generateMCFFoldersButton");
+  const generateMCFMetaButton = document.getElementById("generateMCFMetaButton");
+  const generateMCFFilesOnlyButton = document.getElementById("generateMCFFilesOnlyButton");
+  const generateMCFAllFilesButton = document.getElementById("generateMCFAllFilesButton");
   const mcfCharacterName = document.getElementById("mcfCharacterName");
+  const mcfCharacterRace = document.getElementById("mcfCharacterRace");
+  const mcfCharacterBodyType = document.getElementById("mcfCharacterBodyType");
+  const mcfCharacterBreasts = document.getElementById("mcfCharacterBreasts");
+  const mcfCharacterButt = document.getElementById("mcfCharacterButt");
+  const mcfCharacterHairColor = document.getElementById("mcfCharacterHairColor");
+  const mcfCharacterEyeColor = document.getElementById("mcfCharacterEyeColor");
+  const mcfCharacterBust = document.getElementById("mcfCharacterBust");
+  const mcfCharacterHeightIN = document.getElementById("mcfCharacterHeightIN");
+  const mcfCharacterHeightCM = document.getElementById("mcfCharacterHeightCM");
+  const mcfCharacterWeightLB = document.getElementById("mcfCharacterWeightLB");
+  const mcfCharacterWeightKG = document.getElementById("mcfCharacterWeightKG");
+  const mcfCharacterTagline = document.getElementById("mcfCharacterTagline");
+  const mcfDescribeButtInput = document.getElementById("mcfDescribeButtInput");
+  const mcfDescribeButtButton = document.getElementById("mcfDescribeButtButton");
+  const mcfDescribeButtContainer = document.getElementById("mcfDescribeButtContainer");
+  const mcfDescribeBoobsInput = document.getElementById("mcfDescribeBoobsInput");
+  const mcfDescribeBoobsButton = document.getElementById("mcfDescribeBoobsButton");
+  const mcfDescribeBoobsContainer = document.getElementById("mcfDescribeBoobsContainer");
+  const mcfDescribeBodyInput = document.getElementById("mcfDescribeBodyInput");
+  const mcfDescribeBodyButton = document.getElementById("mcfDescribeBodyButton");
+  const mcfDescribeBodyContainer = document.getElementById("mcfDescribeBodyContainer");
+  const mcfDescribeHairColorInput = document.getElementById("mcfDescribeHairColorInput");
+  const mcfDescribeHairColorButton = document.getElementById("mcfDescribeHairColorButton");
+  const mcfDescribeHairColorContainer = document.getElementById("mcfDescribeHairColorContainer");
+  const mcfDescribeHairTextureInput = document.getElementById("mcfDescribeHairTextureInput");
+  const mcfDescribeHairTextureButton = document.getElementById("mcfDescribeHairTextureButton");
+  const mcfDescribeHairTextureContainer = document.getElementById("mcfDescribeHairTextureContainer");
+  const mcfDescribeTransformationInput = document.getElementById("mcfDescribeTransformationInput");
+  const mcfDescribeTransformationButton = document.getElementById("mcfDescribeTransformationButton");
+  const mcfDescribeTransformationContainer = document.getElementById("mcfDescribeTransformationContainer");
+  const mcfHairstylesInput = document.getElementById("mcfHairstylesInput");
+  const mcfHairstylesButton = document.getElementById("mcfHairstylesButton");
+  const mcfHairstylesContainer = document.getElementById("mcfHairstylesContainer");
+  const mcfCharacterTagOld = document.getElementById("mcfCharacterTagOld");
+  const mcfCharacterTagNew = document.getElementById("mcfCharacterTagNew");
+  const mcfStepSisShowerTeaseInput = document.getElementById("mcfStepSisShowerTeaseInput");
+  const mcfStepSisShowerTeaseButton = document.getElementById("mcfStepSisShowerTeaseButton");
+  const mcfStepSisShowerTeaseContainer = document.getElementById("mcfStepSisShowerTeaseContainer");
+  const mcfMakeupPath = document.getElementById("mcfMakeupPath");
+  const mcfShowerPrefix = document.getElementById("mcfShowerPrefix");
+  const mcfShowerVid = document.getElementById("mcfShowerVid");
+  const mcfBathroomPrefix = document.getElementById("mcfBathroomPrefix");
+  const mcfBathroomVid = document.getElementById("mcfBathroomVid");
+  const mcfCleaningPrefix = document.getElementById("mcfCleaningPrefix");
+  const mcfCleaningVid = document.getElementById("mcfCleaningVid");
+  const mcfMasturbatePath = document.getElementById("mcfMasturbatePath");
+  const mcfMasturbatePrefix = document.getElementById("mcfMasturbatePrefix");
+  const mcfMasturbateVid = document.getElementById("mcfMasturbateVid");
+  const mcfGymOptionInput = document.getElementById("mcfGymOptionInput");
+  const mcfGymOptionButton = document.getElementById("mcfGymOptionButton");
+  const mcfGymOptionContainer = document.getElementById("mcfGymOptionContainer");
+  const mcfGymType = document.getElementById("mcfGymType");
+  const mcfCoworkerReactInput = document.getElementById("mcfCoworkerReactInput");
+  const mcfCoworkerReactButton = document.getElementById("mcfCoworkerReactButton");
+  const mcfCoworkerReactContainer = document.getElementById("mcfCoworkerReactContainer");
+  const mcfEventShopComment = document.getElementById("mcfEventShopComment");
+  const mcfEventShopThought = document.getElementById("mcfEventShopThought");
+  const mcfCatcallBodyInput = document.getElementById("mcfCatcallBodyInput");
+  const mcfCatcallBodyButton = document.getElementById("mcfCatcallBodyButton");
+  const mcfCatcallBodyContainer = document.getElementById("mcfCatcallBodyContainer");
+  const mcfCatcallFaceInput = document.getElementById("mcfCatcallFaceInput");
+  const mcfCatcallFaceButton = document.getElementById("mcfCatcallFaceButton");
+  const mcfCatcallFaceContainer = document.getElementById("mcfCatcallFaceContainer");
+  const mcfCatcallDirtyInput = document.getElementById("mcfCatcallDirtyInput");
+  const mcfCatcallDirtyButton = document.getElementById("mcfCatcallDirtyButton");
+  const mcfCatcallDirtyContainer = document.getElementById("mcfCatcallDirtyContainer");
+  const mcfCatcallRaceInput = document.getElementById("mcfCatcallRaceInput");
+  const mcfCatcallRaceButton = document.getElementById("mcfCatcallRaceButton");
+  const mcfCatcallRaceContainer = document.getElementById("mcfCatcallRaceContainer");
+  const mcfExamineSelfReluctantInput = document.getElementById("mcfExamineSelfReluctantInput");
+  const mcfExamineSelfReluctantButton = document.getElementById("mcfExamineSelfReluctantButton");
+  const mcfExamineSelfReluctantContainer = document.getElementById("mcfExamineSelfReluctantContainer");
+  const mcfExamineSelfConfidentInput = document.getElementById("mcfExamineSelfConfidentInput");
+  const mcfExamineSelfConfidentButton = document.getElementById("mcfExamineSelfConfidentButton");
+  const mcfExamineSelfConfidentContainer = document.getElementById("mcfExamineSelfConfidentContainer");
+  const mcfThoughtClothesInput = document.getElementById("mcfThoughtClothesInput");
+  const mcfThoughtClothesButton = document.getElementById("mcfThoughtClothesButton");
+  const mcfThoughtClothesContainer = document.getElementById("mcfThoughtClothesContainer");
+  const mcfPregnancyWeeksInput = document.getElementById("mcfPregnancyWeeksInput");
+  const mcfPregnancyWeeksButton = document.getElementById("mcfPregnancyWeeksButton");
+  const mcfPregnancyWeeksContainer = document.getElementById("mcfPregnancyWeeksContainer");
+  const mcfPregnancy1stCheckInput = document.getElementById("mcfPregnancy1stCheckInput");
+  const mcfPregnancy2ndCheckInput = document.getElementById("mcfPregnancy2ndCheckInput");
+  const mcfPregnancyPrenatalInput = document.getElementById("mcfGymcfPregnancyPrenatalInputmType");
+  const mcfCallFatherShowInput = document.getElementById("mcfCallFatherShowInput");
+  const mcfCallFatherBJInput = document.getElementById("mcfCallFatherBJInput");
+  const mcfDoggyPath = document.getElementById("mcfDoggyPath");
+  const mcfDoggyVid = document.getElementById("mcfDoggyVid");
+  const mcfDoggyVidPrefix = document.getElementById("mcfDoggyVidPrefix");
+  const mcfDoggyInsertImg = document.getElementById("mcfDoggyInsertImg");
+  const mcfDoggyInsertImgPrefix = document.getElementById("mcfDoggyInsertImgPrefix");
+  const mcfDoggyMoanImg = document.getElementById("mcfDoggyMoanImg");
+  const mcfDoggyMoanImgPrefix = document.getElementById("mcfDoggyMoanImgPrefix");
+  const mcfDoggyContainer = document.getElementById("mcfDoggyContainer");
+  const mcfBJPath = document.getElementById("mcfBJPath");
+  const mcfBJVid = document.getElementById("mcfBJVid");
+  const mcfBJVidPrefix = document.getElementById("mcfBJVidPrefix");
+  const mcfFacefuckPath = document.getElementById("mcfFacefuckPath");
+  const mcfFacefuckVid = document.getElementById("mcfFacefuckVid");
+  const mcfFacefuckVidPrefix = document.getElementById("mcfFacefuckVidPrefix");
+  const mcfFacefuckContainer = document.getElementById("mcfFacefuckContainer");
+  const mcfOralPath = document.getElementById("mcfOralPath");
+  const mcfOralVid = document.getElementById("mcfOralVid");
+  const mcfOralVidPrefix = document.getElementById("mcfOralVidPrefix");
+  const mcfOralContainer = document.getElementById("mcfOralContainer");
+  const mcfGropeRadio = document.getElementById("mcfGropeRadio");
+  const mcfGropeDiv = document.getElementById("mcfGropeDiv");
+  const mcfGropeTits = document.getElementById("mcfGropeTits");
+  const mcfGropeAss = document.getElementById("mcfGropeAss");
+  const mcfGropeBoth = document.getElementById("mcfGropeBoth");
+  const mcfCumPath = document.getElementById("mcfCumPath");
+  const mcfCreampieVid = document.getElementById("mcfCreampieVid");
+  const mcfCreampieVidPrefix = document.getElementById("mcfCreampieVidPrefix");
+  const mcfFacialVid = document.getElementById("mcfFacialVid");
+  const mcfFacialVidPrefix = document.getElementById("mcfFacialVidPrefix");
+  const mcfMouthVid = document.getElementById("mcfMouthVid");
+  const mcfMouthVidPrefix = document.getElementById("mcfMouthVidPrefix");
+  const mcfFacialContainer = document.getElementById("mcfFacialContainer");
+  const mcfMouthContainer = document.getElementById("mcfMouthContainer");
+  const mcfPullOutBodyVid = document.getElementById("mcfPullOutBodyVid");
+  const mcfPullOutBodyVidPrefix = document.getElementById("mcfPullOutBodyVidPrefix");
+  const mcfPullOutBodyContainer = document.getElementById("mcfPullOutBodyContainer");
+  const mcfPullOutButtVid = document.getElementById("mcfPullOutButtVid");
+  const mcfPullOutButtVidPrefix = document.getElementById("mcfPullOutButtVidPrefix");
+  const mcfPullOutButtContainer = document.getElementById("mcfPullOutButtContainer");
+  const mcfPullOutTitsVid = document.getElementById("mcfPullOutTitsVid");
+  const mcfPullOutTitsVidPrefix = document.getElementById("mcfPullOutTitsVidPrefix");
+  const mcfPullOutTitsContainer = document.getElementById("mcfPullOutTitsContainer");
+  const mcfSECumMoan = document.getElementById("mcfSECumMoan");
+  const mcfSEMasturbate = document.getElementById("mcfSEMasturbate");
+  const mcfSEFondle = document.getElementById("mcfSEFondle");
+  const mcfSEOrgasmSolo = document.getElementById("mcfSEOrgasmSolo");
+  const mcfSELicking = document.getElementById("mcfSELicking");
+  const mcfSEOrgasm = document.getElementById("mcfSEOrgasm");
+  const mcfSEBJ = document.getElementById("mcfSEBJ");
+  const mcfSEBJRough = document.getElementById("mcfSEBJRough");
+  const mcfSEDoggy = document.getElementById("mcfSEDoggy");
+  const mcfSEMissionary = document.getElementById("mcfSEMissionary");
+  const mcfSERiding = document.getElementById("mcfSERiding");
+  const mcfSEPenetration = document.getElementById("mcfSEPenetration");
+  const mcfInsertTiming1 = document.getElementById("mcfInsertTiming1");
+  const mcfInsertTiming2 = document.getElementById("mcfInsertTiming2");
+  const mcfInsertTiming3 = document.getElementById("mcfInsertTiming3");
+  const mcfPenetrationTiming = document.getElementById("mcfPenetrationTiming");
+
+  const mcfDoggyHelp = document.getElementById("mcfDoggyHelp");
+  const mcfBJHelp = document.getElementById("mcfBJHelp");
+  const mcfFacefuckHelp = document.getElementById("mcfFacefuckHelp");
+  const mcfOralHelp = document.getElementById("mcfOralHelp");
+  const mcfCumHelp = document.getElementById("mcfCumHelp");
+  const mcfPullOutHelp = document.getElementById("mcfPullOutHelp");
+  const mcfSoundHelp = document.getElementById("mcfSoundHelp");
+
+  const exampleDescribeButtButton = document.getElementById("exampleDescribeButtButton");
+  const exampleDescribeBodyButton = document.getElementById("exampleDescribeBodyButton");
+  const exampleDescribeBoobsButton = document.getElementById("exampleDescribeBoobsButton");
+  const exampleDescribeTransformationButton = document.getElementById("exampleDescribeTransformationButton");
+  const exampleExamineSelfReluctantButton = document.getElementById("exampleExamineSelfReluctantButton");
+  const exampleExamineSelfConfidentButton = document.getElementById("exampleExamineSelfConfidentButton");
+  const exampleThoughtClothesButton = document.getElementById("exampleThoughtClothesButton");
+  const exampleStepSisShowerTeaseButton = document.getElementById("exampleStepSisShowerTeaseButton");
+  const exampleCatcallBodyButton = document.getElementById("exampleCatcallBodyButton");
+  const exampleCatcallFaceButton = document.getElementById("exampleCatcallFaceButton");
+  const exampleCatcallDirtyButton = document.getElementById("exampleCatcallDirtyButton");
+  const exampleCatcallRaceButton = document.getElementById("exampleCatcallRaceButton");
+
+  // Example suggestions
+  const exampleDescribeButt = ["big", "round", "peachy", "thick", "fat", "jiggling", "dump-truck", "juicy", "pale", "bimbo-sized", "mega-size", "cute", "tight", "perky", "premi-*yum*", "fantASStic", "nice", "humongous", "beautiful"]
+  const exampleDescribeBody = ["sensual", "slender", "womanly", "feminine", "breedable", "fully-stacked", "bouncy", "jiggly", "curvy", "voluptuous", "fertile", "curvaceous", "juicy", "petite", "sexy", "exotic", "pleasing", "bottom-heavy", "elegant", "picture-perfect", "tight", "hourglass-shaped", "oversexed", "hypersexual", "hyper-feminine", "all-natural", "busty", "perky"]
+  const exampleDescribeBoobs = ["tits", "boobs", "milkers", "udders", "bazongas", "cow-tits", "bee stings", "massive milkers", "itty-bitties", "pancakes", "mosquito bites"]
+  const exampleDescribeTransformation = ["You feel a LOT lighter.","Wow, you're a stunner now...","Fuck... you look like such a horny, depraved slut.","You run your hands over your breedable body.","Is it over?","Your body feels so different - you can feel a huge amount of weight and fat redistributed your breasts and ass.","You look like some kind of perfect bimbo - a girl who every guy would fall for.","A perfect hourglass figure, this might get you into some trouble..."]
+  const exampleExamineSelfReluctant = ["You press your thighs together, feeling the slick emptiness, and the distinct absence of something that once hung between them.","Running your fingers along the curve of your waist, you can't deny the sensuality of your new hourglass figure, but the sensation makes you blush.","Your once broad and barrel-shaped ribcage has become narrower and more delicate, making you feel a bit more fragile than before.","Your nipples are so sensitive, brushing against your arms makes you shudder.","Once full of definition, your arms now look beautifully toned in a feminine way, match up with your hourglass body.","You look down at your pussy, your cheeks burning. It still feels weird to see it, to know it's yours.","Every time you see your reflection, your sexy face surprises you."]
+  const exampleExamineSelfConfident = ["You pucker and pout in the mirror, feeling playful and flirty — you're gorgeous, and you know it.", "Feeling your pussy between your legs is no longer a shock, but something comforting, a constant reminder of your femininity.", "Admiring your sensual curves and captivating eyes in the mirror, you enjoy the newfound confidence that comes from embracing your body.", "Glancing at your reflection, you strike a pose and wink at your gorgeous female form, finding excitement and happiness in embracing your new body.", "Running delicate finger over the smooth expanse of bare skin under the hem of skirt reminds you how much you love being a woman.", "You feel a sense of pride as you catch a glimpse of your shapely, rounded ass in the mirror, knowing that your stepdad, stepsister, and your male friend Hollis see you as the confident woman you've become."]
+  const exampleThoughtClothes = ["are not made to flatter your female body shape.", "are pretty tight around your $butt.", "don't exactly compliment your frame.", "fit you a bit awkwardly.", "look a bit comical on your female body.", "feel way too big for you."]
+  const exampleStepSisShowerTease = ["That girl-next-door body could make a lotta guys happy, just sayin'...", "We totally look like sisters now, haha.", "Them's some dick-suckin lips, haha.", "You're making me jealous...", "All the guys are gonna wanna bang you, lol.", "You look like a slut! Hahaha."]
+  const exampleCatcallBody = []
+  const exampleCatcallFace = []
+  const exampleCatcallDirty = []
+  const exampleCatcallRace = []
 
   // #endregion --- MCF ---
   
@@ -217,7 +398,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const blkOralHelp = document.getElementById("blkOralHelp");
   const blkForeplayHelp = document.getElementById("blkForeplayHelp");
   const blkCumHelp = document.getElementById("blkCumHelp");
-  const blkPullOutHelp = document.getElementById("blkPulloutHelp");
+  const blkPullOutHelp = document.getElementById("blkPullOutHelp");
   let blkzip = '' // default value for BLACKED Zip var
   // #endregion --- BLACKED ---
 
@@ -565,90 +746,464 @@ document.addEventListener("DOMContentLoaded", function () {
     return result;
   };
 
-  // Generate MCF directories
-  function generateMCFDirectories(){
-    var zip = new JSZip();
+  // Convert measurements
+  function convertHeight(unit) {
+    if (unit === 'inches') {
+        const inches = parseFloat(mcfCharacterHeightIN.value);
+        if (!isNaN(inches)) {
+            const cm = Math.round(inches * 2.54);
+            mcfCharacterHeightCM.value = cm.toString();
+        } else {
+            mcfCharacterHeightCM.value = '';
+        }
+    } else if (unit === 'cm') {
+        const cm = parseFloat(mcfCharacterHeightCM.value);
+        if (!isNaN(cm)) {
+            const inches = Math.round(cm / 2.54);
+            mcfCharacterHeightIN.value = inches.toString();
+        } else {
+            mcfCharacterHeightIN.value = '';
+        }
+    }
+  };
 
-    const characterName = document.getElementById('mcfCharacterName').value;
+  function convertWeight(unit) {
+      if (unit === 'lbs') {
+          const lbs = parseFloat(mcfCharacterWeightLB.value);
+          if (!isNaN(lbs)) {
+              const kg = Math.round(lbs * 0.453592);
+              mcfCharacterWeightKG.value = kg.toString();
+          } else {
+              mcfCharacterWeightKG.value = '';
+          }
+      } else if (unit === 'kg') {
+          const kg = parseFloat(mcfCharacterWeightKG.value);
+          if (!isNaN(kg)) {
+              const lbs = Math.round(kg / 0.453592);
+              mcfCharacterWeightLB.value = lbs.toString();
+          } else {
+              mcfCharacterWeightLB.value = '';
+          }
+      }
+  };
 
-    // Add directories to the ZIP
-    zip.folder(`metas`)
-    zip.folder(`aud/se/sex/loops/bj`)
-    zip.folder(`aud/se/sex/loops/bj rough`)
-    zip.folder(`aud/se/sex/loops/doggy`)
-    zip.folder(`aud/se/sex/loops/fondling`)
-    zip.folder(`aud/se/sex/loops/licking`)
-    zip.folder(`aud/se/sex/loops/masturbate`)
-    zip.folder(`aud/se/sex/loops/missionary`)
-    zip.folder(`aud/se/sex/loops/riding`)
-    zip.folder(`aud/se/sex/orgasm`)
-    zip.folder(`aud/se/sex/orgasm/cum`)
-    zip.folder(`aud/se/sex/orgasm/cum/dynamic`)
-    zip.folder(`aud/se/sex/orgasm/orgasm`)
-    zip.folder(`aud/se/sex/penetration`)
-    zip.folder(`aud/se/sex/penetration/pre`)
-    zip.folder(`img/characters/bimbo`)
-    zip.folder(`img/characters/bj/bwc`)
-    zip.folder(`img/characters/cum`)
-    zip.folder(`img/characters/dream`)
-    zip.folder(`img/characters/emotion/bimbo`)
-    zip.folder(`img/characters/emotion/reject`)
-    zip.folder(`img/characters/emotion/surprise`)
-    zip.folder(`img/characters/face`)
-    zip.folder(`img/characters/female`)
-    zip.folder(`img/characters/male`)
-    zip.folder(`img/characters/nude/body`)
-    zip.folder(`img/characters/nude/boobs`)
-    zip.folder(`img/characters/nude/bust`)
-    zip.folder(`img/characters/nude/butt`)
-    zip.folder(`img/characters/nude/present`)
-    zip.folder(`img/characters/nude/pussy`)
-    zip.folder(`img/characters/nude/${characterName}/butt`)
-    zip.folder(`img/characters/nude/${characterName}/pussy`)
-    zip.folder(`img/characters/nude/${characterName}/tits`)
-    zip.folder(`img/characters/outfits/${characterName}/beach`)
-    zip.folder(`img/characters/outfits/${characterName}/casual`)
-    zip.folder(`img/characters/outfits/${characterName}/fetish`)
-    zip.folder(`img/characters/outfits/${characterName}/gym`)
-    zip.folder(`img/characters/outfits/${characterName}/lingerie`)
-    zip.folder(`img/characters/outfits/${characterName}/lounge`)
-    zip.folder(`img/characters/outfits/${characterName}/office`)
-    zip.folder(`img/characters/outfits/${characterName}/stylin`)
-    zip.folder(`img/characters/pregnancy/${characterName}`)
-    zip.folder(`img/characters/sex/doggy`)
-    zip.folder(`img/characters/sex/doggy/moan`)
-    zip.folder(`img/characters/sex/insert`)
-    zip.folder(`img/characters/sex/missionary/moan`)
-    zip.folder(`img/placed/club/dancers`)
-    zip.folder(`img/scenes/characters/${characterName}/bj`)
-    zip.folder(`img/scenes/characters/${characterName}/chores`)
-    zip.folder(`img/scenes/characters/${characterName}/cum`)
-    zip.folder(`img/scenes/characters/${characterName}/cum/creampie`)
-    zip.folder(`img/scenes/characters/${characterName}/foreplay`)
-    zip.folder(`img/scenes/characters/${characterName}/oral`)
-    zip.folder(`img/scenes/characters/${characterName}/sex/doggy`)
-    zip.folder(`img/scenes/characters/${characterName}/sex/active/cowgirl`)
-    zip.folder(`img/scenes/characters/${characterName}/sex/active/doggy`)
-    zip.folder(`img/scenes/characters/${characterName}/sex/active/missionary`)
-    zip.folder(`img/scenes/characters/${characterName}/sex/active/service`)
-    zip.folder(`img/scenes/characters/${characterName}/sex/passive/cowgirl`)
-    zip.folder(`img/scenes/characters/${characterName}/sex/passive/doggy`)
-    zip.folder(`img/scenes/characters/${characterName}/sex/passive/missionary`)
-    zip.folder(`img/scenes/characters/${characterName}/sex/passive/service`)
-    zip.folder(`img/scenes/characters/${characterName}/solo`)
-    zip.folder(`img/scenes/characters/${characterName}/tg`)
+  function convertHeightToText() {
+    const inches = parseInt(mcfCharacterHeightIN.value);
 
-    // Hairstyle section
-    zip.folder(`img/characters/hairstyle/`)
-    
-    // Generate the ZIP file and trigger the download
-    zip.generateAsync({ type: "blob" }).then(function (content) {
+    if (!isNaN(inches) && inches > 0) {
+        const feet = Math.floor(inches / 12);
+        const remainingInches = inches % 12;
+
+        return `${feet}ft, ${remainingInches}in`;
+    }
+
+    return '';
+  };
+
+  // Set up Default Values
+  function setmcfDefaultValues() {
+    const name = mcfCharacterName.value.trim() || "character_id";
+
+    mcfShowerPrefix.value = "shower"
+    mcfBathroomPrefix.value = "bathroom"
+    mcfCleaningPrefix.value = "cleaning"
+    mcfMasturbatePrefix.value = "masturbate"
+    mcfMakeupPath.value = name
+    mcfDoggyVidPrefix.value = "transactional"
+    mcfDoggyInsertImgPrefix.value = "transactional insert"
+    mcfDoggyMoanImgPrefix.value = "moan"
+    mcfBJVidPrefix.value = "transactional"
+    mcfFacefuckVidPrefix.value = "rough"
+    mcfOralVidPrefix.value = "oral"
+    mcfCreampieVidPrefix.value = "creampie"
+    mcfFacialVidPrefix.value = "facial"
+    mcfMouthVidPrefix.value = "mouth"
+    mcfPullOutBodyVidPrefix.value = "body"
+    mcfPullOutButtVidPrefix.value = "butt"
+    mcfPullOutTitsVidPrefix.value = "tits"
+  };
+
+  // Add Character name into directories
+  function setmcfDefaultDirectories() {
+    const name = mcfCharacterName.value.trim() || "character_id";
+
+    mcfDoggyPath.value = `${name}/sex/doggy/`
+    mcfBJPath.value = `${name}/bj/`
+    mcfFacefuckPath.value = `${name}/bj/`
+    mcfOralPath.value = `${name}/oral/`
+    mcfCumPath.value = `${name}/cum/`
+    mcfMasturbatePath.value = `${name}/solo/`
+  };
+
+  // Build tag fields for MCF - Doggy
+  function generateMCFDoggyFields() {
+    generateDoggyTagFields(mcfDoggyVid, mcfDoggyVidPrefix, mcfDoggyContainer)
+  };
+
+  // Build tag fields for MCF - Facefuck
+  function generateMCFFacefuckFields() {
+    generateTagFields(mcfFacefuckVid, mcfFacefuckVidPrefix, mcfFacefuckContainer, locationTagOptions, 1)
+  };
+
+  // Build tag fields for MCF - Oral
+  function generateMCFOralFields() {
+    generateTagFields(mcfOralVid, mcfOralVidPrefix, mcfOralContainer, ["missionary","doggy"], 1, true)
+  };
+
+  // Build tag fields for MCF - Facial
+  function generateMCFFacialFields() {
+    generateTagFields(mcfFacialVid, mcfFacialVidPrefix, mcfFacialContainer, facialTagOptions, 4)
+  };
+
+  // Build tag fields for MCF - Mouth
+  function generateMCFMouthFields() {
+    generateTagFields(mcfMouthVid, mcfMouthVidPrefix, mcfMouthContainer, mouthTagOptions, 4)
+  };
+
+  // Build tag fields for MCF - Pull Out Tits
+  function generateMCFPullOutTitsFields() {
+    generateTagFields(mcfPullOutTitsVid, mcfPullOutTitsVidPrefix, mcfPullOutTitsContainer, ["lying","kneeling"], 1)
+  };
+
+  // Build tag fields for MCF - Pull Out Body
+  function generateMCFPullOutBodyFields() {
+    generateTagFields(mcfPullOutBodyVid, mcfPullOutBodyVidPrefix, mcfPullOutBodyContainer, locationTagOptions, 1)
+  };
+
+  // Build tag fields for MCF - Pull Out Butt
+  function generateMCFPullOutButtFields() {
+    generateTagFields(mcfPullOutButtVid, mcfPullOutButtVidPrefix, mcfPullOutButtContainer, locationTagOptions, 1)
+  };
+
+
+  // Generate MCF Zip File
+  function generateMCFZip(){
+    const characterName = mcfCharacterName.value;
+
+    // Check if there are any files in the ZIP before generating
+    if (Object.keys(mcfzip.files).length === 0) {
+      console.error("No files added to the ZIP. Cannot generate a ZIP file.");
+      return;
+    }
+
+    mcfzip.generateAsync({ type: "blob" }).then(function (content) {
       const link = document.createElement("a");
       link.href = URL.createObjectURL(content);
-      link.download = `${characterName}.zip`; // Name of the ZIP file
+      link.download = `${characterName}.zip`;
       link.click();
     });
-  }
+  };
+
+  // Generate MCF Meta
+  function gatherMCFMeta() {
+
+    if (!mcfzip) {
+      mcfzip = new JSZip();
+    } 
+
+    // Collect input values from forms
+    const characterName = mcfCharacterName.value;
+    const version = mcfYourModVersion.value;
+    const author = mcfModAuthor.value;
+    const baseGameVersion = mcfBaseGameVersion.value;
+
+    if (!characterName) {
+      console.error("Character Name is required.");
+      alert("Please enter a character name.");
+      return;
+    }
+
+    if (!version || !author || !baseGameVersion) {
+      alert("All meta fields are required. Please fill out the fields.");
+      return; 
+    }
+
+    // Create the meta content string
+    let metaContent = `metaVersion: 1\n`;
+    metaContent += `name: "${characterName}"\n`;
+    metaContent += `version: "${version}"\n`;
+    metaContent += `author: "${author}"\n`;
+    metaContent += `baseGameVersion:\n  atLeast: "${baseGameVersion}"\n`;
+
+    // Add meta to the ZIP
+    mcfzip.folder("metas").file(`${characterName}.meta`, metaContent);
+  };
+
+  // Generate MCF Meta file ONLY
+  function generateMCFMeta() {
+    gatherMCFMeta();
+    generateMCFZip();
+  };
+
+  // Generate MCF directories
+  function gatherMCFDirectories() {
+    const characterName = mcfCharacterName.value;
+
+    if (!mcfzip) {
+      mcfzip = new JSZip();
+    } 
+
+    if (!characterName) {
+      console.error("Character Name is required.");
+      alert("Please enter a character name.");
+      return;
+    }
+
+    // Add directories to the ZIP
+    mcfzip.folder(`metas`)
+    mcfzip.folder(`aud/se/sex/loops/bj`)
+    mcfzip.folder(`aud/se/sex/loops/bj rough`)
+    mcfzip.folder(`aud/se/sex/loops/doggy`)
+    mcfzip.folder(`aud/se/sex/loops/fondling`)
+    mcfzip.folder(`aud/se/sex/loops/licking`)
+    mcfzip.folder(`aud/se/sex/loops/masturbate`)
+    mcfzip.folder(`aud/se/sex/loops/missionary`)
+    mcfzip.folder(`aud/se/sex/loops/riding`)
+    mcfzip.folder(`aud/se/sex/orgasm`)
+    mcfzip.folder(`aud/se/sex/orgasm/cum`)
+    mcfzip.folder(`aud/se/sex/orgasm/cum/dynamic`)
+    mcfzip.folder(`aud/se/sex/orgasm/orgasm`)
+    mcfzip.folder(`aud/se/sex/penetration`)
+    mcfzip.folder(`aud/se/sex/penetration/pre`)
+    mcfzip.folder(`img/characters/bimbo`)
+    mcfzip.folder(`img/characters/bj/bwc`)
+    mcfzip.folder(`img/characters/cum`)
+    mcfzip.folder(`img/characters/dream`)
+    mcfzip.folder(`img/characters/emotion/bimbo`)
+    mcfzip.folder(`img/characters/emotion/reject`)
+    mcfzip.folder(`img/characters/emotion/surprise`)
+    mcfzip.folder(`img/characters/face`)
+    mcfzip.folder(`img/characters/female`)
+    mcfzip.folder(`img/characters/male`)
+    mcfzip.folder(`img/characters/makeup`)
+    mcfzip.folder(`img/characters/nude/body`)
+    mcfzip.folder(`img/characters/nude/boobs`)
+    mcfzip.folder(`img/characters/nude/bust`)
+    mcfzip.folder(`img/characters/nude/butt`)
+    mcfzip.folder(`img/characters/nude/present`)
+    mcfzip.folder(`img/characters/nude/pussy`)
+    mcfzip.folder(`img/characters/nude/${characterName}/butt`)
+    mcfzip.folder(`img/characters/nude/${characterName}/pussy`)
+    mcfzip.folder(`img/characters/nude/${characterName}/tits`)
+    mcfzip.folder(`img/characters/outfits/${characterName}/beach`)
+    mcfzip.folder(`img/characters/outfits/${characterName}/casual`)
+    mcfzip.folder(`img/characters/outfits/${characterName}/fetish`)
+    mcfzip.folder(`img/characters/outfits/${characterName}/gym`)
+    mcfzip.folder(`img/characters/outfits/${characterName}/lingerie`)
+    mcfzip.folder(`img/characters/outfits/${characterName}/lounge`)
+    mcfzip.folder(`img/characters/outfits/${characterName}/office`)
+    mcfzip.folder(`img/characters/outfits/${characterName}/stylin`)
+    mcfzip.folder(`img/characters/places/beach`)
+    mcfzip.folder(`img/characters/pregnancy/${characterName}`)
+    mcfzip.folder(`img/characters/sex/doggy`)
+    mcfzip.folder(`img/characters/sex/doggy/moan`)
+    mcfzip.folder(`img/characters/sex/insert`)
+    mcfzip.folder(`img/characters/sex/missionary/moan`)
+    mcfzip.folder(`img/places/club/dancers`)
+    mcfzip.folder(`img/scenes/characters/${mcfBJPath}`)
+    mcfzip.folder(`img/scenes/characters/${characterName}/chores`)
+    mcfzip.folder(`img/scenes/characters/${mcfCumPath}`)
+    mcfzip.folder(`img/scenes/characters/${characterName}/foreplay`)
+    mcfzip.folder(`img/scenes/characters/${mcfOralPath}`)
+    mcfzip.folder(`img/scenes/characters/${mcfDoggyPath}`)
+    mcfzip.folder(`img/scenes/characters/${characterName}/sex/active/cowgirl`)
+    mcfzip.folder(`img/scenes/characters/${characterName}/sex/active/doggy`)
+    mcfzip.folder(`img/scenes/characters/${characterName}/sex/active/missionary`)
+    mcfzip.folder(`img/scenes/characters/${characterName}/sex/active/service`)
+    mcfzip.folder(`img/scenes/characters/${characterName}/sex/passive/cowgirl`)
+    mcfzip.folder(`img/scenes/characters/${characterName}/sex/passive/doggy`)
+    mcfzip.folder(`img/scenes/characters/${characterName}/sex/passive/missionary`)
+    mcfzip.folder(`img/scenes/characters/${characterName}/sex/passive/service`)
+    mcfzip.folder(`img/scenes/characters/${characterName}/solo`)
+    mcfzip.folder(`img/scenes/characters/${characterName}/tg`)
+
+    // Hairstyle section
+    mcfzip.folder(`img/characters/hairstyle`)
+    mcfzip.folder(`img/characters/hairstyle/afro`);
+    mcfzip.folder(`img/characters/hairstyle/bangs`);
+    mcfzip.folder(`img/characters/hairstyle/beach`);
+    mcfzip.folder(`img/characters/hairstyle/blowout`);
+    mcfzip.folder(`img/characters/hairstyle/bob`);
+    mcfzip.folder(`img/characters/hairstyle/box braids`);
+    mcfzip.folder(`img/characters/hairstyle/braided crown half-up`);
+    mcfzip.folder(`img/characters/hairstyle/braids`);
+    mcfzip.folder(`img/characters/hairstyle/colored bangs`);
+    mcfzip.folder(`img/characters/hairstyle/colored waves`);
+    mcfzip.folder(`img/characters/hairstyle/cornrow braid`);
+    mcfzip.folder(`img/characters/hairstyle/crown braid`);
+    mcfzip.folder(`img/characters/hairstyle/curly`);
+    mcfzip.folder(`img/characters/hairstyle/double buns and bangs`);
+    mcfzip.folder(`img/characters/hairstyle/dreadlock bob`);
+    mcfzip.folder(`img/characters/hairstyle/fancy`);
+    mcfzip.folder(`img/characters/hairstyle/half updo`);
+    mcfzip.folder(`img/characters/hairstyle/half-up pigtails`);
+    mcfzip.folder(`img/characters/hairstyle/high ponytail`);
+    mcfzip.folder(`img/characters/hairstyle/long and layered`);
+    mcfzip.folder(`img/characters/hairstyle/loose curls`);
+    mcfzip.folder(`img/characters/hairstyle/messy bun`);
+    mcfzip.folder(`img/characters/hairstyle/odango`);
+    mcfzip.folder(`img/characters/hairstyle/pigtail buns`);
+    mcfzip.folder(`img/characters/hairstyle/pigtails`);
+    mcfzip.folder(`img/characters/hairstyle/pigtails and bangs`);
+    mcfzip.folder(`img/characters/hairstyle/pixie bob`);
+    mcfzip.folder(`img/characters/hairstyle/playful waves`);
+    mcfzip.folder(`img/characters/hairstyle/ponytail`);
+    mcfzip.folder(`img/characters/hairstyle/sleek waves`);
+    mcfzip.folder(`img/characters/hairstyle/solo braid`);
+    mcfzip.folder(`img/characters/hairstyle/space buns`);
+    mcfzip.folder(`img/characters/hairstyle/straightened`);
+    mcfzip.folder(`img/characters/hairstyle/textured bob`);
+    mcfzip.folder(`img/characters/hairstyle/tousled pony wave`);
+    mcfzip.folder(`img/characters/hairstyle/undercut`);
+    mcfzip.folder(`img/characters/hairstyle/updo`);
+    mcfzip.folder(`img/characters/hairstyle/volume`);
+    mcfzip.folder(`img/characters/hairstyle/wavy`);
+  };
+
+  // Generate MCF Directories ONLY
+  function generateMCFDirectories() {
+    gatherMCFDirectories();
+    generateMCFZip();
+  };
+
+  // Gather MCF File Values and add to mcfzip
+  function gatherMCFFiles() {
+    if (!mcfzip) {
+      mcfzip = new JSZip();
+    } 
+
+    // Collect input values from forms
+    const characterName = mcfCharacterName.value;
+
+    // Paths
+    const doggyPath = mcfDoggyPath.value;
+    const bjPath = mcfBJPath.value;
+    const facefuckPath = mcfFacefuckPath.value;
+    const oralPath = mcfOralPath.value;
+    const cumPath = mcfCumPath.value;
+
+    // Prefixes
+    const doggyVidPrefix = mcfDoggyVidPrefix.value;
+    const doggyInsertPrefix = mcfDoggyInsertImgPrefix.value;
+    const doggyMoanPrefix = mcfDoggyMoanImgPrefix.value;
+    const bjPrefix = mcfBJVidPrefix.value;
+    const facefuckPrefix = mcfFacefuckVidPrefix.value;
+    const oralPrefix = mcfOralVidPrefix.value;
+    const creampiePrefix = mcfCreampieVidPrefix.value;
+    const facialPrefix = mcfFacialVidPrefix.value;
+    const mouthPrefix = mcfMouthVidPrefix.value;
+    const pulloutBodyPrefix = mcfPullOutBodyVidPrefix.value;
+    const pulloutButtPrefix = mcfPullOutButtVidPrefix.value;
+    const pulloutTitsPrefix = mcfPullOutTitsVidPrefix.value;
+
+    // Containers
+    const tagArrayDoggy = [];
+    const rhythmArrayDoggy = [];
+    const tagArrayFacefuck = [];
+    const tagArrayFacial = [];
+    const tagArrayBigLoad = [];
+    const tagArrayUnwilling = [];
+    const tagArrayMouth = [];
+    const tagArrayOral = [];
+    const rhythmArrayOral = [];
+    const tagArrayPullout = [];
+    const tagArrayPulloutBody = [];
+    const tagArrayPulloutButt = [];
+    const tagArrayPulloutTits = [];
+
+    // Lines
+    const doggyLines = [];
+    const doggyRhythmLines = [];
+    const facefuckLines = [];
+    const oralLines = [];
+    const oralRhythmLines = [];
+    const facialLines = [];
+    const mouthLines = [];
+    const pulloutBodyLines = [];
+    const pulloutButtLines = [];
+    const pulloutTitsLines = [];
+
+    // Integers
+    const doggyVidInt = parseInt(mcfDoggyVid.value) || 0;
+    const doggyInsertImgInt = parseInt(mcfDoggyInsertImg.value) || 0;
+    const doggyMoanImgInt = parseInt(mcfDoggyMoanImg.value) || 0;
+    const bjVidInt = parseInt(mcfBJVid.value) || 0;
+    const facefuckVidInt = parseInt(mcfFacefuckVid.value) || 0;
+    const oralVidInt = parseInt(mcfOralVid.value) || 0;
+    const creampieVidInt = parseInt(mcfCreampieVid.value) || 0;
+    const facialVidInt = parseInt(mcfFacialVid.value) || 0;
+    const mouthVidInt = parseInt(mcfMouthVid.value) || 0;
+    const pulloutBodyVidInt = parseInt(mcfPullOutBodyVid.value) || 0;
+    const pulloutButtVidInt = parseInt(mcfPullOutButtVid.value) || 0;
+    const pulloutTitsVidInt = parseInt(mcfPullOutTitsVid.value) || 0;
+    const bigLoadInts = [];
+    const unwillingLoadInts = [];
+
+    console.log({
+      doggyVidInt,
+      doggyInsertImgInt,
+      doggyMoanImgInt,
+      bjVidInt,
+      facefuckVidInt,
+      oralVidInt,
+      creampieVidInt,
+      facialVidInt,
+      mouthVidInt,
+      pulloutBodyVidInt,
+      pulloutButtVidInt,
+      pulloutTitsVidInt
+      });
+  
+
+    // Field validation
+    if (!characterName) {
+      console.error("Character Name is required.");
+      alert("Please enter a character name.");
+      return;
+    }
+
+    if (doggyVidInt === 0 || doggyInsertImgInt === 0 || doggyMoanImgInt === 0) {
+      console.error("Doggy fields are required."); 
+      alert("Doggy fields are required.");
+      return;
+    }
+
+    if (bjVidInt === 0) {
+      console.error("BJ fields are required."); 
+      alert("BJ fields are required.");
+      return;
+    }
+
+    if (facefuckVidInt === 0) {
+      console.error("Facefuck fields are required."); 
+      alert("Facefuck fields are required.");
+      return;
+    }
+
+    if (oralVidInt === 0) {
+      console.error("Oral fields are required."); 
+      alert("Oral fields are required.");
+      return;
+    }
+
+    // Add files to the ZIP
+    mcfzip.file(`${characterName}.twee`, tweeContent);
+  };
+
+  // Generate MCF Files ONLY
+  function generateMCFFiles(){
+    gatherMCFFiles();
+    generateMCFZip();
+  };
+
+  //Generate ALL MCF Files and Directories
+  function generateMCFAll(){
+    gatherMCFMeta();
+    gatherMCFDirectories();
+    gatherMCFFiles();
+    generateMCFZip();
+  };
+
   // #endregion --- Function - MCF
 
   // #region --- Functions - Positions
@@ -2072,12 +2627,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Gather BLACKED directories and add to blkzip
   function gatherBlackedDirectories() {
+    const characterName = blkCharacterName.value;
+
     if (!blkzip) {
       blkzip = new JSZip();
     } 
-
-    // Collect input values from the form
-    const characterName = blkCharacterName.value;
 
     if (!characterName) {
       console.error("Character Name is required.");
@@ -2721,8 +3275,52 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // #region --- Listeners - MCF
 
+  // Height/Weight Conversions
+  mcfCharacterWeightLB.addEventListener("input", () => convertWeight('lbs'));
+  mcfCharacterWeightKG.addEventListener("input", () => convertWeight('kg'));
+  mcfCharacterHeightIN.addEventListener("input", () => convertHeight('inches'));
+  mcfCharacterHeightCM.addEventListener("input", () => convertHeight('cm'));
+
+  // Set up MCF Defaults after Character Input
+  mcfCharacterName.addEventListener("input", setmcfDefaultDirectories);
+
+  // Generate MCF Meta Only
+  generateMCFMetaButton.addEventListener("click", generateMCFMeta);
+
   // Generate MCF Directories Only
-  generateMCFDirectoriesButton.addEventListener("click", generateMCFDirectories);
+  generateMCFFoldersButton.addEventListener("click", generateMCFDirectories);
+
+  // Generate MCF Files Only
+  generateMCFFilesOnlyButton.addEventListener("click", generateMCFFiles);
+
+  // Generate All MCF Files and Directories
+  generateMCFAllFilesButton.addEventListener("click", generateMCFAll);
+
+  // Build tag fields for MCF - Doggy
+  mcfDoggyVid.addEventListener("input", generateMCFDoggyFields);
+
+  // Build tag fields for MCF - Facefuck
+  mcfFacefuckVid.addEventListener("input", generateMCFFacefuckFields);
+
+  // Build tag fields for MCF - Oral
+  mcfOralVid.addEventListener("input", generateMCFOralFields);
+
+  // Build tag fields for MCF - Facial
+  mcfFacialVid.addEventListener("input", generateMCFFacialFields);
+
+  // Build tag fields for MCF - Mouth
+  mcfMouthVid.addEventListener("input", generateMCFMouthFields);
+
+  // Build tag fields for MCF - Pull Out Tits
+  mcfPullOutTitsVid.addEventListener("input", generateMCFPullOutTitsFields);
+
+  // Build tag fields for MCF - Pull Out Body
+  mcfPullOutBodyVid.addEventListener("input", generateMCFPullOutBodyFields);
+
+  // Build tag fields for MCF - Pull Out Butt
+  mcfPullOutButtVid.addEventListener("input", generateMCFPullOutButtFields);
+
+
   // #endregion --- Listeners - MCF
 
   // #region --- Listeners - Positions
@@ -3048,6 +3646,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // Set up MCF defaults
+  setmcfDefaultValues();
+  setmcfDefaultDirectories();
+
   // Set up Position Dropdown
   updatePositions();
 
@@ -3148,7 +3750,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   tippy([positionRoughness, positionRoughness.nextElementSibling],{
-    content: "Roughness affects the rate at which you gain or lose control. <br><br>In <u>Only Passive</u> positions, Roughness determines your partner's eligible positions (along with their dominance)."
+    content: "Roughness affects the rate at which you gain or lose control. <br><br>In <u>Passive</u> positions, Roughness determines your partner's eligible positions (along with their dominance)."
   })
 
   tippy([positionPleasureFactor],{
@@ -3164,7 +3766,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   tippy([positionHisSatisfaction, positionHisSatisfaction.nextSibling],{
-    content: "Affects the rate at which your partner gains satisfaction😋.<br><br> Normal rate is <i>this number</i> divided by 2. Depending on your actions, this can be doubled or halfed.<br>His satisfaction is what lets you increase their stats after bedroom sex."
+    content: "Affects the rate at which your partner gains satisfaction😋.<br><br> Normal rate is <i>this number</i> divided by 2. Depending on your actions, this can be doubled or halved.<br>His satisfaction is what lets you increase their stats after bedroom sex."
   })
 
   tippy([positionDropdown],{
@@ -3180,11 +3782,11 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   tippy([positionSkillType],{
-    content: "This is the type of skill that this position requires. It will also reward experience for using that skill. On skill checks, this is what determines the pass and fail values. <br><br>It is also used independantly with skill levels.<br>For example, if the position's skill is 'Blowjob', and you have a skill level of 3 for the blowjob skill, you'll earn experience towards reaching level 4 in blowjob skill, but only in that skill."
+    content: "This is the type of skill that this position requires. It will also reward experience for using that skill. On skill checks, this is what determines the pass and fail values. <br><br>It is also used independently with skill levels.<br>For example, if the position's skill is 'Blowjob', and you have a skill level of 3 for the blowjob skill, you'll earn experience towards reaching level 4 in blowjob skill, but only in that skill."
   })
 
   tippy([positionSkillLevel, positionSkillLevel.nextElementSibling],{
-    content: "This is the level of skill that this position requires.<br><br>For example, if the position's skill is 'Blowjob' and the skill level is 5, but you have a skill level of 3, you won't be able to earn this position yet. Only when you reach level 5 or higher will this be an eligible position to be learned."
+    content: "This is the level of skill that this position requires.<br><br>For example, if the position's skill is 'Blowjob' and the skill level is 5, but you have a skill level of 3, you won't be able to earn this position yet. Only once you reach level 5 or higher will this be an eligible position to be learned."
   })
 
   tippy([positionsLocations],{
@@ -3248,7 +3850,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   tippy([outfitType],{
-    content: "This classifies the type of outfit. It is used in game to make sure you are dressed in appropiate attire for certain events.<br><br>For example, if you show up to the club in a bikini, you'll be turned away."
+    content: "This classifies the type of outfit. It is used in game to make sure you are dressed in appropriate attire for certain events.<br><br>For example, if you show up to the club in a bikini, you'll be turned away."
   })
 
   tippy([outfitStyle],{
@@ -3331,27 +3933,27 @@ document.addEventListener("DOMContentLoaded", function () {
     content: "Optional. Tags can impact a lot of things. Stat buffs, sound effects, npc personality, descriptions, actions.<br><br>Refer to the tags in the list for more information."
   })
 
-  tippy([blkDoggyHelp],{
+  tippy([blkDoggyHelp,mcfDoggyHelp],{
     content: "This section is for 'Transactional' sex (non-bedroom sexual encounters, like a bar or club hookups), which are doggystyle.<br><br> Set the path to the exact location where the images and videos are located, or move your media files into the location specified.<br><br> Set the prefixes to match exactly what the files are named.<br> Example: For 'doggy insert 1.jpg' and 'doggy insert 2.jpg', your prefix would be 'doggy insert'."
   })
 
-  tippy([blkDoggyInsertImgPrefix],{
+  tippy([blkDoggyInsertImgPrefix,mcfDoggyInsertImgPrefix],{
     content: "Insert images are where the cock is being just inserted at the beginning of the sexual encounter."
   })
 
-  tippy([blkDoggyMoanImgPrefix],{
+  tippy([blkDoggyMoanImgPrefix, mcfDoggyMoanImgPrefix],{
     content: "Moan images play during an orgasm."
   })
 
-  tippy([blkBJHelp],{
+  tippy([blkBJHelp, mcfBJHelp],{
     content: "This transactional section is for Blowjobs.<br><br>Set the path to the exact location where the videos are located, or move your media files into the location specified.<br> Set the prefixes to match exactly what the files are named.<br> Example: For 'bj 1.jpg' and 'bj 2.jpg', your prefix would be 'bj'."
   })
 
-  tippy([blkFacefuckHelp],{
+  tippy([blkFacefuckHelp, mcfFacefuckHelp],{
     content: "Same as blowjobs, but for facefucking (or rough blowjobs). Usually in the same location with the 'rough' prefix, but this is customizable."
   })
 
-  tippy([blkOralHelp],{
+  tippy([blkOralHelp, mcfOralHelp],{
     content: "This section is for when your partner goes down on female you. The tag is for which position you are in."
   })
 
@@ -3359,16 +3961,16 @@ document.addEventListener("DOMContentLoaded", function () {
     content: "This section is for groping and kissing. You need to have at least 1 kiss video and either an ass or tits grope.<br> You can have multiples of each.<br><br>This path is hardcoded for character_id/foreplay/bbc. Please ensure your media files are in this location."
   })
 
-  tippy([blkCumHelp],{
+  tippy([blkCumHelp, mcfCumHelp],{
     content: "This is the cum section, where there are only happy endings.<br> Facial and Mouth can by similar and ultimately your choice, just name appropiately."
   })
 
-  tippy([blkPullOutHelp],{
+  tippy([blkPullOutHelp, mcfPullOutHelp],{
     content: "For pull outs, Body is usually a missionary or riding (cowgirl) position where he just pulls out and cums on your pelvis/belly. Technically could be a backshot if it were doggy. <br>It would be tits if he gets off and aims for your tits. <br> And butt for doggy, where he just pulls out and cums."
   })
 
-  tippy([],{
-    content: ""
+  tippy('.suggestExample',{
+    content: "Give me an example!"
   })
 
   tippy([],{

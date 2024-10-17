@@ -24,54 +24,597 @@
     <div id="MCF-Tab" class="tabcontent">
         <div class="container">
             <div class="content-wrapper">
-                <form id="mcfForm">
-                    <div class="form-center">
-                        <h2>Meta Section</h2>
-                        <div class="form-single-line">
-                            <label for="mcfModAuthor">Mod Author:</label>
-                            <input type="text" id="mcfModAuthor" name="mcfModAuthor">
+                <div class="form-center-wrapper">
+                    <form id="mcfForm">
+                        <div class="form-center">
+                            <h2>Meta Section</h2>
+                            <div class="form-single-line">
+                                <label for="mcfModAuthor">Mod Author:</label>
+                                <input type="text" id="mcfModAuthor" name="mcfModAuthor">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfYourModVersion">Your Mod Version:</label>
+                                <input type="text" id="mcfYourModVersion" name="mcfYourModVersion" placeholder="1.0.0">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfBaseGameVersion">Current XCL Game Version:</label>
+                                <input type="text" id="mcfBaseGameVersion" name="mcfBaseGameVersion">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfCharacterName">Character Name:</label>
+                                <input type="text" id="mcfCharacterName" name="mcfCharacterName">
+                            </div>
+                            <div class="form-button-center">
+                                <button type="button" id="generateMCFFoldersButton">Generate Folder Structure Only</button>
+                                <button type="button" id="generateMCFMetaButton">Generate Meta Only</button>
+                            </div>
                         </div>
-                        <div class="form-single-line">
-                            <label for="mcfYourModVersion">Your Mod Version:</label>
-                            <input type="text" id="mcfYourModVersion" name="mcfYourModVersion" placeholder="0.0.1">
+                        <div class="form-center">
+                            <h2>Character Information</h2>
+                            <div class="form-single-line">
+                                <label for="mcfCharacterRace">Race:</label>
+                                <select id="mcfCharacterRace" name="mcfCharacterRace">
+                                    <option value="white">White</option>
+                                    <option value="black">Black</option>
+                                    <option value="asian">Asian</option>
+                                    <option value="latin">Latin</option>
+                                </select>
+                                <label for="mcfCharacterBodyType">Body Type:</label>
+                                <select id="mcfCharacterBodyType" name="mcfCharacterBodyType">
+                                    <option value="slim">Slim</option>
+                                    <option value="average">Average</option>
+                                    <option value="voluptuous">Voluptuous</option>
+                                </select>
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfCharacterBreasts">Cup Size:</label>
+                                <select id="mcfCharacterBreasts" name="mcfCharacterBreasts">
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="G">G</option>
+                                    <option value="H">H</option>
+                                    <option value="I">I</option>
+                                    <option value="J">J</option>
+                                </select>
+                                <label for="mcfCharacterButt">Butt Type:</label>
+                                <select id="mcfCharacterButt" name="mcfCharacterButt">
+                                    <option value="slim">Slim</option>
+                                    <option value="bubble">Bubble</option>
+                                    <option value="big">Big</option>
+                                </select>
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfCharacterHairColor">Hair Color:</label>
+                                <select id="mcfCharacterHairColor" name="mcfCharacterHairColor">
+                                    <option value="blonde">Blonde</option>
+                                    <option value="brown">Brown</option>
+                                    <option value="red">Red</option>
+                                    <option value="black">Black</option>
+                                    <option value="gray">Gray</option>
+                                    <option value="colored">Colored</option>
+                                </select>
+                                <label for="mcfCharacterEyeColor">Eye Color:</label>
+                                <select id="mcfCharacterEyeColor" name="mcfCharacterEyeColor">
+                                    <option value="blue">Blue</option>
+                                    <option value="brown">Brown</option>
+                                    <option value="hazel">Hazel</option>
+                                    <option value="green">Green</option>
+                                    <option value="amber">Amber</option>
+                                </select>
+                            </div>
+                            <div class="form-grid w-60">
+                                <label for="mcfCharacterBust" style="grid-column: 1;">Bust Size (Inches):</label>
+                                <input type="number" id="mcfCharacterBust" placeholder="32" min="1" style="grid-column: 2;">
+                            </div>
+                            <div class="form-grid w-70">
+                                <label for="mcfCharacterHeightIN" style="grid-column: 1;">Height (Inches):</label>
+                                <input type="number" id="mcfCharacterHeightIN" placeholder="66" min="1" style="grid-column: 2;">
+                                <label for="mcfCharacterHeightCM" style="grid-column: 3;">Height (Centimeters):</label>
+                                <input type="number" id="mcfCharacterHeightCM" placeholder="170" min="1" style="grid-column: 4;">
+
+                                <label for="mcfCharacterWeightLB" style="grid-column: 1;">Weight (Pounds):</label>
+                                <input type="number" id="mcfCharacterWeightLB" placeholder="130" min="1" style="grid-column: 2;">
+                                <label for="mcfCharacterWeightKG" style="grid-column: 3;">Weight (Kilograms):</label>
+                                <input type="number" id="mcfCharacterWeightKG" placeholder="59" min="1" style="grid-column: 4;">
+                            </div>
                         </div>
-                        <div class="form-single-line">
-                            <label for="mcfBaseGameVersion">Current XCL Game Version:</label>
-                            <input type="text" id="mcfBaseGameVersion" name="mcfBaseGameVersion">
+                        <div class="form-center">
+                            <h2>Character Descriptions</h2>
+                            <div class="form-single-line">
+                                <label for="mcfDescribeButtInput">Describe Butt 🍑:</label>
+                                <input type="text" id="mcfDescribeButtInput" name="mcfDescribeButtInput">
+                                <button type="button" id="mcfDescribeButtButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleDescribeButtButton">🪄</button>
+                                <div class="tagsContainer" id="mcfDescribeButtContainer"></div>
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfDescribeBoobsInput">Describe Boobs 🍈:</label>
+                                <input type="text" id="mcfDescribeBoobsInput" name="mcfDescribeBoobsInput">
+                                <button type="button" id="mcfDescribeBoobsButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleDescribeBoobs">🪄</button>
+                                <div class="tagsContainer" id="mcfDescribeBoobsContainer"></div>
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfDescribeBodyInput">Describe Body 💃:</label>
+                                <input type="text" id="mcfDescribeBodyInput" name="mcfDescribeBodyInput">
+                                <button type="button" id="mcfDescribeBodyButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleDescribeBody">🪄</button>
+                                <div class="tagsContainer" id="mcfDescribeBodyContainer"></div>
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfDescribeTransformationInput">Describe Transformation:</label>
+                                <input type="text" id="mcfDescribeTransformationInput" name="mcfDescribeTransformationInput">
+                                <button type="button" id="mcfDescribeTransformationButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleDescribeTransformation">🪄</button>
+                            </div>
+                            <div class="tagsContainer" id="mcfDescribeTransformationContainer"></div>
+                            <div class="form-single-line">
+                                <label for="mcfThoughtClothesInput">Transformation Clothing Thoughts:</label>
+                                <input type="text" id="mcfThoughtClothesInput" name="mcfThoughtClothesInput">
+                                <button type="button" id="mcfThoughtClothesButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleThoughtClothes">🪄</button>
+                            </div>
+                            <div class="tagsContainer" id="mcfThoughtClothesContainer"></div>
+                            <div class="form-single-line">
+                                <label for="mcfExamineSelfReluctantInput">Examine Self (Reluctant):</label>
+                                <input type="text" id="mcfExamineSelfReluctantInput" name="mcfExamineSelfReluctantInput">
+                                <button type="button" id="mcfExamineSelfReluctantButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleExamineSelfReluctant">🪄</button>
+                            </div>
+                            <div class="tagsContainer" id="mcfExamineSelfReluctantContainer"></div>
+                            <div class="form-single-line">
+                                <label for="mcfExamineSelfConfidentInput">Examine Self (Confident):</label>
+                                <input type="text" id="mcfExamineSelfConfidentInput" name="mcfExamineSelfConfidentInput">
+                                <button type="button" id="mcfExamineSelfConfidentButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleExamineSelfConfident">🪄</button>
+                            </div>
+                            <div class="tagsContainer" id="mcfExamineSelfConfidentContainer"></div>
                         </div>
-                        <div class="form-single-line">
-                            <label for="mcfCharacterName">Character Name:</label>
-                            <input type="text" id="mcfCharacterName" name="mcfCharacterName" placeholder="bonnie">
+                        <div class="form-center">
+                            <h2>Character Hair</h2>
+                            <div class="form-single-line">
+                                <label for="mcfDescribeHairColorInput">Describe Hair Color:</label>
+                                <input type="text" id="mcfDescribeHairColorInput" name="mcfDescribeHairColorInput">
+                                <button type="button" id="mcfDescribeHairColorButton">Add</button>
+                                <div class="tagsContainer" id="mcfDescribeHairColorContainer"></div>
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfDescribeHairTextureInput">Describe Hair Texture:</label>
+                                <input type="text" id="mcfDescribeHairTextureInput" name="mcfDescribeHairTextureInput">
+                                <button type="button" id="mcfDescribeHairTextureButton">Add</button>
+                                <div class="tagsContainer" id="mcfDescribeHairTextureContainer"></div>
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfHairstylesInput">Hairstyle:</label>
+                                <select id="mcfHairstylesInput" name="mcfHairstylesInput">
+                                    <option value="afro">Afro</option>
+                                    <option value="bangs">Bangs</option>
+                                    <option value="beach">Beach</option>
+                                    <option value="blowout">Blowout</option>
+                                    <option value="bob">Bob</option>
+                                    <option value="box braids">Box Braids</option>
+                                    <option value="braided crown half-up">Braided Crown Half-up</option>
+                                    <option value="braids">Braids</option>
+                                    <option value="colored bangs">Colored Bangs</option>
+                                    <option value="colored waves">Colored Waves</option>
+                                    <option value="cornrow braid">Cornrow Braid</option>
+                                    <option value="crown braid">Crown Braid</option>
+                                    <option value="curly">Curly</option>
+                                    <option value="double buns and bangs">Double Buns and Bangs</option>
+                                    <option value="dreadlock bob">Dreadlock Bob</option>
+                                    <option value="fancy">Fancy</option>
+                                    <option value="half updo">Half Updo</option>
+                                    <option value="half-up pigtails">Half-up Pigtails</option>
+                                    <option value="high ponytail">High Ponytail</option>
+                                    <option value="long and layered">Long and Layered</option>
+                                    <option value="loose curls">Loose Curls</option>
+                                    <option value="messy bun">Messy Bun</option>
+                                    <option value="odango">Odango</option>
+                                    <option value="pigtail buns">Pigtail Buns</option>
+                                    <option value="pigtails">Pigtails</option>
+                                    <option value="pigtails and bangs">Pigtails and Bangs</option>
+                                    <option value="pixie bob">Pixie Bob</option>
+                                    <option value="playful waves">Playful Waves</option>
+                                    <option value="ponytail">Ponytail</option>
+                                    <option value="sleek waves">Sleek Waves</option>
+                                    <option value="solo braid">Solo Braid</option>
+                                    <option value="space buns">Space Buns</option>
+                                    <option value="straightened">Straightened</option>
+                                    <option value="textured bob">Textured Bob</option>
+                                    <option value="tousled pony wave">Tousled Pony Wave</option>
+                                    <option value="undercut">Undercut</option>
+                                    <option value="updo">Updo</option>
+                                    <option value="volume">Volume</option>
+                                    <option value="wavy">Wavy</option>
+                                </select>
+                                <button type="button" id="mcfHairstylesButton">Add</button>
+                                <div class="tagsContainer" id="mcfHairstylesContainer"></div>
+                            </div>
+                        </div>
+                        <div class="form-center">
+                            <h2>New-U</h2>
+                            <div class="form-single-line">
+                                <label for="mcfCharacterTagline">Selection Tag Line:</label> <!-- New-U bodies update -->
+                                <input type="text" id="mcfCharacterTagline" name="mcfCharacterTagline">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfCharacterTagOld">Old Body Descriptor:</label> <!-- invite guy load old -->
+                                <input type="text" id="mcfCharacterTagOld" name="mcfCharacterTagOld">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfCharacterTagNew">New Body Descriptor:</label> <!-- invite guy load new -->
+                                <input type="text" id="mcfCharacterTagNew" name="mcfCharacterTagNew">
+                            </div>
+                        </div>
+                        <div class="form-center">
+                            <h2>Home</h2>
+                            <div class="form-single-line">
+                                <label for="mcfStepSisShowerTeaseInput">Step-sis Shower Tease:</label>
+                                <input type="text" id="mcfStepSisShowerTeaseInput" name="mcfStepSisShowerTeaseInput">
+                                <button type="button" id="mcfStepSisShowerTeaseButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleStepSisShowerTease">🪄</button>
+                            </div>
+                            <div class="tagsContainer" id="mcfStepSisShowerTeaseContainer"></div>
+                            <div class="form-single-line-directory">
+                                <label for="mcfMakeupPath">Makeup File:</label>
+                                <p>img/characters/makeup/</p>
+                                <input type="text" id="mcfMakeupPath" class="directory">
+                            </div>
+                            <div class="form-grid w-80">
+                                <label for="mcfShowerPrefix" style="grid-column: 1;">Shower Prefix:</label>
+                                <input type="text" id="mcfShowerPrefix" style="grid-column: 2;">
+                                <label for="mcfShowerVid" style="grid-column: 3;">Video Count:</label>
+                                <input type="number" id="mcfShowerVid" placeholder="2" min="1" style="grid-column: 4;">
+
+                                <label for="mcfBathroomPrefix" style="grid-column: 1;">Bathroom Prefix:</label>
+                                <input type="text" id="mcfBathroomPrefix" style="grid-column: 2;">
+                                <label for="mcfBathroomVid" style="grid-column: 3;">Video Count:</label>
+                                <input type="number" id="mcfBathroomVid" placeholder="2" min="1" style="grid-column: 4;">
+
+                                <label for="mcfCleaningPrefix" style="grid-column: 1;">Cleaning Prefix:</label>
+                                <input type="text" id="mcfCleaningPrefix" style="grid-column: 2;">
+                                <label for="mcfCleaningVid" style="grid-column: 3;">Video Count:</label>
+                                <input type="number" id="mcfCleaningVid" placeholder="2" min="1" style="grid-column: 4;">
+                            </div>
+                        </div>
+                        <div class="form-center">
+                            <h2>Masturbation</h2>
+                            <div class="form-single-line-directory">
+                                <label for="mcfMasturbatePath">Solo Path:</label>
+                                <p>img/scenes/characters/</p>
+                                <input type="text" id="mcfMasturbatePath" class="directory">
+                            </div>
+                            <div class="form-grid w-70">
+                                <label for="mcfMasturbatePrefix" style="grid-column: 1;">Prefix:</label>
+                                <input type="text" id="mcfMasturbatePrefix" style="grid-column: 2;">
+                                <label for="mcfMasturbateVid" style="grid-column: 3;">Video Count:</label>
+                                <input type="number" id="mcfMasturbateVid" placeholder="2" min="1" style="grid-column: 4;">
+                            </div>
+                        </div>
+                        <div class="form-center">
+                            <h2>Workout</h2>
+                            <div class="form-single-line">
+                                <label for="mcfGymType">Workout Type:</label>
+                                <select id="mcfGymType" name="mcfGymType">
+                                    <option value="yoga">Yoga</option>
+                                    <option value="run">Run</option>
+                                    <option value="pt">Personal Trainer</option>
+                                    <option value="machines">Machines</option>
+                                    <option value="treadmill">Treadmill</option>
+                                </select>
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfGymOptionInput">Workout Button Options:</label>
+                                <input type="text" id="mcfGymOptionInput" name="mcfGymOptionInput">
+                                <button type="button" id="mcfGymOptionButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleGymOption">🪄</button>
+                                <div class="tagsContainer" id="mcfGymOptionContainer"></div>
+                            </div>
+                        </div>
+                        <div class="form-center">
+                            <h2>Dynapill</h2>
+                            <div class="form-single-line">
+                                <label for="mcfCoworkerReactInput">Coworker Describes Your Body:</label>
+                                <input type="text" id="mcfCoworkerReactInput" name="mcfCoworkerReactInput">
+                                <button type="button" id="mcfCoworkerReactButton">Add</button>
+                                <div class="tagsContainer" id="mcfCoworkerReactContainer"></div>
+                            </div>
+                        </div>
+                        <div class="form-center">
+                            <h2>Pharmacist Event</h2>
+                            <div class="form-single-line">
+                                <label for="mcfEventShopComment">His comment:</label> <!-- New-U bodies update -->
+                                <input type="text" id="mcfEventShopComment" name="mcfEventShopComment">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfEventShopThought">Your thought:</label> <!-- invite guy load old -->
+                                <input type="text" id="mcfEventShopThought" name="mcfEventShopThought">
+                            </div>
+                        </div>
+                        <div class="form-center">
+                            <h2>Catcall</h2>
+                            <div class="form-single-line">
+                                <label for="mcfCatcallBodyInput">Body Pickup Line:</label>
+                                <input type="text" id="mcfCatcallBodyInput" name="mcfCatcallBodyInput">
+                                <button type="button" id="mcfCatcallBodyButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleCatcallBody">🪄</button>
+                            </div>
+                            <div class="tagsContainer" id="mcfCatcallBodyContainer"></div>
+                            <div class="form-single-line">
+                                <label for="mcfCatcallFaceInput">Face Pickup Line:</label>
+                                <input type="text" id="mcfCatcallFaceInput" name="mcfCatcallFaceInput">
+                                <button type="button" id="mcfCatcallFaceButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleCatcallFace">🪄</button>
+                            </div>
+                            <div class="tagsContainer" id="mcfCatcallFaceContainer"></div>
+                            <div class="form-single-line">
+                                <label for="mcfCatcallDirtyInput">Dirty Pickup Line:</label>
+                                <input type="text" id="mcfCatcallDirtyInput" name="mcfCatcallDirtyInput">
+                                <button type="button" id="mcfCatcallDirtyButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleCatcallDirty">🪄</button>
+                            </div>
+                            <div class="tagsContainer" id="mcfCatcallDirtyContainer"></div>
+                            <div class="form-single-line">
+                                <label for="mcfCatcallRaceInput">Racial Pickup Line:</label>
+                                <input type="text" id="mcfCatcallRaceInput" name="mcfCatcallRaceInput">
+                                <button type="button" id="mcfCatcallRaceButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleCatcallRace">🪄</button>
+                            </div>
+                            <div class="tagsContainer" id="mcfCatcallRaceContainer"></div>
+                        </div>
+                        <div class="form-center">
+                            <h2>Pregnancy</h2>
+                            <div class="form-single-line">
+                                <label for="mcfPregnancyWeeksInput">Video Weeks:</label>
+                                <input type="number" id="mcfPregnancyWeeksInput" placeholder="5" min="5" max="39">
+                                <button type="button" id="mcfPregnancyWeeksButton">Add</button>
+                                <div class="tagsContainer" id="mcfPregnancyWeeksContainer"></div>
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfPregnancy1stCheckInput">Earliest Video - Examine Self:</label>
+                                <input type="text" id="mcfPregnancy1stCheckInput" name="mcfPregnancy1stCheckInput">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfPregnancy2ndCheckInput">2nd Earliest Video - Examine Self:</label>
+                                <input type="text" id="mcfPregnancy2ndCheckInput" name="mcfPregnancy2ndCheckInput">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfPregnancyPrenatalInput">12-Week Prenatal Visit - Examine Self:</label>
+                                <input type="text" id="mcfPregnancyPrenatalInput" name="mcfPregnancyPrenatalInput">
+                            </div>
+                            <!-- first lactaction, white = alina, black = scarlit -->
+                            <!-- milk yourself, 
+                             white + red hair + C or below = lana,
+                             white + brown hair + D or above = cassidy,
+                             white + C or below = rae, 
+                             white + D or above mia 1 , 
+                             black = scarlit -->
+                             <div class="form-single-line">
+                                <label for="mcfCallFatherShowInput">Baby Daddy Visit - Reveal Line:</label>
+                                <input type="text" id="mcfCallFatherShowInput" name="mcfCallFatherShowInput">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfCallFatherBJInput">Baby Daddy Visit - BJ Line:</label>
+                                <input type="text" id="mcfCallFatherBJInput" name="mcfCallFatherBJInput">
+                            </div>
+                        </div>
+                        <div class="form-center">
+                            <i class="fa fa-question-circle" id="mcfDoggyHelp"></i>
+                            <h2>Doggy (Transactional)</h2>
+                            <div class="form-single-line-directory">
+                                <label for="mcfDoggyPath">Folder Path:</label>
+                                <p>img/scenes/characters/</p>
+                                <input type="text" id="mcfDoggyPath" class="directory">
+                            </div>
+                            <div class="form-grid w-70" id="mcfDoggyGrid">
+                                <label for="mcfDoggyInsertImgPrefix" style="grid-column: 1;">Insert:</label>
+                                <input type="text" id="mcfDoggyInsertImgPrefix" style="grid-column: 2;">
+                                <label for="mcfDoggyInsertImg" style="grid-column: 3;">Pictures</label>
+                                <input type="number" id="mcfDoggyInsertImg" placeholder="4" min="1" style="grid-column: 4;">
+                                
+                                <label for="mcfDoggyMoanImgPrefix" style="grid-column: 1;">Moan:</label>
+                                <input type="text" id="mcfDoggyMoanImgPrefix" style="grid-column: 2;">
+                                <label for="mcfDoggyMoanImg" style="grid-column: 3;">Pictures</label>
+                                <input type="number" id="mcfDoggyMoanImg" placeholder="4" min="1" style="grid-column: 4;">
+
+                                <label for="mcfDoggyVidPrefix" style="grid-column: 1;">Doggy:</label>
+                                <input type="text" id="mcfDoggyVidPrefix" style="grid-column: 2;">
+                                <label for="mcfDoggyVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="mcfDoggyVid" placeholder="4" min="1" style="grid-column: 4;">                            
+                            </div>
+                            <div id="mcfDoggyContainer"></div>
+                        </div>
+
+                        <div class="form-center">
+                            <i class="fa fa-question-circle" id="mcfBJHelp"></i>
+                            <h2>Blowjob (Transactional)</h2>
+                            <div class="form-single-line-directory">
+                                <label for="mcfBJPath">Folder Path:</label><p>img/scenes/characters/</p>
+                                <input type="text" id="mcfBJPath" class="directory">
+                            </div>
+                            <div class="form-grid w-70" id="mcfBJGrid">
+                                <label for="mcfBJVidPrefix" style="grid-column: 1;">BJ:</label>
+                                <input type="text" id="mcfBJVidPrefix" style="grid-column: 2;">
+                                <label for="mcfBJVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="mcfBJVid" placeholder="4" min="1" style="grid-column: 4;">
+                            </div>
+                        </div>
+
+                        <div class="form-center">
+                            <i class="fa fa-question-circle" id="mcfFacefuckHelp"></i>
+                            <h2>Facefuck (Transactional)</h2>
+                            <div class="form-single-line-directory">
+                                <label for="mcfFacefuckPath">Folder Path:</label><p>img/scenes/characters/</p>
+                                <input type="text" id="mcfFacefuckPath" class="directory">
+                            </div>
+                            <div class="form-grid w-70" id="mcfFacefuckGrid">
+                                <label for="mcfFacefuckVidPrefix" style="grid-column: 1;">Facefuck:</label>
+                                <input type="text" id="mcfFacefuckVidPrefix" style="grid-column: 2;">
+                                <label for="mcfFacefuckVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="mcfFacefuckVid" placeholder="4" min="1" style="grid-column: 4;">
+                            </div>
+                            <div id="mcfFacefuckContainer"></div>
+                        </div>
+
+                        <div class="form-center">
+                            <i class="fa fa-question-circle" id="mcfOralHelp"></i>
+                            <h2>Oral</h2>
+                            <div class="form-single-line-directory">
+                                <label for="mcfOralPath">Folder Path:</label><p>img/scenes/characters/</p>
+                                <input type="text" id="mcfOralPath" class="directory">
+                            </div>
+                            <div class="form-grid w-70" id="mcfOralGrid">
+                                <label for="mcfOralVidPrefix" style="grid-column: 1;">Oral:</label>
+                                <input type="text" id="mcfOralVidPrefix" style="grid-column: 2;">
+                                <label for="mcfOralVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="mcfOralVid" placeholder="4" min="1" style="grid-column: 4;">
+                            </div>
+                            <div id="mcfOralContainer"></div>
+                        </div>
+
+                        <div class="form-center">
+                            <h2>Foreplay</h2>
+                            <div class="radio-group" id="mcfGropeDiv">
+                                <label for="mcfGropeRadio">Grope:</label>
+                                <input type="radio" id="mcfGropeTits" name="mcfGropeRadio" value="tits" checked>
+                                <label for="mcfGropeTits">Tits</label>
+
+                                <input type="radio" id="mcfGropeAss" name="mcfGropeRadio" value="ass">
+                                <label for="mcfGropeAss">Ass</label>
+
+                                <input type="radio" id="mcfGropeBoth" name="mcfGropeRadio" value="both">
+                                <label for="mcfGropeBoth">Both</label>
+                            </div>
+                        </div>
+
+                        <div class="form-center">
+                            <i class="fa fa-question-circle" id="mcfCumHelp"></i>
+                            <h2>Cum</h2>
+                            <div class="form-single-line-directory">
+                                <label for="mcfCumPath">Folder Path:</label><p>img/scenes/characters/</p>
+                                <input type="text" id="mcfCumPath" class="directory">
+                            </div>
+                            <div class="form-grid w-70" id="mcfCumGrid">
+                                <label for="mcfCreampieVidPrefix" style="grid-column: 1;">Creampie:</label>
+                                <input type="text" id="mcfCreampieVidPrefix" style="grid-column: 2;">
+                                <label for="mcfCreampieVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="mcfCreampieVid" placeholder="4" min="0" style="grid-column: 4;">
+
+                                <label for="mcfFacialVidPrefix" style="grid-column: 1;">Facial:</label>
+                                <input type="text" id="mcfFacialVidPrefix" style="grid-column: 2;">
+                                <label for="mcfFacialVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="mcfFacialVid" placeholder="4" min="1" style="grid-column: 4;">
+
+                                <label for="mcfMouthVidPrefix" style="grid-column: 1;">Mouth:</label>
+                                <input type="text" id="mcfMouthVidPrefix" style="grid-column: 2;">
+                                <label for="mcfMouthVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="mcfMouthVid" placeholder="4" min="0" style="grid-column: 4;">
+                            </div>
+                            <div id="mcfFacialContainer"></div>
+                            <div id="mcfMouthContainer"></div>
+                        </div>
+
+                        <div class="form-center">
+                            <i class="fa fa-question-circle" id="mcfPullOutHelp"></i>
+                            <h2>Pull Out</h2>
+                            <div class="form-grid w-70" id="mcfPullOutGrid">
+                                <label for="mcfPullOutBodyVidPrefix" style="grid-column: 1;">Body:</label>
+                                <input type="text" id="mcfPullOutBodyVidPrefix" style="grid-column: 2;">
+                                <label for="mcfPullOutBodyVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="mcfPullOutBodyVid" placeholder="1" min="1" style="grid-column: 4;">
+
+                                <label for="mcfPullOutButtVidPrefix" style="grid-column: 1;">Butt:</label>
+                                <input type="text" id="mcfPullOutButtVidPrefix" style="grid-column: 2;">
+                                <label for="mcfPullOutButtVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="mcfPullOutButtVid" placeholder="1" min="1" style="grid-column: 4;">
+
+                                <label for="mcfPullOutTitsVidPrefix" style="grid-column: 1;">Tits:</label>
+                                <input type="text" id="mcfPullOutTitsVidPrefix" style="grid-column: 2;">
+                                <label for="mcfPullOutTitsVid" style="grid-column: 3;">Videos</label>
+                                <input type="number" id="mcfPullOutTitsVid" placeholder="1" min="1" style="grid-column: 4;">
+                            </div>
+
+                            <div id="mcfPullOutBodyContainer"></div>
+                            <div id="mcfPullOutButtContainer"></div>
+                            <div id="mcfPullOutTitsContainer"></div>
+                        </div>
+
+                        <div class="form-center">
+                            <i class="fa fa-question-circle" id="mcfSoundHelp"></i>
+                            <h2>Sounds</h2>
+                            <h4>Fill out number of files for each type of sound</h4>
+                            <div class="form-grid w-80" id="mcfSoundsGrid">
+                                <label for="mcfSEMasturbate" style="grid-column: 1;">Masturbate:</label>
+                                <input type="number" id="mcfSEMasturbate" value="1" min="1" max="1" style="grid-column: 2;" class="disabled" onkeydown="return false">
+                                <label for="mcfSECumMoan" style="grid-column: 3;">Cum (Moan):</label>
+                                <input type="number" id="mcfSECumMoan" value="1" min="1" max="1" style="grid-column: 4;" class="disabled" onkeydown="return false">
+                                <label for="mcfSEFondle" style="grid-column: 1;">Fondle:</label>
+                                <input type="number" id="mcfSEFondle" value="1" min="1" max="1" style="grid-column: 2;" class="disabled" onkeydown="return false">
+                                <label for="mcfSEOrgasmSolo" style="grid-column: 3;">Orgasm Solo:</label>
+                                <input type="number" id="mcfSEOrgasmSolo" value="1" min="1" max="1" style="grid-column: 4;" class="disabled" onkeydown="return false">
+                                <label for="mcfSELicking" style="grid-column: 1;">Licking (Oral):</label>
+                                <input type="number" id="mcfSELicking" placeholder="4" min="1" style="grid-column: 2;">
+                                <label for="mcfSEOrgasm" style="grid-column: 3;">Orgasm:</label>
+                                <input type="number" id="mcfSEOrgasm" placeholder="4" min="1" style="grid-column: 4;">
+                                <label for="mcfSEBJ" style="grid-column: 1;">BJ:</label>
+                                <input type="number" id="mcfSEBJ" placeholder="4" min="1" style="grid-column: 2;">
+                                <label for="mcfSEBJRough" style="grid-column: 3;">BJ (Rough):</label>
+                                <input type="number" id="mcfSEBJRough" placeholder="4" min="1"style="grid-column: 4;">
+                                <label for="mcfSEDoggy" style="grid-column: 1;">Doggy:</label>
+                                <input type="number" id="mcfSEDoggy" placeholder="4" min="1" style="grid-column: 2;">
+                                <label for="mcfSEMissionary" style="grid-column: 3;">Missionary:</label>
+                                <input type="number" id="mcfSEMissionary" placeholder="4" min="1"style="grid-column: 4;">
+                                <label for="mcfSERiding" style="grid-column: 1;">Riding:</label>
+                                <input type="number" id="mcfSERiding" placeholder="4" min="1" style="grid-column: 2;">
+                                <label for="mcfSEPenetration" style="grid-column: 3;">Penetration:</label>
+                                <input type="number" id="mcfSEPenetration" placeholder="4" min="1"style="grid-column: 4;">
+                            </div>
+                        </div>
+                        <div class="form-center">
+                            <h2>Sound Timing</h2>
+                            <h4>Fill out the time (in milliseconds) for each sound file</h4>
+                            <div class="form-single-line">
+                                <label for="mcfInsertTiming1">Pentration/Pre 1:</label>
+                                <input type="number" id="mcfInsertTiming1" name="mcfInsertTiming" min="3000" max="15000">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfInsertTiming2">Pentration/Pre 2:</label>
+                                <input type="number" id="mcfInsertTiming2" name="mcfInsertTiming" min="3000" max="15000">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfInsertTiming3">Pentration/Pre 3:</label>
+                                <input type="number" id="mcfInsertTiming3" name="mcfInsertTiming" min="3000" max="15000">
+                            </div>
+                            <div id="mcfPenetrationTiming"></div>
                         </div>
                         <div class="form-button-center">
-                        <button type="button" id="generateMCFDirectoriesButton">Generate Folder Structure</button>
+                            <button type="button" id="generateMCFFilesOnlyButton">Generate Files Only</button>
+                            <button type="button" id="generateMCFAllFilesButton">Generate All Files and Folders</button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="PositionTab" class="tabcontent">
         <div class="container">
-            <!-- Wrapper for the form and position list -->
             <div class="flex-wrapper">
-                <!-- Form Container -->
                 <div class="form-left">
                     <form id="positionForm">
-                        <!-- Character Name -->
                         <label for="positionCharacterName">Character Name:</label>
                         <input type="text" id="positionCharacterName" name="positionCharacterName" placeholder="bonnie">
 
-                        <!-- Position Name -->
                         <label for="positionName">Position Name:</label>
                         <input type="text" id="positionName" name="positionName">
 
-                        <!-- Position Flavor -->
                         <label for="positionFlavor">Flavor Text:</label>
                         <input type="text" id="positionFlavor" name="positionFlavor">
 
-                        <!-- Position Type Radio Buttons -->
                         <label for="positionType">Type:</label>
                         <div class="radio-group">
                             <input type="radio" id="active" name="positionType" value="active" checked>
@@ -81,7 +624,6 @@
                             <label for="passive">Passive</label>
                         </div>
 
-                        <!-- Subtype Radio Buttons -->
                         <label for="subtype">Subtype:</label>
                         <div class="radio-group">
                             <input type="radio" id="cowgirl" name="subtype" value="cowgirl" checked>
@@ -97,7 +639,6 @@
                             <label for="service">Service</label>
                         </div>
 
-                        <!-- Position Dropdown -->
                         <label for="position">Position:</label>
                         <select id="position" name="position">
                             <option value="doggystyle">Doggystyle</option>
@@ -116,7 +657,6 @@
                             <option value="facefuck">Facefuck</option>
                         </select>
 
-                        <!-- Sliders with Number Display -->
                         <div class="slider-container">
                             <label for="athletics">Athletics: 💪</label>
                             <div class="slider-wrapper">
@@ -241,7 +781,6 @@
                         <div class="tagsContainer" id="positionTagsContainer"></div>
                         
 
-                        <!-- Skill Dropdown -->
                         <label for="skill">Skill:</label>
                         <select id="skill" name="skill">
                             <option value="active sex">Active Sex</option>
@@ -310,28 +849,21 @@
 
     <div id="OutfitTab" class="tabcontent">
         <div class="container">
-            <!-- Wrapper for the form and outfit list -->
             <div class="flex-wrapper">
-                <!-- Form Container -->
                 <div class="form-left">
                     <form id="outfitForm">
-                        <!-- Character Name -->
                         <label for="outfitCharacterName">Character Name:</label>
                         <input type="text" id="outfitCharacterName" name="outfitCharacterName" placeholder="bonnie">
 
-                        <!-- Outfit Name -->
                         <label for="outfitName">Outfit Name:</label>
                         <input type="text" id="outfitName" name="outfitName">
 
-                        <!-- Outfit Flavor -->
                         <label for="outfitFlavor">Flavor Text:</label>
                         <input type="text" id="outfitFlavor" name="outfitFlavor">
 
-                        <!-- Outfit Description -->
                         <label for="outfitDescription">Outfit Description:</label>
                         <input type="text" id="outfitDescription" name="outfitDescription">
 
-                        <!-- Outfit Category -->
                         <label for="outfitCategory">Main Category:</label>
                         <select id="outfitCategory" name="outfitCategory">
                             <option value="beach">Beach</option>
@@ -344,7 +876,6 @@
                             <option value="lingerie">Lingerie</option>
                         </select>
 
-                        <!-- Outfit Locations -->
                         <label for="outfitLocations">Additional Categories:</label>
                         <div class="checkbox-group" id="outfitLocationCheckboxes">
                             <input type="checkbox" id="beach" name="outfitLocations" value="beach">
@@ -363,7 +894,6 @@
                             <label for="fetish">Fetish</label>
                         </div>
 
-                        <!-- Outfit Type -->
                         <label for="outfitType">Type:</label>
                         <select id="outfitType" name="outfitType">
                             <option value="beachwear">Beachwear</option>
@@ -379,7 +909,6 @@
                             <option value="fetish">Fetishwear</option>
                         </select>
 
-                         <!-- Outfit Style -->
                         <label for="outfitStyle">Style:</label>
                         <select id="outfitStyle" name="outfitStyle">
                             <option value="cute">Cute</option>
@@ -390,11 +919,9 @@
                             <option value="modest">Modest</option>
                         </select>
 
-                        <!-- Outfit Price -->
                         <label for="outfitPrice">Outfit Price:</label>
                         <input type="number" id="outfitPrice" name="outfitPrice" min="0">
 
-                        <!-- Sliders -->
                         <div class="slider-container">
                             <label for="outfitSluttiness">Sluttiness: 👄</label>
                             <div class="slider-wrapper">
@@ -423,7 +950,6 @@
                             </div>
                         </div>                        
 
-                        <!-- One-Piece or Top/Bottom -->
                         <label for="outfitDescType">Outfit Classification:</label>
                         <div class="radio-group">
                             <input type="radio" id="onePieceRadio" name="outfitDescType" value="onePieceRadio">
@@ -446,7 +972,6 @@
                             <input type="text" id="outfitBottom" name="outfitBottom" placeholder="jean shorts, mini skirt, leather booty shorts">
                         </div>
 
-                        <!-- Underwear -->
                         <label>Underwear?</label>
                         <div class="checkbox-group-inline">
                             <input type="checkbox" id="outfitBraTrue" name="outfitBraUnder" value="true">
@@ -458,7 +983,6 @@
                             <label for="outfitPantiesTrue">Panties</label>
                         </div>
 
-                        <!-- Shoes -->
                         <label for="outfitShoes">Shoes:</label>
                         <select id="outfitShoes" name="outfitShoes">
                             <option value="none">None</option>
@@ -595,32 +1119,31 @@
                     <button type="button" id="addOutfit">Add Outfit</button>
                     </div>
                 </div>
-                    <div class="form-right-wrapper">
-                        <div class="form-right-top">
-                            <h3>Total Outfits: <span id="countTotalOutfits">0</span></h3>
-                            <div class="form-right-top-grid">
-                                <h3>Beach: <span id="countBeachOutfits">0</span></h3>
-                                <h3>Casual: <span id="countCasualOutfits">0</span></h3>
-                                <h3>Fetish: <span id="countFetishOutfits">0</span></h3>
-                                <h3>Gym: <span id="countGymOutfits">0</span></h3>
-                                <h3>Lingerie: <span id="countLingerieOutfits">0</span></h3>
-                                <h3>Lounge: <span id="countLoungeOutfits">0</span></h3>
-                                <h3>Office: <span id="countOfficeOutfits">0</span></h3>
-                                <h3>Stylish: <span id="countStylishOutfits">0</span></h3>
-                            </div>
+                <div class="form-right-wrapper">
+                    <div class="form-right-top">
+                        <h3>Total Outfits: <span id="countTotalOutfits">0</span></h3>
+                        <div class="form-right-top-grid">
+                            <h3>Beach: <span id="countBeachOutfits">0</span></h3>
+                            <h3>Casual: <span id="countCasualOutfits">0</span></h3>
+                            <h3>Fetish: <span id="countFetishOutfits">0</span></h3>
+                            <h3>Gym: <span id="countGymOutfits">0</span></h3>
+                            <h3>Lingerie: <span id="countLingerieOutfits">0</span></h3>
+                            <h3>Lounge: <span id="countLoungeOutfits">0</span></h3>
+                            <h3>Office: <span id="countOfficeOutfits">0</span></h3>
+                            <h3>Stylish: <span id="countStylishOutfits">0</span></h3>
                         </div>
-                    
-                        <div class="form-right">
-                            <h3>Outfit List</h3>
-                            <ul id="outfitsList"></ul>
-                            <button type="button" id="generateOutfitsFileButton">Generate Outfits File</button>
-                        </div>
-    
-                        <div class="form-right-bottom">
-                            <h3>Import Existing File:</h3>
-                            <input type="file" id="importOutfits" accept=".js">
-                            <button type="button" id="importOutfitsButton">Import Outfits</button>
-                        </div>
+                    </div>
+                
+                    <div class="form-right">
+                        <h3>Outfit List</h3>
+                        <ul id="outfitsList"></ul>
+                        <button type="button" id="generateOutfitsFileButton">Generate Outfits File</button>
+                    </div>
+
+                    <div class="form-right-bottom">
+                        <h3>Import Existing File:</h3>
+                        <input type="file" id="importOutfits" accept=".js">
+                        <button type="button" id="importOutfitsButton">Import Outfits</button>
                     </div>
                 </div>
             </div>
@@ -634,7 +1157,7 @@
                     <form id="blackedForm">
                         <div class="form-note">
                             <p>This tool is for expanding a playable character to work with the BLACKED mod.<br>It is intended to serve as a coding assistant, to facilitate working with the code files.</p>
-                            <p>Select tags that match the video on the related line.<br>If you only have 1 media file for a section, you must end the filename with a 1. <br>"Kiss 1.mp4" instead of just "Kiss.mp4", even if you only have 1 kiss file.</p>
+                            <p>Select tags that match the video on the related line.<br>Media files should consist of the prefix, then a space, then incremental numbers starting with 1. <br>If you only have 1 media file for a section, you must end the filename with a 1. <br>"Kiss 1.mp4" instead of just "Kiss.mp4", even if you only have 1 kiss file.</p>
                             <p>For complete instructions on adding a BLACKED version of your character, please visit the <a href="https://github.com/Chloeana/XCL-Blacked/tree/main/Blacked-Template" target="_blank">walkthrough</a>.</p>
                         </div>
                         <div class="form-center">
@@ -677,7 +1200,7 @@
                             <h2>Doggy (Transactional)</h2>
                             <div class="form-single-line-directory">
                                 <label for="blkDoggyPath">Folder Path:</label>
-                                <p>/img/scenes/characters/</p>
+                                <p>img/scenes/characters/</p>
                                 <input type="text" id="blkDoggyPath" class="directory">
                             </div>
                             <div class="form-grid w-70" id="blkDoggyGrid">
@@ -703,7 +1226,7 @@
                             <i class="fa fa-question-circle" id="blkBJHelp"></i>
                             <h2>Blowjob (Transactional)</h2>
                             <div class="form-single-line-directory">
-                                <label for="blkBJPath">Folder Path:</label><p>/img/scenes/characters/</p>
+                                <label for="blkBJPath">Folder Path:</label><p>img/scenes/characters/</p>
                                 <input type="text" id="blkBJPath" class="directory">
                             </div>
                             <div class="form-grid w-70" id="blkBJGrid">
@@ -718,7 +1241,7 @@
                             <i class="fa fa-question-circle" id="blkFacefuckHelp"></i>
                             <h2>Facefuck (Transactional)</h2>
                             <div class="form-single-line-directory">
-                                <label for="blkFacefuckPath">Folder Path:</label><p>/img/scenes/characters/</p>
+                                <label for="blkFacefuckPath">Folder Path:</label><p>img/scenes/characters/</p>
                                 <input type="text" id="blkFacefuckPath" class="directory">
                             </div>
                             <div class="form-grid w-70" id="blkFacefuckGrid">
@@ -734,7 +1257,7 @@
                             <i class="fa fa-question-circle" id="blkOralHelp"></i>
                             <h2>Oral</h2>
                             <div class="form-single-line-directory">
-                                <label for="blkOralPath">Folder Path:</label><p>/img/scenes/characters/</p>
+                                <label for="blkOralPath">Folder Path:</label><p>img/scenes/characters/</p>
                                 <input type="text" id="blkOralPath" class="directory">
                             </div>
                             <div class="form-grid w-70" id="blkOralGrid">
@@ -750,7 +1273,7 @@
                             <i class="fa fa-question-circle" id="blkForeplayHelp"></i>
                             <h2>Foreplay</h2>
                             <div class="form-single-line-directory">
-                                <label for="blkForeplayPath">Folder Path:</label><p>/img/scenes/characters/</p>
+                                <label for="blkForeplayPath">Folder Path:</label><p>img/scenes/characters/</p>
                                 <input type="text" id="blkForeplayPath" class="directory" value = "" disabled>
                             </div>
                             <div class="form-grid w-70" id="blkForeplayGrid">
@@ -773,7 +1296,7 @@
                             <i class="fa fa-question-circle" id="blkCumHelp"></i>
                             <h2>Cum</h2>
                             <div class="form-single-line-directory">
-                                <label for="blkCumPath">Folder Path:</label><p>/img/scenes/characters/</p>
+                                <label for="blkCumPath">Folder Path:</label><p>img/scenes/characters/</p>
                                 <input type="text" id="blkCumPath" class="directory">
                             </div>
                             <div class="form-grid w-70" id="blkCumGrid">
