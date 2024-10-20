@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // #region --- Vars - General
   const sliders = document.querySelectorAll('input[type="range"]'); // Refers to all Sliders
   const tabcontent = document.getElementsByClassName("tabcontent");
-  const tablinks = document.getElementsByClassName("tablinks");
+  const tablinks = document.querySelectorAll(".tablinks");
 
   // Used in both MCF and BLACKED
   const doggyTagOptions = [
@@ -90,13 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const mcfMasturbatePath = document.getElementById("mcfMasturbatePath");
   const mcfMasturbatePrefix = document.getElementById("mcfMasturbatePrefix");
   const mcfMasturbateVid = document.getElementById("mcfMasturbateVid");
-  const mcfGymOptionInput = document.getElementById("mcfGymOptionInput");
-  const mcfGymOptionButton = document.getElementById("mcfGymOptionButton");
-  const mcfGymOptionContainer = document.getElementById("mcfGymOptionContainer");
   const mcfGymType = document.getElementById("mcfGymType");
-  const mcfCoworkerReactInput = document.getElementById("mcfCoworkerReactInput");
-  const mcfCoworkerReactButton = document.getElementById("mcfCoworkerReactButton");
-  const mcfCoworkerReactContainer = document.getElementById("mcfCoworkerReactContainer");
   const mcfEventShopComment = document.getElementById("mcfEventShopComment");
   const mcfEventShopThought = document.getElementById("mcfEventShopThought");
   const mcfCatcallBodyInput = document.getElementById("mcfCatcallBodyInput");
@@ -125,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const mcfPregnancyWeeksContainer = document.getElementById("mcfPregnancyWeeksContainer");
   const mcfPregnancy1stCheckInput = document.getElementById("mcfPregnancy1stCheckInput");
   const mcfPregnancy2ndCheckInput = document.getElementById("mcfPregnancy2ndCheckInput");
-  const mcfPregnancyPrenatalInput = document.getElementById("mcfGymcfPregnancyPrenatalInputmType");
+  const mcfPregnancyPrenatalInput = document.getElementById("mcfPregnancyPrenatalInput");
   const mcfCallFatherShowInput = document.getElementById("mcfCallFatherShowInput");
   const mcfCallFatherBJInput = document.getElementById("mcfCallFatherBJInput");
   const mcfDoggyPath = document.getElementById("mcfDoggyPath");
@@ -185,8 +179,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const mcfInsertTiming1 = document.getElementById("mcfInsertTiming1");
   const mcfInsertTiming2 = document.getElementById("mcfInsertTiming2");
   const mcfInsertTiming3 = document.getElementById("mcfInsertTiming3");
-  const mcfPenetrationTiming = document.getElementById("mcfPenetrationTiming");
+  const mcfPenetrationTimingContainer = document.getElementById("mcfPenetrationTimingContainer");
 
+  // Tooltips
   const mcfDoggyHelp = document.getElementById("mcfDoggyHelp");
   const mcfBJHelp = document.getElementById("mcfBJHelp");
   const mcfFacefuckHelp = document.getElementById("mcfFacefuckHelp");
@@ -194,7 +189,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const mcfCumHelp = document.getElementById("mcfCumHelp");
   const mcfPullOutHelp = document.getElementById("mcfPullOutHelp");
   const mcfSoundHelp = document.getElementById("mcfSoundHelp");
+  const mcfCatcallHelp = document.getElementById("mcfCatcallHelp");
+  const mcfForeplayHelp = document.getElementById("mcfForeplayHelp");
 
+  // Example Buttons
   const exampleDescribeButtButton = document.getElementById("exampleDescribeButtButton");
   const exampleDescribeBodyButton = document.getElementById("exampleDescribeBodyButton");
   const exampleDescribeBoobsButton = document.getElementById("exampleDescribeBoobsButton");
@@ -207,20 +205,49 @@ document.addEventListener("DOMContentLoaded", function () {
   const exampleCatcallFaceButton = document.getElementById("exampleCatcallFaceButton");
   const exampleCatcallDirtyButton = document.getElementById("exampleCatcallDirtyButton");
   const exampleCatcallRaceButton = document.getElementById("exampleCatcallRaceButton");
+  const exampleEventShopCommentButton = document.getElementById("exampleEventShopCommentButton");
+  const exampleEventShopThoughtButton = document.getElementById("exampleEventShopThoughtButton");
+
+  // Remove Buttons
+  const clearDescribeButt = document.getElementById("clearDescribeButt");
+  const clearDescribeBoobs = document.getElementById("clearDescribeBoobs");
+  const clearDescribeBody = document.getElementById("clearDescribeBody");
+  const clearDescribeTransformation = document.getElementById("clearDescribeTransformation");
+  const clearThoughtClothes = document.getElementById("clearThoughtClothes");
+  const clearExamineSelfReluctant = document.getElementById("clearExamineSelfReluctant");
+  const clearExamineSelfConfident = document.getElementById("clearExamineSelfConfident");
+  const clearStepSisShowerTease = document.getElementById("clearStepSisShowerTease");
+  const clearCatcallBody = document.getElementById("clearCatcallBody");
+  const clearCatcallFace = document.getElementById("clearCatcallFace");
+  const clearCatcallDirty = document.getElementById("clearCatcallDirty");
+  const clearCatcallRace = document.getElementById("clearCatcallRace");
+  const clearDescribeHairColor = document.getElementById("clearDescribeHairColor");
+  const clearDescribeHairTexture = document.getElementById("clearDescribeHairTexture");
+  const clearHairstyles = document.getElementById("clearHairstyles");
+  const clearPregnancyWeeks = document.getElementById("clearPregnancyWeeks");
 
   // Example suggestions
-  const exampleDescribeButt = ["big", "round", "peachy", "thick", "fat", "jiggling", "dump-truck", "juicy", "pale", "bimbo-sized", "mega-size", "cute", "tight", "perky", "premi-*yum*", "fantASStic", "nice", "humongous", "beautiful"]
-  const exampleDescribeBody = ["sensual", "slender", "womanly", "feminine", "breedable", "fully-stacked", "bouncy", "jiggly", "curvy", "voluptuous", "fertile", "curvaceous", "juicy", "petite", "sexy", "exotic", "pleasing", "bottom-heavy", "elegant", "picture-perfect", "tight", "hourglass-shaped", "oversexed", "hypersexual", "hyper-feminine", "all-natural", "busty", "perky"]
-  const exampleDescribeBoobs = ["tits", "boobs", "milkers", "udders", "bazongas", "cow-tits", "bee stings", "massive milkers", "itty-bitties", "pancakes", "mosquito bites"]
-  const exampleDescribeTransformation = ["You feel a LOT lighter.","Wow, you're a stunner now...","Fuck... you look like such a horny, depraved slut.","You run your hands over your breedable body.","Is it over?","Your body feels so different - you can feel a huge amount of weight and fat redistributed your breasts and ass.","You look like some kind of perfect bimbo - a girl who every guy would fall for.","A perfect hourglass figure, this might get you into some trouble..."]
-  const exampleExamineSelfReluctant = ["You press your thighs together, feeling the slick emptiness, and the distinct absence of something that once hung between them.","Running your fingers along the curve of your waist, you can't deny the sensuality of your new hourglass figure, but the sensation makes you blush.","Your once broad and barrel-shaped ribcage has become narrower and more delicate, making you feel a bit more fragile than before.","Your nipples are so sensitive, brushing against your arms makes you shudder.","Once full of definition, your arms now look beautifully toned in a feminine way, match up with your hourglass body.","You look down at your pussy, your cheeks burning. It still feels weird to see it, to know it's yours.","Every time you see your reflection, your sexy face surprises you."]
+  const exampleDescribeButtSlim = ["peachy", "slender", "dump-truck", "juicy", "cute", "tight", "perky", "premi-*yum*", "fantASStic", "nice", "beautiful"]
+  const exampleDescribeButtBubble = ["round", "peachy", "fat", "heart-shaped", "dump-truck", "juicy", "bimbo-sized", "cute", "tight", "perky", "premi-*yum*", "fantASStic", "nice", "beautiful"]
+  const exampleDescribeButtBig = ["big", "round", "peachy", "thick", "fat", "jiggling", "juicy", "bimbo-sized", "mega-size", "premi-*yum*", "fantASStic", "nice", "humongous", "beautiful"]
+  const exampleDescribeBodySlim = ["sensual", "slender", "womanly", "feminine", "breedable", "fertile", "juicy", "petite", "sexy", "exotic", "pleasing", "elegant", "picture-perfect", "tight", "oversexed", "hypersexual", "hyper-feminine", "all-natural", "perky"]
+  const exampleDescribeBodyAvg = ["sensual", "womanly", "feminine", "breedable", "fully-stacked", "bouncy", "jiggly", "fertile", "juicy", "sexy", "exotic", "pleasing", "bottom-heavy", "elegant", "picture-perfect", "tight", "hourglass-shaped", "oversexed", "hypersexual", "hyper-feminine", "all-natural", "busty", "perky"]
+  const exampleDescribeBodyVol = ["sensual",  "womanly", "feminine", "breedable", "fully-stacked", "bouncy", "jiggly", "curvy", "voluptuous", "fertile", "curvaceous", "juicy", "sexy", "exotic", "pleasing", "bottom-heavy", "elegant", "picture-perfect", "hourglass-shaped", "oversexed", "hypersexual", "hyper-feminine", "all-natural", "busty", "perky"]
+  const exampleDescribeBoobsSmall = ["tits", "boobs", "bee stings", "itty-bitties", "pancakes", "mosquito bites"]
+  const exampleDescribeBoobsMedium = ["tits", "boobs", "knockers", "mounds", "melons", "perky tits"]
+  const exampleDescribeBoobsBig = ["tits", "boobs", "juggs", "udders", "bazongas", "cow-tits", "massive milkers"]
+  const exampleDescribeTransformation = ["Wow, you're a stunner now...","Fuck... you look like such a horny, depraved slut.","You run your hands over your breedable body.","Is it over?","Your body feels so different - you can feel a huge amount of weight and fat redistributed into your breasts and ass.","You look like some kind of perfect bimbo - a girl who every guy would fall for.","A perfect hourglass figure, this might get you into some trouble..."]
+  const exampleExamineSelfReluctant = ["You press your thighs together, feeling the slick emptiness, and the distinct absence of something that once hung between them.","Running your fingers along the curve of your waist, you can't deny the sensuality of your new hourglass figure, but the sensation makes you blush.","Your once broad and barrel-shaped ribcage has become narrower and more delicate, making you feel a bit more fragile than before.","Your nipples are so sensitive, brushing against your arms makes you shudder.","Once full of definition, your arms now look beautifully toned in a feminine way, matching up with your hourglass body.","You look down at your pussy, your cheeks burning. It still feels weird to see it, to know it's yours.","Every time you see your reflection, your sexy face surprises you."]
   const exampleExamineSelfConfident = ["You pucker and pout in the mirror, feeling playful and flirty — you're gorgeous, and you know it.", "Feeling your pussy between your legs is no longer a shock, but something comforting, a constant reminder of your femininity.", "Admiring your sensual curves and captivating eyes in the mirror, you enjoy the newfound confidence that comes from embracing your body.", "Glancing at your reflection, you strike a pose and wink at your gorgeous female form, finding excitement and happiness in embracing your new body.", "Running delicate finger over the smooth expanse of bare skin under the hem of skirt reminds you how much you love being a woman.", "You feel a sense of pride as you catch a glimpse of your shapely, rounded ass in the mirror, knowing that your stepdad, stepsister, and your male friend Hollis see you as the confident woman you've become."]
   const exampleThoughtClothes = ["are not made to flatter your female body shape.", "are pretty tight around your $butt.", "don't exactly compliment your frame.", "fit you a bit awkwardly.", "look a bit comical on your female body.", "feel way too big for you."]
   const exampleStepSisShowerTease = ["That girl-next-door body could make a lotta guys happy, just sayin'...", "We totally look like sisters now, haha.", "Them's some dick-suckin lips, haha.", "You're making me jealous...", "All the guys are gonna wanna bang you, lol.", "You look like a slut! Hahaha."]
-  const exampleCatcallBody = []
-  const exampleCatcallFace = []
-  const exampleCatcallDirty = []
-  const exampleCatcallRace = []
+  const exampleCatcallBody = ["Damn girl, I love your body. Everything about you... mmm.", "$greeting that pornstar bod is driving me crazy.", "$greeting everything about you is perfect, that body, that face, mmm.", "$greeting your body is practically made for sex.", "$greeting I love fucking girls with your body type.", "$greeting you really got a beautiful body."]
+  const exampleCatcallFace = ["You're so freaking gorgeous! Can I have your number?", "$greeting your eyes are fucking *orgasmic.*", "You look like you're a lot of fun.", "$greeting you're such a genuine beauty.", "$greeting you're such a goddess!", "With looks like yours, you could easily be the sugar baby of a billionaire."]
+  const exampleCatcallDirty = ["I would dive in that pussy so deep I'd need scuba gear.", "$greeting you're so sexy. Any guy would be so lucky to have you sit on his face.", "$greeting I'd love to cum all over your cute, pretty face.", "My god, the things I would do to *you*.", "Would you like to help drain my balls?", "Girls like you need to be *spanked*. Just saying."]
+  const exampleCatcallRace = ["I'd love to see your _race pussy stretched around this dick.", "$greeting I don't typically go for _race girls... but DAYUM.", "With a body and face like yours! Fuck. We'd make some cute biracial babies.", "$greeting I've always had a thing for _race girls!", "$greeting you're so hot for a _race girl. Goddamn.", "I don't normally go for _race girls, but you're HOT!"]
+  const exampleEventShopComment = ["Damn, look at those Dick Sucking Lips. You've been blessed with DSL, c'mere baby.", "Damn, that's quite an ass. You should find some tight pants to show it off...", "Holy fuck, those TITS! I was NOT expecting them to be so fucking huge. God-damn!", "Damn, you're PRETTY now. Fuck, that's a face, fit for a model. But you'd rather suck cocks to earn money, huh?", "Fuck me! You're a sexy little whore aren't you? Why don't you come get acquainted my huge cock?", "Nice! you're a nasty little slut aren't you? Can't decide which hole to use first."]
+  const exampleEventShopThought = ["*What a pig...*", "*Geez, he's a jerk.*", "*What an asshole!*", "*What a tool.*", "*What a piece of shit! He's not wrong though...and that thing looks massive!*", "*Ugh that's really rude. why would he say something like that?*"]
+ 
 
   // #endregion --- MCF ---
   
@@ -265,6 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const positionsLocations = document.getElementById("positionLocationCheckboxes");
   const addPositionButton = document.getElementById("addPosition");
   const generatePositionsFileButton = document.getElementById("generatePositionsFileButton");
+  const clearPositionList = document.getElementById("clearPositionList");
 
   // Position Tag section
   const addPositionTagButton = document.getElementById("addPositionTagButton");
@@ -302,6 +330,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const outfitLounge = document.getElementById("lounge");
   const outfitCasual = document.getElementById("casual");
   const outfitFetish = document.getElementById("fetish");
+  const clearOutfitList = document.getElementById("clearOutfitList");
   const generateOutfitsFileButton = document.getElementById("generateOutfitsFileButton");
 
 
@@ -448,24 +477,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   };
 
-  // Function to handle tab switching
-  function openTool(evt, toolName) {
-
-    // Hide all tab content
-    for (let i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-
-    // Remove active class from all buttons
-    for (let i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab content and add an active class to the clicked button
-    document.getElementById(toolName).style.display = "block";
-    evt.currentTarget.className += " active";
-  };
-
   // Force update displayed number in each slider's input box (Used after slider gets set by means other than input)
   function updateSliderValues() {
     sliders.forEach((slider) => {
@@ -474,6 +485,11 @@ document.addEventListener("DOMContentLoaded", function () {
         inputBox.value = slider.value; // Update the input box with the slider's value
       }
     });
+  };
+
+  // Clear an element
+  function clearElement(element) {
+    element.innerHTML = '';
   };
 
   // Function to checking input characters
@@ -561,7 +577,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Import Tags (from File) to a Tag Container
   function importTags(tagsArray, tagContainer) {
-    tagContainer.innerHTML = '';
+    clearElement(tagContainer)
     tagsArray.forEach((tag) => {
         const tagSpan = document.createElement("span");
         tagSpan.textContent = tag;
@@ -579,6 +595,87 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   };
 
+  // Extract Tags from a Container
+function extractTags(container) {
+  const tags = Array.from(container.querySelectorAll(".tag")).map((tag) => {
+    // Remove only the trailing "x" if it's present and is part of a remove button
+    const textContent = tag.textContent.trim();
+    return textContent.endsWith("x") ? textContent.slice(0, -1).trim() : textContent;
+  });
+  return tags;
+  };
+
+
+  // Add Tags to a Tag Container
+  function addLine(tagInput, tagContainer) {
+    let tagText;
+  
+    // Check if tagInput is a string or an element
+    if (typeof tagInput === "string") {
+      tagText = tagInput.trim(); // Use the string directly
+    } else {
+      tagText = tagInput.value.trim(); // Use the input element's value
+    }
+  
+    if (tagText) {
+      // Check if the tag already exists
+      const existingTags = Array.from(tagContainer.getElementsByClassName("tag"));
+      let tagExists = existingTags.some(
+        (tag) => tag.textContent.replace("x", "").trim() === tagText
+      );
+  
+      if (!tagExists) {  
+        // Add the tag to the container
+        const tagSpan = document.createElement("span");
+        tagSpan.textContent = tagText;
+        tagSpan.className = "tag";
+  
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "x";
+        removeBtn.className = "remove-tag";
+        tagSpan.appendChild(removeBtn);
+        tagContainer.appendChild(tagSpan);
+  
+        // Clear the input
+        tagInput.value = "";
+  
+        // Handle tag removal
+        removeBtn.addEventListener("click", function () {
+          tagSpan.remove();
+        });
+      }
+    }
+  };
+
+  function generateExample(exampleList, container) {
+    const existingTags = Array.from(container.getElementsByClassName("tag")).map(tag => {
+        const tagText = tag.cloneNode(true);
+        // Remove the remove button (the "x")
+        tagText.removeChild(tagText.querySelector(".remove-tag"));
+        return tagText.textContent.trim();
+    });
+
+    const availableTags = exampleList.filter(tag => !existingTags.includes(tag));
+    console.log("Existing Tags:", existingTags);
+    console.log("Available Tags:", availableTags);
+
+    if (availableTags.length > 0) {
+        const randomTag = availableTags[Math.floor(Math.random() * availableTags.length)];
+        addLine(randomTag, container);
+        console.log("Added Tag:", randomTag);
+    } else {
+        console.log("No available tags to add");
+    }
+  };
+
+  function generateExampleSingle(exampleList, field) {
+    const randomValue = exampleList[Math.floor(Math.random() * exampleList.length)];
+
+    field.value = randomValue;
+  };
+
+  
+
   // #endregion --- Functions - General
 
   // #region --- Functions - MCF
@@ -588,7 +685,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const container = tagContainer;
     const videoCount = parseInt(vidCountField.value) || 0;
     const vidPrefix = vidPrefixField.value || "Video";
-    container.innerHTML = ''; // Clear any existing fields
+    clearElement(container)
 
     for (let i = 1; i <= videoCount; i++) {
         const tagField = document.createElement("div");
@@ -642,7 +739,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const container = tagContainer;
     const videoCount = parseInt(vidCountField.value) || 0;
     const vidPrefix = vidPrefixField.value || "Video";
-    container.innerHTML = ''; // Clear any existing fields
+    clearElement(container)
 
     for (let i = 1; i <= videoCount; i++) {
       const tagField = document.createElement("div");
@@ -706,6 +803,41 @@ document.addEventListener("DOMContentLoaded", function () {
       container.appendChild(tagField);
     }
   };
+
+  // Build sound timing fields dynamically
+  function generateTimingFields(timingCountField, timingContainer) {
+    const timingCount = parseInt(timingCountField.value, 10) || 0;
+
+    if (!timingContainer) {
+        console.error(`Timing container is not defined.`);
+        return;
+    }
+
+    // Clear any existing timing fields
+    clearElement(timingContainer);
+
+    // Generate new timing fields based on the value of timingCount
+    for (let i = 1; i <= timingCount; i++) {
+      const fieldContainer = document.createElement("div");
+      fieldContainer.className = "form-single-line";
+
+      const label = document.createElement("label");
+      label.textContent = `Penetration Timing ${i}:`;
+      label.htmlFor = `penetrationTiming${i}`;
+
+      const input = document.createElement("input");
+      input.type = "number";
+      input.id = `penetrationTiming${i}`;
+      input.name = "penetrationTiming";
+      input.min = 3000;
+      input.max = 15000;
+
+      fieldContainer.appendChild(label);
+      fieldContainer.appendChild(input);
+      timingContainer.appendChild(fieldContainer);
+    }
+  };
+
 
   // Collect tags and rhythm from dynamic video sections
   function collectTags(tagContainer, vidPrefix) {
@@ -821,19 +953,35 @@ document.addEventListener("DOMContentLoaded", function () {
     mcfPullOutBodyVidPrefix.value = "body"
     mcfPullOutButtVidPrefix.value = "butt"
     mcfPullOutTitsVidPrefix.value = "tits"
+
+    addLine("tits", mcfDescribeBoobsContainer)
+    addLine("boobs", mcfDescribeBoobsContainer)
   };
+
 
   // Add Character name into directories
   function setmcfDefaultDirectories() {
     const name = mcfCharacterName.value.trim() || "character_id";
 
-    mcfDoggyPath.value = `${name}/sex/doggy/`
-    mcfBJPath.value = `${name}/bj/`
-    mcfFacefuckPath.value = `${name}/bj/`
-    mcfOralPath.value = `${name}/oral/`
-    mcfCumPath.value = `${name}/cum/`
-    mcfMasturbatePath.value = `${name}/solo/`
-  };
+    tooltipMCFForeplay.setContent(`This section is for groping and kissing. You need to have exactly 1 kiss video (kiss.mp4) and either an ass or tits grope.<br> You CANNOT have multiples of each.<br><br>This path is hardcoded for ${name}/foreplay. Please ensure your media files are in this location and are named 'kiss.mp4', 'grope ass.mp4', and/or 'grope tits.mp4'.`);
+    tooltipBLKForeplay.setContent(`This section is for groping and kissing. You need to have at least 1 kiss video (kiss.mp4) and either an ass or tits grope (or both).<br> You CAN have multiples of each.<br><br>This path is hardcoded for ${name}/foreplay. Please ensure your media files are in this location and are named 'kiss 1.mp4', 'grope ass 1.mp4', 'grope tits 1.mp4', etc.`);
+    tooltipSEPre1.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp4`);
+    tooltipSEPre2.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp4`);
+    tooltipSEPre3.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp4`);
+    tooltipShower.setContent(`This is the prefix for your showering videos.<br> By default it should just be 'shower'.<br><br> This goes in the chores folder: img/scenes/characters/${name}/chores/<br><br> If you only have one video, it should just be "shower.mp4"`)
+    tooltipBathroom.setContent(`This is the prefix for your Bathroom videos. This would be your video that plays in the morning. Your character might be getting dressed or putting on makeup in the mirror...<br> By default it should just be 'bathroom'.<br><br> This goes in the chores folder: img/scenes/characters/${name}/chores/<br><br> If you only have one video, it should just be "bathroom.mp4"`)
+    tooltipCleaning.setContent(`This is the prefix for your Cleaning videos. This would be for tidying up around the house, washing dishes, doing laundry, etc<br> By default it should just be 'cleaning'.<br><br> This goes in the chores folder: img/scenes/characters/${name}/chores/<br><br> If you only have one video, it should just be "cleaning.mp4"`)
+
+    // Update directory paths
+    mcfDoggyPath.value = `${name}/sex/doggy/`;
+    mcfBJPath.value = `${name}/bj/`;
+    mcfFacefuckPath.value = `${name}/bj/`;
+    mcfOralPath.value = `${name}/oral/`;
+    mcfCumPath.value = `${name}/cum/`;
+    mcfMasturbatePath.value = `${name}/solo/`;
+    mcfMakeupPath.value = `${name}`;
+  }
+
 
   // Build tag fields for MCF - Doggy
   function generateMCFDoggyFields() {
@@ -874,7 +1022,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function generateMCFPullOutButtFields() {
     generateTagFields(mcfPullOutButtVid, mcfPullOutButtVidPrefix, mcfPullOutButtContainer, locationTagOptions, 1)
   };
-
 
   // Generate MCF Zip File
   function generateMCFZip(){
@@ -1066,6 +1213,25 @@ document.addEventListener("DOMContentLoaded", function () {
     generateMCFZip();
   };
 
+  // For testing twee
+  function testTwee() {
+    const characterName = mcfCharacterName.value;
+
+    const masturbateVidInt = parseInt(mcfMasturbateVid.value) || 0;
+    const masturbatePrefix = mcfMasturbatePrefix.value;
+    const masturbatePath = mcfMasturbatePath.value;
+
+    let tweeContent = `:: add character ${characterName} [add_character]\n`;
+    tweeContent += `(set:$character_list to it + (a:"${characterName}"))\n\n`;
+
+    
+    //  new section
+    
+    tweeContent += `\n`;
+
+    console.log(tweeContent)
+  };
+
   // Gather MCF File Values and add to mcfzip
   function gatherMCFFiles() {
     if (!mcfzip) {
@@ -1074,6 +1240,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Collect input values from forms
     const characterName = mcfCharacterName.value;
+    const race = mcfCharacterRace.value;
+    const bodyType = mcfCharacterBodyType.value;
+    const breasts = mcfCharacterBreasts.value;
+    const butt = mcfCharacterButt.value;
+    const hairColor = mcfCharacterHairColor.value;
+    const eyeColor = mcfCharacterEyeColor.value;
+    const bust = mcfCharacterBust.value;
+    const heightIN = mcfCharacterHeightIN.value;
+    const heightCM = mcfCharacterHeightCM.value;
+    const heightText = convertHeightToText();
+    const weightLB = mcfCharacterWeightLB.value;
+    const weightKG = mcfCharacterWeightKG.value;
+    const tagline = mcfCharacterTagline.value;
+    const tagOld = mcfCharacterTagOld.value;
+    const tagNew = mcfCharacterTagNew.value;
+    const makeupFile = mcfMakeupPath.value;
+    const gymType = mcfGymType.value;
+    const eventComment = mcfEventShopComment.value;
+    const eventThought = mcfEventShopThought.value;
+    const pregnancy1stCheck = mcfPregnancy1stCheckInput.value;
+    const pregnancy2ndCheck = mcfPregnancy2ndCheckInput.value;
+    const pregnancyPrenatalCheck = mcfPregnancyPrenatalInput.value;
+    const callFatherShow = mcfCallFatherShowInput.value;
+    const callFatherBJ = mcfCallFatherBJInput.value;
+    const grope = document.querySelector('input[name="mcfGropeRadio"]:checked').value;
+
+
+    // Containers
+    const describeTransform = extractTags(mcfDescribeTransformationContainer);
+    const examineSelfReluctant = extractTags(mcfExamineSelfReluctantContainer);
+    const examineSelfConfident = extractTags(mcfExamineSelfConfidentContainer);
+    const thoughtClothes = extractTags(mcfThoughtClothesContainer);
+    const describeBoobs = extractTags(mcfDescribeBoobsContainer);
+    const describeBody = extractTags(mcfDescribeBodyContainer);
+    const describeButt = extractTags(mcfDescribeButtContainer);
+    const describeHairColor = extractTags(mcfDescribeHairColorContainer);
+    const describeHairTexture = extractTags(mcfDescribeHairTextureContainer);
+    const hairstyles = extractTags(mcfHairstylesContainer);
+    const stepSisTease = extractTags(mcfStepSisShowerTeaseContainer);
+    const catcallBody = extractTags(mcfCatcallBodyContainer);
+    const catcallFace = extractTags(mcfCatcallFaceContainer);
+    const catcallDirty = extractTags(mcfCatcallDirtyContainer);
+    const catcallRace = extractTags(mcfCatcallRaceContainer);
+    const pregnancyWeeks = extractTags(mcfPregnancyWeeksContainer);
 
     // Paths
     const doggyPath = mcfDoggyPath.value;
@@ -1081,6 +1291,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const facefuckPath = mcfFacefuckPath.value;
     const oralPath = mcfOralPath.value;
     const cumPath = mcfCumPath.value;
+    const masturbatePath = mcfMasturbatePath.value;
 
     // Prefixes
     const doggyVidPrefix = mcfDoggyVidPrefix.value;
@@ -1095,8 +1306,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const pulloutBodyPrefix = mcfPullOutBodyVidPrefix.value;
     const pulloutButtPrefix = mcfPullOutButtVidPrefix.value;
     const pulloutTitsPrefix = mcfPullOutTitsVidPrefix.value;
+    const showerPrefix = mcfShowerPrefix.value;
+    const bathroomPrefix = mcfBathroomPrefix.value;
+    const cleaningPrefix = mcfCleaningPrefix.value;
+    const masturbatePrefix = mcfMasturbatePrefix.value;
 
-    // Containers
+
+    // Arrays
     const tagArrayDoggy = [];
     const rhythmArrayDoggy = [];
     const tagArrayFacefuck = [];
@@ -1124,6 +1340,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const pulloutTitsLines = [];
 
     // Integers
+    const bigLoadInts = [];
+    const unwillingLoadInts = [];
     const doggyVidInt = parseInt(mcfDoggyVid.value) || 0;
     const doggyInsertImgInt = parseInt(mcfDoggyInsertImg.value) || 0;
     const doggyMoanImgInt = parseInt(mcfDoggyMoanImg.value) || 0;
@@ -1136,8 +1354,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const pulloutBodyVidInt = parseInt(mcfPullOutBodyVid.value) || 0;
     const pulloutButtVidInt = parseInt(mcfPullOutButtVid.value) || 0;
     const pulloutTitsVidInt = parseInt(mcfPullOutTitsVid.value) || 0;
-    const bigLoadInts = [];
-    const unwillingLoadInts = [];
+    const showerVidInt = parseInt(mcfShowerVid.value) || 0;
+    const bathroomVidInt = parseInt(mcfBathroomVid.value) || 0;
+    const cleaningVidInt = parseInt(mcfCleaningVid.value) || 0;
+    const masturbateVidInt = parseInt(mcfMasturbateVid.value) || 0;
+    const seMoanInt = parseInt(mcfSECumMoan.value) || 0;
+    const seMasturbateInt = parseInt(mcfSEMasturbate.value) || 0;
+    const seFondleInt = parseInt(mcfSEFondle.value) || 0;
+    const seOrgasmSoloInt = parseInt(mcfSEOrgasmSolo.value) || 0;
+    const seLickingInt = parseInt(mcfSELicking.value) || 0;
+    const seOrgasmInt = parseInt(mcfSEOrgasm.value) || 0;
+    const seBJInt = parseInt(mcfSEBJ.value) || 0;
+    const seBJRoughInt = parseInt(mcfSEBJRough.value) || 0;
+    const seDoggyInt = parseInt(mcfSEDoggy.value) || 0;
+    const seMissionaryInt = parseInt(mcfSEMissionary.value) || 0;
+    const seRidingInt = parseInt(mcfSERiding.value) || 0;
+    const sePenetrationInt = parseInt(mcfSEPenetration.value) || 0;
+
 
     console.log({
       doggyVidInt,
@@ -1185,6 +1418,243 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Oral fields are required.");
       return;
     }
+
+
+    // Collect tag data from Transactional Doggy
+    const doggyTags = collectTags(mcfDoggyContainer, mcfDoggyVidPrefix);
+
+    doggyTags.forEach(({ videoIndex, tags, rhythm }) => {
+      const tagsString = tags.join('","');
+      doggyLines.push(`\n            "${doggyPath}${doggyVidPrefix} ${videoIndex}", (a:"${tagsString}")`);
+      doggyRhythmLines.push(`\n            "${doggyPath}${doggyVidPrefix} ${videoIndex}", ${rhythm}`);
+      })
+    tagArrayDoggy.push(doggyLines.join(', '));
+    rhythmArrayDoggy.push(doggyRhythmLines.join(', '));    
+
+
+    // Collect tag data from Facefuck
+    const facefuckTags  = collectTags(mcfFacefuckContainer, mcfFacefuckVidPrefix);
+
+    facefuckTags.forEach(({ videoIndex, tags }) => {
+        const tagsString = tags.join('","'); 
+        facefuckLines.push(`\n            "${facefuckPath}${facefuckPrefix} ${videoIndex}", "${tagsString}"`);
+    });
+    tagArrayFacefuck.push(facefuckLines.join(', '));
+    
+    // Collect tag data from Oral
+    const oralTags = collectTags(mcfOralContainer, mcfOralVidPrefix);
+    
+    oralTags.forEach(({ videoIndex, tags, rhythm }) => {
+      const tagsString = tags.join('","'); 
+      oralLines.push(`\n            "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}.mp4", "${tagsString}"`);
+      oralRhythmLines.push(`\n            "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}.mp4", ${rhythm}`)
+    });
+    tagArrayOral.push(oralLines.join(', '));
+    rhythmArrayOral.push(oralRhythmLines.join(', '));
+
+    // Collect tag data from Mouth
+    if (mouthVidInt > 0) {
+      const mouthTags = collectTags(mcfMouthContainer, mcfMouthVidPrefix);
+
+      mouthTags.forEach(({ videoIndex, tags }) => {
+          const tagsString = tags.join('","'); 
+          mouthLines.push(`\n                "/characters/${cumPath}${mouthPrefix} ${videoIndex}", (a:"${tagsString}")`);
+      });
+      tagArrayMouth.push(mouthLines.join(', '));
+    }
+    
+    // Collect tag data from Facials
+    if (facialVidInt > 0) {
+      const facialTags = collectTags(mcfFacialContainer, mcfFacialVidPrefix);
+
+      facialTags.forEach(({ videoIndex, tags }) => {
+        const tagsString = tags.join('","'); 
+        facialLines.push(`\n            "/characters/${cumPath}${facialPrefix} ${videoIndex}", (a:"${tagsString}")`);
+      });
+      tagArrayFacial.push(facialLines.join(','));   
+      
+      // Loop through the facialTags to determine indices for big load and unwilling tags
+      facialTags.forEach(({ videoIndex, tags }) => {
+        const hasBigLoad = tags.some(tag => bigLoadOptions.some(searchTerm => tag.includes(searchTerm)));
+        if (hasBigLoad) {
+            bigLoadInts.push(videoIndex); // Push the video index
+        }
+
+        const hasUnwillingLoad = tags.some(tag => unwillingLoadOptions.some(searchTerm => tag.includes(searchTerm)));
+        if (hasUnwillingLoad) {
+            unwillingLoadInts.push(videoIndex); // Push the video index
+        }
+      });
+      tagArrayBigLoad.push(bigLoadInts.join(','));
+      tagArrayUnwilling.push(unwillingLoadInts.join(','));
+    }
+
+    // Collect tag data from Pull Out
+    if (pulloutBodyVidInt > 0) {
+      const pulloutBodyTags  = collectTags(mcfPullOutBodyContainer, mcfPullOutBodyVidPrefix);
+      
+      pulloutBodyTags.forEach(({ videoIndex, tags }) => {
+        const tagsString = tags.join('","'); 
+        
+        pulloutBodyLines.push(`\n            "/characters/${cumPath}${pulloutBodyPrefix} ${videoIndex}", (a:"body","${tagsString}")`);
+      });
+      tagArrayPullout.push(pulloutBodyLines.join(', '));
+    }
+    
+    if (pulloutButtVidInt > 0) {
+      const pulloutButtTags  = collectTags(mcfPullOutButtContainer, mcfPullOutButtVidPrefix);
+      
+      pulloutButtTags.forEach(({ videoIndex, tags }) => {
+        const tagsString = tags.join('","'); 
+        pulloutButtLines.push(`\n            "/characters/${cumPath}${pulloutButtPrefix} ${videoIndex}", (a:"butt","${tagsString}")`);
+      });
+      tagArrayPullout.push(pulloutButtLines.join(', '));
+    }
+
+    if (pulloutTitsVidInt > 0) {
+      const pulloutTitsTags  = collectTags(mcfPullOutTitsContainer, mcfPullOutTitsVidPrefix);
+
+      pulloutTitsTags.forEach(({ videoIndex, tags }) => {
+        const tagsString = tags.join('","'); 
+        pulloutTitsLines.push(`\n            "/characters/${cumPath}${pulloutTitsPrefix} ${videoIndex}", (a:"tits","${tagsString}")`);
+      });
+      tagArrayPullout.push(pulloutTitsLines.join(', '));
+    }
+
+    // Log tags for debugging
+
+    console.log("doggyTags:", doggyTags) 
+    console.log("facefuckTags:", facefuckTags)
+    console.log("oralTags:", oralTags)
+    console.log("tagArrayDoggy:", tagArrayDoggy)
+    console.log("rhythmArrayDoggy:", rhythmArrayDoggy)
+    console.log("tagArrayFacefuck:", tagArrayFacefuck)
+    console.log("tagArrayOral:", tagArrayOral)
+    console.log("rhythmArrayOral:", rhythmArrayOral)
+    console.log("tagArrayMouth:", tagArrayMouth)
+    console.log("tagArrayFacial:", tagArrayFacial) 
+    console.log("tagArrayBigLoad:", tagArrayBigLoad) 
+    console.log("tagArrayUnwilling:", tagArrayUnwilling)
+    console.log("tagArrayPullout:", tagArrayPullout)
+    console.log("tagArrayPulloutBody:", tagArrayPulloutBody)
+    console.log("tagArrayPulloutButt:", tagArrayPulloutButt)
+    console.log("tagArrayPulloutTits:", tagArrayPulloutTits)
+
+
+    // Tag Validation
+    const isDoggyTagsEmpty = doggyTags.every(tag => tag.tags.length === 0);
+    const isFacefuckTagsEmpty = facefuckTags .every(tag => tag.tags.length === 0);
+    const isOralTagsEmpty = oralTags.every(tag => tag.tags.length === 0);
+    
+    if (isDoggyTagsEmpty && isFacefuckTagsEmpty && isOralTagsEmpty) {
+      console.error("At least one tag field is required.");
+      alert("Please select at least one tag.");
+      return;
+    }
+
+
+    // twee building section
+    let tweeContent = `:: add character ${characterName} [add_character]\n`;
+    tweeContent += `(set:$character_list to it + (a:"${characterName}"))\n\n`;
+    tweeContent += `:: core character add ${characterName} [initialize init_new]\n`;
+    tweeContent += `(unless:$core_chars contains "${characterName}")[(set:$core_chars to it + (a:"${characterName}"))]\n\n`;
+    
+    //  Describe Transformation
+    tweeContent += `:: transformation description ${characterName}\n{\n`;
+    tweeContent += `    (twirl: "${describeTransform.join('",\n    "')}")\n}\n\n`;
+
+    //  New-U Transformation Description
+    tweeContent += `:: New-U transformation descriptions ${characterName}\n`;
+    tweeContent += `{(set:$description to $description + (a:(twirl:"${describeTransform.join('",\n    "')}"))\n}\n\n`;
+    tweeContent += `:: New-U bodies update ${characterName}\n`;
+    tweeContent += `{"${tagline}"}\n\n`;
+    tweeContent += `:: invite guy load old ${characterName}\n`;
+    tweeContent += `{"${tagOld}"}\n\n`;
+    tweeContent += `:: invite guy load new ${characterName}\n`;
+    tweeContent += `{"${tagNew}"}\n\n`;
+
+    //  Body Stats
+    tweeContent += `:: load character body stats ${characterName}\n`;
+    tweeContent += `{\n    (set: $new_stats to (dm:\n`;
+    tweeContent += `    "id", "${characterName}",\n`;
+    tweeContent += `    "race", "${race}",\n`;
+    tweeContent += `    "breasts", "${breasts}",\n`;
+    tweeContent += `    "butt", "${butt}",\n`;
+    tweeContent += `    "hair", "${hairColor}",\n`;
+    tweeContent += `    "body type", "${bodyType}",\n`;
+    tweeContent += `    "height", "${heightIN}",\n`;
+    tweeContent += `    "weight kg", "${weightKG}",\n`;
+    tweeContent += `    "weight lb", "${weightLB}",\n`;
+    tweeContent += `    "height cm", "${heightCM}",\n`;
+    tweeContent += `    "height text", "${heightText}",\n`;
+    tweeContent += `    "bra", "${bust}${breasts}",\n`;
+    tweeContent += `    "eyes", "${eyeColor}"))\n}\n\n`;
+    tweeContent += `:: New-U select body ${characterName}\n`;
+    tweeContent += `{(display:"load character body stats ${characterName}")}\n\n`;
+    tweeContent += `:: New-U change back ${characterName}\n`;
+    tweeContent += `{(display:"load character body stats ${characterName}")}\n\n`;
+    tweeContent += `:: New-U transfortune spin ${characterName}\n`;
+    tweeContent += `{(display:"load character body stats ${characterName}")}\n\n`;
+
+    //  Examine Self
+    tweeContent += `:: examine yourself ${characterName}\n`;
+    tweeContent += `{\n    (if:$character's "reluctance" > 6)[(twirl:\n`;
+    tweeContent += `    "${examineSelfReluctant.join('",\n    "')}")\n    ]\n`;
+    tweeContent += `    (else:)[(twirl:"${examineSelfConfident.join('",\n    "')}")\n    ]\n}\n\n`;
+
+    //  Thought Clothes
+    tweeContent += `:: thought clothes ${characterName}\n`;
+    tweeContent += `    (twirl: "${thoughtClothes.join('",\n    "')}")\n}\n\n`;
+
+    tweeContent += `:: pants squeeze ${characterName}\n{} <!-- Deliberately blank -->\n\n`;
+
+    //  Step-sis Shower Tease
+    tweeContent += `:: stepsis shower tease chat ${characterName}"\n`;
+    tweeContent += `{\n    (set:$line to "cant look at you the same way")(display:"stepsis voice line")\n`;
+    tweeContent += `    (twirl: "${stepSisTease.join('",\n    "')}")\n}\n\n`;
+
+    //  Chores
+    tweeContent += `:: makeup image ${characterName}\n`;
+    tweeContent += `{($pic:"characters/makeup/${makeupFile}.jpg")}\n\n`;
+
+    tweeContent += `:: shower image ${characterName}\n`;
+    if (showerVidInt === 1) {
+      tweeContent += `{(set:$img to "characters/${characterName}/chores/${showerPrefix}")}\n\n`;
+    } else {
+      tweeContent += `{(set:$img to "characters/${characterName}/chores/${showerPrefix} " + (text:(twist:1,${showerVidInt})))}\n\n`;
+    }
+
+    tweeContent += `:: chores image ${characterName}\n{\n`;
+    tweeContent += `    (if:$character's "race" is "black")[(set:$img to (twirl:"chores dark 1","chores dark 2"))]\n`;
+    tweeContent += `    (else:)[(set:$img to (twirl:"chores light 1","chores light 2","chores light 3","chores light 4","chores 1"))]\n}\n\n`;
+
+    tweeContent += `:: chores image 2 ${characterName}\n{\n`;
+    if (cleaningVidInt === 1) {
+      tweeContent += `    (set:$img to "/characters/${characterName}/chores/${cleaningPrefix}")\n`;
+    } else {
+      tweeContent += `    (set:$img to "/characters/${characterName}/chores/${cleaningPrefix} " + (text:(twist:1,${cleaningVidInt})))\n`;
+    }
+    tweeContent += `    (print:"<video src='img/scenes/" + $img + ".mp4' autoplay='' loop='' muted='' playsinline/>")\n}\n\n`;
+    
+    tweeContent += `:: bathroom post transform ${characterName}\n{\n`;
+    if (bathroomVidInt === 1) {
+      tweeContent += `    (set:$img to "/characters/${characterName}/chores/${bathroomPrefix}")\n`;
+    } else {
+      tweeContent += `    (set:$img to "/characters/${characterName}/chores/${bathroomPrefix} " + (text:(twist:1,${bathroomVidInt})))\n`;
+    }
+    tweeContent += `    (print:"<video src='img/scenes/" + $img + ".mp4' autoplay='' loop='' muted='' playsinline/>")\n}\n\n`;
+
+    //  Masturbate
+    tweeContent += `:: masturbation setup ${characterName}\n`;
+    if (masturbateVidInt === 1) {
+      tweeContent += `{(set:$img to "characters/${masturbatePath}${masturbatePrefix}")}\n\n`;
+    } else {
+      tweeContent += `{(set:$img to "characters/${masturbatePath}${masturbatePrefix} " + (text:(twist:1,${masturbateVidInt})))}\n\n`;
+    }
+    tweeContent += `:: masturbate shame ${characterName}\n`;
+    tweeContent += `{display:"masturbation setup ${characterName}"}\n\n`;
+
+
 
     // Add files to the ZIP
     mcfzip.file(`${characterName}.twee`, tweeContent);
@@ -1249,7 +1719,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Helper for clearing position tags
   function clearPositionTags(){
-    positionTagsContainer.innerHTML = "";
+    clearElement(positionTagsContainer);
   };
 
   // Helper for clearing position tag input
@@ -1268,7 +1738,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("missionary").checked = false;
     document.getElementById("service").checked = false;
 
-    positionDropdown.innerHTML = "";
+    clearElement(positionDropdown);
     sliders.forEach((slider) => {
       slider.value = 5;
     });
@@ -1439,7 +1909,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ).value;
 
     // Reset the skill options
-    positionSkillType.innerHTML = "";
+    clearElement(positionSkillType);
     const options =
       selectedType === "active"
       ? [
@@ -1479,7 +1949,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const positions = positionSubtypeOptions[selectedType][selectedSubtype];
 
-    positionDropdown.innerHTML = "";
+      clearElement(positionDropdown);
     positions.forEach((position) => {
       const option = document.createElement("option");
       option.value = position.toLowerCase();
@@ -1694,7 +2164,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Populate Position List from extracted Object
   function populatePositionsList(positions) {
-    positionsList.innerHTML = ""; // Clear existing items
+    clearElement(positionsList); // Clear existing items
 
     if (positions.length > 0) {
       // Set the character name before looping through positions
@@ -1911,10 +2381,10 @@ document.addEventListener("DOMContentLoaded", function () {
       .querySelectorAll('input[name="outfitLocations"]')
       .forEach((loc) => (loc.checked = false));
 
-    outfitTagsContainer.innerHTML = "";
-    outfitColorsContainer.innerHTML = "";
-    outfitEmphasisContainer.innerHTML = "";
-    outfitRevealsContainer.innerHTML = "";
+    clearElement(outfitTagsContainer);
+    clearElement(outfitColorsContainer);
+    clearElement(outfitEmphasisContainer);
+    clearElement(outfitRevealsContainer);
 
     updateOutfitFields();
 
@@ -2247,7 +2717,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Populate Outfit List from extracted Object
   function populateOutfitsList(outfits) {
-    outfitsList.innerHTML = ""; // Clear existing items
+    clearElement(outfitsList)
 
     if (outfits.length > 0) {
       // Set the character name before looping through outfits
@@ -3266,11 +3736,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Handle tab switching
   for (let i = 0; i < tablinks.length; i++) {
-    tablinks[i].addEventListener("click", function (event) {
-      const toolName = this.getAttribute("data-tool");
-      openTool(event, toolName);
-    });
-  };
+      tablinks[i].addEventListener("click", function (event) {
+          const toolName = this.getAttribute("data-tool");
+
+          // Hide the landing page when any tab is clicked
+          document.getElementById("landingPage").style.display = "none";
+
+          // Show the selected tab content and hide others
+          document.querySelectorAll(".tabcontent").forEach(tab => {
+              tab.style.display = tab.id === toolName ? "block" : "none";
+          });
+
+          // Remove 'active' class from all tablinks and add it to the clicked one
+          tablinks.forEach(link => link.classList.remove("active"));
+          this.classList.add("active");
+      });
+  }
   // #endregion --- Listeners - General
 
   // #region --- Listeners - MCF
@@ -3281,8 +3762,244 @@ document.addEventListener("DOMContentLoaded", function () {
   mcfCharacterHeightIN.addEventListener("input", () => convertHeight('inches'));
   mcfCharacterHeightCM.addEventListener("input", () => convertHeight('cm'));
 
-  // Set up MCF Defaults after Character Input
+  // Set up MCF Defaults and tooltips after Character Input
   mcfCharacterName.addEventListener("input", setmcfDefaultDirectories);
+
+  // Adding Butt Description Line
+  mcfDescribeButtButton.addEventListener("click", function(){
+    addLine(mcfDescribeButtInput, mcfDescribeButtContainer)
+  });
+
+  // Generate Example - Butt Description
+  exampleDescribeButtButton.addEventListener("click", function(){
+    if(mcfCharacterButt.value === "slim"){generateExample(exampleDescribeButtSlim, mcfDescribeButtContainer)}
+    else if(mcfCharacterButt.value === "bubble"){generateExample(exampleDescribeButtBubble, mcfDescribeButtContainer)}
+    else if(mcfCharacterButt.value === "big"){generateExample(exampleDescribeButtBig, mcfDescribeButtContainer)}
+  });
+
+  // Clear Butt Description Container
+  clearDescribeButt.addEventListener("click", function(){
+    clearElement(mcfDescribeButtContainer)
+  });
+
+  // Adding Boobs Description Line
+  mcfDescribeBoobsButton.addEventListener("click", function(){
+    addLine(mcfDescribeBoobsInput, mcfDescribeBoobsContainer)
+  });
+
+  // Generate Example - Boobs Description
+  exampleDescribeBoobsButton.addEventListener("click", function(){
+    if (["A","B"].includes(mcfCharacterBreasts.value)){generateExample(exampleDescribeBoobsSmall, mcfDescribeBoobsContainer)}
+    else if (["C","D"].includes(mcfCharacterBreasts.value)){generateExample(exampleDescribeBoobsMedium, mcfDescribeBoobsContainer)}
+    else {generateExample(exampleDescribeBoobsBig, mcfDescribeBoobsContainer)}
+  });
+
+  // Clear Boobs Description Container
+  clearDescribeBoobs.addEventListener("click", function(){
+    clearElement(mcfDescribeBoobsContainer)
+  });
+
+  // Adding Body Description Line
+  mcfDescribeBodyButton.addEventListener("click", function(){
+    addLine(mcfDescribeBodyInput, mcfDescribeBodyContainer)
+  });
+
+  // Generate Example - Body Description
+  exampleDescribeBodyButton.addEventListener("click", function(){
+    if(mcfCharacterBodyType.value === "slim"){generateExample(exampleDescribeBodySlim, mcfDescribeBodyContainer)}
+    else if(mcfCharacterBodyType.value === "average"){generateExample(exampleDescribeBodyAvg, mcfDescribeBodyContainer)}
+    else if(mcfCharacterBodyType.value === "voluptuous"){generateExample(exampleDescribeBodyVol, mcfDescribeBodyContainer)}
+  });
+
+  // Clear Body Description Container
+  clearDescribeBody.addEventListener("click", function(){
+    clearElement(mcfDescribeBodyContainer)
+  });
+
+  // Adding Transformation Description
+  mcfDescribeTransformationButton.addEventListener("click", function(){
+    addLine(mcfDescribeTransformationInput, mcfDescribeTransformationContainer)
+  });
+
+  // Generate Example - Transformation Description
+  exampleDescribeTransformationButton.addEventListener("click", function(){
+    generateExample(exampleDescribeTransformation, mcfDescribeTransformationContainer)
+  });
+
+  // Clear Transformation Description Container
+  clearDescribeTransformation.addEventListener("click", function(){
+    clearElement(mcfDescribeTransformationContainer)
+  });
+
+  // Adding Transformation Clothes Thoughts
+  mcfThoughtClothesButton.addEventListener("click", function(){
+    addLine(mcfThoughtClothesInput, mcfThoughtClothesContainer)
+  });
+
+  // Generate Example - Transformation Clothes Thoughts
+  exampleThoughtClothesButton.addEventListener("click", function(){
+    generateExample(exampleThoughtClothes, mcfThoughtClothesContainer)
+  });
+
+  // Clear Transformation Clothes Thoughts Container
+  clearThoughtClothes.addEventListener("click", function(){
+    clearElement(mcfThoughtClothesContainer)
+  });
+
+  // Adding Examine Self - Reluctant
+  mcfExamineSelfReluctantButton.addEventListener("click", function(){
+    addLine(mcfExamineSelfReluctantInput, mcfExamineSelfReluctantContainer)
+  });
+
+  // Generate Example - Examine Self - Reluctant
+  exampleExamineSelfReluctantButton.addEventListener("click", function(){
+    generateExample(exampleExamineSelfReluctant, mcfExamineSelfReluctantContainer)
+  });
+
+  // Clear Examine Self - Reluctant Container
+  clearExamineSelfReluctant.addEventListener("click", function(){
+    clearElement(mcfExamineSelfReluctantContainer)
+  });
+
+  // Adding Examine Self - Confident
+  mcfExamineSelfConfidentButton.addEventListener("click", function(){
+    addLine(mcfExamineSelfConfidentInput, mcfExamineSelfConfidentContainer)
+  });
+
+  // Generate Example - Examine Self - Confident
+  exampleExamineSelfConfidentButton.addEventListener("click", function(){
+    generateExample(exampleExamineSelfConfident, mcfExamineSelfConfidentContainer)
+  });
+
+  // Clear Examine Self - Confident Container
+  clearExamineSelfConfident.addEventListener("click", function(){
+    clearElement(mcfExamineSelfConfidentContainer)
+  });
+
+  // Adding Stepsis Shower Tease
+  mcfStepSisShowerTeaseButton.addEventListener("click", function(){
+    addLine(mcfStepSisShowerTeaseInput, mcfStepSisShowerTeaseContainer)
+  });
+
+  // Generate Example - Stepsis Shower Tease
+  exampleStepSisShowerTeaseButton.addEventListener("click", function(){
+    generateExample(exampleStepSisShowerTease, mcfStepSisShowerTeaseContainer)
+  });
+
+  // Clear Stepsis Shower Tease Container
+  clearStepSisShowerTease.addEventListener("click", function(){
+    clearElement(mcfStepSisShowerTeaseContainer)
+  });
+
+  // Adding Catcall - Body
+  mcfCatcallBodyButton.addEventListener("click", function(){
+    addLine(mcfCatcallBodyInput, mcfCatcallBodyContainer)
+  });
+
+  // Generate Example - Catcall - Body
+  exampleCatcallBodyButton.addEventListener("click", function(){
+    generateExample(exampleCatcallBody, mcfCatcallBodyContainer)
+  });
+
+  // Clear Catcall - Body Container
+  clearCatcallBody.addEventListener("click", function(){
+    clearElement(mcfCatcallBodyContainer)
+  });
+
+  // Adding Catcall - Face
+  mcfCatcallFaceButton.addEventListener("click", function(){
+    addLine(mcfCatcallFaceInput, mcfCatcallFaceContainer)
+  });
+
+  // Generate Example - Catcall - Face
+  exampleCatcallFaceButton.addEventListener("click", function(){
+    generateExample(exampleCatcallFace, mcfCatcallFaceContainer)
+  });
+
+  // Clear Catcall - Face Container
+  clearCatcallFace.addEventListener("click", function(){
+    clearElement(mcfCatcallFaceContainer)
+  });
+
+  // Adding Catcall - Dirty
+  mcfCatcallDirtyButton.addEventListener("click", function(){
+    addLine(mcfCatcallDirtyInput, mcfCatcallDirtyContainer)
+  });
+
+  // Generate Example - Catcall - Dirty
+  exampleCatcallDirtyButton.addEventListener("click", function(){
+    generateExample(exampleCatcallDirty, mcfCatcallDirtyContainer)
+  });
+
+  // Clear Catcall - Dirty Container
+  clearCatcallDirty.addEventListener("click", function(){
+    clearElement(mcfCatcallDirtyContainer)
+  });
+
+  // Adding Catcall - Race
+  mcfCatcallRaceButton.addEventListener("click", function(){
+    addLine(mcfCatcallRaceInput, mcfCatcallRaceContainer)
+  });
+
+  // Generate Example - Catcall - Race
+  exampleCatcallRaceButton.addEventListener("click", function(){
+    generateExample(exampleCatcallRace, mcfCatcallRaceContainer)
+  });
+
+  // Clear Catcall - Race Container
+  clearCatcallRace.addEventListener("click", function(){
+    clearElement(mcfCatcallRaceContainer)
+  });
+  
+  // Add Hair Color
+  mcfDescribeHairColorButton.addEventListener("click", function(){
+    addLine(mcfDescribeHairColorInput, mcfDescribeHairColorContainer)
+  });
+
+  // Clear Hair Color
+  clearDescribeHairColor.addEventListener("click", function(){
+    clearElement(mcfDescribeHairColorContainer)
+  });
+
+  // Add Pregnancy Weeks
+  mcfPregnancyWeeksButton.addEventListener("click", function(){
+    addLine(mcfPregnancyWeeksInput, mcfPregnancyWeeksContainer)
+  });
+
+  // Clear Pregnancy Weeks
+  clearPregnancyWeeks.addEventListener("click", function(){
+    clearElement(mcfPregnancyWeeksContainer)
+  });
+
+  // Add Hair Texture
+  mcfDescribeHairTextureButton.addEventListener("click", function(){
+    addLine(mcfDescribeHairTextureInput, mcfDescribeHairTextureContainer)
+  });
+
+  // Clear Hair Texture
+  clearDescribeHairTexture.addEventListener("click", function(){
+    clearElement(mcfDescribeHairTextureContainer)
+  });
+
+  // Add Hairstyle to container
+  mcfHairstylesButton.addEventListener("click", function(){
+    addLine(mcfHairstylesInput, mcfHairstylesContainer)
+  });
+
+  // Clear Hairstyles
+  clearHairstyles.addEventListener("click", function(){
+    clearElement(mcfHairstylesContainer)
+  });
+
+  // Generate Example - Event Shop Comment
+  exampleEventShopCommentButton.addEventListener("click", function(){
+    generateExampleSingle(exampleEventShopComment, mcfEventShopComment)
+  });
+
+  // Generate Example - Event Shop Thought
+  exampleEventShopThoughtButton.addEventListener("click", function(){
+    generateExampleSingle(exampleEventShopThought, mcfEventShopThought)
+  });
 
   // Generate MCF Meta Only
   generateMCFMetaButton.addEventListener("click", generateMCFMeta);
@@ -3295,6 +4012,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Generate All MCF Files and Directories
   generateMCFAllFilesButton.addEventListener("click", generateMCFAll);
+
+  // Test Twee
+  testbutton.addEventListener("click", testTwee);
 
   // Build tag fields for MCF - Doggy
   mcfDoggyVid.addEventListener("input", generateMCFDoggyFields);
@@ -3320,6 +4040,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // Build tag fields for MCF - Pull Out Butt
   mcfPullOutButtVid.addEventListener("input", generateMCFPullOutButtFields);
 
+  // Build timing fields for MCF - Penetration
+  mcfSEPenetration.addEventListener("input", function() {
+    generateTimingFields(mcfSEPenetration, mcfPenetrationTimingContainer)
+  });
+
+
 
   // #endregion --- Listeners - MCF
 
@@ -3327,6 +4053,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Generate Positions File
   generatePositionsFileButton.addEventListener("click", generatePositionsFile);
+
+  // Clear Position List
+  clearPositionList.addEventListener("click", function(){
+    clearElement(positionsList)
+  });
 
   // Manually add position tag to container
   addPositionTagButton.addEventListener("click", function() {
@@ -3419,6 +4150,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Generate Outfits File
   generateOutfitsFileButton.addEventListener("click", generateOutfitsFile);
+
+  // Clear Outfits List
+  clearOutfitList.addEventListener("click", function(){
+    clearElement(outfitsList)
+  });
 
   // Adds listeners for outfit list handling
   document.querySelectorAll("#outfitsList li").forEach((outfitItem) => {
@@ -3612,9 +4348,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // #region ----- Initialization -----
 
-  // Set Default Tab to MCF
-  document.getElementById("MCF-Tab").style.display = "block";
-  document.querySelector(".tablinks").classList.add("active");
+  // Initially hide all tab content and show the landing page
+  document.querySelectorAll(".tabcontent").forEach(tab => {
+    tab.style.display = "none";
+  });
+  document.getElementById("landingPage").style.display = "block";
 
   // Fetch Version numbers from Lovers Lab
   getVersionNumbers();
@@ -3646,6 +4384,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // Dynamic Tooltips
+  tippy.setDefaultProps({
+    theme: "xcl",
+    animation: "scale",
+    arrow: false,
+    placement: "right",
+    allowHTML: true,
+    delay: 180,
+  });
+  let tooltipMCFForeplay = tippy(mcfForeplayHelp, {content: "",});
+  let tooltipBLKForeplay = tippy(blkForeplayHelp, {content: "",});
+  let tooltipSEPre1 = tippy(mcfInsertTiming1, {content: "",});
+  let tooltipSEPre2 = tippy(mcfInsertTiming2, {content: "",});
+  let tooltipSEPre3 = tippy(mcfInsertTiming3, {content: "",});
+  let tooltipShower = tippy(mcfShowerPrefix, {content: "",});
+  let tooltipBathroom = tippy(mcfBathroomPrefix, {content: "",});
+  let tooltipCleaning = tippy(mcfCleaningPrefix, {content: "",});
+
+
   // Set up MCF defaults
   setmcfDefaultValues();
   setmcfDefaultDirectories();
@@ -3670,14 +4427,7 @@ document.addEventListener("DOMContentLoaded", function () {
   handleTagInput(outfitEmphasisInput, outfitEmphasisList, addOutfitEmphasis);
   handleTagInput(outfitRevealsInput, outfitRevealsList, addOutfitReveals);
 
-  // Tooltips
-  tippy.setDefaultProps({
-    theme: "xcl",
-    animation: "scale",
-    arrow: false,
-    placement: "right",
-    allowHTML: true,
-  });
+  // Static Tooltips
 
   tippy([blkCharacterName, outfitCharacterName, positionCharacterName, mcfCharacterName], {
     content: "This is also the <i>id</i> for your character. It is <i>usually</i> their first name, in all lowercase. <br><br>It could be 'bonnie', for example."
@@ -3934,7 +4684,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   tippy([blkDoggyHelp,mcfDoggyHelp],{
-    content: "This section is for 'Transactional' sex (non-bedroom sexual encounters, like a bar or club hookups), which are doggystyle.<br><br> Set the path to the exact location where the images and videos are located, or move your media files into the location specified.<br><br> Set the prefixes to match exactly what the files are named.<br> Example: For 'doggy insert 1.jpg' and 'doggy insert 2.jpg', your prefix would be 'doggy insert'."
+    content: "This section is for 'Transactional' sex (non-bedroom sexual encounters, like a bar or club hookups), which are doggystyle.<br><br> Set the path to the exact location where the images and videos are located, or move your media files into the location specified.<br><br> Set the prefixes to match exactly what the files are named.<br> Example: For 'doggy insert 1.jpg' and 'doggy insert 2.jpg', your prefix would be 'doggy insert'.<br><br>If you only have one file, it should still end with 1."
   })
 
   tippy([blkDoggyInsertImgPrefix,mcfDoggyInsertImgPrefix],{
@@ -3946,33 +4696,157 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   tippy([blkBJHelp, mcfBJHelp],{
-    content: "This transactional section is for Blowjobs.<br><br>Set the path to the exact location where the videos are located, or move your media files into the location specified.<br> Set the prefixes to match exactly what the files are named.<br> Example: For 'bj 1.jpg' and 'bj 2.jpg', your prefix would be 'bj'."
+    content: "This transactional section is for Blowjobs.<br><br>Set the path to the exact location where the videos are located, or move your media files into the location specified.<br> Set the prefixes to match exactly what the files are named.<br> Example: For 'bj 1.jpg' and 'bj 2.jpg', your prefix would be 'bj'.<br><br>If you only have one file, it should still end with 1."
   })
 
   tippy([blkFacefuckHelp, mcfFacefuckHelp],{
-    content: "Same as blowjobs, but for facefucking (or rough blowjobs). Usually in the same location with the 'rough' prefix, but this is customizable."
+    content: "Same as blowjobs, but for facefucking (or rough blowjobs). Usually in the same location with the 'rough' prefix, but this is customizable.<br><br>If you only have one file, it should still end with 1."
   })
 
   tippy([blkOralHelp, mcfOralHelp],{
-    content: "This section is for when your partner goes down on female you. The tag is for which position you are in."
-  })
-
-  tippy([blkForeplayHelp],{
-    content: "This section is for groping and kissing. You need to have at least 1 kiss video and either an ass or tits grope.<br> You can have multiples of each.<br><br>This path is hardcoded for character_id/foreplay/bbc. Please ensure your media files are in this location."
+    content: "This section is for when your partner goes down on female you. The tag is for which position you are in.<br><br>If you only have one file, it should still end with 1."
   })
 
   tippy([blkCumHelp, mcfCumHelp],{
-    content: "This is the cum section, where there are only happy endings.<br> Facial and Mouth can by similar and ultimately your choice, just name appropiately."
+    content: "This is the cum section, where there are only happy endings.<br> Facial and Mouth can by similar and ultimately your choice, just name appropiately.<br><br>As with the other prefix sections, make sure the file names line up with the prefix.<br><br>If you only have one file, it should still end with 1."
   })
 
   tippy([blkPullOutHelp, mcfPullOutHelp],{
-    content: "For pull outs, Body is usually a missionary or riding (cowgirl) position where he just pulls out and cums on your pelvis/belly. Technically could be a backshot if it were doggy. <br>It would be tits if he gets off and aims for your tits. <br> And butt for doggy, where he just pulls out and cums."
+    content: "For pull outs, Body is usually a missionary or riding (cowgirl) position where he just pulls out and cums on your pelvis/belly. Technically could be a backshot if it were doggy. <br>It would be tits if he gets off and aims for your tits. <br> And butt for doggy, where he just pulls out and cums.<br><br>As with the other prefix sections, make sure the file names line up with the prefix.<br><br>If you only have one file, it should still end with 1."
   })
 
   tippy('.suggestExample',{
     content: "Give me an example!"
   })
 
+  tippy('.clearTags',{
+    content: "Clear all entries from this section!"
+  })
+
+  tippy('.addToContainer',{
+    content: "You're encouraged to add MULTIPLE entries!! It helps with variety and randomness! Text fields without an 'Add' button will only support a single entry."
+  })
+
+  tippy([mcfDescribeBoobsInput],{
+    content: "This is how NPCs will reference your boobs.<br><br> tits, boobs, knockers, etc"
+  })
+
+  tippy([mcfDescribeButtInput],{
+    content: "An adjective that NPCs will use to describe your butt.<br><br> juicy, round, tight, etc"
+  })
+
+  tippy([mcfDescribeBodyInput],{
+    content: "An adjective that NPCs will use to describe your body.<br><br> jiggly, petite, sexy, etc"
+  })
+
+  tippy([mcfCatcallHelp],{
+    content: "This section is where random NPCs will use pickup lines when approaching you. <br><br>You can use <i>$greeting</i> to insert a short introduction, which is a semi-randomized version of like: 'hey girl', 'hi beautiful', 'holy shit girl'... <br>It can vary based on the pickup line type.<br><br> Example:$greeting you're so sexy..."
+  })
+
+  tippy([mcfCatcallBodyInput],{
+    content: "Enter a pickup line NPCs can use on you. It should be something about your body or tits."
+  })
+
+  tippy([mcfCatcallFaceInput],{
+    content: "Enter a pickup line NPCs can use on you. It should be something about your face or how beautiful/pretty you are."
+  })
+
+  tippy([mcfCatcallDirtyInput],{
+    content: "Enter a pickup line NPCs can use on you. It should be something dirty. A freaky nasty line to get into your bed."
+  })
+
+  tippy([mcfCatcallRaceInput],{
+    content: "Enter a pickup line NPCs can use on you. It should be something about your race. <br><br>In addition to <i>$greeting</i>, you can also use <i>_race</i>, in this field, to insert the character's race. <br><br>Example: $greeting I've always had a thing for _race girls!<br>Which could change into something like: Dayum girl, I've always had a thing for asian girls!"
+  })
+
+  tippy([mcfThoughtClothesInput],{
+    content: "This is for the first transformation, where you are still wearing your male clothes. It's your thoughts on how those clothes look on your new body. <br>It starts mid-sentence, so it would be like 'These clothes'... then whatever you type.<br><br> An example of what you type might would be: feel way too big for you. <br>So the full line in game might be 'Your guy clothes feel way too big for you.'"
+  })
+
+  tippy([mcfDescribeTransformationInput],{
+    content: "This is what will show on screen during your transformation. It can be a simple statement or detailed description. <br> Whatever you want it to say about your transformation."
+  })
+
+  tippy([mcfExamineSelfReluctantInput, mcfExamineSelfConfidentInput],{
+    content: "This is what shows when you examine yourself at home (at night). Generally speaking, these are things your character would think as they look at themselves in the mirror. <br><br>For Reluctant, their thoughts would probably be more reserved or bashful. <br><br>For Confident, their thoughts should reflect being more proud of your feminine body."
+  })
+
+  tippy([mcfStepSisShowerTeaseInput],{
+    content: "This is for the first time Alexia walks in on you in the shower as a female. It's the line she says if you pick the 'What do you think?' option."
+  })
+
+  tippy([mcfDescribeHairColorInput],{
+    content: "This is just more ways to express the hair color. <br> red -> auburn, orange, ginger<br>brown -> light brown, brunette, coffee-colored<br>black-> raven-colored, ink-colored, midnight-black"
+  })
+
+  tippy([mcfDescribeHairTextureInput],{
+    content: "Describe the hair texture. This is used in place of hair color for some descriptions, so you can add color to it if you want.<br><br>naturally curly, silky blonde, shiny, wavy brown, shimmering red, flowing"
+  })
+
+  tippy([mcfCharacterTagline],{
+    content: "This is the 'tagline' that gets shown for your character at the New-U station. Starts mid sentence and ends with a question mark. <br><br>a fiery red-headed milf?<br>a busty Asian goddess?<br>an hourglass bimbo with dick-sucking lips?"
+  })
+
+  tippy([mcfCharacterTagOld],{
+    content: "This is for describing how one of your flings might remember your old body, after using New-U to change into somebody else. <br><br>the tiny asian chick he knew you as,<br>the tanned, buxom latina,<br>that slender latina beauty you used to be,"
+  })
+
+  tippy([mcfCharacterTagNew],{
+    content: "Similarly to the old descriptor, this is how he would see you now.<br><br>brunette bimbo<br>blonde girl-next-door type<br>redheaded slut with curves in all the right places"
+  })
+
+  tippy([mcfEventShopComment],{
+    content: "If you take the pharmacist's deal, this is his reaction to your transformation, right before you have to give him a BJ."
+  })
+
+  tippy([mcfEventShopThought],{
+    content: "This is your character's thoughts (reaction) to the pharmascist hitting on you.<br><br>It should be wrapped in asterisks, that's how thoughts are coded.<br>*What a jerk!*"
+  })
+  
+  tippy([mcfPregnancyWeeksInput],{
+    content: "This will be which weeks you have pregnancy videos for in img/characters/pregnancy/character_id/<br><br>If you can't <i>fake</i> these, and want to use an exiting girl, just go copy their videos into the directory for your character and put those weeks. (also rename them)"
+  })
+
+  tippy([mcfPregnancy1stCheckInput],{
+    content: "This is the text that goes with the first pregnancy video. If your first video is week 6, then it'll play on the 6th week.<br><br>Example: It's your sixth week of pregnancy. Your belly is still flat... for now."
+  })
+
+  tippy([mcfPregnancy2ndCheckInput],{
+    content: "This is the text that goes with the second pregnancy video.<br><br>Example: You can't deny it, you're definitely starting to show. It feels so weird... the top of your stomach is hard, and the bottom is squishy."
+  })
+  
+  tippy([mcfPregnancyPrenatalInput],{
+    content: "This is for the 12-week checkup. <br><br>Example: For only 12 weeks, your baby bump is *really* showing. You can barely imagine what your body is going to feel and look like over the coming months, if you decide to keep it."
+  })
+
+  tippy([mcfCallFatherShowInput],{
+    content: "If you call your baby daddy to come pay you, and he convinces you to go put on something sexy for him, this is his reaction when he sees you. <br><br>Example: It's such a shame that my kid is gonna WRECK that body. I can already see the bump starting to show, haha. Damn."
+  })
+
+  tippy([mcfCallFatherBJInput],{
+    content: "If you call your baby daddy to come pay you, and he convinces you to give him a BJ, this is his response.<br><br>Example: You've got such nice, dick-sucking lips. It would be a shame not to put them to their proper use."
+  })
+  
+  tippy([mcfSoundHelp],{
+    content: "This section builds out your track list. It should be all of the sounds in aud/se/sex.<br><br>The mp3 files will just be your character name. If there are multiples, it will be character name, then a space, then a number.<br><br>Example: aud/se/sex/orgasm/orgasm/character_id 1.mp3"
+  })
+
+  tippy([mcfHairstylesInput],{
+    content: "This lines up with which hairstyles you are adding for your character.<br>There isn't really a requirement on how many hairstyles to include, but it looks like most modders are going with about 10.<br>Whatever you can find or generate for your character."
+  })
+
+  tippy([mcfMakeupPath],{
+    content: "Ideally this should just remain your character's id."
+  })
+
+  tippy([],{
+    content: ""
+  })
+
+  tippy([],{
+    content: ""
+  })
+  
   tippy([],{
     content: ""
   })
@@ -3981,6 +4855,22 @@ document.addEventListener("DOMContentLoaded", function () {
     content: ""
   })
 
+  tippy([],{
+    content: ""
+  })
+  
+  tippy([],{
+    content: ""
+  })
+
+  tippy([],{
+    content: ""
+  })
+
+  tippy([],{
+    content: ""
+  })
+  
   tippy([],{
     content: ""
   })

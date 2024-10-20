@@ -290,8 +290,8 @@ input:disabled {
 }
 
 .tabs .tablinks.active {
-    border: 2px solid #787bff;
-    background-color: #787bff;
+    border: 2px solid #334c9e;
+    background-color: #334c9e;
     color: #fff;
 }
 
@@ -363,6 +363,20 @@ input:disabled {
     cursor: pointer;
     color: #ffffff;
 }
+
+.radio-group-centered {
+    justify-content: center; /* Center the content horizontally */
+    text-align: center; /* Align text within the container */
+}
+
+.radio-group-centered label {
+    margin: 0 5px; /* Add spacing between labels */
+}
+
+.radio-group-centered input {
+    margin: 0 5px; /* Add spacing between radio buttons */
+}
+
 
 .checkbox-group-inline {
     display: inline-block;
@@ -503,7 +517,11 @@ input:disabled {
 }
 
 input[name="mcfInsertTiming"] {
-    width: 12% !important;
+    width: 18% !important;
+}
+
+input[name="penetrationTiming"] {
+    width: 18% !important;
 }
 
 .form-single-line select {
@@ -567,8 +585,7 @@ input[name="mcfInsertTiming"] {
 .form-note {
     border: 2px solid #fb94b2;
     border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-    background: #9279ba;
-    color: #ffe4c4;
+    background: #334c9e;
     width: 100%;
     text-align: center;
     font-size: 1.25vmin;
@@ -582,6 +599,14 @@ input[name="mcfInsertTiming"] {
     box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
     text-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
     
+}
+
+.form-note p{
+    color: #ffe4c4;
+}
+
+.form-note li {
+    cursor: default;
 }
 
 .form-grid {
@@ -767,6 +792,10 @@ input[name="mcfInsertTiming"] {
     color: #787bff;
 }
 
+.form-center .tagsContainer {
+    width: 100%;
+}
+
 .remove-outfit,
 .remove-position {
     color: white;
@@ -793,7 +822,7 @@ input[name="mcfInsertTiming"] {
 }
 
 .mod-list input[type="text"] {
-    width: 50%;
+    width: 20%;
     padding: 8px;
     margin-bottom: 5px;
     background-color: #e27087;

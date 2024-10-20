@@ -11,6 +11,7 @@
 </head>
 <body>
     <div id="title" class="title" data-raw="">X-Change™ Life's Unofficial Modding Tools</div>
+
     <div class="tabs">
         <button class="tablinks" data-tool="MCF-Tab">Playable Character</button>
         <button class="tablinks" data-tool="PositionTab">Positions</button>
@@ -19,8 +20,31 @@
         <button class="tablinks" data-tool="BG-Tab">Bar Girl</button>
         <button class="tablinks" data-tool="MetaTab">Meta Maker</button>
     </div>
-      
 
+    <!-- Landing Page -->
+    <div id="landingPage" class="landing-page">
+        <div class="content-wrapper">
+            <div class="form-center-wrapper">
+                <div class="form-note">
+                    <h1>Welcome to X-Change™ Life's Unofficial Modding Tools</h1>
+                    <h2>These tools are intended to serve as a coding assistant, to facilitate working with the code files.</h2>
+                    <h2>Choose a tab above to get started.</h2>
+                    <br>
+                    <h3>Some general tips for using these tools:</h3>
+                    <ul>
+                        <li>Always double-check the tooltips for detailed guidance and examples.</li>
+                        <li>In each tab, start from the top and move downwards. Some lower sections can be dependant on higher section inputs</li>
+                        <li>When building a Playable Character, ensure you read each section carefully to help with expectations</li>
+                        <li>Media filenames must correlate with the specified sections in each tab. Double check paths and prefixes!!</li>
+                        <li>For sections with prefixes and file counts, ensure your filenames end in a number. Filenames are important!!</li>
+                    </ul>
+                    <br><br>
+                    <h3>If you have questions or suggestions, put them in the XCL Discord!</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+      
     <div id="MCF-Tab" class="tabcontent">
         <div class="container">
             <div class="content-wrapper">
@@ -125,52 +149,59 @@
                         <div class="form-center">
                             <h2>Character Descriptions</h2>
                             <div class="form-single-line">
-                                <label for="mcfDescribeButtInput">Describe Butt 🍑:</label>
-                                <input type="text" id="mcfDescribeButtInput" name="mcfDescribeButtInput">
-                                <button type="button" id="mcfDescribeButtButton">Add</button>
-                                <button type="button" class="suggestExample" id="exampleDescribeButtButton">🪄</button>
-                                <div class="tagsContainer" id="mcfDescribeButtContainer"></div>
-                            </div>
-                            <div class="form-single-line">
-                                <label for="mcfDescribeBoobsInput">Describe Boobs 🍈:</label>
+                                <label for="mcfDescribeBoobsInput">Boobs 🍈:</label>
                                 <input type="text" id="mcfDescribeBoobsInput" name="mcfDescribeBoobsInput">
-                                <button type="button" id="mcfDescribeBoobsButton">Add</button>
-                                <button type="button" class="suggestExample" id="exampleDescribeBoobs">🪄</button>
+                                <button type="button" class="addToContainer" id="mcfDescribeBoobsButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleDescribeBoobsButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearDescribeBoobs">❌</button>
                                 <div class="tagsContainer" id="mcfDescribeBoobsContainer"></div>
                             </div>
                             <div class="form-single-line">
-                                <label for="mcfDescribeBodyInput">Describe Body 💃:</label>
+                                <label for="mcfDescribeBodyInput">Body 💃:</label>
                                 <input type="text" id="mcfDescribeBodyInput" name="mcfDescribeBodyInput">
-                                <button type="button" id="mcfDescribeBodyButton">Add</button>
-                                <button type="button" class="suggestExample" id="exampleDescribeBody">🪄</button>
+                                <button type="button" class="addToContainer" id="mcfDescribeBodyButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleDescribeBodyButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearDescribeBody">❌</button>
                                 <div class="tagsContainer" id="mcfDescribeBodyContainer"></div>
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfDescribeButtInput">Butt 🍑:</label>
+                                <input type="text" id="mcfDescribeButtInput" name="mcfDescribeButtInput">
+                                <button type="button" class="addToContainer" id="mcfDescribeButtButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleDescribeButtButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearDescribeButt">❌</button>
+                                <div class="tagsContainer" id="mcfDescribeButtContainer"></div>
                             </div>
                             <div class="form-single-line">
                                 <label for="mcfDescribeTransformationInput">Describe Transformation:</label>
                                 <input type="text" id="mcfDescribeTransformationInput" name="mcfDescribeTransformationInput">
-                                <button type="button" id="mcfDescribeTransformationButton">Add</button>
-                                <button type="button" class="suggestExample" id="exampleDescribeTransformation">🪄</button>
+                                <button type="button" class="addToContainer" id="mcfDescribeTransformationButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleDescribeTransformationButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearDescribeTransformation">❌</button>
                             </div>
                             <div class="tagsContainer" id="mcfDescribeTransformationContainer"></div>
                             <div class="form-single-line">
                                 <label for="mcfThoughtClothesInput">Transformation Clothing Thoughts:</label>
                                 <input type="text" id="mcfThoughtClothesInput" name="mcfThoughtClothesInput">
-                                <button type="button" id="mcfThoughtClothesButton">Add</button>
-                                <button type="button" class="suggestExample" id="exampleThoughtClothes">🪄</button>
+                                <button type="button" class="addToContainer" id="mcfThoughtClothesButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleThoughtClothesButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearThoughtClothes">❌</button>
                             </div>
                             <div class="tagsContainer" id="mcfThoughtClothesContainer"></div>
                             <div class="form-single-line">
                                 <label for="mcfExamineSelfReluctantInput">Examine Self (Reluctant):</label>
                                 <input type="text" id="mcfExamineSelfReluctantInput" name="mcfExamineSelfReluctantInput">
-                                <button type="button" id="mcfExamineSelfReluctantButton">Add</button>
-                                <button type="button" class="suggestExample" id="exampleExamineSelfReluctant">🪄</button>
+                                <button type="button" class="addToContainer" id="mcfExamineSelfReluctantButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleExamineSelfReluctantButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearExamineSelfReluctant">❌</button>
                             </div>
                             <div class="tagsContainer" id="mcfExamineSelfReluctantContainer"></div>
                             <div class="form-single-line">
                                 <label for="mcfExamineSelfConfidentInput">Examine Self (Confident):</label>
                                 <input type="text" id="mcfExamineSelfConfidentInput" name="mcfExamineSelfConfidentInput">
-                                <button type="button" id="mcfExamineSelfConfidentButton">Add</button>
-                                <button type="button" class="suggestExample" id="exampleExamineSelfConfident">🪄</button>
+                                <button type="button" class="addToContainer" id="mcfExamineSelfConfidentButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleExamineSelfConfidentButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearExamineSelfConfident">❌</button>
                             </div>
                             <div class="tagsContainer" id="mcfExamineSelfConfidentContainer"></div>
                         </div>
@@ -179,13 +210,15 @@
                             <div class="form-single-line">
                                 <label for="mcfDescribeHairColorInput">Describe Hair Color:</label>
                                 <input type="text" id="mcfDescribeHairColorInput" name="mcfDescribeHairColorInput">
-                                <button type="button" id="mcfDescribeHairColorButton">Add</button>
+                                <button type="button" class="addToContainer" id="mcfDescribeHairColorButton">Add</button>
+                                <button type="button" class="clearTags" id="clearDescribeHairColor">❌</button>
                                 <div class="tagsContainer" id="mcfDescribeHairColorContainer"></div>
                             </div>
                             <div class="form-single-line">
                                 <label for="mcfDescribeHairTextureInput">Describe Hair Texture:</label>
                                 <input type="text" id="mcfDescribeHairTextureInput" name="mcfDescribeHairTextureInput">
-                                <button type="button" id="mcfDescribeHairTextureButton">Add</button>
+                                <button type="button" class="addToContainer" id="mcfDescribeHairTextureButton">Add</button>
+                                <button type="button" class="clearTags" id="clearDescribeHairTexture">❌</button>
                                 <div class="tagsContainer" id="mcfDescribeHairTextureContainer"></div>
                             </div>
                             <div class="form-single-line">
@@ -232,6 +265,7 @@
                                     <option value="wavy">Wavy</option>
                                 </select>
                                 <button type="button" id="mcfHairstylesButton">Add</button>
+                                <button type="button" class="clearTags" id="clearHairstyles">❌</button>
                                 <div class="tagsContainer" id="mcfHairstylesContainer"></div>
                             </div>
                         </div>
@@ -255,27 +289,29 @@
                             <div class="form-single-line">
                                 <label for="mcfStepSisShowerTeaseInput">Step-sis Shower Tease:</label>
                                 <input type="text" id="mcfStepSisShowerTeaseInput" name="mcfStepSisShowerTeaseInput">
-                                <button type="button" id="mcfStepSisShowerTeaseButton">Add</button>
-                                <button type="button" class="suggestExample" id="exampleStepSisShowerTease">🪄</button>
+                                <button type="button" class="addToContainer" id="mcfStepSisShowerTeaseButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleStepSisShowerTeaseButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearStepSisShowerTease">❌</button>
                             </div>
                             <div class="tagsContainer" id="mcfStepSisShowerTeaseContainer"></div>
                             <div class="form-single-line-directory">
-                                <label for="mcfMakeupPath">Makeup File:</label>
+                                <label for="mcfMakeupPath">Makeup💄:</label>
                                 <p>img/characters/makeup/</p>
                                 <input type="text" id="mcfMakeupPath" class="directory">
+                                <p>.jpg</p>
                             </div>
                             <div class="form-grid w-80">
-                                <label for="mcfShowerPrefix" style="grid-column: 1;">Shower Prefix:</label>
+                                <label for="mcfShowerPrefix" style="grid-column: 1;">Shower Vid 🚿:</label>
                                 <input type="text" id="mcfShowerPrefix" style="grid-column: 2;">
                                 <label for="mcfShowerVid" style="grid-column: 3;">Video Count:</label>
                                 <input type="number" id="mcfShowerVid" placeholder="2" min="1" style="grid-column: 4;">
 
-                                <label for="mcfBathroomPrefix" style="grid-column: 1;">Bathroom Prefix:</label>
+                                <label for="mcfBathroomPrefix" style="grid-column: 1;">Bathroom Vid 🚻:</label>
                                 <input type="text" id="mcfBathroomPrefix" style="grid-column: 2;">
                                 <label for="mcfBathroomVid" style="grid-column: 3;">Video Count:</label>
                                 <input type="number" id="mcfBathroomVid" placeholder="2" min="1" style="grid-column: 4;">
 
-                                <label for="mcfCleaningPrefix" style="grid-column: 1;">Cleaning Prefix:</label>
+                                <label for="mcfCleaningPrefix" style="grid-column: 1;">Cleaning Vid 🧹:</label>
                                 <input type="text" id="mcfCleaningPrefix" style="grid-column: 2;">
                                 <label for="mcfCleaningVid" style="grid-column: 3;">Video Count:</label>
                                 <input type="number" id="mcfCleaningVid" placeholder="2" min="1" style="grid-column: 4;">
@@ -301,68 +337,59 @@
                                 <label for="mcfGymType">Workout Type:</label>
                                 <select id="mcfGymType" name="mcfGymType">
                                     <option value="yoga">Yoga</option>
-                                    <option value="run">Run</option>
+                                    <option value="run">Running/Jogging</option>
                                     <option value="pt">Personal Trainer</option>
                                     <option value="machines">Machines</option>
                                     <option value="treadmill">Treadmill</option>
                                 </select>
                             </div>
-                            <div class="form-single-line">
-                                <label for="mcfGymOptionInput">Workout Button Options:</label>
-                                <input type="text" id="mcfGymOptionInput" name="mcfGymOptionInput">
-                                <button type="button" id="mcfGymOptionButton">Add</button>
-                                <button type="button" class="suggestExample" id="exampleGymOption">🪄</button>
-                                <div class="tagsContainer" id="mcfGymOptionContainer"></div>
-                            </div>
-                        </div>
-                        <div class="form-center">
-                            <h2>Dynapill</h2>
-                            <div class="form-single-line">
-                                <label for="mcfCoworkerReactInput">Coworker Describes Your Body:</label>
-                                <input type="text" id="mcfCoworkerReactInput" name="mcfCoworkerReactInput">
-                                <button type="button" id="mcfCoworkerReactButton">Add</button>
-                                <div class="tagsContainer" id="mcfCoworkerReactContainer"></div>
-                            </div>
                         </div>
                         <div class="form-center">
                             <h2>Pharmacist Event</h2>
                             <div class="form-single-line">
-                                <label for="mcfEventShopComment">His comment:</label> <!-- New-U bodies update -->
+                                <label for="mcfEventShopComment">His comment:</label> <!-- event shop deal accept -->
                                 <input type="text" id="mcfEventShopComment" name="mcfEventShopComment">
+                                <button type="button" class="suggestExample" id="exampleEventShopCommentButton">🪄</button>
                             </div>
                             <div class="form-single-line">
-                                <label for="mcfEventShopThought">Your thought:</label> <!-- invite guy load old -->
+                                <label for="mcfEventShopThought">Your thought:</label>
                                 <input type="text" id="mcfEventShopThought" name="mcfEventShopThought">
+                                <button type="button" class="suggestExample" id="exampleEventShopThoughtButton">🪄</button>
                             </div>
                         </div>
                         <div class="form-center">
+                            <i class="fa fa-question-circle" id="mcfCatcallHelp"></i>
                             <h2>Catcall</h2>
                             <div class="form-single-line">
-                                <label for="mcfCatcallBodyInput">Body Pickup Line:</label>
+                                <label for="mcfCatcallBodyInput">Body/Tits Pickup Line:</label>
                                 <input type="text" id="mcfCatcallBodyInput" name="mcfCatcallBodyInput">
-                                <button type="button" id="mcfCatcallBodyButton">Add</button>
-                                <button type="button" class="suggestExample" id="exampleCatcallBody">🪄</button>
+                                <button type="button" class="addToContainer" id="mcfCatcallBodyButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleCatcallBodyButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearCatcallBody">❌</button>
                             </div>
                             <div class="tagsContainer" id="mcfCatcallBodyContainer"></div>
                             <div class="form-single-line">
                                 <label for="mcfCatcallFaceInput">Face Pickup Line:</label>
                                 <input type="text" id="mcfCatcallFaceInput" name="mcfCatcallFaceInput">
-                                <button type="button" id="mcfCatcallFaceButton">Add</button>
-                                <button type="button" class="suggestExample" id="exampleCatcallFace">🪄</button>
+                                <button type="button" class="addToContainer" id="mcfCatcallFaceButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleCatcallFaceButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearCatcallFace">❌</button>
                             </div>
                             <div class="tagsContainer" id="mcfCatcallFaceContainer"></div>
                             <div class="form-single-line">
                                 <label for="mcfCatcallDirtyInput">Dirty Pickup Line:</label>
                                 <input type="text" id="mcfCatcallDirtyInput" name="mcfCatcallDirtyInput">
-                                <button type="button" id="mcfCatcallDirtyButton">Add</button>
-                                <button type="button" class="suggestExample" id="exampleCatcallDirty">🪄</button>
+                                <button type="button" class="addToContainer" id="mcfCatcallDirtyButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleCatcallDirtyButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearCatcallDirty">❌</button>
                             </div>
                             <div class="tagsContainer" id="mcfCatcallDirtyContainer"></div>
                             <div class="form-single-line">
                                 <label for="mcfCatcallRaceInput">Racial Pickup Line:</label>
                                 <input type="text" id="mcfCatcallRaceInput" name="mcfCatcallRaceInput">
-                                <button type="button" id="mcfCatcallRaceButton">Add</button>
-                                <button type="button" class="suggestExample" id="exampleCatcallRace">🪄</button>
+                                <button type="button" class="addToContainer" id="mcfCatcallRaceButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleCatcallRaceButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearCatcallRace">❌</button>
                             </div>
                             <div class="tagsContainer" id="mcfCatcallRaceContainer"></div>
                         </div>
@@ -372,6 +399,7 @@
                                 <label for="mcfPregnancyWeeksInput">Video Weeks:</label>
                                 <input type="number" id="mcfPregnancyWeeksInput" placeholder="5" min="5" max="39">
                                 <button type="button" id="mcfPregnancyWeeksButton">Add</button>
+                                <button type="button" class="clearTags" id="clearPregnancyWeeks">❌</button>
                                 <div class="tagsContainer" id="mcfPregnancyWeeksContainer"></div>
                             </div>
                             <div class="form-single-line">
@@ -477,6 +505,7 @@
                         </div>
 
                         <div class="form-center">
+                            <i class="fa fa-question-circle" id="mcfForeplayHelp"></i>
                             <h2>Foreplay</h2>
                             <div class="radio-group" id="mcfGropeDiv">
                                 <label for="mcfGropeRadio">Grope:</label>
@@ -574,7 +603,7 @@
                                 <input type="number" id="mcfSEPenetration" placeholder="4" min="1"style="grid-column: 4;">
                             </div>
                         </div>
-                        <div class="form-center">
+                        <div class="form-center" id="mcfSoundTimings">
                             <h2>Sound Timing</h2>
                             <h4>Fill out the time (in milliseconds) for each sound file</h4>
                             <div class="form-single-line">
@@ -589,11 +618,12 @@
                                 <label for="mcfInsertTiming3">Pentration/Pre 3:</label>
                                 <input type="number" id="mcfInsertTiming3" name="mcfInsertTiming" min="3000" max="15000">
                             </div>
-                            <div id="mcfPenetrationTiming"></div>
+                            <div id="mcfPenetrationTimingContainer"></div>
                         </div>
                         <div class="form-button-center">
                             <button type="button" id="generateMCFFilesOnlyButton">Generate Files Only</button>
                             <button type="button" id="generateMCFAllFilesButton">Generate All Files and Folders</button>
+                            <button type="button" id="testbutton">TEST</button>
                         </div>
                     </form>
                 </div>
@@ -835,6 +865,7 @@
                         <h3>Position List</h3>
                         <ul id="positionsList"></ul>
                         <button type="button" id="generatePositionsFileButton">Generate Position File</button>
+                        <button type="button" class="clearTags" id="clearPositionList">❌</button>
                     </div>
 
                     <div class="form-right-bottom">
@@ -1138,6 +1169,7 @@
                         <h3>Outfit List</h3>
                         <ul id="outfitsList"></ul>
                         <button type="button" id="generateOutfitsFileButton">Generate Outfits File</button>
+                        <button type="button" class="clearTags" id="clearOutfitList">❌</button>
                     </div>
 
                     <div class="form-right-bottom">
@@ -1156,8 +1188,7 @@
                 <div class="form-center-wrapper">
                     <form id="blackedForm">
                         <div class="form-note">
-                            <p>This tool is for expanding a playable character to work with the BLACKED mod.<br>It is intended to serve as a coding assistant, to facilitate working with the code files.</p>
-                            <p>Select tags that match the video on the related line.<br>Media files should consist of the prefix, then a space, then incremental numbers starting with 1. <br>If you only have 1 media file for a section, you must end the filename with a 1. <br>"Kiss 1.mp4" instead of just "Kiss.mp4", even if you only have 1 kiss file.</p>
+                            <p>This tool is for expanding a playable character to work with the BLACKED mod.</p>
                             <p>For complete instructions on adding a BLACKED version of your character, please visit the <a href="https://github.com/Chloeana/XCL-Blacked/tree/main/Blacked-Template" target="_blank">walkthrough</a>.</p>
                         </div>
                         <div class="form-center">
@@ -1356,64 +1387,83 @@
 
     <div id="MetaTab" class="tabcontent">
         <div class="container">
-            <div class="form-note">
-                <p>This is meant to be a standalone meta maker. The other tabs have their own respective metas.</p>
-            </div>
             <div class="content-wrapper">
-                <div class="form-center">
+                <div class="form-center-wrapper">
                     <form id="metaForm">
-                        <div class="form-single-line">
-                            <label for="metaName">Mod Name:</label>
-                            <input type="text" id="metaName" name="metaName" placeholder="My Sweet Mod">
+                        <div class="form-note">
+                            <p>This is meant to be a standalone meta maker. The other tabs have their own respective metas.</p>
                         </div>
-                        <div class="form-single-line">
-                            <label for="metaVersion">Mod Version:</label>
-                            <input type="text" id="metaVersion" name="metaVersion" placeholder="0.2.1">
+                        <div class="form-center">
+                            <h3>Basic Information</h3>
+                            <div class="form-single-line">
+                                <label for="metaName">Mod Name:</label>
+                                <input type="text" id="metaName" name="metaName" placeholder="My Sweet Mod">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="metaVersion">Mod Version:</label>
+                                <input type="text" id="metaVersion" name="metaVersion" placeholder="0.2.1">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="metaAuthor">Mod Author:</label>
+                                <input type="text" id="metaAuthor" name="metaAuthor">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="metaGameVersion">Compatible Game Version:</label>
+                                <input type="text" id="metaGameVersion" name="metaGameVersion">
+                            </div>
                         </div>
-                        <div class="form-single-line">
-                            <label for="metaAuthor">Mod Author:</label>
-                            <input type="text" id="metaAuthor" name="metaAuthor">
+                        <div class="form-center">
+                            <h3>Required Mods:</h3>
+                            <div class="form-grid w-70">
+                                <label for="requiredModName" style="grid-column: 1;">Mod Name:</label>
+                                <input type="text" id="requiredModName" style="grid-column: 2;">
+                                <label for="requiredModVersion" style="grid-column: 3;">Mod Version</label>
+                                <input type="text" id="requiredModVersion" placeholder="0.1.0" style="grid-column: 4;">
+                            </div>
+                            <div class="form-button-center">
+                                <button type="button" id="addRequiredMod">Add Required Mod</button>
+                            </div>                        
+                            <div class="mod-container">
+                                <ul id="metaRequiredModsContainer"></ul>
+                            </div>
                         </div>
-                        <div class="form-single-line">
-                            <label for="metaGameVersion">Compatible Game Version:</label>
-                            <input type="text" id="metaGameVersion" name="metaGameVersion">
+                        <div class="form-center">
+                            <h3>Compatible Mods:</h3>
+                            <div class="form-grid w-70">
+                                <label for="compatibleModName" style="grid-column: 1;">Mod Name:</label>
+                                <input type="text" id="compatibleModName" style="grid-column: 2;">
+                                <label for="compatibleModVersion" style="grid-column: 3;">Mod Version</label>
+                                <input type="text" id="compatibleModVersion" placeholder="0.1.0" style="grid-column: 4;">
+                            </div><br>
+                            <div class="radio-group radio-group-centered">
+                                <label for="compatibleModOrderRadio">Your mod loads:</label>
+                                <input type="radio" id="compatibleModOrderBefore" name="compatibleModOrder" value="BEFORE" checked>
+                                <label for="compatibleModOrderBefore">AFTER this one</label>
+
+                                <input type="radio" id="compatibleModAfter" name="compatibleModOrder" value="AFTER">
+                                <label for="compatibleModAfter">BEFORE this one</label>
+                            </div>
+                            <div class="form-button-center">
+                                <button type="button" id="addCompatibleMod">Add Compatible Mod</button>
+                            </div>
+                            <div class="mod-container">
+                                <ul id="metaCompatibleModsContainer"></ul>
+                            </div>
                         </div>
-                        <div class="mod-list">
-                            <h4>Required Mods:</h4>
-                            <input type="text" id="requiredModName" placeholder="Mod Name">
-                            <input type="text" id="requiredModVersion" placeholder="Version">
-                        </div>
-                        <div class="form-button-center">
-                            <button type="button" id="addRequiredMod">Add Required Mod</button>
-                        </div>                        
-                        <div class="mod-container">
-                            <ul id="metaRequiredModsContainer"></ul>
-                        </div>
-                        <div class="mod-list">
-                            <h4>Compatible Mods:</h4>
-                            <input type="text" id="compatibleModName" placeholder="Mod Name">
-                            <input type="text" id="compatibleModVersion" placeholder="Version">
-                            <select id="compatibleModOrder" name="compatibleModOrder">
-                                <option value="AFTER">Your mod loads AFTER this one</option>
-                                <option value="BEFORE">Your mod loads BEFORE this one</option>  
-                            </select>
-                        </div>
-                        <div class="form-button-center">
-                            <button type="button" id="addCompatibleMod">Add Compatible Mod</button>
-                        </div>
-                        <div class="mod-container">
-                            <ul id="metaCompatibleModsContainer"></ul>
-                        </div>
-                        <div class="mod-list">
-                            <h4>Incompatible Mods:</h4>
-                            <input type="text" id="incompatibleModName" placeholder="Mod Name">
-                            <input type="text" id="incompatibleModVersion" placeholder="Version">
-                        </div>
-                        <div class="form-button-center">
-                            <button type="button" id="addIncompatibleMod">Add Incompatible Mod</button>
-                        </div> 
-                        <div class="mod-container">
-                            <ul id="metaIncompatibleModsContainer"></ul>
+                        <div class="form-center">
+                            <h3>Incompatible Mods:</h3>
+                            <div class="form-grid w-70">
+                                <label for="incompatibleModName" style="grid-column: 1;">Mod Name:</label>
+                                <input type="text" id="incompatibleModName" style="grid-column: 2;">
+                                <label for="incompatibleModVersion" style="grid-column: 3;">Mod Version</label>
+                                <input type="text" id="incompatibleModVersion" placeholder="0.1.0" style="grid-column: 4;">
+                            </div>
+                            <div class="form-button-center">
+                                <button type="button" id="addIncompatibleMod">Add Incompatible Mod</button>
+                            </div> 
+                            <div class="mod-container">
+                                <ul id="metaIncompatibleModsContainer"></ul>
+                            </div>
                         </div>
                     </form>
                 </div>
