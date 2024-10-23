@@ -176,6 +176,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const mcfSEMissionary = document.getElementById("mcfSEMissionary");
   const mcfSERiding = document.getElementById("mcfSERiding");
   const mcfSEPenetration = document.getElementById("mcfSEPenetration");
+  const mcfSECumDynamic = document.getElementById("mcfSECumDynamic");
+  const mcfSECumPullOut = document.getElementById("mcfSECumPullOut");
+  const mcfSECumCreampie = document.getElementById("mcfSECumCreampie");
+  const mcfSECumTits = document.getElementById("mcfSECumTits");
+  const mcfSECumMouth = document.getElementById("mcfSECumMouth");
+  const mcfSECumFace = document.getElementById("mcfSECumFace");
   const mcfInsertTiming1 = document.getElementById("mcfInsertTiming1");
   const mcfInsertTiming2 = document.getElementById("mcfInsertTiming2");
   const mcfInsertTiming3 = document.getElementById("mcfInsertTiming3");
@@ -248,6 +254,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const exampleEventShopComment = ["Damn, look at those Dick Sucking Lips. You've been blessed with DSL, c'mere baby.", "Damn, that's quite an ass. You should find some tight pants to show it off...", "Holy fuck, those TITS! I was NOT expecting them to be so fucking huge. God-damn!", "Damn, you're PRETTY now. Fuck, that's a face, fit for a model. But you'd rather suck cocks to earn money, huh?", "Fuck me! You're a sexy little whore aren't you? Why don't you come get acquainted my huge cock?", "Nice! you're a nasty little slut aren't you? Can't decide which hole to use first."]
   const exampleEventShopThought = ["*What a pig...*", "*Geez, he's a jerk.*", "*What an asshole!*", "*What a tool.*", "*What a piece of shit! He's not wrong though...and that thing looks massive!*", "*Ugh that's really rude. why would he say something like that?*"]
  
+  let mcfzip = '';
 
   // #endregion --- MCF ---
   
@@ -878,6 +885,34 @@ function extractTags(container) {
     return result;
   };
 
+  // Collect timings from dynamic timing fields
+  function collectTimings(timingContainer) {
+    const timingFields = timingContainer.querySelectorAll('input[id^="penetrationTiming"]');
+    const timings = [];
+
+    timingFields.forEach((field) => {
+        const timingValue = parseInt(field.value, 10);
+
+        if (!isNaN(timingValue) && timingValue >= 3000 && timingValue <= 15000) {
+            timings.push(timingValue);
+        } else {
+            console.warn(`Timing value is out of bounds or invalid: ${field.value}`);
+        }
+    });
+
+    return timings;
+  };
+
+  // add new track mapping
+  function mapSoundsToTwee(prefix, path, characterName, soundCount) {
+    let soundMappings = "";
+    for (let i = 1; i <= soundCount; i++) {
+      soundMappings += `    (newtrack:'${prefix} ${characterName} ${i}', '${path}${characterName} ${i}.mp3')\n`;
+    }
+    return soundMappings;
+  };
+
+
   // Convert measurements
   function convertHeight(unit) {
     if (unit === 'inches') {
@@ -1215,19 +1250,6 @@ function extractTags(container) {
 
   // For testing twee
   function testTwee() {
-    const characterName = mcfCharacterName.value;
-
-    const masturbateVidInt = parseInt(mcfMasturbateVid.value) || 0;
-    const masturbatePrefix = mcfMasturbatePrefix.value;
-    const masturbatePath = mcfMasturbatePath.value;
-
-    let tweeContent = `:: add character ${characterName} [add_character]\n`;
-    tweeContent += `(set:$character_list to it + (a:"${characterName}"))\n\n`;
-
-    
-    //  new section
-    
-    tweeContent += `\n`;
 
     console.log(tweeContent)
   };
@@ -1311,7 +1333,6 @@ function extractTags(container) {
     const cleaningPrefix = mcfCleaningPrefix.value;
     const masturbatePrefix = mcfMasturbatePrefix.value;
 
-
     // Arrays
     const tagArrayDoggy = [];
     const rhythmArrayDoggy = [];
@@ -1323,6 +1344,7 @@ function extractTags(container) {
     const tagArrayOral = [];
     const rhythmArrayOral = [];
     const tagArrayPullout = [];
+    const timingArrayPenetration = [];
     const tagArrayPulloutBody = [];
     const tagArrayPulloutButt = [];
     const tagArrayPulloutTits = [];
@@ -1358,10 +1380,6 @@ function extractTags(container) {
     const bathroomVidInt = parseInt(mcfBathroomVid.value) || 0;
     const cleaningVidInt = parseInt(mcfCleaningVid.value) || 0;
     const masturbateVidInt = parseInt(mcfMasturbateVid.value) || 0;
-    const seMoanInt = parseInt(mcfSECumMoan.value) || 0;
-    const seMasturbateInt = parseInt(mcfSEMasturbate.value) || 0;
-    const seFondleInt = parseInt(mcfSEFondle.value) || 0;
-    const seOrgasmSoloInt = parseInt(mcfSEOrgasmSolo.value) || 0;
     const seLickingInt = parseInt(mcfSELicking.value) || 0;
     const seOrgasmInt = parseInt(mcfSEOrgasm.value) || 0;
     const seBJInt = parseInt(mcfSEBJ.value) || 0;
@@ -1370,23 +1388,25 @@ function extractTags(container) {
     const seMissionaryInt = parseInt(mcfSEMissionary.value) || 0;
     const seRidingInt = parseInt(mcfSERiding.value) || 0;
     const sePenetrationInt = parseInt(mcfSEPenetration.value) || 0;
+    const seInsert1Int = parseInt(mcfInsertTiming1.value) || 0;
+    const seInsert2Int = parseInt(mcfInsertTiming2.value) || 0;
+    const seInsert3Int = parseInt(mcfInsertTiming3.value) || 0;
+    const seCumDynamic = parseInt(mcfSECumDynamic.value) || 0;
+    const seCumPullOut = parseInt(mcfSECumPullOut.value) || 0;
+    const seCumCreampie = parseInt(mcfSECumCreampie.value) || 0;
+    const seCumTits = parseInt(mcfSECumTits.value) || 0;
+    const seCumMouth = parseInt(mcfSECumMouth.value) || 0;
+    const seCumFace = parseInt(mcfSECumFace.value) || 0;
 
-
-    console.log({
-      doggyVidInt,
-      doggyInsertImgInt,
-      doggyMoanImgInt,
-      bjVidInt,
-      facefuckVidInt,
-      oralVidInt,
-      creampieVidInt,
-      facialVidInt,
-      mouthVidInt,
-      pulloutBodyVidInt,
-      pulloutButtVidInt,
-      pulloutTitsVidInt
-      });
-  
+    // Sound Mapping
+    const orgasmSoundMapping = mapSoundsToTwee('orgasm', 'aud/se/sex/orgasm/orgasm/', characterName, seOrgasmInt);
+    const lickingSoundMapping = mapSoundsToTwee('licking loop', 'aud/se/sex/loops/licking/', characterName, seLickingInt);
+    const bjSoundMapping = mapSoundsToTwee('bj loop', 'aud/se/sex/loops/bj/', characterName, seBJInt);
+    const bjRoughSoundMapping = mapSoundsToTwee('bj rough loop', 'aud/se/sex/loops/bj rough/', characterName, seBJRoughInt);
+    const doggySoundMapping = mapSoundsToTwee('doggy loop', 'aud/se/sex/loops/doggy/', characterName, seDoggyInt);
+    const missionarySoundMapping = mapSoundsToTwee('missionary loop', 'aud/se/sex/loops/missionary/', characterName, seMissionaryInt);
+    const ridingSoundMapping = mapSoundsToTwee('riding loop', 'aud/se/sex/loops/riding/', characterName, seRidingInt);
+    const penetrationSoundMapping = mapSoundsToTwee('penetration', 'aud/se/sex/penetration/', characterName, sePenetrationInt);
 
     // Field validation
     if (!characterName) {
@@ -1521,25 +1541,15 @@ function extractTags(container) {
       tagArrayPullout.push(pulloutTitsLines.join(', '));
     }
 
-    // Log tags for debugging
+    // Collect tag data from Penetration Sounds
+    const penetrationTimings = collectTimings(mcfPenetrationTimingContainer);
+    const timingLines = []
+    
+    penetrationTimings.forEach((timing, index) => {
+      timingLines.push(`\n    "penetration ${characterName} ${index + 1}", ${timing}`)
+    });
 
-    console.log("doggyTags:", doggyTags) 
-    console.log("facefuckTags:", facefuckTags)
-    console.log("oralTags:", oralTags)
-    console.log("tagArrayDoggy:", tagArrayDoggy)
-    console.log("rhythmArrayDoggy:", rhythmArrayDoggy)
-    console.log("tagArrayFacefuck:", tagArrayFacefuck)
-    console.log("tagArrayOral:", tagArrayOral)
-    console.log("rhythmArrayOral:", rhythmArrayOral)
-    console.log("tagArrayMouth:", tagArrayMouth)
-    console.log("tagArrayFacial:", tagArrayFacial) 
-    console.log("tagArrayBigLoad:", tagArrayBigLoad) 
-    console.log("tagArrayUnwilling:", tagArrayUnwilling)
-    console.log("tagArrayPullout:", tagArrayPullout)
-    console.log("tagArrayPulloutBody:", tagArrayPulloutBody)
-    console.log("tagArrayPulloutButt:", tagArrayPulloutButt)
-    console.log("tagArrayPulloutTits:", tagArrayPulloutTits)
-
+    timingArrayPenetration.push(timingLines.join(', '));
 
     // Tag Validation
     const isDoggyTagsEmpty = doggyTags.every(tag => tag.tags.length === 0);
@@ -1564,8 +1574,8 @@ function extractTags(container) {
     tweeContent += `    (twirl: "${describeTransform.join('",\n    "')}")\n}\n\n`;
 
     //  New-U Transformation Description
-    tweeContent += `:: New-U transformation descriptions ${characterName}\n`;
-    tweeContent += `{(set:$description to $description + (a:(twirl:"${describeTransform.join('",\n    "')}"))\n}\n\n`;
+    tweeContent += `:: New-U transformation descriptions ${characterName}\n{\n`;
+    tweeContent += `    (set:$description to $description + (a:(twirl:"${describeTransform.join('",\n    "')}")))\n}\n\n`;
     tweeContent += `:: New-U bodies update ${characterName}\n`;
     tweeContent += `{"${tagline}"}\n\n`;
     tweeContent += `:: invite guy load old ${characterName}\n`;
@@ -1575,7 +1585,7 @@ function extractTags(container) {
 
     //  Body Stats
     tweeContent += `:: load character body stats ${characterName}\n`;
-    tweeContent += `{\n    (set: $new_stats to (dm:\n`;
+    tweeContent += `{\n    (set: $character to $character + (dm:\n`;
     tweeContent += `    "id", "${characterName}",\n`;
     tweeContent += `    "race", "${race}",\n`;
     tweeContent += `    "breasts", "${breasts}",\n`;
@@ -1590,11 +1600,24 @@ function extractTags(container) {
     tweeContent += `    "bra", "${bust}${breasts}",\n`;
     tweeContent += `    "eyes", "${eyeColor}"))\n}\n\n`;
     tweeContent += `:: New-U select body ${characterName}\n`;
-    tweeContent += `{(display:"load character body stats ${characterName}")}\n\n`;
+    tweeContent += `{\n    (set: $new_stats to (dm:\n`;
+    tweeContent += `    "id", "${characterName}",\n`;
+    tweeContent += `    "race", "${race}",\n`;
+    tweeContent += `    "breasts", "${breasts}",\n`;
+    tweeContent += `    "butt", "${butt}",\n`;
+    tweeContent += `    "hair", "${hairColor}",\n`;
+    tweeContent += `    "body type", "${bodyType}",\n`;
+    tweeContent += `    "height", "${heightIN}",\n`;
+    tweeContent += `    "weight kg", "${weightKG}",\n`;
+    tweeContent += `    "weight lb", "${weightLB}",\n`;
+    tweeContent += `    "height cm", "${heightCM}",\n`;
+    tweeContent += `    "height text", "${heightText}",\n`;
+    tweeContent += `    "bra", "${bust}${breasts}",\n`;
+    tweeContent += `    "eyes", "${eyeColor}"))\n}\n\n`;
     tweeContent += `:: New-U change back ${characterName}\n`;
-    tweeContent += `{(display:"load character body stats ${characterName}")}\n\n`;
+    tweeContent += `{(display:"New-U select body ${characterName}")}\n\n`;
     tweeContent += `:: New-U transfortune spin ${characterName}\n`;
-    tweeContent += `{(display:"load character body stats ${characterName}")}\n\n`;
+    tweeContent += `{(display:"New-U select body ${characterName}")}\n\n`;
 
     //  Examine Self
     tweeContent += `:: examine yourself ${characterName}\n`;
@@ -1603,7 +1626,7 @@ function extractTags(container) {
     tweeContent += `    (else:)[(twirl:"${examineSelfConfident.join('",\n    "')}")\n    ]\n}\n\n`;
 
     //  Thought Clothes
-    tweeContent += `:: thought clothes ${characterName}\n`;
+    tweeContent += `:: thought clothes ${characterName}\n{\n`;
     tweeContent += `    (twirl: "${thoughtClothes.join('",\n    "')}")\n}\n\n`;
 
     tweeContent += `:: pants squeeze ${characterName}\n{} <!-- Deliberately blank -->\n\n`;
@@ -1619,7 +1642,7 @@ function extractTags(container) {
 
     tweeContent += `:: shower image ${characterName}\n`;
     if (showerVidInt === 1) {
-      tweeContent += `{(set:$img to "characters/${characterName}/chores/${showerPrefix}")}\n\n`;
+      tweeContent += `{(set:$img to "characters/${characterName}/chores/${showerPrefix} 1")}\n\n`;
     } else {
       tweeContent += `{(set:$img to "characters/${characterName}/chores/${showerPrefix} " + (text:(twist:1,${showerVidInt})))}\n\n`;
     }
@@ -1630,7 +1653,7 @@ function extractTags(container) {
 
     tweeContent += `:: chores image 2 ${characterName}\n{\n`;
     if (cleaningVidInt === 1) {
-      tweeContent += `    (set:$img to "/characters/${characterName}/chores/${cleaningPrefix}")\n`;
+      tweeContent += `    (set:$img to "/characters/${characterName}/chores/${cleaningPrefix} 1")\n`;
     } else {
       tweeContent += `    (set:$img to "/characters/${characterName}/chores/${cleaningPrefix} " + (text:(twist:1,${cleaningVidInt})))\n`;
     }
@@ -1638,7 +1661,7 @@ function extractTags(container) {
     
     tweeContent += `:: bathroom post transform ${characterName}\n{\n`;
     if (bathroomVidInt === 1) {
-      tweeContent += `    (set:$img to "/characters/${characterName}/chores/${bathroomPrefix}")\n`;
+      tweeContent += `    (set:$img to "/characters/${characterName}/chores/${bathroomPrefix} 1")\n`;
     } else {
       tweeContent += `    (set:$img to "/characters/${characterName}/chores/${bathroomPrefix} " + (text:(twist:1,${bathroomVidInt})))\n`;
     }
@@ -1652,8 +1675,484 @@ function extractTags(container) {
       tweeContent += `{(set:$img to "characters/${masturbatePath}${masturbatePrefix} " + (text:(twist:1,${masturbateVidInt})))}\n\n`;
     }
     tweeContent += `:: masturbate shame ${characterName}\n`;
-    tweeContent += `{display:"masturbation setup ${characterName}"}\n\n`;
+    tweeContent += `{(display:"masturbation setup ${characterName}")}\n\n`;
 
+    //  Gym Options
+    tweeContent += `:: gym options ${characterName}\n`;
+    tweeContent += `{\n    (set:$type to "${gymType}")\n`;
+    tweeContent += `    (set:$gym_options to (cond:\n`;
+    tweeContent += `    $type is "yoga", (twirl:"Do some yoga","Attend a yoga class","Do yoga","Yoga"),\n`;
+    tweeContent += `    $type is "run", (twirl:"Take some laps", "Go for a run", "Go jogging"),\n`;
+    tweeContent += `    $type is "treadmill", (twirl:"Use the treadmill","Run on the treadmill"),\n`;
+    tweeContent += `    $type is "machines", (twirl:"Use the machines","Use machines","Use the main gym"),\n`;
+    tweeContent += `    $type is "pt", (twirl:"High-Intensity Interval Training","Train"),\n`;
+    tweeContent += `    (twirl:"Let's Sweat","Workout")))\n\n`;
+    tweeContent += `    (link:$gym_options)[(set:$next to "gym female workout")(display:"change screen")]\n}\n\n`;
+
+    //  Breathing
+    tweeContent += `:: breathing ambience ${characterName}\n`;
+    tweeContent += `{(set:$var to (twirl:"a","b"))}\n\n`;
+
+    tweeContent += `:: breathing ambience force ${characterName}\n`;
+    tweeContent += `{(set:$var to (twirl:"a","b"))}\n\n`;
+
+    //  Pharmacist BJ
+    tweeContent += `:: event shop deal accept ${characterName}\n`;
+    tweeContent += `{\n    (set:$comment to "${eventComment}")\n`;
+    tweeContent += `    (set:$thought to "${eventThought}")\n}\n\n`;
+
+    //  Coworker React
+    tweeContent += `:: coworker reacts to your appearance ${characterName}\n`;
+    tweeContent += `{\n    (print:(twirl:"${describeBody.join('",\n    "')}")\n` 
+    tweeContent += `    + " " + (twirl:"body","bod","figure","physique"))\n}\n\n`;
+
+    //  Descriptions
+    tweeContent += `:: transactional sex describe body ${characterName}\n`
+    tweeContent += `{(set:$descriptions to (a:"butt","tits","hair"))}\n\n`;
+
+    tweeContent += `:: sex transactional body comment ${characterName}\n`;
+    tweeContent += `{\n    (set:$text to (twirl:"${describeBody.join('",\n    "')}"))\n}\n\n`;
+
+    tweeContent += `:: describe butt ${characterName}\n`;
+    tweeContent += `{\n    (set:$phat to (twirl:"${describeButt.join('",\n    "')}"))\n}\n\n`;
+
+    tweeContent += `:: sex transactional tits comment ${characterName}\n`;
+    tweeContent += `{\n    (set:$tits to (twirl:"${describeBoobs.join('",\n    "')}"))\n}\n\n`;
+
+    tweeContent += `:: transactional sex describe he talks ${characterName}\n`;
+    tweeContent += `{(display:"describe butt ${characterName}"){(display:"sex transactional tits comment ${characterName}")}}\n\n`;
+
+    tweeContent += `:: sex transactional comment ${characterName}\n`;
+    tweeContent += `{(set:$comments to (a:"butt","body","tits","face"))}\n\n`;
+
+    tweeContent += `:: sex transactional butt comment ${characterName}\n`;
+    tweeContent += `{\n    (display:"describe butt ${characterName}")\n`;
+    tweeContent += `    "(if:$npc's "generation" is "genz")[(twirl:"Dayum girl","Fuck","Yeesh, $your_name","No cap","Sheesh, $your_name")]\n`;
+    tweeContent += `    (else-if:$npc's "generation" is "genx")[(twirl:"Golly","Gee whiz","Holy cow","My goodness","Goodness","Oh mercy","Lord Jesus"), (display:"your pronoun")]\n`;
+    tweeContent += `    (else:)[(twirl:"Dayum girl","Shit girl","Fuck, $your_name","Holy shit")]," (display:"npc pronoun") (twirl:"says","whistles","admires you","says","says","grins"). "\n`;
+    tweeContent += `    (twirl: "That's a $phat $butt,", "You got a $phat $butt,", "That's a $phat $butt you got, $your_name,", "I like your $phat $butt, $your_name,")"  (display:"npc pronoun") says.\n`;
+    tweeContent += `    (if:$outfit's "tags" contains "nude")[(print:"<img class='greyborder' src='img/characters/nude/butt/" +  $character's "id" + ".jpg' width='100%' height=auto>")] \n`;
+    tweeContent += `    (unless:(datanames:$npc) contains "petname")[\n`;
+    tweeContent += `        (set:$npc's petname to (twirl:"little miss fat-ass","my big-assed cutie","my big-assed bombshell","my little dumptruck","my nice slice of cake"))"\n`;
+    tweeContent += `        (twirl:"I'm gonna call you","Think I'm gonna call you","Gonna call you") (print:$npc's petname)(twirl:" from now on.",".")"\n`;
+    tweeContent += `        (set:$petname to $npc's petname)]\n}\n\n`;
+
+    //  Hair Color, Texture, and Styles
+    tweeContent += `:: available hairstyles ${characterName}\n`;
+    tweeContent += `{\n    (set:$available_hairstyles to (a:"${hairstyles.join('",\n    "')}"))\n}\n\n`;
+    tweeContent += `:: describe hair ${characterName}\n`;
+    tweeContent += `{\n    (set:$color to (twirl:"${describeHairColor.join('",\n    "')}"))\n`;
+    tweeContent += `    (if:$hairdesc is "color")[(set:$hair to $color + " hair")]\n`;
+    tweeContent += `    (else-if:$hairdesc is "texture")[\n`;
+    tweeContent += `        (if:$hairstyle is 0)[\n`;
+    tweeContent += `            (set:$texture to (twirl:"${describeHairTexture.join('",\n            "')}")) \n`;
+    tweeContent += `            (set:$hair to $texture + " hair")]\n`;
+    tweeContent += `        (else:)[(display:"hairstyle name")(set:$hair to $color + " " + $hairstyle_name)]]\n}\n\n`;
+
+    //  Cat call
+    tweeContent += `:: catcall id ${characterName}\n{\n`;
+    tweeContent += `    (if:$npc's "race" is $character's "race")[(set:$pickup to (twirl:"face","body","dirty"))]\n`;
+    tweeContent += `    (else:)[(set:$pickup to (twirl:"face","body","dirty","racial","racial","racial"))]\n\n`;
+    tweeContent += `    (set:_girl to (twirl:"girl","girl","girl","beautiful","sexy","gorgeous","doll"))\n\n`;
+    tweeContent += `    (set:$greeting to (twirl:"Hey _girl",\n`;
+    tweeContent += `    "Ayyy _girl",\n    "Hey there _girl",\n    "Hey there",\n    "Hello there _girl",\n    "Goddamn _girl",\n    "Holy shit _girl",\n    "DAYUM _girl..."))\n\n`;
+    tweeContent += `    (if:$pickup is "face")["(twirl: "${catcallFace.join('",\n    "')}")"\n    ]\n\n`;
+    tweeContent += `    (if:$pickup is "body")["(twirl: "${catcallBody.join('",\n    "')}")"\n    ]\n\n`;
+    tweeContent += `    (if:$pickup is "dirty")[\n`;
+    tweeContent += `        (if:(twist:1,2) is 1)[\n`;
+    tweeContent += `            (set:$greeting to (twirl:"Don't take this the wrong way...",\n`
+		tweeContent += `            "Please don't get offended, but",\n`
+		tweeContent += `            "Don't get offended by this, but"))\n        ]\n`;
+    tweeContent += `    "(twirl: "${catcallDirty.join('",\n    "')}")"\n    ]\n\n`;
+    tweeContent += `    (if:$pickup is "racial")[\n`;
+    tweeContent += `        (set:_race to $character's "race")\n`;
+    tweeContent += `        (if:(twist:1,2) is 1)[\n`;
+    tweeContent += `            (set:$greeting to (twirl:"I'm not racist or anything, but",\n`;
+    tweeContent += `            "Not to sound racist... but",\n`
+    tweeContent += `            "Don't get offended, this is gonna sound racist..."))\n        ]\n`
+    tweeContent += `    "(twirl: "${catcallRace.join('",\n    "')}")"\n    ]\n}\n\n`;
+
+    // Pregnancy
+    tweeContent += `:: initialize pregnancy ${characterName}\n`;
+    tweeContent += `{(set:$pregnancy's updates to (a:${pregnancyWeeks.join(',')}))}\n\n`;
+
+    tweeContent += `:: 2nd prenatal visit 3 ${characterName}\n`;
+    tweeContent += `(display:"initialize pregnancy ${characterName}")\n\n`;
+
+    tweeContent += `:: pregnant 1st check ${characterName}\n`;
+    tweeContent += `{${pregnancy1stCheck}}\n\n`;
+
+    tweeContent += `:: pregnant 2nd check ${characterName}\n`;
+    tweeContent += `{${pregnancy2ndCheck}}\n\n`;
+
+    tweeContent += `:: 12-week prenatal appointment ${characterName}\n`;
+    tweeContent += `{"${pregnancyPrenatalCheck}"}\n\n`;
+
+    tweeContent += `:: pregnancy first lactation character_id\n`;
+    if (race === "black") {
+      tweeContent += `{(print:"<video disableRemotePlayback src='img/scenes/generic/pregnancy/vignette/first lactation/scarlit.mp4' autoplay='' loop='' muted='' playsinline/>")}\n\n`
+    } else {
+      tweeContent += `{(print:"<video disableRemotePlayback src='img/scenes/generic/pregnancy/vignette/first lactation/alina.mp4' autoplay='' loop='' muted='' playsinline/>")}\n\n`
+    }
+
+    tweeContent += `:: Milk yourself character_id\n`;
+    if (race === "black") {
+      tweeContent += `{(set:$video to "scenes/generic/pregnancy/milking/scarlit.mp4")}\n\n`;
+    } else if (!["A","B","C"].includes(breasts) && ["brown","black"].includes(hairColor)) {
+      tweeContent += `{(set:$video to "scenes/generic/pregnancy/milking/cassidy.mp4")}\n\n`;
+    } else if (["A","B","C"].includes(breasts) && hairColor === "red") {
+      tweeContent += `{(set:$video to "scenes/generic/pregnancy/milking/lana.mp4")}\n\n`;
+    } else if (["A","B","C"].includes(breasts)) {
+      tweeContent += `{(set:$video to "scenes/generic/pregnancy/milking/rae.mp4")}\n\n`;
+    } else {
+      tweeContent += `{(set:$video to "scenes/generic/pregnancy/milking/mia 1.mp4")}\n\n`;
+    }
+
+    tweeContent += `:: call father visit show ${characterName}\n`;
+    tweeContent += `{"${callFatherShow}"}\n\n`;
+    
+    tweeContent += `:: call father visit bj ${characterName}\n`;
+    tweeContent += `{"${callFatherBJ}"}\n\n`;
+
+    //  Transactional Doggy
+    tweeContent += `:: sex doggy transactional ${characterName}\n{\n`;
+    if (doggyVidInt === 1) {
+      tweeContent += `    (set:$img to "${doggyPath}${doggyVidPrefix} 1")\n`;
+    } else {
+      tweeContent += `    (set:$img to "${doggyPath}${doggyVidPrefix} " + (text:(twist:1,${doggyVidInt})))\n`;
+    }
+    if (doggyInsertImgInt === 1) {
+      tweeContent += `    (set:$doggy_pic to "<img class='greyborder' src='img/scenes/characters/${doggyPath}${doggyInsertPrefix} 1.jpg' width=100% height=auto>")\n`;
+    } else {
+      tweeContent += `    (set:$doggy_pic to "<img class='greyborder' src='img/scenes/characters/${doggyPath}${doggyInsertPrefix} " + (text:(twist:1,${doggyInsertImgInt})) + ".jpg' width=100% height=auto>")\n`;
+    }
+    if (doggyMoanImgInt === 1) {
+      tweeContent += `    (set:$doggy_moan_pic to "<img class='greyborder' src='img/scenes/characters/${doggyPath}${doggyMoanPrefix} 1.jpg' width=100% height=auto>")\n`;
+    } else {
+      tweeContent += `    (set:$doggy_moan_pic to "<img class='greyborder' src='img/scenes/characters/${doggyPath}${doggyMoanPrefix} " + (text:(twist:1,${doggyMoanImgInt})) + ".jpg' width=100% height=auto>")\n`;
+    }
+    tweeContent += `    (set:$doggy_rhythm to $img of\n`;
+    tweeContent += `        (dm: ${rhythmArrayDoggy.join(',')}))\n`;
+    tweeContent += `    (set:$text to $img of\n`;
+    tweeContent += `        (dm: ${tagArrayDoggy.join(',')}))\n}\n\n`;
+
+    tweeContent += `:: sex doggy ${characterName}\n{\n`;
+    tweeContent += `    (if:$character's "race" is "black")[(set:$img to "generic/sex/doggy/c 1")]\n`;
+    tweeContent += `    (else:)[(set:$img to (either:"generic/sex/doggy/w 1","generic/sex/doggy/w 2"))]\n}\n\n`;
+
+    // Blowjob
+    tweeContent += `:: blowjob transactional initialize ${characterName}\n{\n`;
+    tweeContent += `    (if:$variant is 1)[\n`
+    if (bjVidInt === 1) {
+      tweeContent += `        (set:$img to "scenes/characters/${bjPath}${bjPrefix} 1.mp4")\n    ]\n`;
+    } else {
+      tweeContent += `        (set:$img to "scenes/characters/${bjPath}${bjPrefix} " + (text:(twist:1,${bjVidInt})) + ".mp4")\n    ]\n`;
+    }
+    tweeContent += `    (else:)[\n`
+    tweeContent += `        (if:$character's "race" is "black")[(set:$img to "scenes/generic/sex/bj/dark " + (text:(twist:1,5)) + ".mp4")]\n`
+    tweeContent += `        (else:)[(set:$img to "scenes/generic/sex/bj/" + (twirl:"clothed 1","light 1","light 2","light 3","light 4","light 5","light 6","light 7","light 8","light 9","light 10","light 11","light 12","light 13","nude 1","nude 2","nude 3","nude 4") + ".mp4")]]\n}\n\n`
+
+    tweeContent += `:: sex transactional blowjob ${characterName}\n`;
+    tweeContent += `{(display:"blowjob transactional initialize ${characterName}")}\n\n`;
+
+    // Facefuck
+    tweeContent += `:: blowjob transactional facefuck ${characterName}\n{\n`;
+    if (facefuckVidInt === 1) {
+      tweeContent += `    (set:$img to "${facefuckPath}${facefuckPrefix} 1")\n`;
+    } else {
+      tweeContent += `    (set:$img to "${facefuckPath}${facefuckPrefix} " + (text:(twist:1,${facefuckVidInt})))\n`;
+    }
+    tweeContent += `    (set:$text to $img of\n`;
+    tweeContent += `        (dm: ${tagArrayFacefuck.join(',')}))\n}\n\n`;
+    
+    tweeContent += `:: facefuck transactional ${characterName}\n`
+    tweeContent += `{(set:$sex_move to "blowjob rough")(display:"blowjob transactional facefuck ${characterName}")}\n\n`
+
+    // Oral
+    tweeContent += `:: sex oral ${characterName}\n{\n`;
+    if (oralVidInt === 1) {
+      tweeContent += `    (set:$oral_img to "scenes/characters/${oralPath}${oralPrefix} 1.mp4")\n`;
+    } else {
+      tweeContent += `    (set:$oral_img to "scenes/characters/${oralPath}${oralPrefix} " + (text:(twist:1,${oralVidInt})) + ".mp4")\n\n`;
+    }
+    tweeContent += `    (set:$oral_rhythm to $oral_img of\n`;
+    tweeContent += `        (dm: ${rhythmArrayOral.join(',')}))\n`;
+    tweeContent += `    (set:$oral_position to $oral_img of\n`;
+    tweeContent += `        (dm: ${tagArrayOral.join(',')}))\n\n`;
+    if (seLickingInt === 1) {
+      tweeContent += `    (set:$sex_loop to $sex_loop + ${seLickingInt})\n}\n\n`;
+    }
+    else {
+      tweeContent += `    (set:$sex_loop to $sex_loop + (text:(twist:1,${seLickingInt})))\n}\n\n`;
+    }
+
+    //  Grope
+    tweeContent += `:: sex transactional grope ${characterName}\n`
+    if (grope === "both") {
+      tweeContent += `{(set:$grope to (twirl:"ass","tits"))}\n\n`
+    } else {
+      tweeContent += `{(set:$grope to "${grope}")}`
+    }
+
+    //  Creampie
+    tweeContent += `:: sex creampie image ${characterName}\n`
+    if (creampieVidInt === 1) {
+      tweeContent += `{(set:$img to "/characters/${cumPath}${creampiePrefix} 1")}\n\n`;
+    } else if (creampieVidInt > 1) {
+      tweeContent += `{(set:$img to "/characters/${cumPath}${creampiePrefix} " + (text:(twist:1,${creampieVidInt})))}\n\n`;
+    } else {
+      if (race === "black"){
+        tweeContent += `{\n    (set:$img to "/generic/sex/cum/creampie/c/bwc/" + (twirl:"doggy 1", "doggy 2", "missionary 1", "riding 1"))\n}\n\n`;
+      } else {
+        tweeContent += `{\n    (if:$position is "riding")[(set:$img to "/generic/sex/cum/creampie/c/bwc/riding " + (text:(twist:1,2))]\n`;
+        tweeContent += `    (else-if:$position is "missionary")[(set:$img to "/generic/sex/cum/creampie/c/bwc/missionary " + (text:(twist:1,2))]\n`;
+        tweeContent += `    (else)[(set:$img to "/generic/sex/cum/creampie/c/bwc/doggy " + (text:(twist:1,17))]\n}\n\n`;
+      }
+    }
+
+    // Facial
+    tweeContent += `:: sex cum on face ${characterName}\n{\n`;
+
+    if (!mcfFacialVid.value) {
+      tweeContent += `    (set:$cum_face to (dm:))\n`;
+      tweeContent += `    (set:$img to "/generic/sex/cum/facial " + (text:(twist:1,16)))\n`;
+    } else {
+      if (facialVidInt === 1) {
+        tweeContent += `    (set:$img to "/characters/${cumPath}${facialPrefix} 1")\n`;
+      } else if (facialVidInt > 1) {
+        tweeContent += `    (set:$img to "/characters/${cumPath}${facialPrefix} " + (text:(twist:1,${facialVidInt})))\n`;
+      }
+      if (tagArrayBigLoad.length > 0 && tagArrayBigLoad[0] !== "") {
+        tweeContent += `    (if:$load is "big")[(set:$img to "/characters/${cumPath}${facialPrefix} " + (text:(twirl:${tagArrayBigLoad})))]\n`
+      }
+      if (tagArrayUnwilling.length > 0 && tagArrayUnwilling[0] !== "") {
+          tweeContent += `    (if:$load is "unwilling")[(set:$img to "/characters/${cumPath}${facialPrefix} " + (text:(twirl:${tagArrayUnwilling})))]\n`
+      }
+
+      tweeContent += `\n    (set:$cum_face to\n`;
+      tweeContent += `        (dm: ${tagArrayFacial.join(',')}))\n\n`;
+    } 
+    tweeContent += `}\n\n`;
+
+    // Mouth
+    tweeContent += `:: sex cum in mouth load ${characterName}\n{\n`;
+
+    if (mouthVidInt < 1 ) {
+      tweeContent += `    (if:$character's "race" is "black")[(set:$img to (twirl:"/generic/sex/cum/mouth/1 c","/generic/sex/cum/mouth/2 c","/generic/sex/cum/mouth/3 c"))]\n`;
+      tweeContent += `    (else:)[(set:_generic to (twist:1,4))\n`;
+      tweeContent += `        (if:_generic is 1)[(set:$img to "/generic/sex/cum/mouth/direct " + (text:(twist:1,2)))]\n`;
+      tweeContent += `        (else-if:_generic is 2 or _generic is 4)[(set:$img to "/generic/sex/cum/mouth/mouth " + (text:(twist:1,23)))]\n`;
+      tweeContent += `        (else-if:_generic is 3)[(set:$img to "/generic/sex/cum/mouth/finish " + (text:(twist:1,6)))]\n`;
+      tweeContent += `        (else:)[(set:$img to (twirl:"/generic/sex/cum/mouth/jerk 1",\n`;
+      tweeContent += `        "/generic/sex/cum/mouth/jerk 2",\n`;
+			tweeContent += `        "/generic/sex/cum/mouth/jerk 3",\n`;
+			tweeContent += `        "/generic/sex/cum/mouth/jerk 5",\n`;
+			tweeContent += `        "/generic/sex/cum/mouth/jerk 6",\n`;
+			tweeContent += `        "/generic/sex/cum/mouth/jerk 7",\n`;
+			tweeContent += `        "/generic/sex/cum/mouth/jerk 8",\n`;
+			tweeContent += `        "/generic/sex/cum/mouth/jerk 9",\n`;
+			tweeContent += `        "/generic/sex/cum/mouth/jerk 10"))]\n`;
+      tweeContent += `    ]\n}\n\n`;
+    } else {
+      tweeContent += `    (if:(twist:1,4) is not 1)[\n`;
+      if (mouthVidInt === 1) {
+        tweeContent += `        (set:$img to "/characters/${cumPath}${mouthPrefix} 1")\n`;
+      } else {
+        tweeContent += `        (set:$img to "/characters/${cumPath}${mouthPrefix} " + (text:(twist:1,${mouthVidInt})))\n`;
+      }
+      tweeContent += `\n        (set:$cum_mouth to\n`;
+      tweeContent += `            (dm: ${tagArrayMouth.join(',')}))]\n`;
+      tweeContent += `    (else:)[\n`;
+      tweeContent += `        (if:$character's "race" is "black")[(set:$img to (twirl:"/generic/sex/cum/mouth/1 c","/generic/sex/cum/mouth/2 c","/generic/sex/cum/mouth/3 c"))]\n`;
+      tweeContent += `        (else:)[(set:_generic to (twist:1,4))\n`;
+      tweeContent += `            (if:_generic is 1)[(set:$img to "/generic/sex/cum/mouth/direct " + (text:(twist:1,2)))]\n`;
+      tweeContent += `            (else-if:_generic is 2 or _generic is 4)[(set:$img to "/generic/sex/cum/mouth/mouth " + (text:(twist:1,23)))]\n`;
+      tweeContent += `            (else-if:_generic is 3)[(set:$img to "/generic/sex/cum/mouth/finish " + (text:(twist:1,6)))]\n`;
+      tweeContent += `            (else:)[(set:$img to (twirl:"/generic/sex/cum/mouth/jerk 1",\n`;
+      tweeContent += `            "/generic/sex/cum/mouth/jerk 2",\n`;
+			tweeContent += `            "/generic/sex/cum/mouth/jerk 3",\n`;
+			tweeContent += `            "/generic/sex/cum/mouth/jerk 5",\n`;
+			tweeContent += `            "/generic/sex/cum/mouth/jerk 6",\n`;
+			tweeContent += `            "/generic/sex/cum/mouth/jerk 7",\n`;
+			tweeContent += `            "/generic/sex/cum/mouth/jerk 8",\n`;
+			tweeContent += `            "/generic/sex/cum/mouth/jerk 9",\n`;
+			tweeContent += `            "/generic/sex/cum/mouth/jerk 10"))]\n`;
+      tweeContent += `    ]]\n}\n\n`;
+    }
+
+    tweeContent += `:: sex cum in mouth big load ${characterName}\n{\n`;
+    tweeContent += `    (set:$img to (twirl:"/generic/sex/cum/mouth/big loads/closed lips 1",\n`;
+    tweeContent += `    "/generic/sex/cum/mouth/big loads/grimace 1",\n`;
+	  tweeContent += `    "/generic/sex/cum/mouth/big loads/still mouth 1",\n`;
+	  tweeContent += `    "/generic/sex/cum/mouth/big loads/still mouth 2",\n`;
+	  tweeContent += `    "/generic/sex/cum/mouth/big loads/still mouth 3",\n`;
+	  tweeContent += `    "/generic/sex/cum/mouth/big loads/still mouth 4",\n`;
+	  tweeContent += `    "/generic/sex/cum/mouth/big loads/still mouth big 1",\n`;
+	  tweeContent += `    "/generic/sex/cum/mouth/big loads/still mouth chin 1",\n`;
+	  tweeContent += `    "/generic/sex/cum/mouth/big loads/still mouth chin 2",\n`;
+	  tweeContent += `    "/generic/sex/cum/mouth/big loads/still mouth chin 3",\n`;
+	  tweeContent += `    "/generic/sex/cum/mouth/big loads/still tongue 1",\n`;
+	  tweeContent += `    "/generic/sex/cum/mouth/big loads/tongue chin 1"))\n}\n\n`;
+
+    //  Pull out
+    tweeContent += `:: sex transactional he pulls out ${characterName}\n`;
+    tweeContent += `{(set:$his_choice to "pull out")}\n\n`;
+
+    tweeContent += `:: sex pull out ${characterName}\n{\n`;
+    tweeContent += `    (set:$his_choice to "pull out")\n`;
+    const imgPaths = [];
+
+    if (mcfPullOutTitsVid.value && pulloutTitsVidInt !== 0) {
+      for (let i = 1; i <= pulloutTitsVidInt; i++) {
+        imgPaths.push(`/characters/${cumPath}${pulloutTitsPrefix} ${i}`);
+      }
+    }
+
+    if (mcfPullOutBodyVid.value && pulloutBodyVidInt !== 0) {
+      for (let i = 1; i <= pulloutBodyVidInt; i++) {
+        imgPaths.push(`/characters/${cumPath}${pulloutBodyPrefix} ${i}`);
+      }
+    }
+
+    if (mcfPullOutButtVid.value && pulloutButtVidInt !== 0) {
+      for (let i = 1; i <= pulloutButtVidInt; i++) {
+        imgPaths.push(`/characters/${cumPath}${pulloutButtPrefix} ${i}`);
+      }
+    }
+
+    if (imgPaths.length > 0) {
+      tweeContent += `    (if:(twist:1,4) is not 1)[\n`;
+      tweeContent += `        (set:$img to (twirl:\n`;
+      imgPaths.forEach((path, index) => {
+        tweeContent += `        "${path}"${index < imgPaths.length - 1 ? ',' : ''}\n`;
+      });
+      tweeContent += `        ))\n`;
+      tweeContent += `        (set:$text to $img of\n`;
+      tweeContent += `        (dm: ${tagArrayPullout.join(',')}))\n    ]\n`;
+      tweeContent += `    (else:)[\n`;
+      tweeContent += `        (if:$character's "race" is "black" or $character's "race" is "latin")[\n`;
+      tweeContent += `            (if:(twist:1,2) is 1 and $your_choice is "pull out" and $character's "masculinity" < 80 and $orgasms > 0)[(set:$variant to "1")(set: $img to "/generic/sex/cum/pull out/wiggle/doggy " + $variant)(set:$text to (a:"butt","wiggle"))]\n`;
+      tweeContent += `            (else:)[(set:$variant to (text:(twist:1,6)))(set: $img to "/generic/sex/cum/pull out/no wiggle/doggy " + $variant)(set:$text to (a:"butt"))]]\n`;
+      tweeContent += `        (else:)[\n`;
+      tweeContent += `            (if:(twist:1,2) is 1 and $your_choice is "pull out" and $character's "masculinity" < 80 and $orgasms > 0)[(set:$variant to (twirl:"2","3"))(set: $img to "/generic/sex/cum/pull out/wiggle/doggy " + $variant)(set:$text to (a:"butt","wiggle"))]\n`;
+      tweeContent += `            (else:)[(set:$variant to (text:(twist:5,12)))(set: $img to "/generic/sex/cum/pull out/no wiggle/doggy " + $variant)(set:$text to (a:"butt"))]]\n    ]\n`;
+    } else {
+      tweeContent += `    (if:$character's "race" is "black" or $character's "race" is "latin")[\n`;
+      tweeContent += `        (if:(twist:1,2) is 1 and $your_choice is "pull out" and $character's "masculinity" < 80 and $orgasms > 0)[(set:$variant to "1")(set: $img to "/generic/sex/cum/pull out/wiggle/doggy " + $variant)(set:$text to (a:"butt","wiggle"))]\n`;
+      tweeContent += `        (else:)[(set:$variant to (text:(twist:1,6)))(set: $img to "/generic/sex/cum/pull out/no wiggle/doggy " + $variant)(set:$text to (a:"butt"))]]\n`;
+      tweeContent += `    (else:)[\n`;
+      tweeContent += `        (if:(twist:1,2) is 1 and $your_choice is "pull out" and $character's "masculinity" < 80 and $orgasms > 0)[(set:$variant to (twirl:"2","3"))(set: $img to "/generic/sex/cum/pull out/wiggle/doggy " + $variant)(set:$text to (a:"butt","wiggle"))]\n`;
+      tweeContent += `        (else:)[(set:$variant to (text:(twist:5,12)))(set: $img to "/generic/sex/cum/pull out/no wiggle/doggy " + $variant)(set:$text to (a:"butt"))]]\n`;
+    }
+    tweeContent += `}\n\n`;
+
+    //  Sounds
+    tweeContent += `:: sex orgasm ${characterName}\n`;
+    if (seOrgasmInt === 1) {
+      tweeContent += `{(set:$se to "orgasm ${characterName} 1")}\n\n`;
+    } else {
+      tweeContent += `{(set:$se to "orgasm ${characterName} " + (text:(twist:1,${seOrgasmInt})))}\n\n`;
+    }
+
+    tweeContent += `:: missionary sounds ${characterName}\n`;
+    if (seMissionaryInt === 1) {
+      tweeContent += `{(set:$sex_loop to $sex_loop + "1")}\n\n`;
+    } else {
+      tweeContent += `{(set:$sex_loop to $sex_loop + (text:(twist:1,${seMissionaryInt})))}\n\n`;
+    }
+
+    tweeContent += `:: doggy sounds ${characterName}\n`;
+    if (seDoggyInt === 1) {
+      tweeContent += `{(set:$sex_loop to $sex_loop + "1")}\n\n`;
+    } else {
+      tweeContent += `{(set:$sex_loop to $sex_loop + (text:(twist:1,${seDoggyInt})))}\n\n`;
+    }
+
+    tweeContent += `:: riding sounds ${characterName}\n`;
+    if (seRidingInt === 1) {
+      tweeContent += `{(set:$sex_loop to $sex_loop + "1")}\n\n`;
+    } else {
+      tweeContent += `{(set:$sex_loop to $sex_loop + (text:(twist:1,${seRidingInt})))}\n\n`;
+    }
+
+    tweeContent += `:: blowjob sounds ${characterName}\n`;
+    tweeContent += `{\n    (if:(twist:1,2) is 1)[`;
+    if (seBJInt === 1) {
+      tweeContent += `(set:$sex_loop to $sex_loop + "1")\n    ]\n`;
+    } else {
+      tweeContent += `(set:$sex_loop to $sex_loop + (text:(twist:1,${seBJInt})))]\n\n`;
+    }
+    tweeContent += `    (else:)[(set:$sex_loop to "bj neutral loop")]\n}\n\n`;
+
+    tweeContent += `:: bj rough sounds ${characterName}\n`;
+    if (seBJRoughInt === 1) {
+      tweeContent += `{(set:$sex_loop to $sex_loop + "1")}\n\n`;
+    } else {
+      tweeContent += `{(set:$sex_loop to $sex_loop + (text:(twist:1,${seBJRoughInt})))}\n\n`;
+    }
+
+    tweeContent += `:: his cum sounds ${characterName}\n{\n`;
+    if (seCumDynamic === 1) {
+      tweeContent += `    (unless:(twist:1,4) is 1)[(set:$line to "${characterName} 1")]\n`;
+    } else if (seCumDynamic > 1) {
+      tweeContent += `    (unless:(twist:1,4) is 1)[(set:$line to "${characterName} " + (text:(twist:1,${seCumDynamic})))]\n`;
+    }
+    if (seCumPullOut === 1) {
+      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} body 1")]\n`;
+    } else if (seCumPullOut > 1) {
+      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} body " + (text:(twist:1,${seCumPullOut})))]\n`;
+    }
+    if (seCumCreampie === 1) {
+      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} creampie 1")]\n`;
+    } else if (seCumCreampie > 1) {
+      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} creampie " + (text:(twist:1,${seCumCreampie})))]\n`;
+    }
+    if (seCumTits === 1) {
+      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} tits 1")]\n`;
+    } else if (seCumTits > 1) {
+      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} tits " + (text:(twist:1,${seCumTits})))]\n`;
+    }
+    if (seCumMouth === 1) {
+      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} mouth 1")]\n`;
+    } else if (seCumMouth > 1) {
+      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} mouth " + (text:(twist:1,${seCumMouth})))]\n`;
+    }
+    if (seCumFace === 1) {
+      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} face 1")]\n`;
+    } else if (seCumFace > 1) {
+      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} face " + (text:(twist:1,${seCumFace})))]\n`;
+    }
+    tweeContent += `}\n\n`;
+
+    tweeContent += `:: sex transactional insert attempt ${characterName}\n{\n`;
+    tweeContent += `    (set:$time_taken to (text:$character's "id" + " " + $variant) of (dm:\n`;
+    tweeContent += `    "${characterName} 1",${seInsert1Int},\n`;
+    tweeContent += `    "${characterName} 2",${seInsert2Int},\n`;
+    tweeContent += `    "${characterName} 3",${seInsert3Int}))\n}\n\n`;
+
+    tweeContent += `:: insertion sounds ${characterName}\n{\n`;
+    if (sePenetrationInt === 1) {
+      tweeContent += `    (set:$se to "penetration ${characterName} 1")\n`;
+    } else {
+      tweeContent += `    (set:$se to "penetration ${characterName} " + (text:(twist:1,${sePenetrationInt})))\n`;
+    }
+    tweeContent += `    (set:$time_taken to $se of (dm:${timingArrayPenetration.join(',')}))\n}\n\n\n`;
+
+    //  Sound Mapping
+    tweeContent += `:: sex tracks ${characterName}\n{\n`;
+    tweeContent += `    (newtrack:'cum moan ${characterName}','aud/se/sex/orgasm/cum/${characterName}.mp3')\n`;
+    tweeContent += `    (newtrack:'orgasm solo ${characterName}','aud/se/sex/orgasm/orgasm/${characterName} solo.mp3')\n`;
+    tweeContent += `    (newtrack:'fondle loop ${characterName}','aud/se/sex/loops/fondling/${characterName}.mp3')\n`;
+    tweeContent += `    (newtrack:'masturbate loop ${characterName}','aud/se/sex/loops/masturbate/${characterName}.mp3')\n`;
+    tweeContent += orgasmSoundMapping;
+    tweeContent += lickingSoundMapping;
+    tweeContent += bjSoundMapping;
+    tweeContent += bjRoughSoundMapping;
+    tweeContent += doggySoundMapping;
+    tweeContent += missionarySoundMapping;
+    tweeContent += ridingSoundMapping;
+    tweeContent += penetrationSoundMapping;
+    tweeContent += `}\n\n`;
 
 
     // Add files to the ZIP
@@ -2107,9 +2606,6 @@ function extractTags(container) {
                 ...positionData
             };
             positions.push(newPosition);
-            /*
-            console.log("Extracted position: ", newPosition); // Debugging output
-            */
         });
     }
 
@@ -2131,7 +2627,7 @@ function extractTags(container) {
       "skill level": "skillLevel"
     };
 
-    // Improved regex to match key-value pairs, handling strings, arrays, numbers, booleans, and objects
+    // Regex to match key-value pairs, handling strings, arrays, numbers, booleans, and objects
     const regex = /["']([\w\s]+)["']\s*:\s*(?:"([^"]*)"|'([^']*)'|\[(.*?)\]|\{(.*?)\}|(\d+(\.\d+)?)|(true|false|null))/g;
     let match;
 
@@ -3566,10 +4062,10 @@ function extractTags(container) {
         tweeContent += `    (set:$img to "/characters/${cumPath}${facialPrefix} " + (text:(twist:1,${facialVidInt})))\n`;
       }
       if (tagArrayBigLoad.length > 0 && tagArrayBigLoad[0] !== "") {
-        tweeContent += `    (if:$load is "big")[(set:$img to "/characters/${cumPath}${facialPrefix} " + (twirl:${tagArrayBigLoad}))]\n`
+        tweeContent += `    (if:$load is "big")[(set:$img to "/characters/${cumPath}${facialPrefix} " + (text:(twirl:${tagArrayBigLoad})))]\n`
       }
       if (tagArrayUnwilling.length > 0 && tagArrayUnwilling[0] !== "") {
-          tweeContent += `    (if:$load is "unwilling")[(set:$img to "/characters/${cumPath}${facialPrefix} " + (twirl:${tagArrayUnwilling}))]\n`
+          tweeContent += `    (if:$load is "unwilling")[(set:$img to "/characters/${cumPath}${facialPrefix} " + (text:(twirl:${tagArrayUnwilling})))]\n`
       }
 
       tweeContent += `\n    (set:$cum_face to\n`;

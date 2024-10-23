@@ -377,7 +377,6 @@ input:disabled {
     margin: 0 5px; /* Add spacing between radio buttons */
 }
 
-
 .checkbox-group-inline {
     display: inline-block;
     margin-bottom: 10px;
@@ -598,7 +597,6 @@ input[name="penetrationTiming"] {
     -webkit-box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
     box-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
     text-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
-    
 }
 
 .form-note p{
@@ -606,7 +604,15 @@ input[name="penetrationTiming"] {
 }
 
 .form-note li {
+    width: 70%;
+    font-size: 16px;
+    color: #ffe4c4;
+    display: list-item;
+    list-style: lower-roman;
     cursor: default;
+    background-color: transparent;
+    box-shadow: none;
+    text-shadow: 3px 3px 0 #4a2424, -1px -1px 0 #4a2424, 1px -1px 0 #4a2424, -1px 1px 0 #4a2424, 1px 1px 0 #4a2424;
 }
 
 .form-grid {

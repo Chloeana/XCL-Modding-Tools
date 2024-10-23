@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XCL Modding Tools</title>
     <link rel="icon" href="https://x-change.life/img/favicon.ico" type="image/ico">
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6.3.7/animations/scale.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6.3.7/animations/scale.css"> <!-- Tippy -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" /> <!-- FA -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,14 +29,15 @@
                     <h1>Welcome to X-Change™ Life's Unofficial Modding Tools</h1>
                     <h2>These tools are intended to serve as a coding assistant, to facilitate working with the code files.</h2>
                     <h2>Choose a tab above to get started.</h2>
-                    <br>
-                    <h3>Some general tips for using these tools:</h3>
+                </div>
+                <div class="form-note">
+                    <h2>Some general tips for using these tools:</h2>
                     <ul>
                         <li>Always double-check the tooltips for detailed guidance and examples.</li>
-                        <li>In each tab, start from the top and move downwards. Some lower sections can be dependant on higher section inputs</li>
-                        <li>When building a Playable Character, ensure you read each section carefully to help with expectations</li>
-                        <li>Media filenames must correlate with the specified sections in each tab. Double check paths and prefixes!!</li>
-                        <li>For sections with prefixes and file counts, ensure your filenames end in a number. Filenames are important!!</li>
+                        <li>In each tab, start from the top and move downwards. Some lower sections can sometimes be dependant on higher section inputs.</li>
+                        <li>When building a Playable Character, ensure you read each section carefully to help with expectations.</li>
+                        <li>Media filenames must correlate with the specified sections in each tab. Double check your paths and prefixes!!</li>
+                        <li>For sections with multiple media files, ensure your filenames match what is outlined in that section. Filenames are important!!</li>
                     </ul>
                     <br><br>
                     <h3>If you have questions or suggestions, put them in the XCL Discord!</h3>
@@ -414,13 +415,6 @@
                                 <label for="mcfPregnancyPrenatalInput">12-Week Prenatal Visit - Examine Self:</label>
                                 <input type="text" id="mcfPregnancyPrenatalInput" name="mcfPregnancyPrenatalInput">
                             </div>
-                            <!-- first lactaction, white = alina, black = scarlit -->
-                            <!-- milk yourself, 
-                             white + red hair + C or below = lana,
-                             white + brown hair + D or above = cassidy,
-                             white + C or below = rae, 
-                             white + D or above mia 1 , 
-                             black = scarlit -->
                              <div class="form-single-line">
                                 <label for="mcfCallFatherShowInput">Baby Daddy Visit - Reveal Line:</label>
                                 <input type="text" id="mcfCallFatherShowInput" name="mcfCallFatherShowInput">
@@ -601,6 +595,21 @@
                                 <input type="number" id="mcfSERiding" placeholder="4" min="1" style="grid-column: 2;">
                                 <label for="mcfSEPenetration" style="grid-column: 3;">Penetration:</label>
                                 <input type="number" id="mcfSEPenetration" placeholder="4" min="1"style="grid-column: 4;">
+                            </div>
+                            <h3>Cum/Dynamic</h3>
+                            <div class="form-grid w-80" id="mcfHisSoundsGrid">
+                                <label for="mcfSECumDynamic" style="grid-column: 1;">Character:</label>
+                                <input type="number" id="mcfSECumDynamic" placeholder="4" min="1" style="grid-column: 2;">
+                                <label for="mcfSECumPullOut" style="grid-column: 3;">Body:</label>
+                                <input type="number" id="mcfSECumPullOut" placeholder="4" min="1"style="grid-column: 4;">
+                                <label for="mcfSECumCreampie" style="grid-column: 1;">Creampie:</label>
+                                <input type="number" id="mcfSECumCreampie" placeholder="4" min="1" style="grid-column: 2;">
+                                <label for="mcfSECumTits" style="grid-column: 3;">Tits:</label>
+                                <input type="number" id="mcfSECumTits" placeholder="4" min="1"style="grid-column: 4;">
+                                <label for="mcfSECumMouth" style="grid-column: 1;">Mouth:</label>
+                                <input type="number" id="mcfSECumMouth" placeholder="4" min="1" style="grid-column: 2;">
+                                <label for="mcfSECumFace" style="grid-column: 3;">Face:</label>
+                                <input type="number" id="mcfSECumFace" placeholder="4" min="1"style="grid-column: 4;">
                             </div>
                         </div>
                         <div class="form-center" id="mcfSoundTimings">
@@ -1380,6 +1389,16 @@
                             <button type="button" id="generateBlackedAllFilesButton">Generate All Files and Folders</button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="BG-Tab" class="tabcontent">
+        <div class="content-wrapper">
+            <div class="form-center-wrapper">
+                <div class="form-note">
+                    <h1>Coming Soon(ish)</h1>
                 </div>
             </div>
         </div>
