@@ -212,6 +212,7 @@
                                 <label for="mcfDescribeHairColorInput">Describe Hair Color:</label>
                                 <input type="text" id="mcfDescribeHairColorInput" name="mcfDescribeHairColorInput">
                                 <button type="button" class="addToContainer" id="mcfDescribeHairColorButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleHairColorButton">🪄</button>
                                 <button type="button" class="clearTags" id="clearDescribeHairColor">❌</button>
                                 <div class="tagsContainer" id="mcfDescribeHairColorContainer"></div>
                             </div>
@@ -219,6 +220,7 @@
                                 <label for="mcfDescribeHairTextureInput">Describe Hair Texture:</label>
                                 <input type="text" id="mcfDescribeHairTextureInput" name="mcfDescribeHairTextureInput">
                                 <button type="button" class="addToContainer" id="mcfDescribeHairTextureButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleHairTextureButton">🪄</button>
                                 <button type="button" class="clearTags" id="clearDescribeHairTexture">❌</button>
                                 <div class="tagsContainer" id="mcfDescribeHairTextureContainer"></div>
                             </div>
@@ -273,16 +275,35 @@
                         <div class="form-center">
                             <h2>New-U</h2>
                             <div class="form-single-line">
-                                <label for="mcfCharacterTagline">Selection Tag Line:</label> <!-- New-U bodies update -->
-                                <input type="text" id="mcfCharacterTagline" name="mcfCharacterTagline">
+                                <label for="mcfCharacterTaglineInput">Would you rather become:</label> <!-- New-U bodies update -->
+                                <input type="text" id="mcfCharacterTaglineInput" name="mcfCharacterTaglineInput">
+                                <button type="button" id="mcfCharacterTaglineButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleTaglineButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearTagline">❌</button>
                             </div>
                             <div class="form-single-line">
-                                <label for="mcfCharacterTagOld">Old Body Descriptor:</label> <!-- invite guy load old -->
-                                <input type="text" id="mcfCharacterTagOld" name="mcfCharacterTagOld">
+                                <div class="tagsContainer" id="mcfCharacterTaglineContainer"></div>
+                            </div>
+                            <h3>Invite Guy after New Body</h3>
+                            <div class="form-single-line">
+                                <label for="mcfCharacterTagOldInput">Now instead of:</label> <!-- invite guy load old -->
+                                <input type="text" id="mcfCharacterTagOldInput" name="mcfCharacterTagOldInput">
+                                <button type="button" id="mcfCharacterTagOldButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleTagOldButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearTagOld">❌</button>
                             </div>
                             <div class="form-single-line">
-                                <label for="mcfCharacterTagNew">New Body Descriptor:</label> <!-- invite guy load new -->
-                                <input type="text" id="mcfCharacterTagNew" name="mcfCharacterTagNew">
+                                <div class="tagsContainer" id="mcfCharacterTagOldContainer"></div>
+                            </div>
+                            <div class="form-single-line">
+                                <label for="mcfCharacterTagNewInput">You have transformed into a:</label> <!-- invite guy load new -->
+                                <input type="text" id="mcfCharacterTagNewInput" name="mcfCharacterTagNewInput">
+                                <button type="button" id="mcfCharacterTagNewButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleTagNewButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearTagNew">❌</button>
+                            </div>
+                            <div class="form-single-line">
+                                <div class="tagsContainer" id="mcfCharacterTagNewContainer"></div>
                             </div>
                         </div>
                         <div class="form-center">
@@ -306,6 +327,11 @@
                                 <input type="text" id="mcfShowerPrefix" style="grid-column: 2;">
                                 <label for="mcfShowerVid" style="grid-column: 3;">Video Count:</label>
                                 <input type="number" id="mcfShowerVid" placeholder="2" min="1" style="grid-column: 4;">
+
+                                <label for="mcfMorningPrefix" style="grid-column: 1;">Morning Vid 🌅:</label>
+                                <input type="text" id="mcfMorningPrefix" style="grid-column: 2;">
+                                <label for="mcfMorningVid" style="grid-column: 3;">Video Count:</label>
+                                <input type="number" id="mcfMorningVid" placeholder="2" min="1" style="grid-column: 4;">
 
                                 <label for="mcfBathroomPrefix" style="grid-column: 1;">Bathroom Vid 🚻:</label>
                                 <input type="text" id="mcfBathroomPrefix" style="grid-column: 2;">
@@ -348,15 +374,21 @@
                         <div class="form-center">
                             <h2>Pharmacist Event</h2>
                             <div class="form-single-line">
-                                <label for="mcfEventShopComment">His comment:</label> <!-- event shop deal accept -->
-                                <input type="text" id="mcfEventShopComment" name="mcfEventShopComment">
+                                <label for="mcfEventShopCommentInput">His comment:</label> <!-- event shop deal accept -->
+                                <input type="text" id="mcfEventShopCommentInput" name="mcfEventShopCommentInput">
+                                <button type="button" class="addToContainer" id="mcfEventShopCommentButton">Add</button>
                                 <button type="button" class="suggestExample" id="exampleEventShopCommentButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearEventShopComment">❌</button>
                             </div>
+                            <div class="tagsContainer" id="mcfEventShopCommentContainer"></div>
                             <div class="form-single-line">
-                                <label for="mcfEventShopThought">Your thought:</label>
-                                <input type="text" id="mcfEventShopThought" name="mcfEventShopThought">
+                                <label for="mcfEventShopThoughtInput">Your thought:</label>
+                                <input type="text" id="mcfEventShopThoughtInput" name="mcfEventShopThoughtInput">
+                                <button type="button" class="addToContainer" id="mcfEventShopThoughtButton">Add</button>
                                 <button type="button" class="suggestExample" id="exampleEventShopThoughtButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearEventShopThought">❌</button>
                             </div>
+                            <div class="tagsContainer" id="mcfEventShopThoughtContainer"></div>
                         </div>
                         <div class="form-center">
                             <i class="fa fa-question-circle" id="mcfCatcallHelp"></i>
@@ -404,25 +436,58 @@
                                 <div class="tagsContainer" id="mcfPregnancyWeeksContainer"></div>
                             </div>
                             <div class="form-single-line">
-                                <label for="mcfPregnancy1stCheckInput">Earliest Video - Examine Self:</label>
+                                <label for="mcfPregnancy1stCheckInput">Earliest Video Examine:</label>
                                 <input type="text" id="mcfPregnancy1stCheckInput" name="mcfPregnancy1stCheckInput">
+                                <button type="button" class="addToContainer" id="mcfPregnancy1stCheckButton">Add</button>
+                                <button type="button" class="suggestExample" id="examplePregnancy1stCheckButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearPregnancy1stCheck">❌</button>
                             </div>
+                            <div class="tagsContainer" id="mcfPregnancy1stCheckContainer"></div>
                             <div class="form-single-line">
-                                <label for="mcfPregnancy2ndCheckInput">2nd Earliest Video - Examine Self:</label>
+                                <label for="mcfPregnancy2ndCheckInput">2nd Earliest Video Examine:</label>
                                 <input type="text" id="mcfPregnancy2ndCheckInput" name="mcfPregnancy2ndCheckInput">
+                                <button type="button" class="addToContainer" id="mcfPregnancy2ndCheckButton">Add</button>
+                                <button type="button" class="suggestExample" id="examplePregnancy2ndCheckButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearPregnancy2ndCheck">❌</button>
                             </div>
+                            <div class="tagsContainer" id="mcfPregnancy2ndCheckContainer"></div>
                             <div class="form-single-line">
-                                <label for="mcfPregnancyPrenatalInput">12-Week Prenatal Visit - Examine Self:</label>
+                                <label for="mcfPregnancyPrenatalInput">12-Week Prenatal Appointment:</label>
                                 <input type="text" id="mcfPregnancyPrenatalInput" name="mcfPregnancyPrenatalInput">
+                                <button type="button" class="addToContainer" id="mcfPregnancyPrenatalButton">Add</button>
+                                <button type="button" class="suggestExample" id="examplePregnancyPrenatalButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearPregnancyPrenatal">❌</button>
                             </div>
+                            <div class="tagsContainer" id="mcfPregnancyPrenatalContainer"></div>
                              <div class="form-single-line">
                                 <label for="mcfCallFatherShowInput">Baby Daddy Visit - Reveal Line:</label>
                                 <input type="text" id="mcfCallFatherShowInput" name="mcfCallFatherShowInput">
+                                <button type="button" class="addToContainer" id="mcfCallFatherShowButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleCallFatherShowButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearCallFatherShow">❌</button>
                             </div>
+                            <div class="tagsContainer" id="mcfCallFatherShowContainer"></div>
                             <div class="form-single-line">
                                 <label for="mcfCallFatherBJInput">Baby Daddy Visit - BJ Line:</label>
                                 <input type="text" id="mcfCallFatherBJInput" name="mcfCallFatherBJInput">
+                                <button type="button" class="addToContainer" id="mcfCallFatherBJButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleCallFatherBJButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearCallFatherBJ">❌</button>
                             </div>
+                            <div class="tagsContainer" id="mcfCallFatherBJContainer"></div>
+                        </div>
+                        <div class="form-center">
+                            <h2>Bruce Bar Bet Transformation Loss</h2>
+                            <div class="form-single-line">
+                                <label for="mcfBruceTFInput">Enter paragraph</label>
+                                <button type="button" class="addToContainer" id="mcfBruceTFButton">Add</button>
+                                <button type="button" class="suggestExample" id="exampleBruceTFButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearBruceTF">❌</button>
+                            </div>
+                            <div class="form-single-line">
+                                <textarea id="mcfBruceTFInput" name="mcfBruceTFInput" rows="10" cols="60"></textarea>
+                            </div>
+                            <div class="tagsContainer" id="mcfBruceTFContainer"></div>
                         </div>
                         <div class="form-center">
                             <i class="fa fa-question-circle" id="mcfDoggyHelp"></i>

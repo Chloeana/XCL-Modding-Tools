@@ -30,6 +30,255 @@ document.addEventListener("DOMContentLoaded", function () {
   const bigLoadOptions = ["big load", "cumdump"];
   const unwillingLoadOptions = ["unwilling", "gag"];
 
+  const petNames = ["fucktoy", "bimbo", "slut", "walking fleshlight", "set of holes"];
+
+  const hairRed = [
+    "flowing red hair", 
+    "fiery red locks", 
+    "lush auburn waves", 
+    "crimson curls", 
+    "bright copper mane", 
+    "intense scarlet tresses", 
+    "deep cherry waves", 
+    "spicy red highlights", 
+    "burnished cinnamon strands", 
+    "vivid sunset-red curls"
+  ];
+  
+  const hairBlonde = [
+    "golden blonde hair", 
+    "silky blonde tresses", 
+    "platinum blonde curls", 
+    "sun-kissed blonde waves", 
+    "honey blonde locks", 
+    "buttery blonde strands", 
+    "creamy gold mane", 
+    "pale flaxen hair", 
+    "sandy blonde highlights", 
+    "shimmering champagne waves"
+  ];
+  
+  const hairBlack = [
+    "sleek black hair", 
+    "inky black mane", 
+    "raven curls", 
+    "jet-black waves", 
+    "glossy ebony strands", 
+    "midnight-black locks", 
+    "obsidian-colored hair", 
+    "smooth coal-black tresses", 
+    "deep onyx curls", 
+    "shadowy black waves"
+  ];
+  
+  const hairBrown = [
+    "chestnut brown hair", 
+    "rich chocolate locks", 
+    "warm caramel waves", 
+    "deep brown tresses", 
+    "soft mocha curls", 
+    "honeyed brown strands", 
+    "dark coffee-colored mane", 
+    "earthy umber hair", 
+    "mahogany-toned waves", 
+    "velvety sable curls"
+  ];
+  
+  const hairGray = [
+    "silvery-gray hair", 
+    "ash-gray strands", 
+    "steel-gray locks", 
+    "frosty silver waves", 
+    "stormy gray curls", 
+    "smoky silver highlights", 
+    "platinum-gray tresses", 
+    "pewter-colored hair", 
+    "cool slate-gray waves", 
+    "soft dove-gray curls"
+  ];
+  
+  const hairColored = [
+    "strikingly vivid hair", 
+    "boldly dyed locks", 
+    "eye-catching alternative waves", 
+    "rebellious punk strands", 
+    "brightly hued curls", 
+    "vibrantly colored mane", 
+    "edgy and unnatural hair", 
+    "fantastically tinted tresses", 
+    "dramatically dyed hair", 
+    "wild and vibrant locks"
+  ];
+  
+  const boobsSmall = [
+    "perky little breasts",
+    "small but perfectly shaped tits",
+    "a cute and petite chest",
+    "modest bee-stings that fit just right",
+    "tiny but perky cleavage",
+    "petite and firm boobs",
+    "cute little handfuls",
+    "small but shapely mounds",
+    "dainty and delicate breasts",
+    "perky and youthful tits"
+  ];
+  
+  const boobsMedium = [
+    "full and round breasts",
+    "sexy, well-proportioned knockers",
+    "delicious medium-sized melons",
+    "perfect handful tits",
+    "all-natural C-cups",
+    "well-rounded and firm boobs",
+    "ample but not overwhelming cleavage",
+    "curvy and balanced breasts",
+    "a perfect blend of size and perkiness",
+    "naturally beautiful bust"
+  ];
+  
+  const boobsBig = [
+    "massive, eye-catching breasts",
+    "huge, bouncy knockers",
+    "gigantic jugs that beg for attention",
+    "enormous and luscious tits",
+    "massive, heavy melons",
+    "a jaw-dropping bust",
+    "incredibly full and round boobs",
+    "huge and tantalizing breasts",
+    "voluptuous, gravity-defying cleavage",
+    "a bust that can’t be ignored"
+  ];
+  
+  const buttSlim = [
+    "a tight, petite booty",
+    "a cute little butt that's just the right size",
+    "a slender and perky rear",
+    "a small but firm peach",
+    "a narrow and smooth behind",
+    "a tiny but well-formed bottom",
+    "a compact and athletic derriere",
+    "a tight and toned butt",
+    "a sleek and petite backside",
+    "a small but shapely rear"
+  ];
+  
+  const buttBubble = [
+    "a perfect, round, bubble butt",
+    "a perfectly heart-shaped booty",
+    "a juicy, perky behind",
+    "a bouncy, round bottom",
+    "a firm and peachy rear",
+    "a delightfully plump backside",
+    "a round and eye-catching butt",
+    "a curvaceous and perky bottom",
+    "a squeezable, round derriere",
+    "a tight but juicy booty"
+  ];
+  
+  const buttBig = [
+    "a huge, round booty",
+    "a big, jiggling behind",
+    "a massive and curvaceous bottom",
+    "a thick and juicy backside",
+    "an enormous, eye-catching derriere",
+    "a voluptuous and full rear",
+    "a stunningly large butt",
+    "a broad and shapely backside",
+    "a booty that just won't quit",
+    "a gigantic and attention-grabbing bottom"
+  ];
+  
+  const bodySlim = [
+    "a slim and sleek figure",
+    "a delicate and petite body",
+    "a sensually slender frame",
+    "a light and nimble form",
+    "an elegantly slim physique",
+    "a graceful and thin build",
+    "a lean and athletic silhouette",
+    "a lightweight and agile figure",
+    "a delicate but sexy shape",
+    "a svelte and chic body"
+  ];
+  
+  const bodyAvg = [
+    "a balanced and curvy body",
+    "an average but beautifully proportioned figure",
+    "a naturally sexy silhouette",
+    "a well-rounded and healthy form",
+    "a classic girl-next-door build",
+    "a lovely, average-sized figure",
+    "a gently curved and inviting shape",
+    "a well-proportioned and attractive body",
+    "a charmingly everyday physique",
+    "a pleasantly ordinary but appealing build"
+  ];
+  
+  const bodyVol = [
+    "a voluptuous hourglass shape",
+    "a curvy and seductive figure",
+    "a full and lush curves",
+    "a body that screams sex appeal",
+    "a beautifully thick frame",
+    "a generously proportioned silhouette",
+    "a sensually rounded figure",
+    "a body with curves in all the right places",
+    "a juicy and full-figured shape",
+    "a strikingly voluptuous physique"
+  ];
+  
+  const raceWhite = [
+    "a snow-white beauty",
+    "a classic all-American babe",
+    "an elegant porcelain-skinned goddess",
+    "a fair-skinned enchantress",
+    "a soft and delicate ivory beauty",
+    "a pale-skinned temptress",
+    "a cool and refined white vixen",
+    "a charming white girl-next-door",
+    "a dazzling fair-skinned babe",
+    "a sophisticated white beauty"
+  ];
+  
+  const raceBlack = [
+    "an ebony-skinned queen",
+    "a caramel-toned goddess",
+    "a dark-skinned seductress",
+    "a rich chocolate beauty",
+    "a stunning ebony enchantress",
+    "a deep-toned African princess",
+    "a captivating black bombshell",
+    "a glowing dark-skinned beauty",
+    "a luscious chocolate temptress",
+    "a strikingly beautiful black woman"
+  ];
+  
+  const raceLatin = [
+    "a spicy Latina bombshell",
+    "a sultry caramel beauty",
+    "a sexy brown-skinned Latina",
+    "an alluring Latina with a curvy body",
+    "a sultry Latina temptress",
+    "a fiery Latin seductress",
+    "a captivating Latina beauty",
+    "a hot and spicy Latin queen",
+    "a luscious caramel-skinned Latina",
+    "a vibrant and curvy Latina bombshell"
+  ];
+  
+  const raceAsian = [
+    "an exotic Asian beauty",
+    "a petite and seductive Asian doll",
+    "an alluring Asian goddess",
+    "a delicate porcelain-skinned Asian",
+    "a captivating jade-skinned goddess",
+    "a dainty but dangerous Asian cutie",
+    "a strikingly beautiful Asian woman",
+    "a graceful and elegant Asian beauty",
+    "a hot and petite Asian charmer",
+    "a breathtaking Asian seductress"
+  ];
+  
 
   // #endregion --- Vars - General
 
@@ -53,7 +302,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const mcfCharacterHeightCM = document.getElementById("mcfCharacterHeightCM");
   const mcfCharacterWeightLB = document.getElementById("mcfCharacterWeightLB");
   const mcfCharacterWeightKG = document.getElementById("mcfCharacterWeightKG");
-  const mcfCharacterTagline = document.getElementById("mcfCharacterTagline");
   const mcfDescribeButtInput = document.getElementById("mcfDescribeButtInput");
   const mcfDescribeButtButton = document.getElementById("mcfDescribeButtButton");
   const mcfDescribeButtContainer = document.getElementById("mcfDescribeButtContainer");
@@ -75,14 +323,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const mcfHairstylesInput = document.getElementById("mcfHairstylesInput");
   const mcfHairstylesButton = document.getElementById("mcfHairstylesButton");
   const mcfHairstylesContainer = document.getElementById("mcfHairstylesContainer");
-  const mcfCharacterTagOld = document.getElementById("mcfCharacterTagOld");
-  const mcfCharacterTagNew = document.getElementById("mcfCharacterTagNew");
+  const mcfCharacterTaglineInput = document.getElementById("mcfCharacterTaglineInput");
+  const mcfCharacterTaglineButton = document.getElementById("mcfCharacterTaglineButton");
+  const mcfCharacterTaglineContainer = document.getElementById("mcfCharacterTaglineContainer");
+  const mcfCharacterTagOldInput = document.getElementById("mcfCharacterTagOldInput");
+  const mcfCharacterTagOldButton = document.getElementById("mcfCharacterTagOldButton");
+  const mcfCharacterTagOldContainer = document.getElementById("mcfCharacterTagOldContainer");
+  const mcfCharacterTagNewInput = document.getElementById("mcfCharacterTagNewInput");
+  const mcfCharacterTagNewButton = document.getElementById("mcfCharacterTagNewButton");
+  const mcfCharacterTagNewContainer = document.getElementById("mcfCharacterTagNewContainer");
   const mcfStepSisShowerTeaseInput = document.getElementById("mcfStepSisShowerTeaseInput");
   const mcfStepSisShowerTeaseButton = document.getElementById("mcfStepSisShowerTeaseButton");
   const mcfStepSisShowerTeaseContainer = document.getElementById("mcfStepSisShowerTeaseContainer");
   const mcfMakeupPath = document.getElementById("mcfMakeupPath");
   const mcfShowerPrefix = document.getElementById("mcfShowerPrefix");
   const mcfShowerVid = document.getElementById("mcfShowerVid");
+  const mcfMorningPrefix = document.getElementById("mcfMorningPrefix");
+  const mcfMorningVid = document.getElementById("mcfMorningVid");
   const mcfBathroomPrefix = document.getElementById("mcfBathroomPrefix");
   const mcfBathroomVid = document.getElementById("mcfBathroomVid");
   const mcfCleaningPrefix = document.getElementById("mcfCleaningPrefix");
@@ -91,8 +348,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const mcfMasturbatePrefix = document.getElementById("mcfMasturbatePrefix");
   const mcfMasturbateVid = document.getElementById("mcfMasturbateVid");
   const mcfGymType = document.getElementById("mcfGymType");
-  const mcfEventShopComment = document.getElementById("mcfEventShopComment");
-  const mcfEventShopThought = document.getElementById("mcfEventShopThought");
+  const mcfEventShopCommentInput = document.getElementById("mcfEventShopCommentInput");
+  const mcfEventShopCommentButton = document.getElementById("mcfEventShopCommentButton");
+  const mcfEventShopCommentContainer = document.getElementById("mcfEventShopCommentContainer");
+  const mcfEventShopThoughtInput = document.getElementById("mcfEventShopThoughtInput");
+  const mcfEventShopThoughtButton = document.getElementById("mcfEventShopThoughtButton");
+  const mcfEventShopThoughtContainer = document.getElementById("mcfEventShopThoughtContainer");
   const mcfCatcallBodyInput = document.getElementById("mcfCatcallBodyInput");
   const mcfCatcallBodyButton = document.getElementById("mcfCatcallBodyButton");
   const mcfCatcallBodyContainer = document.getElementById("mcfCatcallBodyContainer");
@@ -118,10 +379,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const mcfPregnancyWeeksButton = document.getElementById("mcfPregnancyWeeksButton");
   const mcfPregnancyWeeksContainer = document.getElementById("mcfPregnancyWeeksContainer");
   const mcfPregnancy1stCheckInput = document.getElementById("mcfPregnancy1stCheckInput");
+  const mcfPregnancy1stCheckButton = document.getElementById("mcfPregnancy1stCheckButton");
+  const mcfPregnancy1stCheckContainer = document.getElementById("mcfPregnancy1stCheckContainer");
   const mcfPregnancy2ndCheckInput = document.getElementById("mcfPregnancy2ndCheckInput");
+  const mcfPregnancy2ndCheckButton = document.getElementById("mcfPregnancy2ndCheckButton");
+  const mcfPregnancy2ndCheckContainer = document.getElementById("mcfPregnancy2ndCheckContainer");
   const mcfPregnancyPrenatalInput = document.getElementById("mcfPregnancyPrenatalInput");
+  const mcfPregnancyPrenatalButton = document.getElementById("mcfPregnancyPrenatalButton");
+  const mcfPregnancyPrenatalContainer = document.getElementById("mcfPregnancyPrenatalContainer");
   const mcfCallFatherShowInput = document.getElementById("mcfCallFatherShowInput");
+  const mcfCallFatherShowButton = document.getElementById("mcfCallFatherShowButton");
+  const mcfCallFatherShowContainer = document.getElementById("mcfCallFatherShowContainer");
   const mcfCallFatherBJInput = document.getElementById("mcfCallFatherBJInput");
+  const mcfCallFatherBJButton = document.getElementById("mcfCallFatherBJButton");
+  const mcfCallFatherBJContainer = document.getElementById("mcfCallFatherBJContainer");
+  const mcfBruceTFInput = document.getElementById("mcfBruceTFInput");
+  const mcfBruceTFButton = document.getElementById("mcfBruceTFButton");
+  const mcfBruceTFContainer = document.getElementById("mcfBruceTFContainer");
   const mcfDoggyPath = document.getElementById("mcfDoggyPath");
   const mcfDoggyVid = document.getElementById("mcfDoggyVid");
   const mcfDoggyVidPrefix = document.getElementById("mcfDoggyVidPrefix");
@@ -141,11 +415,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const mcfOralVid = document.getElementById("mcfOralVid");
   const mcfOralVidPrefix = document.getElementById("mcfOralVidPrefix");
   const mcfOralContainer = document.getElementById("mcfOralContainer");
-  const mcfGropeRadio = document.getElementById("mcfGropeRadio");
-  const mcfGropeDiv = document.getElementById("mcfGropeDiv");
-  const mcfGropeTits = document.getElementById("mcfGropeTits");
-  const mcfGropeAss = document.getElementById("mcfGropeAss");
-  const mcfGropeBoth = document.getElementById("mcfGropeBoth");
   const mcfCumPath = document.getElementById("mcfCumPath");
   const mcfCreampieVid = document.getElementById("mcfCreampieVid");
   const mcfCreampieVidPrefix = document.getElementById("mcfCreampieVidPrefix");
@@ -164,8 +433,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const mcfPullOutTitsVid = document.getElementById("mcfPullOutTitsVid");
   const mcfPullOutTitsVidPrefix = document.getElementById("mcfPullOutTitsVidPrefix");
   const mcfPullOutTitsContainer = document.getElementById("mcfPullOutTitsContainer");
-  const mcfSECumMoan = document.getElementById("mcfSECumMoan");
   const mcfSEMasturbate = document.getElementById("mcfSEMasturbate");
+  const mcfSECumMoan = document.getElementById("mcfSECumMoan");
   const mcfSEFondle = document.getElementById("mcfSEFondle");
   const mcfSEOrgasmSolo = document.getElementById("mcfSEOrgasmSolo");
   const mcfSELicking = document.getElementById("mcfSELicking");
@@ -213,6 +482,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const exampleCatcallRaceButton = document.getElementById("exampleCatcallRaceButton");
   const exampleEventShopCommentButton = document.getElementById("exampleEventShopCommentButton");
   const exampleEventShopThoughtButton = document.getElementById("exampleEventShopThoughtButton");
+  const exampleTaglineButton = document.getElementById("exampleTaglineButton");
+  const exampleTagOldButton = document.getElementById("exampleTagOldButton");
+  const exampleTagNewButton = document.getElementById("exampleTagNewButton");
+  const examplePregnancy1stCheckButton = document.getElementById("examplePregnancy1stCheckButton");
+  const examplePregnancy2ndCheckButton = document.getElementById("examplePregnancy2ndCheckButton");
+  const examplePregnancyPrenatalButton = document.getElementById("examplePregnancyPrenatalButton");
+  const exampleCallFatherShowButton = document.getElementById("exampleCallFatherShowButton");
+  const exampleCallFatherBJButton = document.getElementById("exampleCallFatherBJButton");
+  const exampleHairColorButton = document.getElementById("exampleHairColorButton");
+  const exampleHairTextureButton = document.getElementById("exampleHairTextureButton");
+  const exampleBruceTFButton = document.getElementById("exampleBruceTFButton");
 
   // Remove Buttons
   const clearDescribeButt = document.getElementById("clearDescribeButt");
@@ -223,6 +503,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const clearExamineSelfReluctant = document.getElementById("clearExamineSelfReluctant");
   const clearExamineSelfConfident = document.getElementById("clearExamineSelfConfident");
   const clearStepSisShowerTease = document.getElementById("clearStepSisShowerTease");
+  const clearEventShopComment = document.getElementById("clearEventShopComment")
+  const clearEventShopThought = document.getElementById("clearEventShopThought")
   const clearCatcallBody = document.getElementById("clearCatcallBody");
   const clearCatcallFace = document.getElementById("clearCatcallFace");
   const clearCatcallDirty = document.getElementById("clearCatcallDirty");
@@ -231,28 +513,536 @@ document.addEventListener("DOMContentLoaded", function () {
   const clearDescribeHairTexture = document.getElementById("clearDescribeHairTexture");
   const clearHairstyles = document.getElementById("clearHairstyles");
   const clearPregnancyWeeks = document.getElementById("clearPregnancyWeeks");
-
+  const clearPregnancy1stCheck = document.getElementById("clearPregnancy1stCheck");
+  const clearPregnancy2ndCheck = document.getElementById("clearPregnancy2ndCheck");
+  const clearPregnancyPrenatal = document.getElementById("clearPregnancyPrenatal");
+  const clearCallFatherShow = document.getElementById("clearCallFatherShow");
+  const clearCallFatherBJ = document.getElementById("clearCallFatherBJ");
+  const clearTagline = document.getElementById("clearTagline");
+  const clearTagOld = document.getElementById("clearTagOld");
+  const clearTagNew = document.getElementById("clearTagNew");
+  const clearBruceTF = document.getElementById("clearBruceTF");
+  
   // Example suggestions
-  const exampleDescribeButtSlim = ["peachy", "slender", "dump-truck", "juicy", "cute", "tight", "perky", "premi-*yum*", "fantASStic", "nice", "beautiful"]
-  const exampleDescribeButtBubble = ["round", "peachy", "fat", "heart-shaped", "dump-truck", "juicy", "bimbo-sized", "cute", "tight", "perky", "premi-*yum*", "fantASStic", "nice", "beautiful"]
-  const exampleDescribeButtBig = ["big", "round", "peachy", "thick", "fat", "jiggling", "juicy", "bimbo-sized", "mega-size", "premi-*yum*", "fantASStic", "nice", "humongous", "beautiful"]
-  const exampleDescribeBodySlim = ["sensual", "slender", "womanly", "feminine", "breedable", "fertile", "juicy", "petite", "sexy", "exotic", "pleasing", "elegant", "picture-perfect", "tight", "oversexed", "hypersexual", "hyper-feminine", "all-natural", "perky"]
-  const exampleDescribeBodyAvg = ["sensual", "womanly", "feminine", "breedable", "fully-stacked", "bouncy", "jiggly", "fertile", "juicy", "sexy", "exotic", "pleasing", "bottom-heavy", "elegant", "picture-perfect", "tight", "hourglass-shaped", "oversexed", "hypersexual", "hyper-feminine", "all-natural", "busty", "perky"]
-  const exampleDescribeBodyVol = ["sensual",  "womanly", "feminine", "breedable", "fully-stacked", "bouncy", "jiggly", "curvy", "voluptuous", "fertile", "curvaceous", "juicy", "sexy", "exotic", "pleasing", "bottom-heavy", "elegant", "picture-perfect", "hourglass-shaped", "oversexed", "hypersexual", "hyper-feminine", "all-natural", "busty", "perky"]
-  const exampleDescribeBoobsSmall = ["tits", "boobs", "bee stings", "itty-bitties", "pancakes", "mosquito bites"]
-  const exampleDescribeBoobsMedium = ["tits", "boobs", "knockers", "mounds", "melons", "perky tits"]
-  const exampleDescribeBoobsBig = ["tits", "boobs", "juggs", "udders", "bazongas", "cow-tits", "massive milkers"]
-  const exampleDescribeTransformation = ["Wow, you're a stunner now...","Fuck... you look like such a horny, depraved slut.","You run your hands over your breedable body.","Is it over?","Your body feels so different - you can feel a huge amount of weight and fat redistributed into your breasts and ass.","You look like some kind of perfect bimbo - a girl who every guy would fall for.","A perfect hourglass figure, this might get you into some trouble..."]
-  const exampleExamineSelfReluctant = ["You press your thighs together, feeling the slick emptiness, and the distinct absence of something that once hung between them.","Running your fingers along the curve of your waist, you can't deny the sensuality of your new hourglass figure, but the sensation makes you blush.","Your once broad and barrel-shaped ribcage has become narrower and more delicate, making you feel a bit more fragile than before.","Your nipples are so sensitive, brushing against your arms makes you shudder.","Once full of definition, your arms now look beautifully toned in a feminine way, matching up with your hourglass body.","You look down at your pussy, your cheeks burning. It still feels weird to see it, to know it's yours.","Every time you see your reflection, your sexy face surprises you."]
-  const exampleExamineSelfConfident = ["You pucker and pout in the mirror, feeling playful and flirty — you're gorgeous, and you know it.", "Feeling your pussy between your legs is no longer a shock, but something comforting, a constant reminder of your femininity.", "Admiring your sensual curves and captivating eyes in the mirror, you enjoy the newfound confidence that comes from embracing your body.", "Glancing at your reflection, you strike a pose and wink at your gorgeous female form, finding excitement and happiness in embracing your new body.", "Running delicate finger over the smooth expanse of bare skin under the hem of skirt reminds you how much you love being a woman.", "You feel a sense of pride as you catch a glimpse of your shapely, rounded ass in the mirror, knowing that your stepdad, stepsister, and your male friend Hollis see you as the confident woman you've become."]
-  const exampleThoughtClothes = ["are not made to flatter your female body shape.", "are pretty tight around your $butt.", "don't exactly compliment your frame.", "fit you a bit awkwardly.", "look a bit comical on your female body.", "feel way too big for you."]
-  const exampleStepSisShowerTease = ["That girl-next-door body could make a lotta guys happy, just sayin'...", "We totally look like sisters now, haha.", "Them's some dick-suckin lips, haha.", "You're making me jealous...", "All the guys are gonna wanna bang you, lol.", "You look like a slut! Hahaha."]
-  const exampleCatcallBody = ["Damn girl, I love your body. Everything about you... mmm.", "$greeting that pornstar bod is driving me crazy.", "$greeting everything about you is perfect, that body, that face, mmm.", "$greeting your body is practically made for sex.", "$greeting I love fucking girls with your body type.", "$greeting you really got a beautiful body."]
-  const exampleCatcallFace = ["You're so freaking gorgeous! Can I have your number?", "$greeting your eyes are fucking *orgasmic.*", "You look like you're a lot of fun.", "$greeting you're such a genuine beauty.", "$greeting you're such a goddess!", "With looks like yours, you could easily be the sugar baby of a billionaire."]
-  const exampleCatcallDirty = ["I would dive in that pussy so deep I'd need scuba gear.", "$greeting you're so sexy. Any guy would be so lucky to have you sit on his face.", "$greeting I'd love to cum all over your cute, pretty face.", "My god, the things I would do to *you*.", "Would you like to help drain my balls?", "Girls like you need to be *spanked*. Just saying."]
-  const exampleCatcallRace = ["I'd love to see your _race pussy stretched around this dick.", "$greeting I don't typically go for _race girls... but DAYUM.", "With a body and face like yours! Fuck. We'd make some cute biracial babies.", "$greeting I've always had a thing for _race girls!", "$greeting you're so hot for a _race girl. Goddamn.", "I don't normally go for _race girls, but you're HOT!"]
-  const exampleEventShopComment = ["Damn, look at those Dick Sucking Lips. You've been blessed with DSL, c'mere baby.", "Damn, that's quite an ass. You should find some tight pants to show it off...", "Holy fuck, those TITS! I was NOT expecting them to be so fucking huge. God-damn!", "Damn, you're PRETTY now. Fuck, that's a face, fit for a model. But you'd rather suck cocks to earn money, huh?", "Fuck me! You're a sexy little whore aren't you? Why don't you come get acquainted my huge cock?", "Nice! you're a nasty little slut aren't you? Can't decide which hole to use first."]
-  const exampleEventShopThought = ["*What a pig...*", "*Geez, he's a jerk.*", "*What an asshole!*", "*What a tool.*", "*What a piece of shit! He's not wrong though...and that thing looks massive!*", "*Ugh that's really rude. why would he say something like that?*"]
+  const exampleDescribeButtSlim = [
+    "peachy", "slender", "dump-truck", "juicy", "cute", "tight", 
+    "perky", "premi-*yum*", "fantASStic", "nice", "beautiful", 
+    "delicate", "petite", "sleek", "smooth", "lean", "compact", 
+    "grabbable", "toned", "trim", "firm", "dainty"
+  ];
+
+  const exampleDescribeButtBubble = [
+    "round", "peachy", "fat", "heart-shaped", "dump-truck", "juicy", 
+    "bimbo-sized", "cute", "tight", "perky", "premi-*yum*", "fantASStic", 
+    "nice", "beautiful", "plump", "squeezable", "bouncy", "curvy", 
+    "shapely", "alluring", "cushiony", "voluptuous", "mouthwatering"
+  ];
+
+  const exampleDescribeButtBig = [
+    "big", "round", "peachy", "thick", "fat", "jiggling", "juicy", 
+    "bimbo-sized", "mega-size", "premi-*yum*", "fantASStic", "nice", 
+    "humongous", "beautiful", "massive", "lush", "hefty", "overflowing", 
+    "gigantic", "sumptuous", "immense", "heaving", "plush", "cushion-like"
+  ];
+
+  const exampleDescribeBodySlim = [
+    "sensual", "slender", "womanly", "feminine", "breedable", "fertile", 
+    "juicy", "petite", "sexy", "exotic", "pleasing", "elegant", 
+    "picture-perfect", "tight", "oversexed", "hypersexual", "hyper-feminine", 
+    "all-natural", "perky", "svelte", "lithe", "graceful", "delicate", 
+    "toned", "willowy", "nimble", "light-framed", "trim", "supple"
+  ];
+
+  const exampleDescribeBodyAvg = [
+    "sensual", "womanly", "feminine", "breedable", "bouncy", 
+    "jiggly", "fertile", "juicy", "sexy", "exotic", "pleasing", 
+    "bottom-heavy", "elegant", "picture-perfect", "tight", "hourglass-shaped", 
+    "oversexed", "hypersexual", "hyper-feminine", "all-natural", "busty", 
+    "perky", "well-proportioned", "balanced", "shapely", "classic beauty", 
+    "soft curves", "inviting", "kissable", "full-figured", "lush"
+  ];
+
+  const exampleDescribeBodyVol = [
+    "sensual", "womanly", "feminine", "breedable", "fully-stacked", 
+    "bouncy", "jiggly", "curvy", "voluptuous", "fertile", "curvaceous", 
+    "juicy", "sexy", "exotic", "pleasing", "bottom-heavy", "elegant", 
+    "picture-perfect", "hourglass-shaped", "oversexed", "hypersexual", 
+    "hyper-feminine", "all-natural", "busty", "perky", "ample", 
+    "generously-proportioned", "thick", "lush", "full-bodied", "eye-catching", 
+    "luxuriant", "opulent", "seductive", "fleshy", "sumptuous"
+  ];
+
+  const exampleDescribeBoobsSmall = [
+    "bee stings", "itty-bitties", "pancakes", 
+    "mosquito bites", "handfuls", "cuties", "tiny tits", "perky nubs", 
+    "little cherries", "petite breasts", "small handfuls", "adorable buds", 
+    "cute peaks", "mini-mounds", "sweet lumps", "cute pair", "neat nubs"
+  ];
+
+const exampleDescribeBoobsMedium = [
+    "knockers", "mounds", "melons", "perky tits", 
+    "bouncy pair", "rounders", "handfuls", "soft pillows", "lovely peaks", 
+    "full breasts", "plush tits", "moderate handfuls", "lush orbs", 
+    "heavenly pair", "ripe melons", "tempting swells", "perfect handfuls", 
+    "squeezeable pair"
+  ];
+
+  const exampleDescribeBoobsBig = [
+    "juggs", "udders", "bazongas", "cow-tits", 
+    "massive milkers", "huge honkers", "overfilled balloons", "melons", 
+    "pillows", "huge rack", "shelf-busting breasts", "giant orbs", 
+    "swinging pair", "overflowing globes", "gargantuan mounds", 
+    "soft mountains", "bouncing boulders", "heavy hooters"
+  ];
+
+  const exampleDescribeTransformation = ["Wow, you're a stunner now...",
+    "Fuck... you look like such a horny, depraved slut.",
+    "You run your hands over your breedable body.",
+    "Is it over?",
+    "You feel a throbbing emptiness between your legs",
+    "Your body feels so different - you can feel a huge amount of weight and fat redistributed into your breasts and ass.",
+    "You feel a LOT lighter.",
+    "Your proportions have changed so dramatically, your male clothes hang off you suggestively.",
+    "You look like some kind of perfect bimbo - a girl who every guy would fall for.",
+    "A perfect hourglass figure, this might get you into some trouble...",
+    "You can't help but stare, your new curves scream for attention.",
+    "A grin spreads across your face as you admire your slutty new reflection.",
+    "Your fingers instinctively trace the new lines of your body, lingering on your sensitive breasts.",
+    "You look so soft and inviting, your body practically begging to be touched.",
+    "Damn... it's like you're built to seduce.",
+    "Your eyes wander down to your full, rounded hips—so different, but so right.",
+    "You twist and turn, catching sight of the way your ass jiggles with each movement.",
+    "Your reflection is all soft lips and curves, radiating a raw, undeniable sexuality.",
+    "You look like every man's wet dream, a picture of erotic perfection.",
+    "You barely recognize yourself, but the throbbing heat between your legs tells you this new body is *hungry*.",
+    "There's no denying it—you look like a perfect plaything now.",
+    "You run your hands over your curves, every inch feels like it's begging for attention.",
+    "Your hips sway with every step, it's impossible not to move sensually in this new body.",
+    "You catch sight of your plush lips, now so kissable and inviting.",
+    "God, you look like the kind of girl who knows exactly how to make a guy beg.",
+    "Your chest heaves, full and heavy—it's almost hard to look away from your own cleavage.",
+    "You feel... sexy. Unapologetically, irresistibly sexy.",
+    "You can't believe how delicate your hands look now, yet they look perfect for teasing and pleasing.",
+    "You're a bombshell now, the kind of girl who turns heads and leaves them wanting more.",
+    "Your body looks sinful—every curve, every inch is temptation incarnate.",
+    "You tilt your head and wink at your reflection... and damn, you look *good* doing it.",
+    "Your gaze locks onto your round, luscious ass—built to be admired, touched, and worshipped.",
+    "Everything about you feels... erotic. Your new form radiates pleasure in ways you never imagined.",
+    "There's a mischievous glint in your eye now, like your body knows all the naughty things it's capable of."
+  ];
+
+  const exampleExamineSelfReluctant = [
+    "You press your thighs together, feeling the slick emptiness, and the distinct absence of something that once hung between them.",
+    "Running your fingers along the curve of your waist, you can't deny the sensuality of your new hourglass figure, but the sensation makes you blush.",
+    "Your once broad and barrel-shaped ribcage has become narrower and more delicate, making you feel a bit more fragile than before.",
+    "Your nipples are so sensitive, brushing against your arms makes you shudder.",
+    "Once full of definition, your arms now look beautifully toned in a feminine way, matching up with your hourglass body.",
+    "You look down at your pussy, your cheeks burning. It still feels weird to see it, to know it's yours.",
+    "Your thick lips seem to pout naturally, as if your face was just made for it.",
+    "Your balance feels off, the extra weight on your chest making you lean back a bit.",
+    "Your voice is so much higher now - it sounds sultry, sexy but kind of vacuous.",
+    "Every time you see your reflection, your sexy face surprises you.",
+    "You catch a glimpse of your reflection, half expecting to see your old self, but instead, there's this stunningly feminine stranger staring back.",
+    "Your hips are so much wider than you're used to; they sway naturally when you move, and it's unsettling how easy it feels.",
+    "You reach up to touch your collarbone—it's so much more prominent now, accentuating the delicate lines of your new neckline.",
+    "Your breasts are undeniably there, soft and heavy, and even if you try to ignore them, their presence is impossible to deny.",
+    "You can't believe how soft your skin feels, almost like it's begging to be touched.",
+    "You turn slightly, catching the curve of your backside in the mirror. It's...rounder than you ever imagined it could be.",
+    "You tilt your head and bite your lip out of nervous habit, only to realize how sexy the gesture looks with your new features.",
+    "Brushing a lock of hair behind your ear, you can't help but feel strange—it's so much longer and thicker than anything you ever had before.",
+    "You lean in closer to the mirror, running a hand down your cheek. Your skin looks so smooth, almost glowing.",
+    "The weight of your breasts feels unfamiliar, but you can't help but notice how they create an inviting cleavage.",
+    "Your legs seem endless now, long and shapely, and you feel a strange mix of pride and embarrassment seeing them.",
+    "Your eyes, once familiar, now look bigger and more innocent—yet there's a sensuality in them that you can't quite place.",
+    "You wrap your arms around yourself, feeling your own curves—it's a confusing mix of vulnerability and strange confidence.",
+    "Your waist is so much slimmer, accentuating the fullness of your hips, and you have to admit... it's a striking silhouette.",
+    "You catch yourself standing with one hip cocked to the side—a pose you never would have struck before—and the realization makes your face flush.",
+    "You run a hand through your hair, feeling its volume and weight... and for a moment, you almost like it."
+  ];
+  
+  const exampleExamineSelfConfident = [
+  "You pucker and pout in the mirror, feeling playful and flirty — you're gorgeous, and you know it.",
+  "Feeling your pussy between your legs is no longer a shock, but something comforting, a constant reminder of your femininity.",
+  "Admiring your sensual curves and captivating eyes in the mirror, you enjoy the newfound confidence that comes from embracing your body.",
+  "Glancing at your reflection, you strike a pose and wink at your gorgeous female form, finding excitement and happiness in embracing your new body.",
+  "You're used to your ass sticking out, it makes you feel feminine and sexy.",
+  "You love how your thighs rub together when you walk, it's a sensual reminder of your feminine body.",
+  "Feeling your kitty between your legs is no longer a shock, but something comforting, a constant reminder of your femininity.",
+  "You're so proud of your hourglass figure - you turn heads wherever you go.",
+  "Running a delicate finger over the smooth expanse of bare skin under the hem of your skirt reminds you how much you love being a woman.",
+  "You feel a sense of pride as you catch a glimpse of your shapely, rounded ass in the mirror, knowing that your stepdad, stepsister, and your male friend Hollis see you as the confident woman you've become.",
+  "You run your fingers through your hair, flipping it over your shoulder with a smile — it feels like such a natural, feminine gesture now.",
+  "You love how effortlessly your hips sway with each step, drawing attention without even trying.",
+  "You trace the curve of your cleavage with a finger, appreciating how your body fills out a tight top so perfectly.",
+  "Your makeup skills have gotten better, and you admire the way your full lips look with a coat of gloss — the perfect finishing touch to your feminine look.",
+  "You find yourself wearing shorter skirts and tighter clothes, enjoying how they hug every curve and show off the confidence you've gained.",
+  "Your fingers slide over your smooth, flat stomach, appreciating how your feminine form has become second nature to you.",
+  "Looking in the mirror, you smirk at how naturally flirtatious your expressions have become — it's as if you've always known how to tease with a look.",
+  "The swing of your hips feels like second nature now, and you love the way it accentuates your curvy figure.",
+  "You revel in the way your clothes fit — every dress, skirt, and top now chosen to flaunt your assets and highlight your femininity.",
+  "The weight of your breasts feels right, comfortable, and you're not shy about showing them off with a low-cut blouse anymore.",
+  "You turn around to get a look at your ass, smiling at the way it fills out your jeans — you've definitely learned to appreciate it.",
+  "You run a hand along your thigh, enjoying the softness of your skin and the way your muscles feel firm yet feminine beneath.",
+  "You smile at your reflection, knowing you've truly become the woman everyone envies — and the confidence feels incredible.",
+  "You run a finger over your pouty lips, enjoying how they look full and kissable, even without makeup.",
+  "You can’t help but admire your own hourglass silhouette, loving the feminine power it makes you feel.",
+  "You twirl in front of the mirror, watching your skirt flare out and settle perfectly around your hips — it makes you feel irresistibly girly.",
+  "Your lingerie drawer is full of lace and satin now, and you love the thrill of picking out something sexy to wear underneath your clothes."
+  ];
+
+  const exampleThoughtClothes = [
+    "are not made to flatter your female body shape.",
+    "are pretty tight around your $butt.",
+    "don't exactly compliment your frame.",
+    "fit you a bit awkwardly.",
+    "look a bit comical on your female body.",
+    "feel way too big for you.",
+    "seem to sag in all the wrong places.",
+    "cling uncomfortably to your new curves, emphasizing your chest.",
+    "make you look like you're playing dress-up in someone else's clothes.",
+    "are loose in some places and embarrassingly tight in others.",
+    "hang awkwardly off your more delicate shoulders.",
+    "make you feel self-conscious, as they squeeze your chest uncomfortably.",
+    "are stretched tightly across your hips, leaving little to the imagination.",
+    "feel strange, pressing against curves you didn't have before.",
+    "ride up over your thighs, pulling in ways they never did before.",
+    "don't do anything to hide the unmistakably feminine silhouette of your body.",
+    "seem to highlight how different your body feels now.",
+    "feel bulky and ill-fitting, almost making you look like a child playing dress-up.",
+    "squeeze in some areas, while hanging loose in others — it's almost embarrassing.",
+    "feel rough against your softer, more sensitive skin.",
+    "pull tight around your bust, reminding you how much has changed.",
+    "are loose around the waist, but tight around your chest and hips.",
+    "seem to make your feminine body stand out even more with how badly they fit.",
+    "drape awkwardly over your hourglass shape, unable to hide your new curves.",
+    "are uncomfortably tight in unexpected places, pressing against unfamiliar softness.",
+    "make you feel strangely exposed, even though you're fully clothed.",
+    "highlight just how much you've changed — they barely fit anymore.",
+    "bunch up around your curves, making you more aware of your new shape.",
+    "emphasize just how much weight you've lost in some areas, but gained in others.",
+    "hang off you loosely in places they once fit snugly, and stretch tight where they never did before."
+  ];
+
+  const exampleStepSisShowerTease = [
+    "That girl-next-door body could make a lotta guys happy, just sayin'...",
+    "We totally look like sisters now, haha.",
+    "Them's some dick-suckin' lips, haha.",
+    "You're making me jealous...",
+    "All the guys are gonna wanna bang you, lol.",
+    "You look like a slut! Hahaha.",
+    "Wow, those curves really suit you... we should go to the mall later and get outfits to show 'em off!",
+    "Guess I can’t call you 'bro' anymore, huh? More like 'babe'!",
+    "Did you always have that... ass? Because I don't remember it looking like that!",
+    "I never thought I'd say this, but you might actually pull off the whole 'femme fatale' look.",
+    "Just wait until the guys at work see you now. They won't know what hit 'em!",
+    "You’re giving me some serious competition here, should I be worried?",
+    "You got all that body from a pill? Damn, is there one that can do help me?",
+    "Those thighs could crush a watermelon, but I bet they’d feel good wrapped around a guy’s head.",
+    "Looks like you've been practicing your 'feminine wiles' without me knowing, huh?",
+    "Hope you know how to handle all that attention you're gonna get!"
+  ];
+
+  const exampleCatcallBody = [
+    "Damn girl, I love your body. Everything about you... mmm.",
+    "$greeting that pornstar bod is driving me crazy.",
+    "$greeting everything about you is perfect, that body, that face, mmm.",
+    "$greeting your body is practically made for sex.",
+    "$greeting I love fucking girls with your body type.",
+    "$greeting you really got a beautiful body.",
+    "$greeting those curves are something else... can I get a closer look?",
+    "I can't help but notice how amazing your body looks in that outfit.",
+    "$greeting your hips could make a straight guy question his preferences.",
+    "Is it just me, or is your body begging for some attention tonight?",
+    "$greeting that silhouette is to die for. I can't stop staring.",
+    "Your body is like a work of art, and I'm here to admire it.",
+    "$greeting I can tell you work hard for that body; it's impressive!",
+    "I don't mean to be forward, but your figure is absolutely stunning.",
+    "$greeting I bet you turn heads everywhere you go, huh?",
+    "$greeting that ass should come with a warning label—too hot to handle!",
+  ];
+
+  const exampleCatcallFace = [
+    "You're so freaking gorgeous! Can I have your number?",
+    "$greeting your eyes are fucking *orgasmic.*",
+    "You look like you're a lot of fun.",
+    "$greeting you're such a genuine beauty.",
+    "$greeting you're such a goddess!",
+    "With looks like yours, you could easily be the sugar baby of a billionaire.",
+    "$greeting those lips are just begging to be kissed.",
+    "I can't believe how stunning you are; it's like you walked straight out of a dream.",
+    "$greeting your smile could light up the darkest room.",
+    "You have the kind of beauty that makes people stop in their tracks.",
+    "$greeting I've seen a lot of pretty faces, but yours is something special.",
+    "That flawless skin of yours should be illegal; it's mesmerizing!",
+    "$greeting I’d get lost in those eyes any day.",
+    "You must be a magician because every time I look at you, everyone else disappears.",
+    "$greeting your beauty is absolutely captivating.",
+    "Are you a model? Because you look like you belong on the cover of a magazine.",
+  ];
+
+  const exampleCatcallDirty = [
+    "I would dive in that pussy so deep I'd need scuba gear.",
+    "$greeting you're so sexy. Any guy would be so lucky to have you sit on his face.",
+    "$greeting I'd love to cum all over your cute, pretty face.",
+    "My god, the things I would do to *you*.",
+    "Would you like to help drain my balls?",
+    "Girls like you need to be *spanked*. Just saying.",
+    "$greeting I hope you brought soap, we're gonna need it after all the dirty things I'm gonna do to you.",
+    "If you keep looking at me like that, I might just have to take you home and fuck your brains out.",
+    "$greeting I’d love to find out just how many positions we can try tonight.",
+    "You look like you’d be a lot of fun in the bedroom... wanna test that theory?",
+    "$greeting do you believe in love at first sight, or should I pull my cock out and walk by again?",
+    "I can’t help but imagine how good you’d look with your legs wrapped around me.",
+    "You have that freaky look in your eyes that says you’re down for anything. Am I right?",
+    "$greeting I could get lost in that body... but I’d rather get lost inside it.",
+    "You’d be the perfect distraction for a long, wild night.",
+  ];
+
+  const exampleCatcallRace = [
+    "I'd love to see your _race pussy stretched around this dick.",
+    "$greeting I don't typically go for _race girls... but DAYUM.",
+    "With a body and face like yours! Fuck. We'd make some cute biracial babies.",
+    "$greeting I've always had a thing for _race girls!",
+    "$greeting you're so hot for a _race girl. Goddamn.",
+    "I don't normally go for _race girls, but you're HOT!",
+    "$greeting there's just something about a _race girl that drives me wild.",
+    "That _race body of yours is like a magnet for trouble... and I’m feeling *very* attracted.",
+    "$greeting you know, they say _race girls are the wildest in bed. Care to prove them right?",
+    "I’ve always wanted to see how a _race girl would handle someone like me.",
+    "$greeting damn, you’re the finest _race girl I’ve ever seen. Period.",
+    "They say _race girls have the softest lips... mind if I find out?",
+    "I don’t usually chase after _race girls, but you’re making me reconsider my type.",
+    "$greeting I bet you know exactly how to use that _race body of yours.",
+    "I heard _race girls have the best curves... and you’re definitely proving that true!",
+  ];
+
+  const exampleEventShopComment = [
+    "Whoa, that pill did *not* disappoint! Look at you, a total knockout.",
+    "Holy hell, you went from zero to a hundred real quick. Those tits are insane!",
+    "Damn, you were just a regular guy, but now... you're a smoking hot babe. Come here, gorgeous.",
+    "Fuck, that transformation was wild. You’ve got curves in all the right places now.",
+    "Damn, look at those Dick Sucking Lips. They look even better on you now, c'mere baby.",
+    "Wow, from a guy to a certified hottie... those hips were made to drive men wild.",
+    "I knew X-Change was good, but I didn’t think you’d turn out *this* good. Time to keep your promise.",
+    "Holy shit! Those TITS weren’t there a second ago. You look good enough to eat.",
+    "Damn, you went from being just another dude to a *total babe.* That face is perfection.",
+    "Fuck me, that ass is out of this world. Let’s not waste any more time, sweetheart.",
+    "Now that's what I call a *real* transformation... now down to the business, on your knees.",
+    "Look at you, a proper little sex kitten now... and I'm not about to let you off the hook.",
+    "Those curves weren't there a second ago... and now they're impossible to ignore.",
+    "You went from an average Joe to a bombshell babe... I bet you’ll know exactly what to do with that mouth.",
+    "Damn, I wasn't expecting *that* transformation. Alright, let’s get to the fun part, shall we?",
+  ];
+
+  const exampleEventShopThought = [
+    "*What a pig...*",
+    "*Geez, he's a jerk.*",
+    "*What an asshole!*",
+    "*What a tool.*",
+    "*What a piece of shit! He's not wrong though... and that thing looks massive!*",
+    "*Ugh that's really rude. Why would he say something like that?*",
+    "*Is he seriously saying that out loud?*",
+    "*Wow, way to make a girl feel cheap...*",
+    "*Does he seriously think I'd go for that?*",
+    "*Ugh, what a creep... but why is my body reacting this way?*",
+    "*God, he's disgusting... but he's not entirely wrong.*",
+    "*He’s such a sleaze... and yet, there's a thrill in his gaze.*",
+    "*I can't believe he just said that. What a douchebag!*",
+    "*Ugh, this guy has no shame... but I can't deny he’s got a point.*",
+    "*I knew he'd be bad, but not this bad... Why does this excite me?*",
+  ];
+
+  const examplePregnancy1stCheck = [
+    "You're not that far along yet... your belly is still mostly flat... for now.",
+    "You stare at yourself in the mirror, barely noticing any difference, but your breasts feel fuller, and your body is already starting to feel different.",
+    "Your jeans fit a little snugger than usual, and you can't help but wonder if it's just in your head.",
+    "There isn't a visible bump yet, but you catch yourself feeling a little more bloated, and your nipples seem more sensitive.",
+    "You touch your belly, feeling a strange sense of anticipation, but for now, you still look like your old self.",
+    "Your stomach looks the same, but you've noticed your appetite shifting, and your emotions feel a little closer to the surface.",
+    "You press down gently on your lower abdomen, wondering if you’re imagining the slight firmness beneath the surface.",
+    "It’s only been a few weeks, but you already feel a strange heaviness in your lower belly that wasn't there before.",
+    "Your breasts feel heavier, and you've been feeling tired more often, but there’s nothing visible on your stomach yet.",
+    "You can’t see anything yet, but the soreness in your chest and the slight nausea in the mornings are hard to ignore."
+  ];
+
+  const examplePregnancy2ndCheck = [
+    "You can't deny it, you're definitely starting to show. It feels so weird... the top of your stomach is hard, and the bottom is squishy.",
+    "There's no hiding it now—your belly has a small but noticeable curve. You find yourself running your hand over it absentmindedly.",
+    "Your clothes are getting tight around the waist, and you can feel a subtle firmness beneath your skin when you press down gently.",
+    "You've got a small bump, not enough for anyone else to notice yet, but you definitely feel it.",
+    "You look at your reflection, feeling both excited and uneasy as the changes become more apparent.",
+    "Your lower belly has taken on a distinct roundness, a visible sign of the life growing inside you.",
+    "Your favorite jeans refuse to button, forcing you to wear looser clothing that hides the early signs.",
+    "You notice a stranger in the mirror—a slight roundness forming just below your navel, making everything feel more real.",
+    "Your breasts are heavier, and your stomach is starting to protrude, making it impossible to ignore the physical changes.",
+    "A gentle, almost unnoticeable bump has started to form, but you can feel it every time you touch your abdomen."
+  ];
+
+  const examplePregnancyPrenatal = [
+    "You're already quite visibly pregnant. You have difficulty imagining how you'll look if you continue with the pregnancy.",
+    "The doctor measures your belly, noting that you're right on track. You can't help but stare at the ultrasound, seeing the undeniable proof of your pregnancy.",
+    "Your bump is obvious now, and the doctor reassures you that everything looks normal, but you can't help feeling overwhelmed as the reality sets in.",
+    "Your clothes have been replaced with maternity-friendly outfits, and seeing your reflection in the clinic's mirror sends a shiver down your spine.",
+    "The prenatal visit makes everything feel more real, and the doctor’s calm reassurance contrasts with your racing thoughts as you watch the monitor.",
+    "The medical exam confirms what your body has been telling you—you are unmistakably pregnant, and there's no going back.",
+    "You watch the ultrasound screen with a mix of wonder and fear as the doctor points out the small but undeniable movements.",
+    "The sound of the heartbeat echoes in your mind as you stare at the gentle swell of your stomach, realizing just how much your life has changed.",
+    "Your body is no longer just your own, and the growing bump makes it clear that you are well into the first trimester.",
+    "The doctor smiles as they measure your expanding belly, while you find yourself nervously adjusting your maternity clothes."
+  ];
+
+  const exampleCallFatherShow = [
+    "You're gorgeous. I wonder how those tits'll look once they're full of milk, haha.",
+    "Your body is fucking incredible, there's no denying it. You've taken such good care of your body, too bad my kid's gonna come along and WRECK it! Haha.",
+    "I loved breeding that pussy, but your ass is damn good, too.",
+    "Damn, I bet you didn't expect to get knocked up, did you? But hey, at least it gave me another excuse to see that hot body of yours.",
+    "You were stupid enough to let me fuck you raw, but I've got to admit, watching you try to look sexy while carrying my kid is kind of hot.",
+    "Let’s see that perfect body one more time before it’s ruined. Come on, show me what I'm paying for.",
+    "You look incredible, even with my kid in there. Can't wait to see how you move with that belly getting bigger.",
+    "I bet you never thought you'd be begging me like this, huh? Too bad, it’s the only way you’re getting my money.",
+    "Let’s face it, sweetheart, you're only good for one thing. And from where I'm standing, you still look like you'd be damn good at it.",
+    "Seeing you all desperate like this, and still trying to look sexy, is even better than I imagined. Keep it up, and maybe I'll actually help you out."
+  ];
+
+  const exampleCallFatherBJ = [
+    "You're gorgeous... and you'll look even prettier, sucking dick.",
+    "You're absolutely glowing. You'll look much better with those pretty lips wrapped around a cock.",
+    "You've always been good at this. Guess being pregnant hasn't slowed you down one bit.",
+    "Look at you, on your knees, knowing it's the only way you'll get what you want from me.",
+    "I knew you wouldn't turn me down, not when you need my money this bad. Now, show me how much you want it.",
+    "Seeing you desperate like this just makes me want to keep you here longer. You're even sexier when you beg.",
+    "It’s cute how you’re trying so hard for my help, with my cock in your mouth. Keep going, and I might just reward you.",
+    "You've got that pregnant glow, but you still look best on your knees. Keep it up, and we'll see if you're worth my time.",
+    "You were always good with that mouth, and now it’s the only thing between you and my wallet.",
+    "Suck it like you mean it, sweetheart. You’ve got a baby to think about, right? Better make it worth my while."
+  ];
+
+  const exampleHairRed = [
+    "auburn", 
+    "ginger", 
+    "copper", 
+    "scarlet", 
+    "strawberry", 
+    "crimson", 
+    "fiery", 
+    "burnt orange", 
+    "cherry", 
+    "rusty"
+  ];
+  
+  const exampleHairBlonde = [
+    "honey", 
+    "platinum", 
+    "golden", 
+    "butterscotch", 
+    "sandy", 
+    "flaxen", 
+    "sun-kissed", 
+    "champagne", 
+    "wheat", 
+    "ivory"
+  ];
+  
+  const exampleHairBlack = [
+    "raven", 
+    "jet-black", 
+    "onyx", 
+    "midnight", 
+    "charcoal", 
+    "coal", 
+    "ebony", 
+    "sable", 
+    "ink-colored", 
+    "pitch"
+  ];
+  
+  const exampleHairBrown = [
+    "chestnut", 
+    "hazel", 
+    "mahogany", 
+    "mocha", 
+    "espresso", 
+    "cinnamon", 
+    "brunette", 
+    "maple", 
+    "chocolate", 
+    "walnut"
+  ];
+  
+  const exampleHairGray = [
+    "silver", 
+    "ash", 
+    "pewter", 
+    "platinum", 
+    "smoky", 
+    "steel", 
+    "frost", 
+    "slate", 
+    "cloudy", 
+    "charcoal-gray"
+  ];
+  
+  const exampleHairColored = [
+    "neon", 
+    "vivid", 
+    "pastel", 
+    "dyed", 
+    "bright", 
+    "intense", 
+    "muted", 
+    "vibrant", 
+    "highlighter", 
+    "unnatural"
+  ];
+
+  const exampleBruceTF = [
+    `The moment the transformation kicks in, you feel a delicious thrill run through your body, as if each nerve ending is awakening to a new reality. Your muscles soften and give way to enticing curves, your once broad shoulders narrowing as your waist begins to cinch inwards. You catch Bruce’s gaze, a wicked grin spreading across his face as he leans in closer, reveling in the spectacle before him.
+
+    "Look at you, all soft and helpless," Bruce coos mockingly, his voice low and dripping with delight. "Guess those boyish charms are taking a backseat to a nice set of tits, huh? I can’t wait to see how many drinks you’ll need just to keep those new girls in check." He lingers over your blossoming form, eyes glimmering with lust as your hips widen and your chest swells.
+
+    As your transformation concludes, he steps closer, invading your personal space with an unmistakable hunger. "You’re going to make a fine little plaything, sweetheart," he leers, a dark satisfaction in his tone. "I bet all the guys here will be lining up for a taste of that sweet new body."`,
+
+    `You can feel the heat radiating from your core as the transformation grips you, reshaping every inch of your being. Your once-flat chest begins to swell with impressive curves, filling out your shirt to a point of near explosion. Bruce’s eyes widen, and he can’t help but laugh, a sound filled with delight and a hint of malice as he enjoys every moment of your humiliation.
+
+    "Well, well, looks like the new you has a lot more to offer," he sneers, his voice low and sultry. "I hope you’re ready to flaunt those juicy melons because you’re gonna get a lot of attention tonight. Just imagine the stares as you strut around, practically begging for someone to take a bite." His eyes sparkle with mischief as he drinks in the sight of your changing form, reveling in your plight.
+
+    The crowd’s whispers swirl around you, but all you can focus on is Bruce, leaning closer, the warmth of his breath ghosting over your skin. "With those tits, you might want to invest in a support group," he jokes, leering at your breasts. "They’re gonna be hard to keep under wraps — especially when you start getting all the offers."`,
+
+    `As the transformation takes hold, a powerful rush of sensations envelops you. Your chest begins to blossom with ample breasts, expanding beyond your expectations, causing you to gasp at the sudden weight. Bruce watches intently, a hungry glint in his eyes as he takes in every detail, clearly enjoying the show unfolding before him.
+
+    "Holy shit, those are some serious knockers!" he hollers, his laughter ringing out like a wolf's howl. "Looks like you’re going to need a whole new set of clothes to fit that new chest. Maybe something a bit tighter to showcase those beauties? I mean, damn, they’re practically begging for attention!" His voice oozes with playful derision, a grin plastered on his face as he circles you like a predator.
+
+    "Just imagine the attention you’re going to get," he continues, his voice low and teasing. "I bet you’ll have guys lining up to touch those perfect tits, and who could blame them? You’ve got the goods, darling, and Bruce here is ready to be your biggest fan."`,
+    
+    `The transformation begins slowly, but soon it becomes overwhelming as your body reshapes itself in ways you never anticipated. Your chest swells, and you feel the heavy weight of your new breasts pulling at your shirt, making it tight and uncomfortable. Bruce stands close, his eyes gleaming with excitement as he drinks in your new form, completely unabashed by the spectacle.
+
+    "Damn, look at those bad boys!" he laughs, unabashedly leering at your transformation. "I bet those will give the bar a real show, huh? You’re practically a walking billboard for every guy's fantasy. Just wait until the guys see you — they won’t be able to resist!" His tone drips with both mockery and genuine appreciation for the changes you’re undergoing.
+
+    As you try to regain your composure, Bruce steps closer, his voice low and sultry. "With those curves, sweetheart, you might just want to start practicing your ‘come hither’ look. You’re gonna need it with all the attention you’re about to attract!"`,
+
+    `The moment the transformation kicks in, you feel a delicious thrill run through your body, as if each nerve ending is awakening to a new reality. Your muscles soften and give way to enticing curves, your once broad shoulders narrowing as your waist begins to cinch inwards. You catch Bruce’s gaze, a wicked grin spreading across his face as he leans in closer, reveling in the spectacle before him.
+
+    "Look at you, all soft and helpless," Bruce coos mockingly, his voice low and dripping with delight. "Guess those boyish charms are taking a backseat to a nice set of tits, huh? I can’t wait to see how many drinks you’ll need just to keep those new girls in check." He lingers over your blossoming form, eyes glimmering with lust as your hips widen and your chest swells.
+
+    As your transformation concludes, he steps closer, invading your personal space with an unmistakable hunger. "You’re going to make a fine little plaything, sweetheart," he leers, a dark satisfaction in his tone. "I bet all the guys here will be lining up for a taste of that sweet new body."`,
+
+    `Your body tingles with energy as the transformation starts, reshaping you in ways you never thought possible. The fabric of your clothes strains against your changing form, the swell of your chest demanding attention. Bruce’s predatory gaze never wavers, and he smirks as he watches you morph into a figure of desire.
+
+    "Look at you now! All those masculine features melting away," he drawls, his voice thick with satisfaction. "Those girls you’re sporting are going to get you all kinds of attention tonight, especially when you strut your stuff. You might even want to start practicing that sultry walk!" His laughter is boisterous, ringing through the bar as he leans closer, clearly enjoying your transformation.
+
+    He revels in the scene, leaning in with a devilish grin. "You’d better get used to the compliments, darling," he teases. "With those new assets, you’ll have every guy in the room at your feet, and I can’t wait to see you bask in it."`,
+
+    `The transformation unfolds like a sensual dance, your body yielding and reshaping itself with intoxicating grace. You feel your chest swelling, the new weight pressing against the fabric of your shirt, and Bruce’s eyes are alight with excitement as he observes every inch of your change. 
+
+    "Damn, look at those curves," he drawls, a low chuckle escaping his lips. "You’re not just turning into a woman; you’re becoming a real knockout. I bet those bad boys are gonna turn some heads tonight!" He steps forward, his gaze sweeping over your body with a mix of lust and mockery.
+
+    "Get ready for the attention, sweetheart," Bruce continues, a predatory glint in his eyes. "You’re gonna need it with that body. Everyone’s going to want a piece of the new you, and I plan on making sure you know it."`
+  ];
+  
+
+  
+  
+  
  
   let mcfzip = '';
 
@@ -516,6 +1306,15 @@ document.addEventListener("DOMContentLoaded", function () {
     return input.trim() === "";
   };
 
+  // Generate an array for video filenames based on prefixes and counts
+  function getVideoArray(prefix, count) {
+    const videos = [];
+    for (let i = 1; i <= count; i++) {
+        videos.push(`${prefix} ${i}`);
+    }
+    return videos;
+  };
+
   // Reusable function to handle tagging events
   function handleTagInput(inputElement, datalistElement, addTagFunction) {
     inputElement.addEventListener("input", function () {
@@ -603,15 +1402,14 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // Extract Tags from a Container
-function extractTags(container) {
-  const tags = Array.from(container.querySelectorAll(".tag")).map((tag) => {
+  function extractTags(container) {
+    const tags = Array.from(container.querySelectorAll(".tag")).map((tag) => {
     // Remove only the trailing "x" if it's present and is part of a remove button
     const textContent = tag.textContent.trim();
     return textContent.endsWith("x") ? textContent.slice(0, -1).trim() : textContent;
   });
   return tags;
   };
-
 
   // Add Tags to a Tag Container
   function addLine(tagInput, tagContainer) {
@@ -627,9 +1425,15 @@ function extractTags(container) {
     if (tagText) {
       // Check if the tag already exists
       const existingTags = Array.from(tagContainer.getElementsByClassName("tag"));
-      let tagExists = existingTags.some(
-        (tag) => tag.textContent.replace("x", "").trim() === tagText
-      );
+      let tagExists = existingTags.some((tag) => {
+        // Only remove the "x" if it's a removal button within the tag span
+        const clonedTag = tag.cloneNode(true);
+        const removeButton = clonedTag.querySelector(".remove-tag");
+        if (removeButton) {
+          removeButton.remove(); // Remove the button text "x" to accurately compare the tag text
+        }
+        return clonedTag.textContent.trim() === tagText;
+      });
   
       if (!tagExists) {  
         // Add the tag to the container
@@ -654,6 +1458,63 @@ function extractTags(container) {
     }
   };
 
+  // Add Paragraphs to a Container Without Trimming Whitespace
+  function addParagraph(paragraphInput, paragraphContainer) {
+    let paragraphText;
+
+    // Check if paragraphInput is a string or an element
+    if (typeof paragraphInput === "string") {
+      paragraphText = paragraphInput; // Use the string directly without trimming
+    } else {
+      paragraphText = paragraphInput.value; // Use the input element's value without trimming
+    }
+
+    if (paragraphText) {
+      // Check if the paragraph already exists
+      const existingParagraphs = Array.from(paragraphContainer.getElementsByClassName("paragraph"));
+      let paragraphExists = existingParagraphs.some((paragraph) => {
+        // Only remove the "x" if it's a removal button within the paragraph div
+        const clonedParagraph = paragraph.cloneNode(true);
+        const removeButton = clonedParagraph.querySelector(".remove-paragraph");
+        if (removeButton) {
+          removeButton.remove(); // Remove the button text "x" to accurately compare the paragraph text
+        }
+        return clonedParagraph.textContent === paragraphText;
+      });
+
+      if (!paragraphExists) {
+        // Add the paragraph to the container using a <div>
+        const paragraphDiv = document.createElement("div");
+        paragraphDiv.textContent = paragraphText;
+        paragraphDiv.className = "paragraph";
+
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "x";
+        removeBtn.className = "remove-paragraph";
+        paragraphDiv.appendChild(removeBtn);
+        paragraphContainer.appendChild(paragraphDiv);
+
+        // Clear the input
+        paragraphInput.value = "";
+
+        // Handle paragraph removal
+        removeBtn.addEventListener("click", function () {
+          paragraphDiv.remove();
+        });
+      }
+    }
+  };
+
+  // Extract Paragraph from a Container
+  function extractParagraph(container) {
+    const paragraphs = Array.from(container.querySelectorAll(".paragraph")).map((paragraph) => {
+    // Remove only the trailing "x" if it's present and is part of a remove button
+    const textContent = paragraph.textContent.trim();
+    return textContent.endsWith("x") ? textContent.slice(0, -1).trim() : textContent;
+  });
+  return paragraphs;
+  };
+
   function generateExample(exampleList, container) {
     const existingTags = Array.from(container.getElementsByClassName("tag")).map(tag => {
         const tagText = tag.cloneNode(true);
@@ -663,8 +1524,6 @@ function extractTags(container) {
     });
 
     const availableTags = exampleList.filter(tag => !existingTags.includes(tag));
-    console.log("Existing Tags:", existingTags);
-    console.log("Available Tags:", availableTags);
 
     if (availableTags.length > 0) {
         const randomTag = availableTags[Math.floor(Math.random() * availableTags.length)];
@@ -675,13 +1534,221 @@ function extractTags(container) {
     }
   };
 
-  function generateExampleSingle(exampleList, field) {
-    const randomValue = exampleList[Math.floor(Math.random() * exampleList.length)];
+  function generateExampleParagraph(exampleList, container) {
+    const existingTags = Array.from(container.getElementsByClassName("tag")).map(tag => {
+        const tagText = tag.cloneNode(true);
+        // Remove the remove button (the "x")
+        tagText.removeChild(tagText.querySelector(".remove-tag"));
+        return tagText.textContent.trim();
+    });
 
-    field.value = randomValue;
+    const availableTags = exampleList.filter(tag => !existingTags.includes(tag));
+
+    if (availableTags.length > 0) {
+        const randomTag = availableTags[Math.floor(Math.random() * availableTags.length)];
+        addParagraph(randomTag, container);
+        console.log("Added Tag:", randomTag);
+    } else {
+        console.log("No available tags to add");
+    }
   };
 
+  function generateTagline(hair, boobs, butt, body, race) {
+    // Define options based on player input
+    const hairOptions = {
+        "red": hairRed,
+        "blonde": hairBlonde,
+        "black": hairBlack,
+        "brown": hairBrown,
+        "gray": hairGray,
+        "colored": hairColored
+    };
+
+    const boobsOptions = {
+        "A": boobsSmall,
+        "B": boobsSmall,
+        "C": boobsMedium,
+        "D": boobsMedium,
+        "E": boobsBig,
+        "F": boobsBig,
+        "G": boobsBig,
+        "H": boobsBig,
+        "I": boobsBig,
+        "J": boobsBig
+    };
+
+    const buttOptions = {
+        "slim": buttSlim,
+        "bubble": buttBubble,
+        "big": buttBig
+    };
+
+    const bodyOptions = {
+        "slim": bodySlim,
+        "average": bodyAvg,
+        "voluptuous": bodyVol
+    };
+
+    const raceOptions = {
+        "white": raceWhite,
+        "black": raceBlack,
+        "latin": raceLatin,
+        "asian": raceAsian
+    };
+
+    // Randomly select based on the player's choices
+    const selectedRace = raceOptions[race][Math.floor(Math.random() * raceOptions[race].length)];
+
+    // Randomly choose hair, boobs, butt, or body for variety
+    const descriptorType = Math.floor(Math.random() * 4);
+    let selectedDescriptor;
+
+    switch (descriptorType) {
+      case 0:
+        selectedDescriptor = hairOptions[hair][Math.floor(Math.random() * hairOptions[hair].length)];
+        break;
+      case 1:
+        selectedDescriptor = boobsOptions[boobs][Math.floor(Math.random() * boobsOptions[boobs].length)];
+        break;
+      case 2:
+        selectedDescriptor = buttOptions[butt][Math.floor(Math.random() * buttOptions[butt].length)];
+        break;
+      case 3:
+        selectedDescriptor = bodyOptions[body][Math.floor(Math.random() * bodyOptions[body].length)]
+    }
+
+    // Construct the tagline
+    return ` ${selectedRace} with ${selectedDescriptor}`;
+ };
+
+ function generateTagOld(race) {
+  const raceOptions = { white: raceWhite, black: raceBlack, latin: raceLatin, asian: raceAsian };
+  const selectedRace = raceOptions[race][Math.floor(Math.random() * raceOptions[race].length)];
+
+  // Phrases for how they refer to the previous identity
+  const referencePhrases = [
+    "he knew you as,",
+    "you used to be,",
+    "he remembers you as,",
+    "he once knew you as,",
+    "you were to him as,",
+    "he thought of you as,",
+    "you once were,"
+  ];
+
+  // Randomly select a reference phrase
+  const selectedPhrase = referencePhrases[Math.floor(Math.random() * referencePhrases.length)];
+
+  // Generate a concise description
+  return `${selectedRace} ${selectedPhrase}`;
+  };
+
+  function generateTagNew(body, race) {
+    const bodyOptions = {
+        "slim": bodySlim,
+        "average": bodyAvg,
+        "voluptuous": bodyVol
+    };
+
+    const raceWhite = [
+      "snow-white beauty",
+      "total all-American babe",
+      "porcelain-skinned goddess",
+      "classic white bombshell",
+      "fair-skinned enchantress",
+      "ivory-skinned doll",
+      "angel-faced cutie",
+      "radiant pale goddess"
+    ];
   
+    const raceBlack = [
+      "dark-skinned queen",
+      "caramel-toned goddess",
+      "dark-skinned seductress",
+      "rich chocolate beauty",
+      "stunning ebony enchantress",
+      "radiant black pearl",
+      "gorgeous mocha temptress",
+      "captivating ebony vision",
+      "dazzling midnight beauty",
+      "striking dark beauty"
+    ];
+  
+    const raceLatin = [
+      "spicy Latina bombshell",
+      "sultry caramel beauty",
+      "sexy brown-skinned Latina",
+      "curvy Latina",
+      "sultry Latina temptress",
+      "fiery Latina diva",
+      "captivating Latina vision",
+      "charming Latina darling",
+      "radiant Latin enchantress"
+    ];
+  
+    const raceAsian = [
+      "captivating Asian beauty",
+      "petite and seductive Asian doll",
+      "seductive Asian goddess",
+      "delicate porcelain-skinned Asian",
+      "captivating jade-skinned goddess",
+      "charming Asian sweetheart",
+      "graceful Asian delight",
+      "radiant silk-skinned beauty"
+    ];
+
+    const raceOptions = {
+        "white": raceWhite,
+        "black": raceBlack,
+        "latin": raceLatin,
+        "asian": raceAsian
+    };
+
+    // Randomly select based on the player's choices
+    const selectedBody = bodyOptions[body][Math.floor(Math.random() * bodyOptions[body].length)];
+    const selectedRace = raceOptions[race][Math.floor(Math.random() * raceOptions[race].length)];
+
+    // Construct the tagline
+    return ` ${selectedRace} with ${selectedBody}`;
+ };
+
+ function generateExampleForHairColor(hairColor, container) {
+  // Organize the hair color options
+  const hairColorOptions = {
+    red: exampleHairRed,
+    blonde: exampleHairBlonde,
+    black: exampleHairBlack,
+    brown: exampleHairBrown,
+    gray: exampleHairGray,
+    colored: exampleHairColored
+  };
+
+  const exampleList = hairColorOptions[hairColor.toLowerCase()] || [];
+
+  generateExample(exampleList, container);
+  };
+
+
+  function generateExampleForHairTexture(hairColor, container) {
+    const hairTextureAdjectives = [
+      "naturally curly",
+      "silky",
+      "bright",
+      "wavy",
+      "shimmering",
+      "flowing",
+      "smooth",
+      "soft",
+      "thick",
+      "lustrous"
+    ];
+  
+    // Choose a random adjective and combine with the hair color
+    const adjective = hairTextureAdjectives[Math.floor(Math.random() * hairTextureAdjectives.length)];
+    const texturedHairExample = `${adjective} ${hairColor}`;
+  
+    generateExample([texturedHairExample], container);
+  };
 
   // #endregion --- Functions - General
 
@@ -972,6 +2039,7 @@ function extractTags(container) {
     const name = mcfCharacterName.value.trim() || "character_id";
 
     mcfShowerPrefix.value = "shower"
+    mcfMorningPrefix.value = "morning"
     mcfBathroomPrefix.value = "bathroom"
     mcfCleaningPrefix.value = "cleaning"
     mcfMasturbatePrefix.value = "masturbate"
@@ -1003,9 +2071,28 @@ function extractTags(container) {
     tooltipSEPre1.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp4`);
     tooltipSEPre2.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp4`);
     tooltipSEPre3.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp4`);
-    tooltipShower.setContent(`This is the prefix for your showering videos.<br> By default it should just be 'shower'.<br><br> This goes in the chores folder: img/scenes/characters/${name}/chores/<br><br> If you only have one video, it should just be "shower.mp4"`)
-    tooltipBathroom.setContent(`This is the prefix for your Bathroom videos. This would be your video that plays in the morning. Your character might be getting dressed or putting on makeup in the mirror...<br> By default it should just be 'bathroom'.<br><br> This goes in the chores folder: img/scenes/characters/${name}/chores/<br><br> If you only have one video, it should just be "bathroom.mp4"`)
-    tooltipCleaning.setContent(`This is the prefix for your Cleaning videos. This would be for tidying up around the house, washing dishes, doing laundry, etc<br> By default it should just be 'cleaning'.<br><br> This goes in the chores folder: img/scenes/characters/${name}/chores/<br><br> If you only have one video, it should just be "cleaning.mp4"`)
+    tooltipShower.setContent(`This is the prefix for your Showering videos.<br><br> This goes in the chores folder: img/scenes/characters/${name}/chores/<br><br> If you only have one video, it should still be "${mcfShowerPrefix.value} 1.mp4"`)
+    tooltipMorning.setContent(`This is the prefix for your Morning videos. This would be videos that play in the morning. Your character might be getting dressed, making breakfast, etc...<br><br> This goes in the chores folder: img/scenes/characters/${name}/chores/<br><br> If you only have one video, it should still be "${mcfMorningPrefix.value} 1.mp4"`)
+    tooltipBathroom.setContent(`This is the prefix for your Bathroom videos. This would be videos that play in the morning when you are in the bathroom, getting dressed or putting on makeup in the mirror, etc...<br><br> This goes in the chores folder: img/scenes/characters/${name}/chores/<br><br> If you only have one video, it should still be "${mcfBathroomPrefix.value} 1.mp4"`)
+    tooltipCleaning.setContent(`This is the prefix for your Cleaning videos. This would be for tidying up around the house, washing dishes, doing laundry, etc.<br><br> This goes in the chores folder: img/scenes/characters/${name}/chores/<br><br> If you only have one video, it should still be "${mcfCleaningPrefix.value} 1.mp4"`)
+    tooltipSEMasturbate.setContent(`Location: aud/se/sex/loops/masturbate/<br><br>Files: ${name}.mp3<br><br>This is hardcoded, only 1 file and it has to be named like this.`);
+    tooltipSECumMoan.setContent(`Location: aud/se/sex/orgasm/cum/<br><br>Files: ${name}.mp3<br><br>This is hardcoded, only 1 file and it has to be named like this.`);
+    tooltipSEFondle.setContent(`Location: aud/se/sex/loops/fondling/<br><br>Files: ${name}.mp3<br><br>This is hardcoded, only 1 file and it has to be named like this.`);
+    tooltipSEOrgasmSolo.setContent(`Location: aud/se/sex/orgasm/orgasm/<br><br>Files: ${name} solo.mp3<br><br>This is hardcoded, only 1 file and it has to be named like this.`);
+    tooltipSELicking.setContent(`Location: aud/se/sex/loops/licking/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc`);
+    tooltipSEBJ.setContent(`Location: aud/se/sex/loops/bj/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc`);
+    tooltipSEBJRough.setContent(`Location: aud/se/sex/loops/bj rough/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc`);
+    tooltipSEDoggy.setContent(`Location: aud/se/sex/loops/doggy/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc`);
+    tooltipSERiding.setContent(`Location: aud/se/sex/loops/riding/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc`);
+    tooltipSEMissionary.setContent(`Location: aud/se/sex/loops/masturbate/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc`);
+    tooltipSEOrgasm.setContent(`Location: aud/se/sex/orgasm/orgasm/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc`);
+    tooltipSEPenetration.setContent(`Location: aud/se/sex/penetration/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc`);
+    tooltipSECumDynamic.setContent(`Location: aud/se/sex/orgasm/cum/dynamic/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc`);
+    tooltipSECumPullOut.setContent(`Location: aud/se/sex/orgasm/cum/dynamic/<br><br>Files: ${name} body 1.mp3<br>${name} body 2.mp3<br>${name} body 3.mp3, etc`);
+    tooltipSECumCreampie.setContent(`Location: aud/se/sex/orgasm/cum/dynamic/<br><br>Files: ${name} creampie 1.mp3<br>${name} creampie 2.mp3<br>${name} creampie 3.mp3, etc`);
+    tooltipSECumTits.setContent(`Location: aud/se/sex/orgasm/cum/dynamic/<br><br>Files: ${name} tits 1.mp3<br>${name} tits 2.mp3<br>${name} tits 3.mp3, etc`);
+    tooltipSECumMouth.setContent(`Location: aud/se/sex/orgasm/cum/dynamic/<br><br>Files: ${name} mouth 1.mp3<br>${name} mouth 2.mp3<br>${name} mouth 3.mp3, etc`);
+    tooltipSECumFace.setContent(`Location: aud/se/sex/orgasm/cum/dynamic/<br><br>Files: ${name} face 1.mp3<br>${name} face 2.mp3<br>${name} face 3.mp3, etc`);
 
     // Update directory paths
     mcfDoggyPath.value = `${name}/sex/doggy/`;
@@ -1250,6 +2337,8 @@ function extractTags(container) {
 
   // For testing twee
   function testTwee() {
+    const characterName = mcfCharacterName.value;
+
 
     console.log(tweeContent)
   };
@@ -1274,20 +2363,9 @@ function extractTags(container) {
     const heightText = convertHeightToText();
     const weightLB = mcfCharacterWeightLB.value;
     const weightKG = mcfCharacterWeightKG.value;
-    const tagline = mcfCharacterTagline.value;
-    const tagOld = mcfCharacterTagOld.value;
-    const tagNew = mcfCharacterTagNew.value;
     const makeupFile = mcfMakeupPath.value;
     const gymType = mcfGymType.value;
-    const eventComment = mcfEventShopComment.value;
-    const eventThought = mcfEventShopThought.value;
-    const pregnancy1stCheck = mcfPregnancy1stCheckInput.value;
-    const pregnancy2ndCheck = mcfPregnancy2ndCheckInput.value;
-    const pregnancyPrenatalCheck = mcfPregnancyPrenatalInput.value;
-    const callFatherShow = mcfCallFatherShowInput.value;
-    const callFatherBJ = mcfCallFatherBJInput.value;
     const grope = document.querySelector('input[name="mcfGropeRadio"]:checked').value;
-
 
     // Containers
     const describeTransform = extractTags(mcfDescribeTransformationContainer);
@@ -1301,11 +2379,28 @@ function extractTags(container) {
     const describeHairTexture = extractTags(mcfDescribeHairTextureContainer);
     const hairstyles = extractTags(mcfHairstylesContainer);
     const stepSisTease = extractTags(mcfStepSisShowerTeaseContainer);
+    const tagline = extractTags(mcfCharacterTaglineContainer);
+    const tagOld = extractTags(mcfCharacterTagOldContainer);
+    const tagNew = extractTags(mcfCharacterTagNewContainer);
+    const shopComment = extractTags(mcfEventShopCommentContainer);
+    const shopThought = extractTags(mcfEventShopThoughtContainer);
     const catcallBody = extractTags(mcfCatcallBodyContainer);
     const catcallFace = extractTags(mcfCatcallFaceContainer);
     const catcallDirty = extractTags(mcfCatcallDirtyContainer);
     const catcallRace = extractTags(mcfCatcallRaceContainer);
     const pregnancyWeeks = extractTags(mcfPregnancyWeeksContainer);
+    const pregnancy1st = extractTags(mcfPregnancy1stCheckContainer);
+    const pregnancy2nd = extractTags(mcfPregnancy2ndCheckContainer);
+    const pregnancyPrenatal = extractTags(mcfPregnancyPrenatalContainer);
+    const fatherShow = extractTags(mcfCallFatherShowContainer);
+    const fatherBJ = extractTags(mcfCallFatherBJContainer);
+    const bruceTF = extractParagraph(mcfBruceTFContainer);
+
+    // Random Descriptions
+    const randomHairTexture = describeHairTexture[Math.floor(Math.random() * describeHairTexture.length)] || "long";
+    const randomHairColor = describeHairColor[Math.floor(Math.random() * describeHairColor.length)] || hairColor;
+    const randomBodyDescription = describeBody[Math.floor(Math.random() * describeBody.length)] || "sexy, feminine";
+    const randomPetName = petNames[Math.floor(Math.random() * petNames.length)];
 
     // Paths
     const doggyPath = mcfDoggyPath.value;
@@ -1329,6 +2424,7 @@ function extractTags(container) {
     const pulloutButtPrefix = mcfPullOutButtVidPrefix.value;
     const pulloutTitsPrefix = mcfPullOutTitsVidPrefix.value;
     const showerPrefix = mcfShowerPrefix.value;
+    const morningPrefix = mcfMorningPrefix.value;
     const bathroomPrefix = mcfBathroomPrefix.value;
     const cleaningPrefix = mcfCleaningPrefix.value;
     const masturbatePrefix = mcfMasturbatePrefix.value;
@@ -1345,9 +2441,6 @@ function extractTags(container) {
     const rhythmArrayOral = [];
     const tagArrayPullout = [];
     const timingArrayPenetration = [];
-    const tagArrayPulloutBody = [];
-    const tagArrayPulloutButt = [];
-    const tagArrayPulloutTits = [];
 
     // Lines
     const doggyLines = [];
@@ -1377,6 +2470,7 @@ function extractTags(container) {
     const pulloutButtVidInt = parseInt(mcfPullOutButtVid.value) || 0;
     const pulloutTitsVidInt = parseInt(mcfPullOutTitsVid.value) || 0;
     const showerVidInt = parseInt(mcfShowerVid.value) || 0;
+    const morningVidInt = parseInt(mcfMorningVid.value) || 0;
     const bathroomVidInt = parseInt(mcfBathroomVid.value) || 0;
     const cleaningVidInt = parseInt(mcfCleaningVid.value) || 0;
     const masturbateVidInt = parseInt(mcfMasturbateVid.value) || 0;
@@ -1415,6 +2509,95 @@ function extractTags(container) {
       return;
     }
 
+    if (!bust || 
+      !heightIN || 
+      !heightCM || 
+      !weightLB || 
+      !weightKG
+    ) {
+      console.error("Character Information fields are required.");
+      alert("Character Information fields are required.");
+      return;
+    }
+
+    if (describeBoobs.length === 0 ||
+      describeBody.length === 0 ||
+      describeButt.length === 0 ||
+      describeTransform.length === 0 ||
+      thoughtClothes.length === 0 ||
+      examineSelfReluctant.length === 0 ||
+      examineSelfConfident.length === 0
+    ) {
+      console.error("Character Description fields are required.");
+      alert("Character Description fields are required.");
+      return;
+    }
+
+    if (describeHairColor.length === 0 ||
+      describeHairTexture.length === 0 ||
+      hairstyles.length === 0 
+    ) {
+      console.error("Character Hair fields are required.");
+      alert("Character Hair fields are required.");
+      return;
+    }
+
+    if (tagline.length === 0 ||
+      tagOld.length === 0 ||
+      tagNew.length === 0
+    ) {
+      console.error("New-U fields are required.");
+      alert("New-U fields are required.");
+      return;
+    }
+
+    if (stepSisTease.length === 0 ||
+      !makeupFile ||
+      showerVidInt === 0 ||
+      cleaningVidInt === 0 ||
+      bathroomVidInt === 0
+    ) {
+      console.error("Home fields are required.");
+      alert("Home fields are required.");
+      return;
+    }
+
+    if (masturbateVidInt === 0) {
+      console.error("Masturbation fields are required."); 
+      alert("Masturbation fields are required.");
+      return;
+    }
+
+    if (shopComment.length === 0 ||
+      shopThought.length === 0
+    ) {
+      console.error("Pharmacist Event fields are required.");
+      alert("Pharmacist Event fields are required.");
+      return;
+    }
+
+    if (catcallBody.length === 0 ||
+      catcallFace.length === 0 ||
+      catcallDirty.length === 0 ||
+      catcallRace.length === 0
+    ) {
+      console.error("Catcall fields are required.");
+      alert("Catcall fields are required.");
+      return;
+    }
+
+    if (pregnancyWeeks.lenth === 0 || 
+      pregnancy1st.length === 0 ||
+      pregnancy2nd.length === 0 ||
+      pregnancyPrenatal.length === 0 ||
+      fatherShow.length === 0 ||
+      fatherBJ.length === 0
+    ) {
+      console.error("Pregnancy fields are required.");
+      alert("Pregnancy fields are required.");
+      return;
+    }
+
     if (doggyVidInt === 0 || doggyInsertImgInt === 0 || doggyMoanImgInt === 0) {
       console.error("Doggy fields are required."); 
       alert("Doggy fields are required.");
@@ -1439,14 +2622,20 @@ function extractTags(container) {
       return;
     }
 
+    if (facialVidInt === 0) {
+      console.error("Facial fields are required."); 
+      alert("Facial fields are required.");
+      return;
+    }
+
 
     // Collect tag data from Transactional Doggy
     const doggyTags = collectTags(mcfDoggyContainer, mcfDoggyVidPrefix);
 
     doggyTags.forEach(({ videoIndex, tags, rhythm }) => {
       const tagsString = tags.join('","');
-      doggyLines.push(`\n            "${doggyPath}${doggyVidPrefix} ${videoIndex}", (a:"${tagsString}")`);
-      doggyRhythmLines.push(`\n            "${doggyPath}${doggyVidPrefix} ${videoIndex}", ${rhythm}`);
+      doggyLines.push(`\n        "${doggyPath}${doggyVidPrefix} ${videoIndex}", (a:"${tagsString}")`);
+      doggyRhythmLines.push(`\n        "${doggyPath}${doggyVidPrefix} ${videoIndex}", ${rhythm}`);
       })
     tagArrayDoggy.push(doggyLines.join(', '));
     rhythmArrayDoggy.push(doggyRhythmLines.join(', '));    
@@ -1457,7 +2646,7 @@ function extractTags(container) {
 
     facefuckTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
-        facefuckLines.push(`\n            "${facefuckPath}${facefuckPrefix} ${videoIndex}", "${tagsString}"`);
+        facefuckLines.push(`\n        "${facefuckPath}${facefuckPrefix} ${videoIndex}", "${tagsString}"`);
     });
     tagArrayFacefuck.push(facefuckLines.join(', '));
     
@@ -1466,8 +2655,8 @@ function extractTags(container) {
     
     oralTags.forEach(({ videoIndex, tags, rhythm }) => {
       const tagsString = tags.join('","'); 
-      oralLines.push(`\n            "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}.mp4", "${tagsString}"`);
-      oralRhythmLines.push(`\n            "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}.mp4", ${rhythm}`)
+      oralLines.push(`\n        "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}.mp4", "${tagsString}"`);
+      oralRhythmLines.push(`\n        "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}.mp4", ${rhythm}`)
     });
     tagArrayOral.push(oralLines.join(', '));
     rhythmArrayOral.push(oralRhythmLines.join(', '));
@@ -1478,7 +2667,7 @@ function extractTags(container) {
 
       mouthTags.forEach(({ videoIndex, tags }) => {
           const tagsString = tags.join('","'); 
-          mouthLines.push(`\n                "/characters/${cumPath}${mouthPrefix} ${videoIndex}", (a:"${tagsString}")`);
+          mouthLines.push(`\n            "/characters/${cumPath}${mouthPrefix} ${videoIndex}", (a:"${tagsString}")`);
       });
       tagArrayMouth.push(mouthLines.join(', '));
     }
@@ -1489,7 +2678,7 @@ function extractTags(container) {
 
       facialTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
-        facialLines.push(`\n            "/characters/${cumPath}${facialPrefix} ${videoIndex}", (a:"${tagsString}")`);
+        facialLines.push(`\n        "/characters/${cumPath}${facialPrefix} ${videoIndex}", (a:"${tagsString}")`);
       });
       tagArrayFacial.push(facialLines.join(','));   
       
@@ -1516,7 +2705,7 @@ function extractTags(container) {
       pulloutBodyTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
         
-        pulloutBodyLines.push(`\n            "/characters/${cumPath}${pulloutBodyPrefix} ${videoIndex}", (a:"body","${tagsString}")`);
+        pulloutBodyLines.push(`\n        "/characters/${cumPath}${pulloutBodyPrefix} ${videoIndex}", (a:"body","${tagsString}")`);
       });
       tagArrayPullout.push(pulloutBodyLines.join(', '));
     }
@@ -1526,7 +2715,7 @@ function extractTags(container) {
       
       pulloutButtTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
-        pulloutButtLines.push(`\n            "/characters/${cumPath}${pulloutButtPrefix} ${videoIndex}", (a:"butt","${tagsString}")`);
+        pulloutButtLines.push(`\n        "/characters/${cumPath}${pulloutButtPrefix} ${videoIndex}", (a:"butt","${tagsString}")`);
       });
       tagArrayPullout.push(pulloutButtLines.join(', '));
     }
@@ -1536,7 +2725,7 @@ function extractTags(container) {
 
       pulloutTitsTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
-        pulloutTitsLines.push(`\n            "/characters/${cumPath}${pulloutTitsPrefix} ${videoIndex}", (a:"tits","${tagsString}")`);
+        pulloutTitsLines.push(`\n        "/characters/${cumPath}${pulloutTitsPrefix} ${videoIndex}", (a:"tits","${tagsString}")`);
       });
       tagArrayPullout.push(pulloutTitsLines.join(', '));
     }
@@ -1550,6 +2739,11 @@ function extractTags(container) {
     });
 
     timingArrayPenetration.push(timingLines.join(', '));
+
+    // Collect videos from Morning / Bathroom
+    const morningVideos = getVideoArray(morningPrefix, morningVidInt);
+    const bathroomVideos = getVideoArray(bathroomPrefix, bathroomVidInt);
+    const dayVideos = [...morningVideos, ...bathroomVideos];
 
     // Tag Validation
     const isDoggyTagsEmpty = doggyTags.every(tag => tag.tags.length === 0);
@@ -1573,19 +2767,9 @@ function extractTags(container) {
     tweeContent += `:: transformation description ${characterName}\n{\n`;
     tweeContent += `    (twirl: "${describeTransform.join('",\n    "')}")\n}\n\n`;
 
-    //  New-U Transformation Description
-    tweeContent += `:: New-U transformation descriptions ${characterName}\n{\n`;
-    tweeContent += `    (set:$description to $description + (a:(twirl:"${describeTransform.join('",\n    "')}")))\n}\n\n`;
-    tweeContent += `:: New-U bodies update ${characterName}\n`;
-    tweeContent += `{"${tagline}"}\n\n`;
-    tweeContent += `:: invite guy load old ${characterName}\n`;
-    tweeContent += `{"${tagOld}"}\n\n`;
-    tweeContent += `:: invite guy load new ${characterName}\n`;
-    tweeContent += `{"${tagNew}"}\n\n`;
-
     //  Body Stats
-    tweeContent += `:: load character body stats ${characterName}\n`;
-    tweeContent += `{\n    (set: $character to $character + (dm:\n`;
+    tweeContent += `:: load character body stats ${characterName}\n{\n`;
+    tweeContent += `    (set: $character to $character + (dm:\n`;
     tweeContent += `    "id", "${characterName}",\n`;
     tweeContent += `    "race", "${race}",\n`;
     tweeContent += `    "breasts", "${breasts}",\n`;
@@ -1599,8 +2783,8 @@ function extractTags(container) {
     tweeContent += `    "height text", "${heightText}",\n`;
     tweeContent += `    "bra", "${bust}${breasts}",\n`;
     tweeContent += `    "eyes", "${eyeColor}"))\n}\n\n`;
-    tweeContent += `:: New-U select body ${characterName}\n`;
-    tweeContent += `{\n    (set: $new_stats to (dm:\n`;
+    tweeContent += `:: New-U select body ${characterName}\n{\n`;
+    tweeContent += `    (set: $new_stats to (dm:\n`;
     tweeContent += `    "id", "${characterName}",\n`;
     tweeContent += `    "race", "${race}",\n`;
     tweeContent += `    "breasts", "${breasts}",\n`;
@@ -1620,8 +2804,8 @@ function extractTags(container) {
     tweeContent += `{(display:"New-U select body ${characterName}")}\n\n`;
 
     //  Examine Self
-    tweeContent += `:: examine yourself ${characterName}\n`;
-    tweeContent += `{\n    (if:$character's "reluctance" > 6)[(twirl:\n`;
+    tweeContent += `:: examine yourself ${characterName}\n{\n`;
+    tweeContent += `    (if:$character's "reluctance" > 6)[(twirl:\n`;
     tweeContent += `    "${examineSelfReluctant.join('",\n    "')}")\n    ]\n`;
     tweeContent += `    (else:)[(twirl:"${examineSelfConfident.join('",\n    "')}")\n    ]\n}\n\n`;
 
@@ -1632,8 +2816,8 @@ function extractTags(container) {
     tweeContent += `:: pants squeeze ${characterName}\n{} <!-- Deliberately blank -->\n\n`;
 
     //  Step-sis Shower Tease
-    tweeContent += `:: stepsis shower tease chat ${characterName}"\n`;
-    tweeContent += `{\n    (set:$line to "cant look at you the same way")(display:"stepsis voice line")\n`;
+    tweeContent += `:: stepsis shower tease chat ${characterName}"\n{\n`;
+    tweeContent += `    (set:$line to "cant look at you the same way")(display:"stepsis voice line")\n`;
     tweeContent += `    (twirl: "${stepSisTease.join('",\n    "')}")\n}\n\n`;
 
     //  Chores
@@ -1657,7 +2841,7 @@ function extractTags(container) {
     } else {
       tweeContent += `    (set:$img to "/characters/${characterName}/chores/${cleaningPrefix} " + (text:(twist:1,${cleaningVidInt})))\n`;
     }
-    tweeContent += `    (print:"<video src='img/scenes/" + $img + ".mp4' autoplay='' loop='' muted='' playsinline/>")\n}\n\n`;
+    tweeContent += `    ($vid: "scenes/" + $img + ".mp4")\n}\n\n`
     
     tweeContent += `:: bathroom post transform ${characterName}\n{\n`;
     if (bathroomVidInt === 1) {
@@ -1665,7 +2849,28 @@ function extractTags(container) {
     } else {
       tweeContent += `    (set:$img to "/characters/${characterName}/chores/${bathroomPrefix} " + (text:(twist:1,${bathroomVidInt})))\n`;
     }
-    tweeContent += `    (print:"<video src='img/scenes/" + $img + ".mp4' autoplay='' loop='' muted='' playsinline/>")\n}\n\n`;
+    tweeContent += `    ($vid: "scenes/" + $img + ".mp4")\n}\n\n`
+
+    tweeContent += `:: day post transform [around]\n{\n`;
+    tweeContent += `    (display:_around)\n`;
+    tweeContent += `    (if:$character's "id" is "${characterName}")[\n`;
+    tweeContent += `        (if:(is_fem:))[(replace:?screen)[\n`;
+    if (bathroomVidInt === 1) {
+      tweeContent += `            ($vid:"scenes/characters/${characterName}/chores/${bathroomPrefix} 1.mp4")]\n`;
+    } else {
+      tweeContent += `            ($vid:"scenes/characters/${characterName}/chores/${bathroomPrefix} " + (text:(twist:1,${bathroomVidInt})) + ".mp4")]\n`;
+    }
+    tweeContent += `        (display:"activities")\n]]\n}\n\n`;
+
+    tweeContent += `:: day [around]\n{\n`;
+    tweeContent += `    (display:_around)\n`;
+    tweeContent += `    (if:$character's "id" is "${characterName}")[\n`;
+    tweeContent += `        (if:(is_fem:))[(replace:?screen)[\n`;
+    tweeContent += `            (set:$img to (twirl:"${dayVideos.join('", "')}"))\n`;
+    tweeContent += `            ($vid:"scenes/characters/${characterName}/chores/" + $img + ".mp4")]\n`;
+    tweeContent += `        (display:"calculate pregnancy chance")(display:"messages")\n`;
+    tweeContent += `        (display:"refresh possible activities")(display:"activities")\n`;
+    tweeContent += `        (set:$mall_song to "mall " + (text:(twist:1,8)))\n(set:$beach_song to "beach " + (text:(twist:1,11)))]]\n}\n\n`
 
     //  Masturbate
     tweeContent += `:: masturbation setup ${characterName}\n`;
@@ -1678,15 +2883,15 @@ function extractTags(container) {
     tweeContent += `{(display:"masturbation setup ${characterName}")}\n\n`;
 
     //  Gym Options
-    tweeContent += `:: gym options ${characterName}\n`;
-    tweeContent += `{\n    (set:$type to "${gymType}")\n`;
+    tweeContent += `:: gym options ${characterName}\n{\n`;
+    tweeContent += `    (set:$type to "${gymType}")\n`;
     tweeContent += `    (set:$gym_options to (cond:\n`;
-    tweeContent += `    $type is "yoga", (twirl:"Do some yoga","Attend a yoga class","Do yoga","Yoga"),\n`;
-    tweeContent += `    $type is "run", (twirl:"Take some laps", "Go for a run", "Go jogging"),\n`;
+    tweeContent += `    $type is "yoga", (twirl:"Do some yoga","Attend a yoga class","Stretch","Yoga"),\n`;
+    tweeContent += `    $type is "run", (twirl:"Take some laps", "Go for a run", "Start jogging"),\n`;
     tweeContent += `    $type is "treadmill", (twirl:"Use the treadmill","Run on the treadmill"),\n`;
     tweeContent += `    $type is "machines", (twirl:"Use the machines","Use machines","Use the main gym"),\n`;
     tweeContent += `    $type is "pt", (twirl:"High-Intensity Interval Training","Train"),\n`;
-    tweeContent += `    (twirl:"Let's Sweat","Workout")))\n\n`;
+    tweeContent += `    (twirl:"Let's Sweat","Workout","Hit the gym")))\n\n`;
     tweeContent += `    (link:$gym_options)[(set:$next to "gym female workout")(display:"change screen")]\n}\n\n`;
 
     //  Breathing
@@ -1697,27 +2902,27 @@ function extractTags(container) {
     tweeContent += `{(set:$var to (twirl:"a","b"))}\n\n`;
 
     //  Pharmacist BJ
-    tweeContent += `:: event shop deal accept ${characterName}\n`;
-    tweeContent += `{\n    (set:$comment to "${eventComment}")\n`;
-    tweeContent += `    (set:$thought to "${eventThought}")\n}\n\n`;
+    tweeContent += `:: event shop deal accept ${characterName}\n{\n`;
+    tweeContent += `    (set:$comment to (twirl:"${shopComment.join('",\n    "')}"))\n`;
+    tweeContent += `    (set:$thought to (twirl:"${shopThought.join('",\n    "')}"))\n}\n\n`;
 
     //  Coworker React
-    tweeContent += `:: coworker reacts to your appearance ${characterName}\n`;
-    tweeContent += `{\n    (print:(twirl:"${describeBody.join('",\n    "')}")\n` 
+    tweeContent += `:: coworker reacts to your appearance ${characterName}\n{\n`;
+    tweeContent += `    (print:(twirl:"${describeBody.join('",\n    "')}")\n` 
     tweeContent += `    + " " + (twirl:"body","bod","figure","physique"))\n}\n\n`;
 
     //  Descriptions
     tweeContent += `:: transactional sex describe body ${characterName}\n`
     tweeContent += `{(set:$descriptions to (a:"butt","tits","hair"))}\n\n`;
 
-    tweeContent += `:: sex transactional body comment ${characterName}\n`;
-    tweeContent += `{\n    (set:$text to (twirl:"${describeBody.join('",\n    "')}"))\n}\n\n`;
+    tweeContent += `:: sex transactional body comment ${characterName}\n{\n`;
+    tweeContent += `    (set:$text to (twirl:"${describeBody.join('",\n    "')}"))\n}\n\n`;
 
-    tweeContent += `:: describe butt ${characterName}\n`;
-    tweeContent += `{\n    (set:$phat to (twirl:"${describeButt.join('",\n    "')}"))\n}\n\n`;
+    tweeContent += `:: describe butt ${characterName}\n{\n`;
+    tweeContent += `    (set:$phat to (twirl:"${describeButt.join('",\n    "')}"))\n}\n\n`;
 
-    tweeContent += `:: sex transactional tits comment ${characterName}\n`;
-    tweeContent += `{\n    (set:$tits to (twirl:"${describeBoobs.join('",\n    "')}"))\n}\n\n`;
+    tweeContent += `:: sex transactional tits comment ${characterName}\n{\n`;
+    tweeContent += `    (set:$tits to (twirl:"${describeBoobs.join('",\n    "')}"))\n}\n\n`;
 
     tweeContent += `:: transactional sex describe he talks ${characterName}\n`;
     tweeContent += `{(display:"describe butt ${characterName}"){(display:"sex transactional tits comment ${characterName}")}}\n\n`;
@@ -1725,12 +2930,20 @@ function extractTags(container) {
     tweeContent += `:: sex transactional comment ${characterName}\n`;
     tweeContent += `{(set:$comments to (a:"butt","body","tits","face"))}\n\n`;
 
-    tweeContent += `:: sex transactional butt comment ${characterName}\n`;
-    tweeContent += `{\n    (display:"describe butt ${characterName}")\n`;
+    tweeContent += `:: sex transactional butt comment ${characterName}\n{\n`;
+    tweeContent += `    (display:"describe butt ${characterName}")\n`;
     tweeContent += `    "(if:$npc's "generation" is "genz")[(twirl:"Dayum girl","Fuck","Yeesh, $your_name","No cap","Sheesh, $your_name")]\n`;
     tweeContent += `    (else-if:$npc's "generation" is "genx")[(twirl:"Golly","Gee whiz","Holy cow","My goodness","Goodness","Oh mercy","Lord Jesus"), (display:"your pronoun")]\n`;
     tweeContent += `    (else:)[(twirl:"Dayum girl","Shit girl","Fuck, $your_name","Holy shit")]," (display:"npc pronoun") (twirl:"says","whistles","admires you","says","says","grins"). "\n`;
-    tweeContent += `    (twirl: "That's a $phat $butt,", "You got a $phat $butt,", "That's a $phat $butt you got, $your_name,", "I like your $phat $butt, $your_name,")"  (display:"npc pronoun") says.\n`;
+    if (butt === "slim") {
+      tweeContent += `    (twirl: "That’s a $phat little $butt you’ve got, fits you perfectly.", "A $phat, tight $butt like that’s got my full attention.", "That $phat little $butt of yours, I can’t look away.")"  (display:"npc pronoun") says.\n`;
+    }
+    else if (butt === "bubble") {
+      tweeContent += `    (twirl: "Now that’s a $phat, peachy $butt I’d love to get my hands on.", "You’ve got that $phat, juicy $butt, perfectly squeezable.", "A $phat, shapely $butt like that—just what every guy dreams of.")"  (display:"npc pronoun") says.\n`;
+    }
+    else {
+      tweeContent += `    (twirl: "With that $phat, voluptuous $butt, you’re every guy’s fantasy.", "A $phat, plump $butt like that? Now you’re really showing off.", "Mmm, that $phat, mouthwatering $butt of yours is hard to ignore.")"  (display:"npc pronoun") says.\n`;
+    }
     tweeContent += `    (if:$outfit's "tags" contains "nude")[(print:"<img class='greyborder' src='img/characters/nude/butt/" +  $character's "id" + ".jpg' width='100%' height=auto>")] \n`;
     tweeContent += `    (unless:(datanames:$npc) contains "petname")[\n`;
     tweeContent += `        (set:$npc's petname to (twirl:"little miss fat-ass","my big-assed cutie","my big-assed bombshell","my little dumptruck","my nice slice of cake"))"\n`;
@@ -1738,16 +2951,33 @@ function extractTags(container) {
     tweeContent += `        (set:$petname to $npc's petname)]\n}\n\n`;
 
     //  Hair Color, Texture, and Styles
-    tweeContent += `:: available hairstyles ${characterName}\n`;
-    tweeContent += `{\n    (set:$available_hairstyles to (a:"${hairstyles.join('",\n    "')}"))\n}\n\n`;
-    tweeContent += `:: describe hair ${characterName}\n`;
-    tweeContent += `{\n    (set:$color to (twirl:"${describeHairColor.join('",\n    "')}"))\n`;
+    tweeContent += `:: available hairstyles ${characterName}\n{\n`;
+    tweeContent += `    (set:$available_hairstyles to (a:"${hairstyles.join('",\n    "')}"))\n}\n\n`;
+    tweeContent += `:: describe hair ${characterName}\n{\n`;
+    tweeContent += `    (set:$color to (twirl:"${hairColor}",\n    "${describeHairColor.join('",\n    "')}"))\n`;
     tweeContent += `    (if:$hairdesc is "color")[(set:$hair to $color + " hair")]\n`;
     tweeContent += `    (else-if:$hairdesc is "texture")[\n`;
     tweeContent += `        (if:$hairstyle is 0)[\n`;
     tweeContent += `            (set:$texture to (twirl:"${describeHairTexture.join('",\n            "')}")) \n`;
     tweeContent += `            (set:$hair to $texture + " hair")]\n`;
     tweeContent += `        (else:)[(display:"hairstyle name")(set:$hair to $color + " " + $hairstyle_name)]]\n}\n\n`;
+
+    //  New-U Transformation Description
+    
+    tweeContent += `:: New-U transformation descriptions ${characterName}\n{\n`;
+    tweeContent += `    (set:$description to $description + (a:\n`;
+    tweeContent += `    (twirl:"The whole world seems to grow around you as your body morphs considerably. ${randomHairTexture} ${randomHairColor} hair flows from your head over your shoulders and down your back. Your chest burns as it swells, your butt tingles as it expands. You now have a ${randomBodyDescription} body. All of this plus your big ${eyeColor} eyes can only make for one thing... the perfect ${randomPetName}. Everything about your new body says use me however you like.",\n`;
+    tweeContent += `    "A strange, tingling warmth spreads through your body as the world around you seems to grow taller. Your muscles soften, and your frame narrows as ${randomHairTexture} ${randomHairColor} hair spills effortlessly over your shoulders, cascading down your back. A tight sensation builds in your chest, and with a sudden release, it swells into soft curves. Your hips shift, widening, while a pleasant tingle dances across your skin as your butt rounds and firms. You look down at your new ${randomBodyDescription} body, taking in the sight of your delicate curves and big ${eyeColor} eyes. Everything about your new form radiates sensuality, leaving no doubt that you've become the perfect ${randomPetName}. Your senses seem sharper, your skin more sensitive—every touch and movement inviting a thrilling new world of sensation. You've transformed into an irresistible fantasy, a body that simply begs to be desired and adored.",\n`;
+    tweeContent += `    "A deep shiver runs through you, causing your body to tense before it begins to change. You gasp as ${randomHairTexture} ${randomHairColor} hair spills from your scalp, tickling your neck as it grows longer with every heartbeat. A rush of heat surges into your chest, causing it to swell into full, sensitive curves. Your waist pulls inward, accentuating the new softness of your body as your hips widen, pushing your balance into a new, feminine sway. A tingling warmth pulses through your skin as your ${eyeColor} eyes widen with curiosity and excitement. You're left with a ${randomBodyDescription} figure that feels both foreign and tantalizing. Everything about you screams pleasure, a perfect ${randomPetName} eager to explore this new form and its irresistible allure.",\n`;
+    tweeContent += `    "An electric thrill races up your spine as your whole body shudders, transforming from the inside out. You watch in awe as your muscles soften and your body narrows, skin smoothing to a new velvety texture. ${randomHairTexture} ${randomHairColor} hair grows rapidly, falling over your shoulders like a silken curtain. A sharp, almost pleasurable ache blooms in your chest, and with a breathless gasp, you feel it swell outward into soft, inviting curves. Your hips twist wider, and a gentle pressure makes your butt plump and round. You glance at yourself—now a ${randomBodyDescription} beauty with shining ${eyeColor} eyes. It’s as if your whole body radiates invitation, a ${randomPetName} waiting to be desired, every curve begging to be touched and appreciated.",\n`;
+    tweeContent += `    "You feel your body ripple as if molded from warm clay, shifting and stretching into a new shape. Your skin prickles with goosebumps as ${randomHairTexture} ${randomHairColor} hair spills down in soft waves. Your shoulders narrow, and a sudden pressure in your chest takes your breath away as it fills out, forming tender, heavy curves. Your legs soften, thighs thickening while your waist draws in, shaping your body into a perfect hourglass. Your ${eyeColor} eyes catch your reflection—what was once familiar is now a ${randomBodyDescription} form, a body built to be admired. A surge of heat pulses through you, and you feel yourself settle into your new shape. There's no denying it—you're now the ultimate ${randomPetName}, a figure of perfect beauty and irresistible allure.",\n`;
+    tweeContent += `    "A sensation of warmth spreads through your core, radiating outward as your very shape begins to shift. You watch in wonder as ${randomHairTexture} ${randomHairColor} hair cascades over your shoulders. Your chest tightens, then blooms outward, forming round, soft curves that rise with each breath. Your waist pulls inward, framing the new fullness of your hips as your butt firms up, pressing deliciously against the fabric of your clothes. Your ${eyeColor} eyes are wide, taking in the sight of your transformed body—a ${randomBodyDescription} silhouette that practically oozes sensuality. Everything about you feels different, lighter, more inviting—like you've been reborn as the perfect ${randomPetName}, a body designed to be touched and craved.")))\n}\n\n`;
+    tweeContent += `:: New-U bodies update ${characterName}\n{\n`;
+    tweeContent += `    (twirl:"${tagline.join('",\n    "')}?")\n}\n\n`;
+    tweeContent += `:: invite guy load old ${characterName}\n{\n`;
+    tweeContent += `    (twirl:"${tagOld.join('",\n    "')}")\n}\n\n`;
+    tweeContent += `:: invite guy load new ${characterName}\n{\n`;
+    tweeContent += `    (twirl:"${tagNew.join('",\n    "')}")\n}\n\n`;
 
     //  Cat call
     tweeContent += `:: catcall id ${characterName}\n{\n`;
@@ -1779,20 +3009,20 @@ function extractTags(container) {
     tweeContent += `:: 2nd prenatal visit 3 ${characterName}\n`;
     tweeContent += `(display:"initialize pregnancy ${characterName}")\n\n`;
 
-    tweeContent += `:: pregnant 1st check ${characterName}\n`;
-    tweeContent += `{${pregnancy1stCheck}}\n\n`;
+    tweeContent += `:: pregnant 1st check ${characterName}\n{\n`;
+    tweeContent += `    (twirl: "${pregnancy1st.join('",\n    "')}")\n}\n\n`;
 
-    tweeContent += `:: pregnant 2nd check ${characterName}\n`;
-    tweeContent += `{${pregnancy2ndCheck}}\n\n`;
+    tweeContent += `:: pregnant 2nd check ${characterName}\n{\n`;
+    tweeContent += `    (twirl: "${pregnancy2nd.join('",\n    "')}")\n}\n\n`;
 
-    tweeContent += `:: 12-week prenatal appointment ${characterName}\n`;
-    tweeContent += `{"${pregnancyPrenatalCheck}"}\n\n`;
+    tweeContent += `:: 12-week prenatal appointment ${characterName}\n{\n`;
+    tweeContent += `    "(twirl: "${pregnancyPrenatal.join('",\n    "')}")"\n}\n\n`;
 
     tweeContent += `:: pregnancy first lactation character_id\n`;
     if (race === "black") {
-      tweeContent += `{(print:"<video disableRemotePlayback src='img/scenes/generic/pregnancy/vignette/first lactation/scarlit.mp4' autoplay='' loop='' muted='' playsinline/>")}\n\n`
+      tweeContent += `{($vid:"scenes/generic/pregnancy/vignette/first lactation/scarlit.mp4")}\n\n`;
     } else {
-      tweeContent += `{(print:"<video disableRemotePlayback src='img/scenes/generic/pregnancy/vignette/first lactation/alina.mp4' autoplay='' loop='' muted='' playsinline/>")}\n\n`
+      tweeContent += `{($vid:"scenes/generic/pregnancy/vignette/first lactation/alina.mp4")}\n\n`;
     }
 
     tweeContent += `:: Milk yourself character_id\n`;
@@ -1808,11 +3038,19 @@ function extractTags(container) {
       tweeContent += `{(set:$video to "scenes/generic/pregnancy/milking/mia 1.mp4")}\n\n`;
     }
 
-    tweeContent += `:: call father visit show ${characterName}\n`;
-    tweeContent += `{"${callFatherShow}"}\n\n`;
+    tweeContent += `:: call father visit show ${characterName}\n{\n`;
+    tweeContent += `    "(twirl:"${fatherShow.join('",\n    "')}")"\n}\n\n`;
     
-    tweeContent += `:: call father visit bj ${characterName}\n`;
-    tweeContent += `{"${callFatherBJ}"}\n\n`;
+    tweeContent += `:: call father visit bj ${characterName}\n{\n`;
+    tweeContent += `    "(twirl:"${fatherBJ.join('",\n    "')}")"\n}\n\n`;
+
+    //  Bruce Bet
+    tweeContent += `:: bar bruce xchange bet take pill 2 [around]\n{\n`;
+    tweeContent += `    (if:$character's "id" is "${characterName}")[\n`;
+    tweeContent += `        (if:$character's "masculinity" > 80)[(set:$character's "reluctance" to 10)](else:)[(display:"reluctance choice")]\n`;
+    tweeContent += `        [${bruceTF}]\n`;
+    tweeContent += `        <div class='options'>(link:"Next.")[(Display:"register reluctance")(if:(pill:"Breeder"))[($cs:"bar bruce xchange bet take pill 3")](else:)[($cs:"bar bruce xchange bet take pill 3 resistance")]]</div>\n`;
+    tweeContent += `    ](else:)[(display:_around)]\n}\n\n`;
 
     //  Transactional Doggy
     tweeContent += `:: sex doggy transactional ${characterName}\n{\n`;
@@ -2075,12 +3313,12 @@ function extractTags(container) {
       tweeContent += `{(set:$sex_loop to $sex_loop + (text:(twist:1,${seRidingInt})))}\n\n`;
     }
 
-    tweeContent += `:: blowjob sounds ${characterName}\n`;
-    tweeContent += `{\n    (if:(twist:1,2) is 1)[`;
+    tweeContent += `:: blowjob sounds ${characterName}\n{\n`;
+    tweeContent += `    (if:(twist:1,2) is 1)[`;
     if (seBJInt === 1) {
       tweeContent += `(set:$sex_loop to $sex_loop + "1")\n    ]\n`;
     } else {
-      tweeContent += `(set:$sex_loop to $sex_loop + (text:(twist:1,${seBJInt})))]\n\n`;
+      tweeContent += `(set:$sex_loop to $sex_loop + (text:(twist:1,${seBJInt})))]\n`;
     }
     tweeContent += `    (else:)[(set:$sex_loop to "bj neutral loop")]\n}\n\n`;
 
@@ -4452,24 +5690,24 @@ function extractTags(container) {
     addLine(mcfDescribeHairColorInput, mcfDescribeHairColorContainer)
   });
 
+  // Generate Example - Hair Color
+  exampleHairColorButton.addEventListener("click", function(){
+    generateExampleForHairColor(mcfCharacterHairColor.value, mcfDescribeHairColorContainer)
+  });
+
   // Clear Hair Color
   clearDescribeHairColor.addEventListener("click", function(){
     clearElement(mcfDescribeHairColorContainer)
   });
 
-  // Add Pregnancy Weeks
-  mcfPregnancyWeeksButton.addEventListener("click", function(){
-    addLine(mcfPregnancyWeeksInput, mcfPregnancyWeeksContainer)
-  });
-
-  // Clear Pregnancy Weeks
-  clearPregnancyWeeks.addEventListener("click", function(){
-    clearElement(mcfPregnancyWeeksContainer)
-  });
-
   // Add Hair Texture
   mcfDescribeHairTextureButton.addEventListener("click", function(){
     addLine(mcfDescribeHairTextureInput, mcfDescribeHairTextureContainer)
+  });
+
+  // Generate Example - Hair Texture
+  exampleHairTextureButton.addEventListener("click", function(){
+    generateExampleForHairTexture(mcfCharacterHairColor.value, mcfDescribeHairTextureContainer);
   });
 
   // Clear Hair Texture
@@ -4487,14 +5725,184 @@ function extractTags(container) {
     clearElement(mcfHairstylesContainer)
   });
 
+  // Add Pregnancy Weeks
+  mcfPregnancyWeeksButton.addEventListener("click", function(){
+    addLine(mcfPregnancyWeeksInput, mcfPregnancyWeeksContainer)
+  });
+
+  // Clear Pregnancy Weeks
+  clearPregnancyWeeks.addEventListener("click", function(){
+    clearElement(mcfPregnancyWeeksContainer)
+  });
+
+  // Generate Example - Pregnancy 1st Video
+  examplePregnancy1stCheckButton.addEventListener("click", function(){
+    generateExample(examplePregnancy1stCheck, mcfPregnancy1stCheckContainer)
+  });
+
+  // Add Pregnancy 1st Video
+  mcfPregnancy1stCheckButton.addEventListener("click", function(){
+    addLine(mcfPregnancy1stCheckInput, mcfPregnancy1stCheckContainer)
+  });
+
+  // Clear Pregnancy 1st Video
+  clearPregnancy1stCheck.addEventListener("click", function(){
+    clearElement(mcfPregnancy1stCheckContainer)
+  });
+
+  // Generate Example - Pregnancy 2nd Video
+  examplePregnancy2ndCheckButton.addEventListener("click", function(){
+    generateExample(examplePregnancy2ndCheck, mcfPregnancy2ndCheckContainer)
+  });
+
+  // Add Pregnancy 2nd Video
+  mcfPregnancy2ndCheckButton.addEventListener("click", function(){
+    addLine(mcfPregnancy2ndCheckInput, mcfPregnancy2ndCheckContainer)
+  });
+
+  // Clear Pregnancy 2nd Video
+  clearPregnancy2ndCheck.addEventListener("click", function(){
+    clearElement(mcfPregnancy2ndCheckContainer)
+  });
+
+  // Generate Example - Pregnancy Prenatal
+  examplePregnancyPrenatalButton.addEventListener("click", function(){
+    generateExample(examplePregnancyPrenatal, mcfPregnancyPrenatalContainer)
+  });
+
+  // Add Pregnancy Prenatal Video
+  mcfPregnancyPrenatalButton.addEventListener("click", function(){
+    addLine(mcfPregnancyPrenatalInput, mcfPregnancyPrenatalContainer)
+  });
+
+  // Clear Pregnancy Prenatal Video
+  clearPregnancyPrenatal.addEventListener("click", function(){
+    clearElement(mcfPregnancyPrenatalContainer)
+  });
+
+  // Generate Example - Call Father Show
+  exampleCallFatherShowButton.addEventListener("click", function(){
+    generateExample(exampleCallFatherShow, mcfCallFatherShowContainer)
+  });
+
+  // Add Pregnancy Prenatal Video
+  mcfCallFatherShowButton.addEventListener("click", function(){
+    addLine(mcfCallFatherShowInput, mcfCallFatherShowContainer)
+  });
+
+  // Clear Pregnancy Prenatal Video
+  clearCallFatherShow.addEventListener("click", function(){
+    clearElement(mcfCallFatherShowContainer)
+  });
+
+  // Generate Example - Call Father BJ
+  exampleCallFatherBJButton.addEventListener("click", function(){
+    generateExample(exampleCallFatherBJ, mcfCallFatherBJContainer)
+  });
+
+  // Add Pregnancy Prenatal Video
+  mcfCallFatherBJButton.addEventListener("click", function(){
+    addLine(mcfCallFatherBJInput, mcfCallFatherBJContainer)
+  });
+
+  // Clear Pregnancy Prenatal Video
+  clearCallFatherBJ.addEventListener("click", function(){
+    clearElement(mcfCallFatherBJContainer)
+  });
+
   // Generate Example - Event Shop Comment
   exampleEventShopCommentButton.addEventListener("click", function(){
-    generateExampleSingle(exampleEventShopComment, mcfEventShopComment)
+    generateExample(exampleEventShopComment, mcfEventShopCommentContainer)
+  });
+
+  // Add Event Shop Comment
+  mcfEventShopCommentButton.addEventListener("click", function(){
+    addLine(mcfEventShopCommentInput, mcfEventShopCommentContainer)
+  });
+
+  // Clear Event Shop Comment
+  clearEventShopComment.addEventListener("click", function(){
+    clearElement(mcfEventShopCommentContainer)
   });
 
   // Generate Example - Event Shop Thought
   exampleEventShopThoughtButton.addEventListener("click", function(){
-    generateExampleSingle(exampleEventShopThought, mcfEventShopThought)
+    generateExample(exampleEventShopThought, mcfEventShopThoughtContainer)
+  });
+
+  // Add Event Shop Thought
+  mcfEventShopThoughtButton.addEventListener("click", function(){
+    addLine(mcfEventShopThoughtInput, mcfEventShopThoughtContainer)
+  });
+
+  // Clear Event Shop Thought
+  clearEventShopThought.addEventListener("click", function(){
+    clearElement(mcfEventShopThoughtContainer)
+  });
+
+  // Generate Example - Tagline
+  exampleTaglineButton.addEventListener("click", function(){
+    const tagline = generateTagline(mcfCharacterHairColor.value,mcfCharacterBreasts.value,mcfCharacterButt.value,mcfCharacterBodyType.value,mcfCharacterRace.value)
+    addLine(tagline,mcfCharacterTaglineContainer)
+  }); 
+
+  // Add Tagline to container
+  mcfCharacterTaglineButton.addEventListener("click", function(){
+    addLine(mcfCharacterTaglineInput, mcfCharacterTaglineContainer)
+  });
+
+  // Clear Tagline
+  clearTagline.addEventListener("click", function(){
+    clearElement(mcfCharacterTaglineContainer)
+  });
+
+  // Generate Example - Tag Old
+  exampleTagOldButton.addEventListener("click", function(){
+    const tagline = generateTagOld(mcfCharacterRace.value)
+    addLine(tagline,mcfCharacterTagOldContainer)
+  }); 
+
+  // Add Tag Old to container
+  mcfCharacterTagOldButton.addEventListener("click", function(){
+    addLine(mcfCharacterTagOldInput, mcfCharacterTagOldContainer)
+  });
+
+  // Clear Tagline
+  clearTagOld.addEventListener("click", function(){
+    clearElement(mcfCharacterTagOldContainer)
+  });
+
+  // Generate Example - Tag New
+  exampleTagNewButton.addEventListener("click", function(){
+    const tagline = generateTagNew(mcfCharacterBodyType.value,mcfCharacterRace.value)
+    addLine(tagline,mcfCharacterTagNewContainer)
+  }); 
+
+  // Add Tag New to container
+  mcfCharacterTagNewButton.addEventListener("click", function(){
+    addLine(mcfCharacterTagNewInput, mcfCharacterTagNewContainer)
+  });
+
+  // Clear Tagline
+  clearTagNew.addEventListener("click", function(){
+    clearElement(mcfCharacterTagNewContainer)
+  });
+
+  // Generate Example - Bruce Bar Bet
+  exampleBruceTFButton.addEventListener("click", function(){
+    clearElement(mcfBruceTFContainer)
+    generateExampleParagraph(exampleBruceTF, mcfBruceTFContainer)
+  }); 
+
+  // Add Bruce Bar Bet
+  mcfBruceTFButton.addEventListener("click", function(){
+    clearElement(mcfBruceTFContainer)
+    addParagraph(mcfBruceTFInput, mcfBruceTFContainer)
+  });
+
+  // Clear Bruce Bar Bet
+  clearBruceTF.addEventListener("click", function(){
+    clearElement(mcfBruceTFContainer)
   });
 
   // Generate MCF Meta Only
@@ -4895,8 +6303,28 @@ function extractTags(container) {
   let tooltipSEPre2 = tippy(mcfInsertTiming2, {content: "",});
   let tooltipSEPre3 = tippy(mcfInsertTiming3, {content: "",});
   let tooltipShower = tippy(mcfShowerPrefix, {content: "",});
+  let tooltipMorning = tippy(mcfMorningPrefix, {content: "",});
   let tooltipBathroom = tippy(mcfBathroomPrefix, {content: "",});
   let tooltipCleaning = tippy(mcfCleaningPrefix, {content: "",});
+  let tooltipSEMasturbate = tippy(mcfSEMasturbate, {content: "",});
+  let tooltipSECumMoan = tippy(mcfSECumMoan, {content: "",});
+  let tooltipSEFondle = tippy(mcfSEFondle, {content: "",});
+  let tooltipSEOrgasmSolo = tippy(mcfSEOrgasmSolo, {content: "",});
+  let tooltipSELicking = tippy(mcfSELicking, {content: "",});
+  let tooltipSEBJ = tippy(mcfSEBJ, {content: "",});
+  let tooltipSEBJRough = tippy(mcfSEBJRough, {content: "",});
+  let tooltipSEDoggy = tippy(mcfSEDoggy, {content: "",});
+  let tooltipSERiding = tippy(mcfSERiding, {content: "",});
+  let tooltipSEMissionary = tippy(mcfSEMissionary, {content: "",});
+  let tooltipSEOrgasm = tippy(mcfSEOrgasm, {content: "",});
+  let tooltipSEPenetration = tippy(mcfSEPenetration, {content: "",});
+  let tooltipSECumDynamic = tippy(mcfSECumDynamic, {content: "",});
+  let tooltipSECumPullOut = tippy(mcfSECumPullOut, {content: "",});
+  let tooltipSECumCreampie = tippy(mcfSECumCreampie, {content: "",});
+  let tooltipSECumTits = tippy(mcfSECumTits, {content: "",});
+  let tooltipSECumMouth = tippy(mcfSECumMouth, {content: "",});
+  let tooltipSECumFace = tippy(mcfSECumFace, {content: "",});
+
 
 
   // Set up MCF defaults
@@ -5279,23 +6707,23 @@ function extractTags(container) {
     content: "Describe the hair texture. This is used in place of hair color for some descriptions, so you can add color to it if you want.<br><br>naturally curly, silky blonde, shiny, wavy brown, shimmering red, flowing"
   })
 
-  tippy([mcfCharacterTagline],{
-    content: "This is the 'tagline' that gets shown for your character at the New-U station. Starts mid sentence and ends with a question mark. <br><br>a fiery red-headed milf?<br>a busty Asian goddess?<br>an hourglass bimbo with dick-sucking lips?"
+  tippy([mcfCharacterTaglineInput],{
+    content: "This is the 'tagline' that gets shown for your character at the New-U station. Starts with 'Would you rather become', followed by your choice. The question mark is added automatically, don't include it. <br><br>a fiery red-headed milf<br>a busty Asian goddess<br>an hourglass bimbo with dick-sucking lips"
   })
 
-  tippy([mcfCharacterTagOld],{
+  tippy([mcfCharacterTagOldInput],{
     content: "This is for describing how one of your flings might remember your old body, after using New-U to change into somebody else. <br><br>the tiny asian chick he knew you as,<br>the tanned, buxom latina,<br>that slender latina beauty you used to be,"
   })
 
-  tippy([mcfCharacterTagNew],{
+  tippy([mcfCharacterTagNewInput],{
     content: "Similarly to the old descriptor, this is how he would see you now.<br><br>brunette bimbo<br>blonde girl-next-door type<br>redheaded slut with curves in all the right places"
   })
 
-  tippy([mcfEventShopComment],{
+  tippy([mcfEventShopCommentInput],{
     content: "If you take the pharmacist's deal, this is his reaction to your transformation, right before you have to give him a BJ."
   })
 
-  tippy([mcfEventShopThought],{
+  tippy([mcfEventShopThoughtInput],{
     content: "This is your character's thoughts (reaction) to the pharmascist hitting on you.<br><br>It should be wrapped in asterisks, that's how thoughts are coded.<br>*What a jerk!*"
   })
   
@@ -5324,7 +6752,7 @@ function extractTags(container) {
   })
   
   tippy([mcfSoundHelp],{
-    content: "This section builds out your track list. It should be all of the sounds in aud/se/sex.<br><br>The mp3 files will just be your character name. If there are multiples, it will be character name, then a space, then a number.<br><br>Example: aud/se/sex/orgasm/orgasm/character_id 1.mp3"
+    content: "This section builds out your track list. It should be all of the sounds in aud/se/sex.<br><br>The mp3 files go with each activity. BJ will be BJ sounds, Orgasm will be Orgasm, etc.<br><br>An easy way to get these is to just extract the sound from your video files when you are doing those."
   })
 
   tippy([mcfHairstylesInput],{
@@ -5335,8 +6763,9 @@ function extractTags(container) {
     content: "Ideally this should just remain your character's id."
   })
 
-  tippy([],{
-    content: ""
+  tippy([mcfBruceTFInput],{
+    placement: "top",
+    content: "This is what shows on the screen immediately after your transformation when you lose a bet with Bruce. <br> Part of it describes your transition and the other part is Bruce's reaction and comments to it.<br><br> It's more of a paragraph than just a couple lines."
   })
 
   tippy([],{
