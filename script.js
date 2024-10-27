@@ -996,43 +996,43 @@ const exampleDescribeBoobsMedium = [
   ];
 
   const exampleBruceTF = [
-    `The moment the transformation kicks in, you feel a delicious thrill run through your body, as if each nerve ending is awakening to a new reality. Your muscles soften and give way to enticing curves, your once broad shoulders narrowing as your waist begins to cinch inwards. You catch Bruce’s gaze, a wicked grin spreading across his face as he leans in closer, reveling in the spectacle before him.
+    `You catch Bruce’s gaze, a wicked grin spreading across his face as he leans in closer, reveling in the spectacle before him.
 
     "Look at you, all soft and helpless," Bruce coos mockingly, his voice low and dripping with delight. "Guess those boyish charms are taking a backseat to a nice set of tits, huh? I can’t wait to see how many drinks you’ll need just to keep those new girls in check." He lingers over your blossoming form, eyes glimmering with lust as your hips widen and your chest swells.
 
     As your transformation concludes, he steps closer, invading your personal space with an unmistakable hunger. "You’re going to make a fine little plaything, sweetheart," he leers, a dark satisfaction in his tone. "I bet all the guys here will be lining up for a taste of that sweet new body."`,
 
-    `You can feel the heat radiating from your core as the transformation grips you, reshaping every inch of your being. Your once-flat chest begins to swell with impressive curves, filling out your shirt to a point of near explosion. Bruce’s eyes widen, and he can’t help but laugh, a sound filled with delight and a hint of malice as he enjoys every moment of your humiliation.
+    `Bruce’s eyes widen, and he can’t help but laugh, a sound filled with delight and a hint of malice as he enjoys every moment of your humiliation.
 
     "Well, well, looks like the new you has a lot more to offer," he sneers, his voice low and sultry. "I hope you’re ready to flaunt those juicy melons because you’re gonna get a lot of attention tonight. Just imagine the stares as you strut around, practically begging for someone to take a bite." His eyes sparkle with mischief as he drinks in the sight of your changing form, reveling in your plight.
 
     The crowd’s whispers swirl around you, but all you can focus on is Bruce, leaning closer, the warmth of his breath ghosting over your skin. "With those tits, you might want to invest in a support group," he jokes, leering at your breasts. "They’re gonna be hard to keep under wraps — especially when you start getting all the offers."`,
 
-    `As the transformation takes hold, a powerful rush of sensations envelops you. Your chest begins to blossom with ample breasts, expanding beyond your expectations, causing you to gasp at the sudden weight. Bruce watches intently, a hungry glint in his eyes as he takes in every detail, clearly enjoying the show unfolding before him.
+    `Bruce watches intently, a hungry glint in his eyes as he takes in every detail, clearly enjoying the show unfolding before him.
 
     "Holy shit, those are some serious knockers!" he hollers, his laughter ringing out like a wolf's howl. "Looks like you’re going to need a whole new set of clothes to fit that new chest. Maybe something a bit tighter to showcase those beauties? I mean, damn, they’re practically begging for attention!" His voice oozes with playful derision, a grin plastered on his face as he circles you like a predator.
 
     "Just imagine the attention you’re going to get," he continues, his voice low and teasing. "I bet you’ll have guys lining up to touch those perfect tits, and who could blame them? You’ve got the goods, darling, and Bruce here is ready to be your biggest fan."`,
     
-    `The transformation begins slowly, but soon it becomes overwhelming as your body reshapes itself in ways you never anticipated. Your chest swells, and you feel the heavy weight of your new breasts pulling at your shirt, making it tight and uncomfortable. Bruce stands close, his eyes gleaming with excitement as he drinks in your new form, completely unabashed by the spectacle.
+    `Bruce stands close, his eyes gleaming with excitement as he drinks in your new form, completely unabashed by the spectacle.
 
     "Damn, look at those bad boys!" he laughs, unabashedly leering at your transformation. "I bet those will give the bar a real show, huh? You’re practically a walking billboard for every guy's fantasy. Just wait until the guys see you — they won’t be able to resist!" His tone drips with both mockery and genuine appreciation for the changes you’re undergoing.
 
     As you try to regain your composure, Bruce steps closer, his voice low and sultry. "With those curves, sweetheart, you might just want to start practicing your ‘come hither’ look. You’re gonna need it with all the attention you’re about to attract!"`,
 
-    `The moment the transformation kicks in, you feel a delicious thrill run through your body, as if each nerve ending is awakening to a new reality. Your muscles soften and give way to enticing curves, your once broad shoulders narrowing as your waist begins to cinch inwards. You catch Bruce’s gaze, a wicked grin spreading across his face as he leans in closer, reveling in the spectacle before him.
+    `You catch Bruce’s gaze, a wicked grin spreading across his face as he leans in closer, reveling in the spectacle before him.
 
     "Look at you, all soft and helpless," Bruce coos mockingly, his voice low and dripping with delight. "Guess those boyish charms are taking a backseat to a nice set of tits, huh? I can’t wait to see how many drinks you’ll need just to keep those new girls in check." He lingers over your blossoming form, eyes glimmering with lust as your hips widen and your chest swells.
 
     As your transformation concludes, he steps closer, invading your personal space with an unmistakable hunger. "You’re going to make a fine little plaything, sweetheart," he leers, a dark satisfaction in his tone. "I bet all the guys here will be lining up for a taste of that sweet new body."`,
 
-    `Your body tingles with energy as the transformation starts, reshaping you in ways you never thought possible. The fabric of your clothes strains against your changing form, the swell of your chest demanding attention. Bruce’s predatory gaze never wavers, and he smirks as he watches you morph into a figure of desire.
+    `Bruce’s predatory gaze never wavers, and he smirks as he watches you morph into a figure of desire.
 
     "Look at you now! All those masculine features melting away," he drawls, his voice thick with satisfaction. "Those girls you’re sporting are going to get you all kinds of attention tonight, especially when you strut your stuff. You might even want to start practicing that sultry walk!" His laughter is boisterous, ringing through the bar as he leans closer, clearly enjoying your transformation.
 
     He revels in the scene, leaning in with a devilish grin. "You’d better get used to the compliments, darling," he teases. "With those new assets, you’ll have every guy in the room at your feet, and I can’t wait to see you bask in it."`,
 
-    `The transformation unfolds like a sensual dance, your body yielding and reshaping itself with intoxicating grace. You feel your chest swelling, the new weight pressing against the fabric of your shirt, and Bruce’s eyes are alight with excitement as he observes every inch of your change. 
+    `Bruce’s eyes are alight with excitement as he observes every inch of your change. 
 
     "Damn, look at those curves," he drawls, a low chuckle escaping his lips. "You’re not just turning into a woman; you’re becoming a real knockout. I bet those bad boys are gonna turn some heads tonight!" He steps forward, his gaze sweeping over your body with a mix of lust and mockery.
 
@@ -1420,6 +1420,11 @@ const exampleDescribeBoobsMedium = [
       tagText = tagInput.trim(); // Use the string directly
     } else {
       tagText = tagInput.value.trim(); // Use the input element's value
+    }
+
+    if (!sanitizeInput(tagText)) {
+      alert("Entry contains invalid characters.");
+      return false;
     }
   
     if (tagText) {
@@ -2628,6 +2633,17 @@ const exampleDescribeBoobsMedium = [
       return;
     }
 
+    // Tag Validation
+    const isDoggyTagsEmpty = doggyTags.every(tag => tag.tags.length === 0);
+    const isFacefuckTagsEmpty = facefuckTags .every(tag => tag.tags.length === 0);
+    const isOralTagsEmpty = oralTags.every(tag => tag.tags.length === 0);
+    
+    if (isDoggyTagsEmpty && isFacefuckTagsEmpty && isOralTagsEmpty) {
+      console.error("At least one tag field is required.");
+      alert("Please select at least one tag.");
+      return;
+    }    
+
 
     // Collect tag data from Transactional Doggy
     const doggyTags = collectTags(mcfDoggyContainer, mcfDoggyVidPrefix);
@@ -2745,17 +2761,6 @@ const exampleDescribeBoobsMedium = [
     const bathroomVideos = getVideoArray(bathroomPrefix, bathroomVidInt);
     const dayVideos = [...morningVideos, ...bathroomVideos];
 
-    // Tag Validation
-    const isDoggyTagsEmpty = doggyTags.every(tag => tag.tags.length === 0);
-    const isFacefuckTagsEmpty = facefuckTags .every(tag => tag.tags.length === 0);
-    const isOralTagsEmpty = oralTags.every(tag => tag.tags.length === 0);
-    
-    if (isDoggyTagsEmpty && isFacefuckTagsEmpty && isOralTagsEmpty) {
-      console.error("At least one tag field is required.");
-      alert("Please select at least one tag.");
-      return;
-    }
-
 
     // twee building section
     let tweeContent = `:: add character ${characterName} [add_character]\n`;
@@ -2856,21 +2861,21 @@ const exampleDescribeBoobsMedium = [
     tweeContent += `    (if:$character's "id" is "${characterName}")[\n`;
     tweeContent += `        (if:(is_fem:))[(replace:?screen)[\n`;
     if (bathroomVidInt === 1) {
-      tweeContent += `            ($vid:"scenes/characters/${characterName}/chores/${bathroomPrefix} 1.mp4")]\n`;
+      tweeContent += `            ($vid:"scenes/characters/${characterName}/chores/${bathroomPrefix} 1.mp4")\n`;
     } else {
-      tweeContent += `            ($vid:"scenes/characters/${characterName}/chores/${bathroomPrefix} " + (text:(twist:1,${bathroomVidInt})) + ".mp4")]\n`;
+      tweeContent += `            ($vid:"scenes/characters/${characterName}/chores/${bathroomPrefix} " + (text:(twist:1,${bathroomVidInt})) + ".mp4")\n`;
     }
-    tweeContent += `        (display:"activities")\n]]\n}\n\n`;
+    tweeContent += `        (display:"activities")\n    ]]]\n}\n\n`;
 
     tweeContent += `:: day [around]\n{\n`;
     tweeContent += `    (display:_around)\n`;
     tweeContent += `    (if:$character's "id" is "${characterName}")[\n`;
     tweeContent += `        (if:(is_fem:))[(replace:?screen)[\n`;
     tweeContent += `            (set:$img to (twirl:"${dayVideos.join('", "')}"))\n`;
-    tweeContent += `            ($vid:"scenes/characters/${characterName}/chores/" + $img + ".mp4")]\n`;
+    tweeContent += `            ($vid:"scenes/characters/${characterName}/chores/" + $img + ".mp4")\n`;
     tweeContent += `        (display:"calculate pregnancy chance")(display:"messages")\n`;
     tweeContent += `        (display:"refresh possible activities")(display:"activities")\n`;
-    tweeContent += `        (set:$mall_song to "mall " + (text:(twist:1,8)))\n(set:$beach_song to "beach " + (text:(twist:1,11)))]]\n}\n\n`
+    tweeContent += `        (set:$mall_song to "mall " + (text:(twist:1,8)))\n(set:$beach_song to "beach " + (text:(twist:1,11)))]]]\n}\n\n`
 
     //  Masturbate
     tweeContent += `:: masturbation setup ${characterName}\n`;
@@ -3045,12 +3050,12 @@ const exampleDescribeBoobsMedium = [
     tweeContent += `    "(twirl:"${fatherBJ.join('",\n    "')}")"\n}\n\n`;
 
     //  Bruce Bet
-    tweeContent += `:: bar bruce xchange bet take pill 2 [around]\n{\n`;
+    tweeContent += `:: bar bruce xchange bet take pill 2 [around]\n`;
     tweeContent += `    (if:$character's "id" is "${characterName}")[\n`;
-    tweeContent += `        (if:$character's "masculinity" > 80)[(set:$character's "reluctance" to 10)](else:)[(display:"reluctance choice")]\n`;
+    tweeContent += `        (if:$character's "masculinity" > 80)[(set:$character's "reluctance" to 10)](else:)[(display:"reluctance choice")]\n\n`;
     tweeContent += `        [${bruceTF}]\n`;
     tweeContent += `        <div class='options'>(link:"Next.")[(Display:"register reluctance")(if:(pill:"Breeder"))[($cs:"bar bruce xchange bet take pill 3")](else:)[($cs:"bar bruce xchange bet take pill 3 resistance")]]</div>\n`;
-    tweeContent += `    ](else:)[(display:_around)]\n}\n\n`;
+    tweeContent += `    ](else:)[(display:_around)]\n\n`;
 
     //  Transactional Doggy
     tweeContent += `:: sex doggy transactional ${characterName}\n{\n`;
