@@ -736,7 +736,7 @@ const exampleDescribeBoobsMedium = [
     "I never thought I'd say this, but you might actually pull off the whole 'femme fatale' look.",
     "Just wait until the guys at work see you now. They won't know what hit 'em!",
     "You’re giving me some serious competition here, should I be worried?",
-    "You got all that body from a pill? Damn, is there one that can do help me?",
+    "You got all that body from a pill? Damn, is there one that can make my tits grow?",
     "Those thighs could crush a watermelon, but I bet they’d feel good wrapped around a guy’s head.",
     "Looks like you've been practicing your 'feminine wiles' without me knowing, huh?",
     "Hope you know how to handle all that attention you're gonna get!"
@@ -1291,14 +1291,32 @@ const exampleDescribeBoobsMedium = [
 
   // Function to checking input characters
   function sanitizeInput(input) {
-    const allowedCharacters = /^[a-zA-Z0-9_\-.~*\s()!'?,]+$/; // must allow markdown characters
-    return allowedCharacters.test(input);
+    const allowedCharacters = /^[a-zA-Z0-9_\-.~*\s()!'?,]+$/; // Must allow markdown characters
+    if (!allowedCharacters.test(input)) {
+      alert(input + " contains invalid characters.");
+      return false;
+    }
+    return true;
+  };
+
+  // Function to checking tags
+  function sanitizeTag(input) {
+    const allowedCharacters = /^[a-zA-Z0-9_\-—.’~;*,\s()\$!'?,]+$/; // Must allow markdown characters
+    if (!allowedCharacters.test(input)) {
+      alert(input + " contains invalid characters.");
+      return false;
+    }
+    return true;
   };
 
   // Function to checking filename for valid characters
   function sanitizeFilename(input) {
     const allowedCharacters = /^[a-zA-Z0-9_\-.()\s]+$/; // restricted to only characters allowed in filenames
-    return allowedCharacters.test(input);
+    if (!allowedCharacters.test(input)) {
+      alert(input + " contains invalid characters.");
+      return false;
+    }
+    return true;
   };
 
   // Helper function to check if a field is empty
@@ -1422,8 +1440,7 @@ const exampleDescribeBoobsMedium = [
       tagText = tagInput.value.trim(); // Use the input element's value
     }
 
-    if (!sanitizeInput(tagText)) {
-      alert("Entry contains invalid characters.");
+    if (!sanitizeTag(tagText)) {
       return false;
     }
   
@@ -2339,13 +2356,6 @@ const exampleDescribeBoobsMedium = [
     generateMCFZip();
   };
 
-  // For testing twee
-  function testTwee() {
-    const characterName = mcfCharacterName.value;
-
-
-    console.log(tweeContent)
-  };
 
   // Gather MCF File Values and add to mcfzip
   function gatherMCFFiles() {
@@ -2630,18 +2640,7 @@ const exampleDescribeBoobsMedium = [
       console.error("Facial fields are required."); 
       alert("Facial fields are required.");
       return;
-    }
-
-    // Tag Validation
-    const isDoggyTagsEmpty = doggyTags.every(tag => tag.tags.length === 0);
-    const isFacefuckTagsEmpty = facefuckTags .every(tag => tag.tags.length === 0);
-    const isOralTagsEmpty = oralTags.every(tag => tag.tags.length === 0);
-    
-    if (isDoggyTagsEmpty && isFacefuckTagsEmpty && isOralTagsEmpty) {
-      console.error("At least one tag field is required.");
-      alert("Please select at least one tag.");
-      return;
-    }    
+    } 
 
 
     // Collect tag data from Transactional Doggy
@@ -2754,6 +2753,17 @@ const exampleDescribeBoobsMedium = [
     });
 
     timingArrayPenetration.push(timingLines.join(', '));
+
+    // Tag Validation
+    const isDoggyTagsEmpty = doggyTags.every(tag => tag.tags.length === 0);
+    const isFacefuckTagsEmpty = facefuckTags .every(tag => tag.tags.length === 0);
+    const isOralTagsEmpty = oralTags.every(tag => tag.tags.length === 0);
+    
+    if (isDoggyTagsEmpty && isFacefuckTagsEmpty && isOralTagsEmpty) {
+      console.error("At least one tag field is required.");
+      alert("Please select at least one tag.");
+      return;
+    }   
 
     // Collect videos from Morning / Bathroom
     const morningVideos = getVideoArray(morningPrefix, morningVidInt);
@@ -3450,7 +3460,7 @@ const exampleDescribeBoobsMedium = [
   
     for (const field of otherFields) {
       if (!sanitizeInput(field)) {
-        alert("One or more fields contain invalid characters.");
+        alert(field + "contains invalid characters.");
         return false;
       }
     }
@@ -5923,9 +5933,6 @@ const exampleDescribeBoobsMedium = [
   // Generate All MCF Files and Directories
   generateMCFAllFilesButton.addEventListener("click", generateMCFAll);
 
-  // Test Twee
-  testbutton.addEventListener("click", testTwee);
-
   // Build tag fields for MCF - Doggy
   mcfDoggyVid.addEventListener("input", generateMCFDoggyFields);
 
@@ -6762,7 +6769,7 @@ const exampleDescribeBoobsMedium = [
   })
 
   tippy([mcfHairstylesInput],{
-    content: "This lines up with which hairstyles you are adding for your character.<br>There isn't really a requirement on how many hairstyles to include, but it looks like most modders are going with about 10.<br>Whatever you can find or generate for your character."
+    content: "This lines up with which hairstyles you are adding for your character.<br><br>The files for each hairstyle will go into their own folder under img/characters/hairstyle/[hairstyle name]/[character_id].jpg<br><br>There isn't really a requirement on how many hairstyles to include, but it looks like most modders are going with about 10.<br>However many you can find or generate for your character."
   })
 
   tippy([mcfMakeupPath],{
