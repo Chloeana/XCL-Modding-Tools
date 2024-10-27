@@ -2072,7 +2072,6 @@ const exampleDescribeBoobsMedium = [
     const name = mcfCharacterName.value.trim() || "character_id";
 
     tooltipMCFForeplay.setContent(`This section is for groping and kissing. You need to have exactly 1 kiss video (kiss.mp4) and either an ass or tits grope.<br> You CANNOT have multiples of each.<br><br>This path is hardcoded for ${name}/foreplay. Please ensure your media files are in this location and are named 'kiss.mp4', 'grope ass.mp4', and/or 'grope tits.mp4'.`);
-    tooltipBLKForeplay.setContent(`This section is for groping and kissing. You need to have at least 1 kiss video (kiss.mp4) and either an ass or tits grope (or both).<br> You CAN have multiples of each.<br><br>This path is hardcoded for ${name}/foreplay. Please ensure your media files are in this location and are named 'kiss 1.mp4', 'grope ass 1.mp4', 'grope tits 1.mp4', etc.`);
     tooltipSEPre1.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp4`);
     tooltipSEPre2.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp4`);
     tooltipSEPre3.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp4`);
@@ -4721,6 +4720,8 @@ const exampleDescribeBoobsMedium = [
   function setBlkDefaultDirectories() {
     const name = blkCharacterName.value.trim() || "character_id";
 
+    tooltipBLKForeplay.setContent(`This section is for groping and kissing. You need to have at least 1 kiss video (kiss.mp4) and either an ass or tits grope (or both).<br> You CAN have multiples of each.<br><br>This path is hardcoded for ${name}/foreplay. Please ensure your media files are in this location and are named 'kiss 1.mp4', 'grope ass 1.mp4', 'grope tits 1.mp4', etc.`);
+
     blkDoggyPath.value = `${name}/sex/doggy/bbc/`
     blkBJPath.value = `${name}/bj/bbc/`
     blkFacefuckPath.value = `${name}/bj/bbc/`
@@ -5023,8 +5024,8 @@ const exampleDescribeBoobsMedium = [
 
     doggyTags.forEach(({ videoIndex, tags, rhythm }) => {
       const tagsString = tags.join('","');
-      doggyLines.push(`\n            "${doggyPath}${doggyVidPrefix} ${videoIndex}", (a:"${tagsString}")`);
-      doggyRhythmLines.push(`\n            "${doggyPath}${doggyVidPrefix} ${videoIndex}", ${rhythm}`);
+      doggyLines.push(`\n        "${doggyPath}${doggyVidPrefix} ${videoIndex}", (a:"${tagsString}")`);
+      doggyRhythmLines.push(`\n        "${doggyPath}${doggyVidPrefix} ${videoIndex}", ${rhythm}`);
       })
     tagArrayDoggy.push(doggyLines.join(', '));
     rhythmArrayDoggy.push(doggyRhythmLines.join(', '));    
@@ -5035,7 +5036,7 @@ const exampleDescribeBoobsMedium = [
 
     facefuckTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
-        facefuckLines.push(`\n            "${facefuckPath}${facefuckPrefix} ${videoIndex}", "${tagsString}"`);
+        facefuckLines.push(`\n        "${facefuckPath}${facefuckPrefix} ${videoIndex}", "${tagsString}"`);
     });
     tagArrayFacefuck.push(facefuckLines.join(', '));
     
@@ -5044,8 +5045,8 @@ const exampleDescribeBoobsMedium = [
     
     oralTags.forEach(({ videoIndex, tags, rhythm }) => {
       const tagsString = tags.join('","'); 
-      oralLines.push(`\n            "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}.mp4", "${tagsString}"`);
-      oralRhythmLines.push(`\n            "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}.mp4", ${rhythm}`)
+      oralLines.push(`\n        "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}.mp4", "${tagsString}"`);
+      oralRhythmLines.push(`\n        "scenes/characters/${oralPath}${oralPrefix} ${videoIndex}.mp4", ${rhythm}`)
     });
     tagArrayOral.push(oralLines.join(', '));
     rhythmArrayOral.push(oralRhythmLines.join(', '));
@@ -5056,7 +5057,7 @@ const exampleDescribeBoobsMedium = [
 
       mouthTags.forEach(({ videoIndex, tags }) => {
           const tagsString = tags.join('","'); 
-          mouthLines.push(`\n                "/characters/${cumPath}${mouthPrefix} ${videoIndex}", (a:"${tagsString}")`);
+          mouthLines.push(`\n            "/characters/${cumPath}${mouthPrefix} ${videoIndex}", (a:"${tagsString}")`);
       });
       tagArrayMouth.push(mouthLines.join(', '));
     }
@@ -5067,7 +5068,7 @@ const exampleDescribeBoobsMedium = [
 
       facialTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
-        facialLines.push(`\n            "/characters/${cumPath}${facialPrefix} ${videoIndex}", (a:"${tagsString}")`);
+        facialLines.push(`\n        "/characters/${cumPath}${facialPrefix} ${videoIndex}", (a:"${tagsString}")`);
       });
       tagArrayFacial.push(facialLines.join(','));   
       
@@ -5094,7 +5095,7 @@ const exampleDescribeBoobsMedium = [
       pulloutBodyTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
         
-        pulloutBodyLines.push(`\n            "/characters/${cumPath}${pulloutBodyPrefix} ${videoIndex}", (a:"body","${tagsString}")`);
+        pulloutBodyLines.push(`\n        "/characters/${cumPath}${pulloutBodyPrefix} ${videoIndex}", (a:"body","${tagsString}")`);
       });
       tagArrayPullout.push(pulloutBodyLines.join(', '));
     }
@@ -5104,7 +5105,7 @@ const exampleDescribeBoobsMedium = [
       
       pulloutButtTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
-        pulloutButtLines.push(`\n            "/characters/${cumPath}${pulloutButtPrefix} ${videoIndex}", (a:"butt","${tagsString}")`);
+        pulloutButtLines.push(`\n        "/characters/${cumPath}${pulloutButtPrefix} ${videoIndex}", (a:"butt","${tagsString}")`);
       });
       tagArrayPullout.push(pulloutButtLines.join(', '));
     }
@@ -5114,7 +5115,7 @@ const exampleDescribeBoobsMedium = [
 
       pulloutTitsTags.forEach(({ videoIndex, tags }) => {
         const tagsString = tags.join('","'); 
-        pulloutTitsLines.push(`\n            "/characters/${cumPath}${pulloutTitsPrefix} ${videoIndex}", (a:"tits","${tagsString}")`);
+        pulloutTitsLines.push(`\n        "/characters/${cumPath}${pulloutTitsPrefix} ${videoIndex}", (a:"tits","${tagsString}")`);
       });
       tagArrayPullout.push(pulloutTitsLines.join(', '));
     }
