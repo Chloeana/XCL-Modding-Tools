@@ -6194,10 +6194,10 @@ const exampleDescribeBoobsMedium = [
   document.getElementById("addCompatibleMod").addEventListener("click", function() {
       const modName = document.getElementById("compatibleModName").value.trim();
       const modVersion = document.getElementById("compatibleModVersion").value.trim();
-      const modOrder = document.getElementById("compatibleModOrder").value.trim();
+      const modOrder = document.querySelector('input[name="compatibleModOrder"]:checked').value.trim();
 
       if (modName && modVersion && modOrder) {
-          const modContainer = document.getElementById("compatibleModsContainer");
+          const modContainer = document.getElementById("metaCompatibleModsContainer");
           const modItem = document.createElement("li");
           modItem.textContent = `${modName} - v ${modVersion} (${modOrder})`;
           modItem.dataset.mod = JSON.stringify({ name: modName, version: modVersion, loadOrder: modOrder });
@@ -6228,7 +6228,7 @@ const exampleDescribeBoobsMedium = [
       const modVersion = document.getElementById("incompatibleModVersion").value.trim();
 
       if (modName && modVersion) {
-          const modContainer = document.getElementById("incompatibleModsContainer");
+          const modContainer = document.getElementById("metaIncompatibleModsContainer");
           const modItem = document.createElement("li");
           modItem.textContent = `${modName} - v ${modVersion}`;
           modItem.dataset.mod = JSON.stringify({ name: modName, version: modVersion });
