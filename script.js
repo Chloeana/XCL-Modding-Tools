@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "a beautifully thick frame",
     "a generously proportioned silhouette",
     "a sensually rounded figure",
-    "a body with curves in all the right places",
+    "a figure that’s curvy in all the right places",
     "a juicy and full-figured shape",
     "a strikingly voluptuous physique"
   ];
