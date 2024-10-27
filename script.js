@@ -1824,6 +1824,10 @@ const exampleDescribeBoobsMedium = [
             rhythmInput.max = 1400;
 
             tagField.appendChild(rhythmInput);
+
+            tippy(rhythmInput, {
+              content: "This is the Beats Per Minute (BPM) of the position, measured in milliseconds. Take 60000 divided by BPM to convert.<br><br>Example: 60 BPM = 1000 rhythm, 120 BPM = 500 rhythm, etc. Generally speaking, rhythm should be between 400 and 1400 bpm.<br><br> Rhythm is used in the minigames."
+            });
         }
 
         container.appendChild(tagField);
@@ -1856,6 +1860,10 @@ const exampleDescribeBoobsMedium = [
       defaultLocationOption.textContent = "Select a location";
       dropdownLocation.appendChild(defaultLocationOption);
 
+      tippy(dropdownLocation, {
+        content: "What is the surface of the scene?"
+      });
+
       // Add the other location options
       locationTagOptions.forEach(option => {
         const optionElement = document.createElement("option");
@@ -1885,6 +1893,10 @@ const exampleDescribeBoobsMedium = [
         });
 
         tagField.appendChild(dropdownTag);
+
+        tippy(dropdownTag, {
+          content: "What is happening in the scene?<br><br>Is he grabbing your waist? arms? <br>Is he pulling your hair and spanking you? <br>Are you looking back at him?"
+        });
       }
 
       const rhythmInput = document.createElement("input");
@@ -1895,6 +1907,10 @@ const exampleDescribeBoobsMedium = [
       rhythmInput.max = 1400;
 
       tagField.appendChild(rhythmInput);
+
+      tippy(rhythmInput, {
+        content: "This is the Beats Per Minute (BPM) of the position, measured in milliseconds. Take 60000 divided by BPM to convert.<br><br>Example: 60 BPM = 1000 rhythm, 120 BPM = 500 rhythm, etc. Generally speaking, rhythm should be between 400 and 1400 bpm.<br><br> Rhythm is used in the minigames."
+      });
 
       container.appendChild(tagField);
     }
