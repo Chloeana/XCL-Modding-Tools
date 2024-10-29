@@ -893,14 +893,16 @@ input[name="penetrationTiming"] {
     width: 20%;
 }
 
-#mcfGropeDiv {
+#mcfGropeDiv,
+#bgFaveDrinkDiv {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
 }
 
-#mcfGropeDiv label {
+#mcfGropeDiv label,
+#bgFaveDrinkDiv label {
     margin: 0;
     margin-top: 10px;
 }

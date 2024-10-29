@@ -1229,6 +1229,51 @@ const exampleDescribeBoobsMedium = [
   // #endregion --- BLACKED ---
 
   // #region --- Vars - Bar Girl ---
+  const bgModAuthor = document.getElementById("bgModAuthor");
+  const bgYourModVersion = document.getElementById("bgYourModVersion");
+  const bgBaseGameVersion = document.getElementById("bgBaseGameVersion");
+  const bgCharacterName = document.getElementById("bgCharacterName");
+  const generateBGFoldersButton = document.getElementById("generateBGFoldersButton");
+  const generateBGMetaButton = document.getElementById("generateBGMetaButton");
+  const generateBGFilesOnlyButton = document.getElementById("generateBGFilesOnlyButton");
+  const generateBGAllFilesButton = document.getElementById("generateBGAllFilesButton");
+
+  const bgPossibleNameInput = document.getElementById("bgPossibleNameInput");
+  const bgPossibleNameButton = document.getElementById("bgPossibleNameButton");
+  const clearbgPossibleName = document.getElementById("clearbgPossibleName");
+  const bgPossibleNameContainer = document.getElementById("bgPossibleNameContainer");
+
+  const bgUnfamiliarNameInput = document.getElementById("bgUnfamiliarNameInput");
+  const bgUnfamiliarNameButton = document.getElementById("bgUnfamiliarNameButton");
+  const clearbgUnfamiliarName = document.getElementById("clearbgUnfamiliarName");
+  const bgUnfamiliarNameContainer = document.getElementById("bgUnfamiliarNameContainer");
+
+  const bgFaveDrink = document.getElementById("bgFaveDrink");
+  const bgPartnerRace = document.getElementById("bgPartnerRace");
+  const bgSexStyle = document.getElementById("bgSexStyle");
+  const bgSexPosition = document.getElementById("bgSexPosition");
+  const bgTraits1 = document.getElementById("bgTraits1");
+  const bgTraits2 = document.getElementById("bgTraits2");
+  const bgTraits3 = document.getElementById("bgTraits3");
+  const bgTraits4 = document.getElementById("bgTraits4");
+  const bgTraits5 = document.getElementById("bgTraits5");
+  const bgTraits6 = document.getElementById("bgTraits6");
+
+  const bgDanceSuccessInput = document.getElementById("bgDanceSuccessInput");
+  const bgDanceSuccessButton = document.getElementById("bgDanceSuccessButton");
+  const examplebgDanceSuccessButton = document.getElementById("examplebgDanceSuccessButton");
+  const clearbgDanceSuccess = document.getElementById("clearbgDanceSuccess");
+  const bgDanceSuccessContainer = document.getElementById("bgDanceSuccessContainer");
+  
+  const bgDanceFailInput = document.getElementById("bgDanceFailInput");
+  const bgDanceFailButton = document.getElementById("bgDanceFailButton");
+  const examplebgDanceFailButton = document.getElementById("examplebgDanceFailButton");
+  const clearbgFailSuccess = document.getElementById("clearbgFailSuccess");
+  const bgDanceFailContainer = document.getElementById("bgDanceFailContainer");
+
+
+
+
   // #endregion --- Bar Girl ---
 
   // #region --- Vars - MetaMaker ---
@@ -1263,6 +1308,7 @@ const exampleDescribeBoobsMedium = [
         metaGameVersion.value = versionXCL;
         mcfBaseGameVersion.value = versionXCL;
         blkBaseGameVersion.value = versionXCL;
+        bgBaseGameVersion.value = versionXCL;
       }
 
       if (versionBLK) {
@@ -4677,9 +4723,9 @@ const exampleDescribeBoobsMedium = [
             jsContent += `    "shoes": "${outfit.shoes !== undefined ? outfit.shoes : "none"}",\n`;
 
             // Conditional logic based on descType
-            if (outfit.descType === "onePiece") {
+            if (outfit.descType === "onePieceRadio") {
                 jsContent += `    "onepiece": "${outfit.onepiece}",\n`;
-            } else if (outfit.descType === "twoPiece") {
+            } else if (outfit.descType === "twoPieceRadio") {
                 jsContent += `    "top": "${outfit.top}",\n`;
                 jsContent += `    "bottom": "${outfit.bottom}",\n`;
             }

@@ -11,6 +11,7 @@
 </head>
 <body>
     <div id="title" class="title" data-raw="">X-Change™ Life's Unofficial Modding Tools</div>
+    
 
     <div class="tabs">
         <button class="tablinks" data-tool="MCF-Tab">Playable Character</button>
@@ -19,28 +20,31 @@
         <button class="tablinks" data-tool="BLK-Tab">BLACKED</button>
         <button class="tablinks" data-tool="BG-Tab">Bar Girl</button>
         <button class="tablinks" data-tool="MetaTab">Meta Maker</button>
+        <button type="button" id="themeButton">🎨</button>
     </div>
 
     <!-- Landing Page -->
     <div id="landingPage" class="landing-page">
-        <div class="content-wrapper">
-            <div class="form-center-wrapper">
-                <div class="form-note">
-                    <h1>Welcome to X-Change™ Life's Unofficial Modding Tools</h1>
-                    <h2>These tools are intended to serve as a coding assistant, to facilitate working with the code files.</h2>
-                    <h2>Choose a tab above to get started.</h2>
-                </div>
-                <div class="form-note">
-                    <h2>Some general tips for using these tools:</h2>
-                    <ul>
-                        <li>Always double-check the tooltips for detailed guidance and examples.</li>
-                        <li>In each tab, start from the top and move downwards. Some lower sections can sometimes be dependant on higher section inputs.</li>
-                        <li>When building a Playable Character, ensure you read each section carefully to help with expectations.</li>
-                        <li>Media filenames must correlate with the specified sections in each tab. Double check your paths and prefixes!!</li>
-                        <li>For sections with multiple media files, ensure your filenames match what is outlined in that section. Filenames are important!!</li>
-                    </ul>
-                    <br><br>
-                    <h3>If you have questions or suggestions, put them in the XCL Discord!</h3>
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="form-center-wrapper">
+                    <div class="form-note">
+                        <h1>Welcome to X-Change™ Life's Unofficial Modding Tools</h1>
+                        <h2>These tools are intended to serve as a coding assistant, to facilitate working with the code files.</h2>
+                        <h2>Choose a tab above to get started.</h2>
+                    </div>
+                    <div class="form-note">
+                        <h2>Some general tips for using these tools:</h2>
+                        <ul>
+                            <li>Always double-check the tooltips for detailed guidance and examples.</li>
+                            <li>In each tab, start from the top and move downwards. Lower sections can sometimes be dependant on higher section inputs.</li>
+                            <li>When building a Playable Character, ensure you read each section carefully to help with expectations.</li>
+                            <li>Media filenames must correlate with the specified sections in each tab. Double check your paths and prefixes!!</li>
+                            <li>For sections with multiple media files, ensure your filenames match what is outlined in that section. Filenames are important!!</li>
+                        </ul>
+                        <br><br>
+                        <h3>If you have questions or suggestions, put them in the XCL Discord!</h3>
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,6 +55,9 @@
             <div class="content-wrapper">
                 <div class="form-center-wrapper">
                     <form id="mcfForm">
+                        <div class="form-note">
+                            <p>This is only intended to make the coding portion easier. Please refer to the <a href="https://x-change.life/wiki/docs/playable-character/" target="_blank">walkthrough</a> for specific instructions.</p>
+                        </div>
                         <div class="form-center">
                             <h2>Meta Section</h2>
                             <div class="form-single-line">
@@ -374,7 +381,7 @@
                         <div class="form-center">
                             <h2>Pharmacist Event</h2>
                             <div class="form-single-line">
-                                <label for="mcfEventShopCommentInput">His comment:</label> <!-- event shop deal accept -->
+                                <label for="mcfEventShopCommentInput">His comment:</label>
                                 <input type="text" id="mcfEventShopCommentInput" name="mcfEventShopCommentInput">
                                 <button type="button" class="addToContainer" id="mcfEventShopCommentButton">Add</button>
                                 <button type="button" class="suggestExample" id="exampleEventShopCommentButton">🪄</button>
@@ -1459,10 +1466,180 @@
     </div>
 
     <div id="BG-Tab" class="tabcontent">
-        <div class="content-wrapper">
-            <div class="form-center-wrapper">
-                <div class="form-note">
-                    <h1>Coming Soon(ish)</h1>
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="form-center-wrapper">
+                    <form id="bgForm">
+                        <div class="form-note">
+                            <p>This is only intended to make the coding portion easier. Please refer to the <a href="https://x-change.life/wiki/docs/bar-girl/" target="_blank">walkthrough</a> for specific instructions.</p>
+                        </div>
+                        <div class="form-center">
+                            <h2>Meta Section</h2>
+                            <div class="form-single-line">
+                                <label for="bgModAuthor">Mod Author:</label>
+                                <input type="text" id="bgModAuthor" name="bgModAuthor">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="bgYourModVersion">Your Mod Version:</label>
+                                <input type="text" id="bgYourModVersion" name="bgYourModVersion" placeholder="1.0.0">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="bgBaseGameVersion">Current XCL Game Version:</label>
+                                <input type="text" id="bgBaseGameVersion" name="bgBaseGameVersion">
+                            </div>
+                            <div class="form-single-line">
+                                <label for="bgCharacterName">Bar Girl Name:</label>
+                                <input type="text" id="bgCharacterName" name="bgCharacterName">
+                            </div>
+                            <div class="form-button-center">
+                                <button type="button" id="generateBGFoldersButton">Generate Folder Structure Only</button>
+                                <button type="button" id="generateBGMetaButton">Generate Meta Only</button>
+                            </div>
+                        </div>
+                        <div class="form-center">
+                            <h2>Character Information</h2>
+                            <div class="form-single-line">
+                                <label for="bgCharacterRace">Race:</label>
+                                <select id="bgCharacterRace" name="bgCharacterRace">
+                                    <option value="white">White</option>
+                                    <option value="black">Black</option>
+                                    <option value="asian">Asian</option>
+                                    <option value="latin">Latin</option>
+                                </select>
+                            </div>
+                            <div class="form-single-line">
+                                <label for="bgPossibleNameInput">Possible Names:</label>
+                                <input type="text" id="bgPossibleNameInput" name="bgPossibleNameInput">
+                                <button type="button" class="addToContainer" id="bgPossibleNameButton">Add</button>
+                                <button type="button" class="clearTags" id="clearbgPossibleName">❌</button>
+                                <div class="tagsContainer" id="bgPossibleNameContainer"></div>
+                            </div>
+                            
+                            <div class="form-single-line">
+                                <label for="bgUnfamiliarNameInput">Unfamiliar Names:</label>
+                                <input type="text" id="bgUnfamiliarNameInput" name="bgUnfamiliarNameInput">
+                                <button type="button" class="addToContainer" id="bgUnfamiliarNameButton">Add</button>
+                                <button type="button" class="clearTags" id="clearbgUnfamiliarName">❌</button>
+                                <div class="tagsContainer" id="bgUnfamiliarNameContainer"></div>
+                            </div>
+                            <h3>Favorites</h3>
+                            <div class="form-single-line">
+                                <label for="bgFaveDrink">Drink:</label>
+                                <select id="bgFaveDrink" name="bgFaveDrink">
+                                    <option value="random">Let fate decide</option>
+                                    <option value="tequila">Tequila</option>
+                                    <option value="fruity cocktail">Fruity Cocktail</option>
+                                    <option value="whisky">Whisky</option>
+                                    <option value="beer">Beer</option>
+                                    <option value="wine">Wine</option>
+                                </select>
+
+                                <label for="bgPartnerRace">Partner Race:</label>
+                                <select id="bgPartnerRace" name="bgPartnerRace">
+                                    <option value="random">Let fate decide</option>
+                                    <option value="white">White</option>
+                                    <option value="black">Black</option>
+                                    <option value="asian">Asian</option>
+                                    <option value="latin">Latin</option>
+                                </select>
+                            </div>
+
+                            <div class="form-single-line">
+                                <label for="bgSexStyle">Sex Style:</label>
+                                <select id="bgSexStyle" name="bgSexStyle">
+                                    <option value="random">Let fate decide</option>
+                                    <option value="gentle sex">Gentle</option>
+                                    <option value="rough sex">Rough</option>
+                                </select>
+
+                                <label for="bgSexPosition">Sex Position:</label>
+                                <select id="bgSexPosition" name="bgSexPosition">
+                                    <option value="random">Let fate decide</option>
+                                    <option value="doggystyle">Doggystyle</option>
+                                    <option value="riding">Cowgirl</option>
+                                    <option value="missionary">Missionary</option>
+                                </select>
+                            </div>
+
+                            <h3>Traits</h3>
+                            <div class="form-single-line">
+                                <label for="bgTraits1">Preference:</label>
+                                <select id="bgTraits1" name="bgTraits1">
+                                    <option value="random">Let fate decide</option>
+                                    <option value="likes assertive">Likes Assertive</option>
+                                    <option value="feminist">Feminist</option>
+                                </select>
+
+                                <label for="bgTraits2">Disposition:</label>
+                                <select id="bgTraits2" name="bgTraits2">
+                                    <option value="random">Let fate decide</option>
+                                    <option value="bitch">Bitch</option>
+                                    <option value="kind">Kind</option>
+                                    <option value="religious">Religious</option>
+                                    <option value="slut">Slut</option>
+                                </select>
+                            </div>
+
+                            <div class="form-single-line">
+                                <label for="bgTraits3">Birth Control:</label>
+                                <select id="bgTraits3" name="bgTraits3">
+                                    <option value="random">Let fate decide</option>
+                                    <option value="pill">On Pill</option>
+                                    <option value="no pill">Not on Pill</option>
+                                </select>
+
+                                <label for="bgTraits4">Persona:</label>
+                                <select id="bgTraits4" name="bgTraits4">
+                                    <option value="random">Let fate decide</option>
+                                    <option value="nerdy">Nerdy</option>
+                                    <option value="sporty">Sporty</option>
+                                    <option value="rich">Rich</option>
+                                    <option value="feminine">Feminine</option>
+                                    <option value="bimbo">Bimbo</option>
+                                </select>
+                            </div>
+
+                            <h3>Optional Traits</h3>
+                            <div class="form-single-line">
+                                <label for="bgTraits5">Size Queen:</label>
+                                <select id="bgTraits5" name="bgTraits5">
+                                    <option value="random">Let fate decide</option>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+
+                                <label for="bgTraits6">BBC Only:</label>
+                                <select id="bgTraits6" name="bgTraits6">
+                                    <option value="random">Let fate decide</option>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-center">
+                            <h2>Club Dance Results</h2>
+                            <div class="form-single-line">
+                                <label for="bgDanceSuccessInput">Success:</label>
+                                <input type="text" id="bgDanceSuccessInput" name="bgDanceSuccessInput">
+                                <button type="button" class="addToContainer" id="bgDanceSuccessButton">Add</button>
+                                <button type="button" class="suggestExample" id="examplebgDanceSuccessButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearbgDanceSuccess">❌</button>
+                            </div>
+                            <div class="tagsContainer" id="bgDanceSuccessContainer"></div>
+                            <div class="form-single-line">
+                                <label for="bgDanceFailInput">Fail:</label>
+                                <input type="text" id="bgDanceFailInput" name="bgDanceFailInput">
+                                <button type="button" class="addToContainer" id="bgDanceFailButton">Add</button>
+                                <button type="button" class="suggestExample" id="examplebgDanceFailButton">🪄</button>
+                                <button type="button" class="clearTags" id="clearbgFailSuccess">❌</button>
+                            </div>
+                            <div class="tagsContainer" id="bgDanceFailContainer"></div>
+                        </div>
+                        <div class="form-button-center">
+                            <button type="button" id="generateBGFilesOnlyButton">Generate Files Only</button>
+                            <button type="button" id="generateBGAllFilesButton">Generate All Files and Folders</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1477,7 +1654,7 @@
                             <p>This is meant to be a standalone meta maker. The other tabs have their own respective metas.</p>
                         </div>
                         <div class="form-center">
-                            <h3>Basic Information</h3>
+                            <h2>Basic Information</h2>
                             <div class="form-single-line">
                                 <label for="metaName">Mod Name:</label>
                                 <input type="text" id="metaName" name="metaName" placeholder="My Sweet Mod">
@@ -1496,7 +1673,7 @@
                             </div>
                         </div>
                         <div class="form-center">
-                            <h3>Required Mods:</h3>
+                            <h2>Required Mods:</h2>
                             <div class="form-grid w-70">
                                 <label for="requiredModName" style="grid-column: 1;">Mod Name:</label>
                                 <input type="text" id="requiredModName" style="grid-column: 2;">
@@ -1511,7 +1688,7 @@
                             </div>
                         </div>
                         <div class="form-center">
-                            <h3>Compatible Mods:</h3>
+                            <h2>Compatible Mods:</h2>
                             <div class="form-grid w-70">
                                 <label for="compatibleModName" style="grid-column: 1;">Mod Name:</label>
                                 <input type="text" id="compatibleModName" style="grid-column: 2;">
@@ -1534,7 +1711,7 @@
                             </div>
                         </div>
                         <div class="form-center">
-                            <h3>Incompatible Mods:</h3>
+                            <h2>Incompatible Mods:</h2>
                             <div class="form-grid w-70">
                                 <label for="incompatibleModName" style="grid-column: 1;">Mod Name:</label>
                                 <input type="text" id="incompatibleModName" style="grid-column: 2;">
