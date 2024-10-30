@@ -1256,6 +1256,7 @@ const exampleDescribeBoobsMedium = [
   const bgTraits6 = document.getElementById("bgTraits6");
 
   const bbcTag = document.getElementById("bbcTag");
+  const bgTraitsHelp = document.getElementById("bgTraitsHelp");
 
   const bgDanceSuccessInput = document.getElementById("bgDanceSuccessInput");
   const bgDanceSuccessButton = document.getElementById("bgDanceSuccessButton");
@@ -1348,7 +1349,7 @@ const examplebgDanceFail = [
   // #region --- Functions - General
   // Fetch Version Numbers for metas 
   function getVersionNumbers() {
-    const webAppUrl = 'https://script.googleusercontent.com/macros/echo?user_content_key=UR7cvhaujbJPZe9WbnDqjz8tVHak5en5A6mcaYAsXn1A09QxmxhxPxrKKtwU8hD26_ZPUWg0iYGOL6kZ7c5ZXsaXI6lzHkwtm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnAWTw6kYokAIz4fycZZWSzAHvP7q-ER84ut9p1BWsq6RCS-rRKOkYb1ghPP07pcvbnWnLM9fL-5ZyGd_kpYI3Q1kf6558cMJ4Q&lib=MNyQexcowBhR9-0f5LCn7B5-XeAFfSkpW';
+    const webAppUrl = 'https://script.google.com/macros/s/AKfycbzLz98bMKrM8qYWHMMPNTcvMDTnW0-IQXR2DCk1sFgptFy1BsR2ddZ6XJ6RpV_F_658/exec';
 
     fetch(webAppUrl)
       .then(response => response.json())
@@ -6898,15 +6899,15 @@ const examplebgDanceFail = [
 
   // Static Tooltips
 
-  tippy([blkCharacterName, outfitCharacterName, positionCharacterName, mcfCharacterName], {
+  tippy([blkCharacterName, outfitCharacterName, positionCharacterName, mcfCharacterName, bgCharacterName], {
     content: "This is also the <i>id</i> for your character. It is <i>usually</i> their first name, in all lowercase. <br><br>It could be 'bonnie', for example."
   })
 
-  tippy([metaVersion, blkYourModBLKVersion, mcfYourModVersion],{
+  tippy([metaVersion, blkYourModBLKVersion, mcfYourModVersion, bgYourModVersion],{
     content: "This is the version of your mod. You will need to increase it when you release updates. <br><br>Recommend semantic versioning (major.minor.patch).<br> Example: <i>0.2.1</i> for 0 major / 2 minor / 1 patch."
   })
 
-  tippy([mcfModAuthor, blkModAuthor, metaAuthor],{
+  tippy([mcfModAuthor, blkModAuthor, metaAuthor, bgModAuthor],{
     content: "You! <br>You can put your @handle, your name or nickname. However you would like people to know you.<br><br> Example: 'Chloe'"
   })
 
@@ -7313,47 +7314,50 @@ const examplebgDanceFail = [
     content: "This is what shows on the screen immediately after your transformation when you lose a bet with Bruce. <br> Part of it describes your transition and the other part is Bruce's reaction and comments to it.<br><br> It's more of a paragraph than just a couple lines."
   })
 
-  tippy([],{
-    content: ""
+  tippy([bgPossibleNameInput],{
+    content: "These are all the possible names for your bar girl. <br> If you want to force her to be called one specific name, only enter one name."
   })
   
-  tippy([],{
-    content: ""
+  tippy([bgUnfamiliarNameInput],{
+    content: "These are all the possible names for your bar girl to be referred to before you learn her name.<br><br>It's usually more descriptive, like 'Hot Blonde Girl', 'Goth Girl', etc."
   })
 
-  tippy([],{
-    content: ""
+  tippy([bgFaveDrink],{
+    content: "Her favorite drink!<br>You gain attraction for buying a girl their favorite drink. "
   })
 
-  tippy([],{
-    content: ""
+  tippy([bgPartnerRace],{
+    content: "This adds a preferred race to a girl's 'likes'. <br>It can prompt some different lines if you're the race that she likes."
   })
   
-  tippy([],{
-    content: ""
+  tippy([bgSexStyle],{
+    content: "This is the style of sex (rough or gentle). <br>It affects her pleasure gain during sex."
   })
 
-  tippy([],{
-    content: ""
+  tippy([bgSexPosition],{
+    content: "This is her favorite position. <br>It affects pleasure gain during sex."
   })
 
-  tippy([],{
-    content: ""
+  tippy([bgTraitsHelp],{
+    content: "Traits play into an intricate system that involves driving dialog, setting correct and incorrect responses, relationship values, and can even affect pleasure gains.<br><br>They are grouped into four sets that seem to be either exclusive or in opposition of one another, along with a separate section for optional traits."
   })
   
-  tippy([],{
-    content: ""
+  tippy([bgTraits5],{
+    content: "This trait specifically affects the pleasure multipier based on your cock length and girth.<br><br> Size queen is going to have a higher multiplier with a longer/thicker cock.<br><br> Tight means she is going to have a lower multipler with a longer/thicker cock."
   })
 
-  tippy([],{
-    content: ""
+  tippy([bgTraits6],{
+    content: "This trait specifically affects the girl's attraction to you, based on your race. With an 'only bbc' tag, a non-black MC will start off with a negative attraction score after you introduce yourself to her. <br><br> The inverse is true if you are black."
   })
 
-  tippy([],{
-    content: ""
+  tippy([bgDanceSuccessInput],{
+    content: "This is what shows up on the screen at the club after a successful dance skill check when dancing with this girl."
+  })
+
+  tippy([bgDanceFailInput],{
+    content: "This is what shows up on the screen at the club after failing dance skill check when dancing with this girl."
   })
   
-
   /*
   tippy([],{
     content: ""
