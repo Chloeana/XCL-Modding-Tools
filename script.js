@@ -1038,11 +1038,6 @@ const exampleDescribeBoobsMedium = [
 
     "Get ready for the attention, sweetheart," Bruce continues, a predatory glint in his eyes. "You’re gonna need it with that body. Everyone’s going to want a piece of the new you, and I plan on making sure you know it."`
   ];
-  
-
-  
-  
-  
  
   let mcfzip = '';
 
@@ -1233,6 +1228,7 @@ const exampleDescribeBoobsMedium = [
   const bgYourModVersion = document.getElementById("bgYourModVersion");
   const bgBaseGameVersion = document.getElementById("bgBaseGameVersion");
   const bgCharacterName = document.getElementById("bgCharacterName");
+  const bgCharacterRace = document.getElementById("bgCharacterRace");
   const generateBGFoldersButton = document.getElementById("generateBGFoldersButton");
   const generateBGMetaButton = document.getElementById("generateBGMetaButton");
   const generateBGFilesOnlyButton = document.getElementById("generateBGFilesOnlyButton");
@@ -1259,20 +1255,77 @@ const exampleDescribeBoobsMedium = [
   const bgTraits5 = document.getElementById("bgTraits5");
   const bgTraits6 = document.getElementById("bgTraits6");
 
+  const bbcTag = document.getElementById("bbcTag");
+
   const bgDanceSuccessInput = document.getElementById("bgDanceSuccessInput");
   const bgDanceSuccessButton = document.getElementById("bgDanceSuccessButton");
   const examplebgDanceSuccessButton = document.getElementById("examplebgDanceSuccessButton");
   const clearbgDanceSuccess = document.getElementById("clearbgDanceSuccess");
   const bgDanceSuccessContainer = document.getElementById("bgDanceSuccessContainer");
-  
+
   const bgDanceFailInput = document.getElementById("bgDanceFailInput");
   const bgDanceFailButton = document.getElementById("bgDanceFailButton");
   const examplebgDanceFailButton = document.getElementById("examplebgDanceFailButton");
-  const clearbgFailSuccess = document.getElementById("clearbgFailSuccess");
+  const clearbgDanceFail = document.getElementById("clearbgDanceFail");
   const bgDanceFailContainer = document.getElementById("bgDanceFailContainer");
 
+  const examplebgDanceSuccess = [
+    "Following the rhythm of the club music, you glide your fingers over the smooth bare skin of $her_name's waist, pulling her closer. Her body fits perfectly against yours, her ample chest brushing against you with every swaying move. Her eyes sparkle with delight, making her even more alluring under the club lights.",
+    "Your hands on $her_name's slender waist guide her through the rhythm, her body moving in sync with yours. The feeling of her breasts pressing against you is intoxicating, distracting you from everything but her captivating eyes. With every beat, the spark between you grows, fueled by her infectious smile.",
+    "The thumping beat of the music fades as your eyes meet $her_name's. The teasing glint in her mesmerizing eyes holds an unspoken promise that sends a shiver up your spine. As you dance together, the heat of her body against yours and her breath mingling with yours create an intimacy that leaves you wanting more.",
+    "Your hand holds $her_name close as you guide her through the pulsating rhythm of the music. The soft curves of her body press against you, her breasts pillowed against your chest. Her eyes meet yours, her teasing smile sparking a desire that dances with your racing heartbeat.",
+    "As $her_name fits herself against your frame, the scent of her perfume and the heat of her body are intoxicating. You guide her hands to your shoulders, and yours explore the small of her back. Her breasts pressed against you and her eyes looking up at you with calm intensity send a wave of desire coursing through your veins.",
+    "Your hand sinfully trails down $her_name's side, appreciating the curves before settling on her waist. She gasps, her grip on you tightening. Her body is warm, firm against yours, each point of contact like a lit fuse. Her body language, shy yet desiring, sends waves of desire through you.",
+    "Hands on her waist, you guide her body to the rhythm, her back against your chest. She leans into you, trusting you to lead. And when her firm ass grinds against you, her hands reaching back to stroke your thighs, you know she's enjoying this as much as you are.",
+    "Dancing with $her_name feels like floating in a trance. Her eyes are alight with anticipation as she sways with you in perfect rhythm. You feel her breath hitch when you pull her closer, her breasts pressing into you rhythmically.",
+    "Feeling the heat of the dance floor, you hold $her_name close, her eyes locked on to yours. There's a pulsating energy between you that grows with the beat. Her chest, fuller than one would expect from her lithe form, heaves against yours in time with the thrilling rhythm.",
+    "$her_name giggles as you flawlessly execute a playful dip. Her hands explore your shoulders, her body swaying rhythmically against yours. You can't help but smile at the delighted look on her face.",
+    "Your bodies move so close together, it feels like there's no one else in the club. $her_name's hand grips your shoulder as she rides the rhythm, swaying in delight.",
+    "$her_name's hips roll against yours as the rhythm intensifies. Her arms slide around your neck, her breath hitching when your hands trace down her back.",
+    "Your hands find $her_name's hips, your bodies swaying as one. The copious amount of skin contact has her cheeks flushed. She lets one of your hands drift upwards, cupping her breast over her top. It's a silent agreement, a mutual surrender to the rhythm and each other.",
+    "Her back presses into your chest, your hand splaying across her stomach. When your fingers drift upwards to brush against the underside of her breast, she doesn't pull away. Instead, she presses closer, her ass grinding against you in time with the music.",
+    "Intoxicated by the pulsating rhythm and the tantalizing closeness of $her_name, you lead her into a sensuous dance. Her lithe body melds into yours, her chest flush against you, setting your nerves on fire. Her eyes are fixed on you, a silent invitation that stirs a dangerous longing within you.",
+    "As you move together in perfect sync, $her_name's body is like a natural extension of your own. Her playful smile and the glint in her eye make your heart race as you feel her press closer.",
+    "$her_name laughs softly as you twirl her around, her body returning to yours in a seamless flow. The chemistry between you is undeniable, the warmth of her touch setting your skin ablaze.",
+    "Every movement feels effortless as she moves with you, her fingers brushing your shoulder and her gaze full of intrigue. She pulls you in, whispering something flirty over the beat.",
+    "She lets out a satisfied sigh, her fingers lingering on your arm as you guide her through each turn. Her body molds against yours, the rhythm drawing you both into an intoxicating spell.",
+    "Her lips brush your ear as she leans in, swaying to the beat, sending a thrill down your spine. There's a soft intimacy in her touch, her breath mingling with yours.",
+    "Her fingers trace lightly over your shoulder as she moves in time with the music, her body pressed against yours. The closeness, the heat, and her breath on your neck all serve to deepen the unspoken connection building between you.",
+    "$her_name bites her lip as she follows your lead, her body warm and inviting against yours. Her hand finds yours, entwining your fingers as you sway, the intensity of her gaze sending a thrill up your spine.",
+    "Dancing with $her_name feels as natural as breathing. She matches every step, every sway, her gaze locking onto yours with a mixture of challenge and warmth that leaves you breathless.",
+    "Her eyes sparkle with mischief as she brushes her lips close to your ear, her voice soft but filled with excitement. Her hands trail down your arms, and her body moves with yours in perfect harmony.",
+    "As you pull $her_name closer, she lets out a contented sigh, her body melding into yours. Her hands find their way around your neck, her lips dangerously close to yours, the shared warmth between you growing stronger with every beat."
+  ];
 
+const examplebgDanceFail = [
+    "With every missed move, every offbeat step, you can see the spark in $her_name's eyes dimming. Her hands rest gingerly on your shoulders, hesitant, as if she no longer trusts you to lead. The rhythm is lost between you, replaced by growing awkwardness.",
+    "You misjudge a step and $her_name nearly trips. She laughs it off, but the tension between you is palpable. Her gaze wanders, her movements lack their earlier charm. She glances over your shoulder at the crowd, as if contemplating an escape plan.",
+    "As the music speeds up, you lose your footing and stumble against $her_name. An opportunist guy sees his chance and swoops in, placing his hands on her hips while you're trying to regain your balance. Her annoyed glare is obvious, but the guy seems unfazed.",
+    "$her_name tries to smile, but it doesn't reach her eyes. As she stumbles to match your erratic rhythm, you can tell she's not enjoying herself. Her gaze keeps drifting over your shoulder, to the other dancers on the floor, her disappointment making you wince.",
+    "Every time you step out of rhythm, $her_name's smile dwindles a little more. You can feel her trying to adjust to your bad timing, but it's obvious she's not having fun. You can't help but notice the amused glances being thrown your way by other guys in the club.",
+    "You miss a step, nearly tripping over $her_name's foot. With a hasty apology, you try to regain the rhythm, but you can see the disappointment in her eyes. Around you, other men in the club are watching her, their lecherous gazes lingering on her body.",
+    "A misstep causes $her_name to falter, her polite smile barely masking her growing discomfort. You can feel her pulling away, her enthusiasm fading with each awkward beat.",
+    "Your movements become stiffer as you struggle to find the beat, and you can feel $her_name's body tensing under your hands. Her polite chuckle only masks the awkwardness, and she gently pulls away, her eyes scanning for an exit.",
+    "When you accidentally step on $her_name's foot, she lets out a small yelp before offering a strained smile. Her expression says it all—she’s not impressed.",
+    "Your offbeat moves only worsen with each passing second, and you catch $her_name rolling her eyes when she thinks you’re not looking. The chemistry between you fizzles, replaced by quiet disappointment.",
+    "You stumble through a turn, and $her_name lets out a small sigh, her excitement visibly fading. She pulls back slightly, trying to match your steps, but the moment feels less and less magical.",
+    "As you awkwardly misstep again, $her_name’s hands drop from your shoulders, and she glances around with a polite but disappointed smile. You can feel her enthusiasm slipping away.",
+    "An attempt at a fancy twirl ends with you bumping into her, and $her_name’s laughter has a forced edge to it. Her eyes scan the crowd, perhaps looking for a way out of the awkward situation.",
+    "$her_name politely attempts to keep up with your off-beat rhythm, but you can tell she's struggling to enjoy herself. Her laughter sounds strained, and she glances over at the other couples moving effortlessly.",
+    "Another clumsy move causes $her_name to pull away, her expression polite but distant. Her eyes avoid yours, the connection between you growing colder as you fumble with the rhythm.",
+    "Your feet tangle, causing $her_name to nearly stumble, and she gives you a polite smile that doesn’t reach her eyes. The chemistry between you feels like it’s slipping through your fingers.",
+    "An awkward step forward throws you off balance, and $her_name quickly pulls back, a forced smile plastered on her face. Her glances around the room are becoming more frequent, her patience wearing thin.",
+    "You feel the warmth between you dissipate as another mistimed move causes $her_name to pull her hands back. Her polite chuckle only hides her disappointment, and she begins to edge away.",
+    "With each misstep, $her_name's energy visibly fades. Her responses become more subdued, her gaze wandering elsewhere as the rhythm between you both breaks down completely.",
+    "An attempt to pull her closer results in an awkward bump. $her_name's smile falters, and she quickly regains her distance, her body language shifting from warmth to discomfort.",
+    "You try to match the beat, but $her_name’s movements become hesitant, her hands falling from your shoulders. She gives you a quick, tight-lipped smile, clearly less engaged than before.",
+    "Your repeated stumbles bring a polite but distant expression to $her_name’s face, her eyes darting to other dancers who seem to have the rhythm down.",
+    "After a particularly off-beat step, $her_name's smile fades, and she lets go of your hands. She takes a small step back, her attention drifting to others around you as the connection slips away.",
+    "With every awkward step, $her_name becomes more disengaged, her gaze drifting away. She eventually offers you a polite excuse to leave the dance floor, her disinterest obvious.",
+    "You attempt to pull her back into sync, but $her_name’s enthusiasm has clearly faded. Her hands drop, and she forces a smile, her disappointment evident in her expression."
+  ];
 
+  let bgzip = '';
 
   // #endregion --- Bar Girl ---
 
@@ -1369,6 +1422,14 @@ const exampleDescribeBoobsMedium = [
   function isEmpty(input) {
     return input.trim() === "";
   };
+
+  function toProperCase(name) {
+    return name
+      .toLowerCase()
+      .split(" ")
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
 
   // Generate an array for video filenames based on prefixes and counts
   function getVideoArray(prefix, count) {
@@ -2246,7 +2307,7 @@ const exampleDescribeBoobsMedium = [
     });
   };
 
-  // Generate MCF Meta
+  // Gather MCF Meta
   function gatherMCFMeta() {
 
     if (!mcfzip) {
@@ -2426,7 +2487,7 @@ const exampleDescribeBoobsMedium = [
     } 
 
     // Collect input values from forms
-    const characterName = mcfCharacterName.value;
+    const characterName = mcfCharacterName.value.toLowerCase();
     const race = mcfCharacterRace.value;
     const bodyType = mcfCharacterBodyType.value;
     const breasts = mcfCharacterBreasts.value;
@@ -4204,12 +4265,9 @@ const exampleDescribeBoobsMedium = [
   // Showing/Hiding One-Piece or Top + Bottom Fields
   function updateOutfitFields() {
 
-    onePieceField.style.display = "none";
-    twoPieceFields.style.display = "none";
-
     if (onePieceRadio.checked) {
-      onePieceField.style.display = "block";
-      twoPieceFields.style.display = "none";
+      onePieceField.classList.remove("hidden");
+      twoPieceFields.classList.add("hidden");
 
       outfitOnePiece.disabled = false;
       outfitTop.disabled = true;
@@ -4218,8 +4276,8 @@ const exampleDescribeBoobsMedium = [
       outfitTop.value = "";
       outfitBottom.value = "";
     } else if (twoPieceRadio.checked) {
-      onePieceField.style.display = "none";
-      twoPieceFields.style.display = "block";
+      onePieceField.classList.add("hidden");
+      twoPieceFields.classList.remove("hidden");
 
       outfitOnePiece.disabled = true;
       outfitTop.disabled = false;
@@ -4957,7 +5015,7 @@ const exampleDescribeBoobsMedium = [
     } 
 
     // Collect input values from forms
-    const characterName = blkCharacterName.value;
+    const characterName = blkCharacterName.value.toLowerCase();
 
     // Paths
     const doggyPath = blkDoggyPath.value;
@@ -5470,6 +5528,353 @@ const exampleDescribeBoobsMedium = [
   // #endregion --- Functions - Blacked
 
   // #region --- Functions - Bar Girl
+
+  // Showing/Hiding BBC Only Field
+  function toggleBBCTag() {
+    if (bgPartnerRace.value === "black") {
+      bbcTag.classList.remove("hidden");
+      bgTraits6.value = "random"
+    } else {
+      bbcTag.classList.add("hidden");
+      bgTraits6.value = "false"
+    }
+  };
+
+  // Generate BG Zip File
+  function generateBGZip(){
+    const characterName = bgCharacterName.value;
+
+    // Check if there are any files in the ZIP before generating
+    if (Object.keys(bgzip.files).length === 0) {
+      console.error("No files added to the ZIP. Cannot generate a ZIP file.");
+      return;
+    }
+
+    bgzip.generateAsync({ type: "blob" }).then(function (content) {
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(content);
+      link.download = `Bar Girl - ${characterName}.zip`;
+      link.click();
+    });
+  };
+
+  // Gather BG Meta
+  function gatherBGMeta() {
+
+    if (!bgzip) {
+      bgzip = new JSZip();
+    } 
+
+    // Collect input values from forms
+    const characterName = bgCharacterName.value;
+    const version = bgYourModVersion.value;
+    const author = bgModAuthor.value;
+    const baseGameVersion = bgBaseGameVersion.value;
+
+    if (!characterName) {
+      console.error("Character Name is required.");
+      alert("Please enter a character name.");
+      return;
+    }
+
+    if (!version || !author || !baseGameVersion) {
+      alert("All meta fields are required. Please fill out the fields.");
+      return; 
+    }
+
+    // Create the meta content string
+    let metaContent = `metaVersion: 1\n`;
+    metaContent += `name: "Bar Girl - ${characterName}"\n`;
+    metaContent += `version: "${version}"\n`;
+    metaContent += `author: "${author}"\n`;
+    metaContent += `baseGameVersion:\n  atLeast: "${baseGameVersion}"\n`;
+
+    // Add meta to the ZIP
+    bgzip.folder("metas").file(`Bar Girl - ${characterName}.meta`, metaContent);
+  };
+
+  // Generate BG Meta file ONLY
+  function generateBGMeta() {
+    gatherBGMeta();
+    generateBGZip();
+  };
+
+  // Generate BG directories
+  function gatherBGDirectories() {
+    const characterName = bgCharacterName.value;
+
+    if (!bgzip) {
+      bgzip = new JSZip();
+    } 
+
+    if (!characterName) {
+      console.error("Character Name is required.");
+      alert("Please enter a character name.");
+      return;
+    }
+
+    // Add directories to the ZIP
+    bgzip.folder(`metas`)
+    bgzip.folder(`aud/se/sex/${characterName}/loops/bj`)
+    bgzip.folder(`aud/se/sex/${characterName}/loops/doggy`)
+    bgzip.folder(`aud/se/sex/${characterName}/loops/licking`)
+    bgzip.folder(`aud/se/sex/${characterName}/loops/missionary`)
+    bgzip.folder(`aud/se/sex/${characterName}/loops/riding`)
+    bgzip.folder(`aud/se/sex/${characterName}/orgasm/cum`)
+    bgzip.folder(`aud/se/sex/${characterName}/orgasm/orgasm`)
+    bgzip.folder(`aud/se/sex/${characterName}/penetration`)
+    bgzip.folder(`img/places/club/dancers`)
+    bgzip.folder(`img/npc/girls/${characterName}`)
+    bgzip.folder(`img/npc/girls/${characterName}/strip`)
+    bgzip.folder(`img/npc/girls/${characterName}/sex/orgasm`)
+    bgzip.folder(`img/npc/girls/${characterName}/sex/post`)
+    bgzip.folder(`img/npc/girls/${characterName}/sex/bbc`)
+    bgzip.folder(`img/npc/girls/${characterName}/sex/bwc`)
+  };
+
+  // Generate BG Directories ONLY
+  function generateBGDirectories() {
+    gatherBGDirectories();
+    generateBGZip();
+  };
+
+  // Gather BG Values and add to bgzip
+  function gatherBGFiles() {
+    if (!bgzip) {
+      bgzip = new JSZip();
+    }
+
+    // Collect input values from forms
+    const characterName = bgCharacterName.value.toLowerCase();
+    const race = bgCharacterRace.value;
+    const drink = bgFaveDrink.value;
+    const partnerRace = bgPartnerRace.value;
+    const style = bgSexStyle.value;
+    const position = bgSexPosition.value;
+    const traits1 = bgTraits1.value;
+    const traits2 = bgTraits2.value;
+    const traits3 = bgTraits3.value;
+    const traits4 = bgTraits4.value;
+    const traits5 = bgTraits5.value;
+    const traits6 = bgTraits6.value;
+
+    const possibleNames = extractTags(bgPossibleNameContainer).map(name => toProperCase(name));
+    const unfamiliarNames = extractTags(bgUnfamiliarNameContainer).map(name => toProperCase(name));
+    const danceSuccess = extractTags(bgDanceSuccessContainer);
+    const danceFail = extractTags(bgDanceFailContainer);
+
+    // Field validation
+    if (!characterName,
+      possibleNames.length === 0 ||
+      unfamiliarNames.length === 0 ||
+      danceSuccess.length === 0 ||
+      danceFail.length === 0
+    ) {
+      console.error("All fields are required.");
+      alert("All fields are required.");
+      return;
+    }
+
+    // twee building section
+    let tweeContent = `:: add ${characterName} [initialize init_new]\n{\n`;
+    tweeContent += `    (unless:(datanames:$npcs) contains "${characterName}")[\n`;
+    tweeContent += `        (set:_drinks to (twisted:"tequila","fruity cocktail","whisky","beer","wine"))\n\n`;
+    tweeContent += `        (set:_roll10 to (twist: 1,10))\n`;
+    tweeContent += `        (set:_racepref to (cond:\n`;
+    tweeContent += `            (_roll10 >= 2 and _roll10 <= 5), "white",\n`;
+    tweeContent += `            (_roll10 >= 6 and _roll10 <= 9), "black",\n`;
+    tweeContent += `            _roll10 is 1, "latin",\n`;
+    tweeContent += `            _roll10 is 10, "asian",\n`;
+    tweeContent += `            "black"))\n\n`;
+    tweeContent += `        (set:$npcs to it + (dm:\n`;
+    tweeContent += `        "${characterName}", (dm:\n`;
+    tweeContent += `            "id", "${characterName}",\n`;
+    tweeContent += `            "race", "${race}",\n`;
+    if (possibleNames.length === 1) {
+      tweeContent += `            "possible names", ${possibleNames},\n`;
+      tweeContent += `            "name", ${possibleNames},\n`;
+    } else {
+      tweeContent += `            "possible names", (twisted:"${possibleNames.join('", "')}"),\n`;
+      tweeContent += `            "name", (twirl:"${possibleNames.join('", "')}"),\n`;
+    }
+    if (unfamiliarNames.length === 1) {
+      tweeContent += `            "unfamiliar name", ${unfamiliarNames},\n`;
+    } else {
+      tweeContent += `            "unfamiliar name", (twirl:"${unfamiliarNames.join('", "')}"),\n`;
+    }
+    tweeContent += `            "familiarity male", 0,\n`;
+    tweeContent += `            "familiarity female", 0,\n`;
+    tweeContent += `            "likes", (a:\n`;
+    if (partnerRace === "random") {
+      tweeContent += `            _racepref,\n`;
+    } else {
+      tweeContent += `            "${partnerRace}",\n`;
+    }
+    if (drink === "random") {
+      tweeContent += `            3 of _drinks,\n`;
+    } else {
+      tweeContent += `            "${drink}",\n`;
+    }
+    if (style === "random") {
+      tweeContent += `            (twirl: "rough sex", "gentle sex"),\n`;
+    } else {
+      tweeContent += `            "${style}",\n`;
+    }
+    if (position === "random") {
+      tweeContent += `            (twirl: "doggystyle", "riding", "missionary")),\n`;
+    } else {
+      tweeContent += `            "${position}"),\n`;
+    }
+    tweeContent += `            "dislikes", (a:\n`;
+    if (style === "rough sex") {
+      tweeContent += `            "gentle sex",\n`;
+    } else if (style === "gentle sex")  {
+      tweeContent += `            "rough sex",\n`;
+    }
+    if (drink === "random") {
+      tweeContent += `            (twirl:1, 2, 4, 5) of _drinks),\n`;
+    } else {
+      tweeContent += `            (set:_drinks to it - (a:"${drink}"))\n`;
+      tweeContent += `            (twirl:1, 2, 3, 4) of _drinks),\n`;
+    }
+    tweeContent += `            "traits", (a:\n`;
+    if (traits5 === "size queen" || traits5 === "tight") {
+      tweeContent += `            "${traits5}",\n`;
+    }
+    if (traits6 === "only bbc") {
+      tweeContent += `            "${traits6}",\n`;
+    }
+    if (traits1 === "random") {
+      tweeContent += `            (twirl: "likes assertive", "feminist"),\n`;
+    } else {
+      tweeContent += `            "${traits1}",\n`;
+    }
+    if (traits2 === "random") {
+      tweeContent += `            (twirl: "bitch", "kind", "religious", "slut"),\n`;
+    } else {
+      tweeContent += `            "${traits2}",\n`;
+    }
+    if (traits3 === "random") {
+      tweeContent += `            (twirl: "nerdy", "sporty", "rich", "feminine", "bimbo"),\n`;
+    } else {
+      tweeContent += `            "${traits3}",\n`;
+    }
+    if (traits4 === "random") {
+      tweeContent += `            (twirl: "pill", "no pill")),\n`;
+    } else {
+      tweeContent += `            "${traits4}"),\n`;
+    }
+    tweeContent += `            "events", (a:),\n`;
+    tweeContent += `            "topics", (a:),\n`;
+    tweeContent += `            "sex positions", (a:),\n`;
+    tweeContent += `            "img", "img/npc/girls/${characterName}/portrait_normal.jpg",\n`;
+    tweeContent += `            "img dir", "img/npc/girls/${characterName}/portrait_"\n        )))\n\n`;
+
+    if (traits5 === "random") {
+      tweeContent += `        (if:_roll10 >= 4 and _roll10 <= 6)[(set:$npcs's "${characterName}"'s traits to it + (a:"size queen"))]\n`;
+      tweeContent += `        (else-if:_roll10 = 1 or _roll10 = 10)[(set:$npcs's "${characterName}"'s traits to it + (a:"tight"))]\n\n`;
+    } 
+
+    if (traits6 === "random") {
+      tweeContent += `        (if:_racepref is "black" and (twist:1,2 is 1))[\n`;
+      tweeContent += `            (set:$npc's "${characterName}"'s traits to it + (a:"only bbc"))\n        ]\n\n`;
+    }
+
+    tweeContent += `        (set:_temp to 0)\n`;
+    tweeContent += `        (set:$relationships's "${characterName}" to (dm:\n`;
+    tweeContent += `        "id","${characterName}",\n`;
+    tweeContent += `        "name",(text:"name" of $npcs's "${characterName}"),\n`;
+    tweeContent += `        "gender","female",\n`;
+    tweeContent += `        "respect",_temp,\n`;
+    tweeContent += `        "dom",0,\n`;
+    tweeContent += `        "friendship",0,\n`;
+    tweeContent += `        "attraction",0,\n`;
+    tweeContent += `        "tags",(a:),\n`;
+    tweeContent += `        "events",(a:)\n        ))\n\n`;
+
+    tweeContent += `        (set:$relationships's "${characterName} while female" to (dm:\n`;
+    tweeContent += `        "id","${characterName}",\n`;
+    tweeContent += `        "name",(text:"name" of $npcs's "${characterName}"),\n`;
+    tweeContent += `        "gender","female",\n`;
+    tweeContent += `        "respect",_temp,\n`;
+    tweeContent += `        "dom",0,\n`;
+    tweeContent += `        "friendship",0,\n`;
+    tweeContent += `        "attraction",0,\n`;
+    tweeContent += `        "tags",(a:"while on xchange"),\n`;
+    tweeContent += `        "events",(a:)\n        ))\n\n`;
+    tweeContent += `    ]\n}\n\n`;
+
+    tweeContent += `:: girl sex tracks ${characterName} [initialize init_new]\n{\n`;
+    tweeContent += `    (newtrack:'orgasm ${characterName} 1','aud/se/sex/${characterName}/orgasm/orgasm/${characterName} 1.mp3')\n`;
+    tweeContent += `    (newtrack:'orgasm ${characterName} 2','aud/se/sex/${characterName}/orgasm/orgasm/${characterName} 2.mp3')\n`;
+    tweeContent += `    (newtrack:'riding loop ${characterName} bbc','aud/se/sex/${characterName}/loops/riding/${characterName} bbc.mp3')\n`;
+    tweeContent += `    (newtrack:'riding loop ${characterName} bwc','aud/se/sex/${characterName}/loops/riding/${characterName} bwc.mp3')\n`;
+    tweeContent += `    (newtrack:'licking loop ${characterName} bbc','aud/se/sex/${characterName}/loops/licking/${characterName} bbc.mp3')\n`;
+    tweeContent += `    (newtrack:'licking loop ${characterName} bwc','aud/se/sex/${characterName}/loops/licking/${characterName} bwc.mp3')\n`;
+    tweeContent += `    (newtrack:'cum moan ${characterName} bbc','aud/se/sex/${characterName}/orgasm/cum/${characterName} bbc.mp3')\n`;
+    tweeContent += `    (newtrack:'cum moan ${characterName} bwc','aud/se/sex/${characterName}/orgasm/cum/${characterName} bwc.mp3')\n`;
+    tweeContent += `    (newtrack:'bj loop ${characterName} bbc','aud/se/sex/${characterName}/loops/bj/${characterName} bbc.mp3')\n`;
+    tweeContent += `    (newtrack:'bj loop ${characterName} bwc','aud/se/sex/${characterName}/loops/bj/${characterName} bwc.mp3')\n`;
+    tweeContent += `    (newtrack:'doggy loop ${characterName} bbc','aud/se/sex/${characterName}/loops/doggy/${characterName} bbc.mp3')\n`;
+    tweeContent += `    (newtrack:'doggy loop ${characterName} bwc','aud/se/sex/${characterName}/loops/doggy/${characterName} bwc.mp3')\n`;
+    tweeContent += `    (newtrack:'missionary loop ${characterName} bbc','aud/se/sex/${characterName}/loops/missionary/${characterName} bbc.mp3')\n`;
+    tweeContent += `    (newtrack:'missionary loop ${characterName} bwc','aud/se/sex/${characterName}/loops/missionary/${characterName} bwc.mp3')\n`;
+    tweeContent += `    (newtrack:'penetration ${characterName} bbc','aud/se/sex/${characterName}/penetration/${characterName} bbc.mp3')\n`;
+    tweeContent += `    (newtrack:'penetration ${characterName} bwc','aud/se/sex/${characterName}/penetration/${characterName} bwc.mp3')\n}\n`;
+
+    tweeContent += `:: girl cum [around]\n{\n`;
+    tweeContent += `    (display:_around)\n`;
+    tweeContent += `    (if:$npc's "id" is "${characterName}")[\n`;
+    tweeContent += `        (if:$type is "pull out")[\n`;
+    tweeContent += `            (replace:?screen)[\n`;
+    tweeContent += `                ($vid:"npc/girls/" + $npc's "id" + "/sex/" + (text:$img) + "/pull out.mp4")\n`;
+    tweeContent += `                (display:"register fuck girl")\n`;
+    tweeContent += `                (twirl:"You nut","You blow your load","You unload your balls","Groaning loudly, you cum","You cum","You shoot your load","You finally empty your balls","You drain your balls") (twirl:"all over her","all over her beautiful body","all over her tits and stomach","all over her body").\n`;
+    tweeContent += `                (nl:1)(if:(twist:1,2) is 1)["(twirl:"Wow, that's a lot...","So much cum...","Oh my god, so *much*...")" she (twirl:"breathes","says","murmurs").]\n`;
+    tweeContent += `                <div class='options'>(link:"Next")[($cs:"girl sex aftermath")]</div>\n`;
+    tweeContent += `                (set:$today_events to $today_events + (a:"orgasm"))(dec:'action_points')(display:"update action points orgasm")\n`;
+    tweeContent += `                (if:$status's "status" is "sexually frustrated" or $status's "status" is "very sexually frustrated" and $character's "arousal" is 0 or $today_events contains "orgasm")[(display:"reset status")]\n`;
+    tweeContent += `                ($remember:"cum girl",14,$npc's name,$cum_img,$type,(cond:$type is "creampie" and $npc's traits contains "no pill","unhappy creampie","normal"),...$npc's traits)\n`;
+    tweeContent += `            ]]]\n}\n`;
+
+    tweeContent += `:: club dance result text ${characterName}\n{\n`;
+    tweeContent += `    (set:$npc_select to "${characterName}")(display:"load relationship")\n`;
+    tweeContent += `    (if:$result is "pass")[(set:$gain_attraction to 2)(set:$max_attraction to 10)(set:$gain_friendship to 1)(set:$max_friendship to 10)(set:$max_attraction to 10)(display:"change relationship")\n`;
+    if (danceSuccess.length === 1) {
+      tweeContent += `        "${danceSuccess}"]\n`;
+    } else {
+      tweeContent += `        (twirl:"${danceSuccess.join('",\n        "')}")]\n`;
+    }
+    tweeContent += `    (else:)[\n`;
+    tweeContent += `        (set:$gain_attraction to -2)(set:$gain_friendship to -1)(set:$min_friendship to -4)(set:$min_attraction to -10)(display:"change relationship")\n`;
+    tweeContent += `        (set:$time_events to $time_events + (a:"date uncomfortable"))\n`;
+    if (danceFail.length === 1) {
+      tweeContent += `        "${danceFail}"]\n}\n\n`;
+    } else {
+      tweeContent += `        (twirl:"${danceFail.join('",\n        "')}")]\n}\n\n`;
+    }
+
+    // Add files to the ZIP
+    bgzip.file(`${characterName}.twee`, tweeContent);
+  };
+
+  // Generate BG Files ONLY
+  function generateBGFiles(){
+    gatherBGFiles();
+    generateBGZip();
+  };
+
+  //Generate ALL BG Files and Directories
+  function generateBGAll(){
+    gatherBGMeta();
+    gatherBGDirectories();
+    gatherBGFiles();
+    generateBGZip();
+  };
+
+
+
+
   // #endregion --- Functions - Bar Girl
 
   // #region --- Functions - MetaMaker
@@ -6024,8 +6429,6 @@ const exampleDescribeBoobsMedium = [
     generateTimingFields(mcfSEPenetration, mcfPenetrationTimingContainer)
   });
 
-
-
   // #endregion --- Listeners - MCF
 
   // #region --- Listeners - Positions
@@ -6222,6 +6625,72 @@ const exampleDescribeBoobsMedium = [
   // #endregion --- Listeners - Blacked
 
   // #region --- Listeners - Bar Girl
+ 
+  // Add Dance Line - Success
+  bgDanceSuccessButton.addEventListener("click", function(){
+    addLine(bgDanceSuccessInput, bgDanceSuccessContainer)
+  });
+
+  // Generate Example - Dance Line - Success
+  examplebgDanceSuccessButton.addEventListener("click", function(){
+    generateExample(examplebgDanceSuccess, bgDanceSuccessContainer)
+  }); 
+
+  // Clear Dance Line - Success
+  clearbgDanceSuccess.addEventListener("click", function(){
+    clearElement(bgDanceSuccessContainer)
+  });
+
+  // Add Dance Line - Fail
+  bgDanceFailButton.addEventListener("click", function(){
+    addLine(bgDanceFailInput, bgDanceFailContainer)
+  });
+
+  // Generate Example - Dance Line - Fail
+  examplebgDanceFailButton.addEventListener("click", function(){
+    generateExample(examplebgDanceFail, bgDanceFailContainer)
+  }); 
+
+  // Clear Dance Line - Fail
+  clearbgDanceFail.addEventListener("click", function(){
+    clearElement(bgDanceFailContainer)
+  });
+
+  // Add Possible Name
+  bgPossibleNameButton.addEventListener("click", function(){
+    addLine(bgPossibleNameInput, bgPossibleNameContainer)
+  });
+
+  // Clear Possible Name
+  clearbgPossibleName.addEventListener("click", function(){
+    clearElement(bgPossibleNameContainer)
+  });
+
+  // Add Unfamiliar Name
+  bgUnfamiliarNameButton.addEventListener("click", function(){
+    addLine(bgUnfamiliarNameInput, bgUnfamiliarNameContainer)
+  });
+
+  // Clear Unfamiliar Name
+  clearbgUnfamiliarName.addEventListener("click", function(){
+    clearElement(bgUnfamiliarNameContainer)
+  });
+
+  // Event listener for when bgPartnerRace changes
+  bgPartnerRace.addEventListener("change", toggleBBCTag);
+
+  // Generate BG Meta Only
+  generateBGMetaButton.addEventListener("click", generateBGMeta);
+
+  // Generate BG Directories Only
+  generateBGFoldersButton.addEventListener("click", generateBGDirectories);
+
+  // Generate BG Files Only
+  generateBGFilesOnlyButton.addEventListener("click", generateBGFiles);
+
+  // Generate All BG Files and Directories
+  generateBGAllFilesButton.addEventListener("click", generateBGAll);
+
   // #endregion --- Listeners - Bar Girl
 
   // #region --- Listeners - MetaMaker
@@ -6412,8 +6881,9 @@ const exampleDescribeBoobsMedium = [
   // Call updatePositionStats() initially to populate the stats on load
   updatePositionStats();
 
-  // Set up outfit fields
+  // Set up conditional fields
   updateOutfitFields();
+  toggleBBCTag()
 
   // Set up Blacked defaults
   setBlkDefaultValues();

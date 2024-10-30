@@ -20,7 +20,7 @@
         <button class="tablinks" data-tool="BLK-Tab">BLACKED</button>
         <button class="tablinks" data-tool="BG-Tab">Bar Girl</button>
         <button class="tablinks" data-tool="MetaTab">Meta Maker</button>
-        <button type="button" id="themeButton">🎨</button>
+        <!-- <button type="button" id="themeButton">🎨</button> -->
     </div>
 
     <!-- Landing Page -->
@@ -1070,12 +1070,12 @@
                             <label for="twoPieceRadio">Top and Bottoms</label>
                         </div>
 
-                        <div id="onePieceField">
+                        <div class="hidden" id="onePieceField">
                             <label for="outfitOnePiece">One-Piece Description:</label>
                             <input type="text" id="outfitOnePiece" name="outfitOnePiece" placeholder="sundress, swimsuit, bodysuit, latex dress">
                         </div>
 
-                        <div id="twoPieceFields">
+                        <div class="hidden" id="twoPieceFields">
                             <label for="outfitTop">Top Description:</label>
                             <input type="text" id="outfitTop" name="outfitTop" placeholder="bikini top, crop top, leather bustier, t-shirt">
 
@@ -1600,19 +1600,21 @@
                             </div>
 
                             <h3>Optional Traits</h3>
-                            <div class="form-single-line">
-                                <label for="bgTraits5">Size Queen:</label>
+                            <div class="form-grid w-80">
+                                <label for="bgTraits5">Size Preference:</label>
                                 <select id="bgTraits5" name="bgTraits5">
                                     <option value="random">Let fate decide</option>
-                                    <option value="true">Yes</option>
-                                    <option value="false">No</option>
+                                    <option value="size queen">Size Queen</option>
+                                    <option value="tight">Tight</option>
+                                    <option value="none">No Preference</option>
                                 </select>
-
+                            </div>
+                            <div class="form-grid w-80 hidden" id="bbcTag">
                                 <label for="bgTraits6">BBC Only:</label>
                                 <select id="bgTraits6" name="bgTraits6">
                                     <option value="random">Let fate decide</option>
-                                    <option value="true">Yes</option>
-                                    <option value="false">No</option>
+                                    <option value="only bbc">Yes</option>
+                                    <option value="none">No</option>
                                 </select>
                             </div>
                         </div>
@@ -1631,7 +1633,7 @@
                                 <input type="text" id="bgDanceFailInput" name="bgDanceFailInput">
                                 <button type="button" class="addToContainer" id="bgDanceFailButton">Add</button>
                                 <button type="button" class="suggestExample" id="examplebgDanceFailButton">🪄</button>
-                                <button type="button" class="clearTags" id="clearbgFailSuccess">❌</button>
+                                <button type="button" class="clearTags" id="clearbgDanceFail">❌</button>
                             </div>
                             <div class="tagsContainer" id="bgDanceFailContainer"></div>
                         </div>

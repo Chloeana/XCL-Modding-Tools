@@ -885,8 +885,8 @@ input[name="penetrationTiming"] {
     list-style: none;
 }
 
-#onePieceField, #twoPieceFields {
-    display: none; /* Hidden by default */
+.hidden {
+    display: none;
 }
 
 #addOutfit {
