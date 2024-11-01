@@ -70,10 +70,7 @@ The **Meta Maker** tab allows for creating standalone `.meta` files, which store
 
 ## Installation
 
-To use the X-Change Life Unofficial Modding Tools:
-
-1. Download and unzip to your machine.
-2. Launch index.html
+To use the X-Change Life Unofficial Modding Tools, access the X-Change Life [website](https://x-change.life/modding/tools.html)
 
 ## Contributing
 Contributions are welcome! If you have ideas or enhancements, feel free to open an issue or submit a pull request.
