@@ -5680,6 +5680,9 @@ const examplebgDanceFail = [
     let tweeContent = `:: add ${characterName} [initialize init_new]\n{\n`;
     tweeContent += `    (unless:(datanames:$npcs) contains "${characterName}")[\n`;
     tweeContent += `        (set:_drinks to (twisted:"tequila","fruity cocktail","whisky","beer","wine"))\n\n`;
+    if (drink !== "random") {
+      tweeContent += `        (set:_drinks to it - (a:"${drink}"))\n\n`;
+    }
     tweeContent += `        (set:_roll10 to (twist: 1,10))\n`;
     tweeContent += `        (set:_racepref to (cond:\n`;
     tweeContent += `            (_roll10 >= 2 and _roll10 <= 5), "white",\n`;
@@ -5735,7 +5738,6 @@ const examplebgDanceFail = [
     if (drink === "random") {
       tweeContent += `            (twirl:1, 2, 4, 5) of _drinks),\n`;
     } else {
-      tweeContent += `            (set:_drinks to it - (a:"${drink}"))\n`;
       tweeContent += `            (twirl:1, 2, 3, 4) of _drinks),\n`;
     }
     tweeContent += `            "traits", (a:\n`;
