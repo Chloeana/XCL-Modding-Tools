@@ -1399,6 +1399,15 @@ const examplebgDanceFail = [
     return true;
   };
 
+  function sanitizeName(input) {
+    const allowedCharacters = /^[a-zA-Z'-]+$/;
+    if (!allowedCharacters.test(input)) {
+        alert("Entry contains invalid characters...\n" + input + "\nEntry must only be one name. To add multiple names, add one name at a time.");
+        return false;
+    }
+    return true;
+  }
+
   // Function to checking tags
   function sanitizeTag(input) {
     const allowedCharacters = /^[a-zA-Z0-9_\-—.’~;*,\s()\$!'?,]+$/; // Must allow markdown characters
@@ -5676,6 +5685,7 @@ const examplebgDanceFail = [
       return;
     }
 
+
     // twee building section
     let tweeContent = `:: add ${characterName} [initialize init_new]\n{\n`;
     tweeContent += `    (unless:(datanames:$npcs) contains "${characterName}")[\n`;
@@ -5695,8 +5705,8 @@ const examplebgDanceFail = [
     tweeContent += `            "id", "${characterName}",\n`;
     tweeContent += `            "race", "${race}",\n`;
     if (possibleNames.length === 1) {
-      tweeContent += `            "possible names", ${possibleNames},\n`;
-      tweeContent += `            "name", ${possibleNames},\n`;
+      tweeContent += `            "possible names", "${possibleNames}",\n`;
+      tweeContent += `            "name", "${possibleNames}",\n`;
     } else {
       tweeContent += `            "possible names", (twisted:"${possibleNames.join('", "')}"),\n`;
       tweeContent += `            "name", (twirl:"${possibleNames.join('", "')}"),\n`;
@@ -6661,7 +6671,9 @@ const examplebgDanceFail = [
 
   // Add Possible Name
   bgPossibleNameButton.addEventListener("click", function(){
-    addLine(bgPossibleNameInput, bgPossibleNameContainer)
+    if (sanitizeName(bgPossibleNameInput.value)) {
+        addLine(bgPossibleNameInput, bgPossibleNameContainer);
+    }
   });
 
   // Clear Possible Name
@@ -6671,7 +6683,9 @@ const examplebgDanceFail = [
 
   // Add Unfamiliar Name
   bgUnfamiliarNameButton.addEventListener("click", function(){
-    addLine(bgUnfamiliarNameInput, bgUnfamiliarNameContainer)
+    if (sanitizeName(bgUnfamiliarNameInput.value)) {
+      addLine(bgUnfamiliarNameInput, bgUnfamiliarNameContainer);
+  }
   });
 
   // Clear Unfamiliar Name
@@ -7317,11 +7331,11 @@ const examplebgDanceFail = [
   })
 
   tippy([bgPossibleNameInput],{
-    content: "These are all the possible names for your bar girl. <br> If you want to force her to be called one specific name, only enter one name."
+    content: "These are all the possible names for your bar girl. <br><br> ONLY ENTER ONE NAME AT A TIME. If you are entering multiples, use do them one at a time. <br><br>If you want to force her to be called one specific name, only enter one name."
   })
   
   tippy([bgUnfamiliarNameInput],{
-    content: "These are all the possible names for your bar girl to be referred to before you learn her name.<br><br>It's usually more descriptive, like 'Hot Blonde Girl', 'Goth Girl', etc."
+    content: "These are all the possible names for your bar girl to be referred to before you learn her name.<br><br> ONLY ENTER ONE NAME AT A TIME. If you are entering multiples, use do them one at a time.<br><br>It's usually more descriptive, like 'Hot Blonde Girl', 'Goth Girl', etc."
   })
 
   tippy([bgFaveDrink],{
