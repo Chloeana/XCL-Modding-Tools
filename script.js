@@ -1049,10 +1049,8 @@ const exampleDescribeBoobsMedium = [
   const positionFlavor = document.getElementById("positionFlavor");
   const positionTypeRadios = document.querySelectorAll('input[name="positionType"]');
   const positionSubtypeRadios = document.querySelectorAll('input[name="subtype"]');
-  const positionType = document.querySelector('input[name="positionType"]:checked');
   const positionTypeActive = document.getElementById('active');
   const positionTypePassive = document.getElementById('passive');
-  const positionSubType = document.querySelector('input[name="subtype"]:checked');
   const positionSubTypeCowgirl = document.getElementById('cowgirl');
   const positionSubTypeDoggy = document.getElementById('doggy');
   const positionSubTypeMissionary = document.getElementById('missionary');
@@ -3653,8 +3651,12 @@ const examplebgDanceFail = [
     const characterName = positionCharacterName.value.toLowerCase();
     const name = positionName.value;
     const flavor = positionFlavor.value;
-    const type = positionType.value;
-    const subtype = positionSubType.value;
+    const type = document.querySelector(
+      'input[name="positionType"]:checked'
+    ).value;
+    const subtype = document.querySelector(
+      'input[name="subtype"]:checked'
+    ).value;
     const position = positionDropdown.value;
     const athletics = positionAthletics.value;
     const roughness = positionRoughness.value;
@@ -3716,8 +3718,8 @@ const examplebgDanceFail = [
         // Update the existing position
         const selectedPosition = document.querySelector("li.selected");
         if (selectedPosition) {
-            selectedPosition.dataset.position = JSON.stringify(newPosition);
             selectedPosition.textContent = `${name} (${type} - ${subtype})`;
+            selectedPosition.dataset.position = JSON.stringify(newPosition);
 
             // Re-add the remove button if missing
             let existingRemoveBtn = selectedPosition.querySelector(".remove-position");
