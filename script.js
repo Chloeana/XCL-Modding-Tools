@@ -7221,6 +7221,10 @@ const examplebgDanceFail = [
     content: "You're encouraged to add MULTIPLE entries!! It helps with variety and randomness! Text fields without an 'Add' button will only support a single entry."
   })
 
+  tippy([mcfCharacterBreasts],{
+    content: "Note: The game supports single cup sizes only. So DD would become E, etc."
+  })
+
   tippy([mcfDescribeBoobsInput],{
     content: "This is how NPCs will reference your boobs.<br><br> tits, boobs, knockers, etc"
   })
