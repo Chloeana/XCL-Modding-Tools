@@ -1717,10 +1717,7 @@ const examplebgDanceFail = [
         "D": boobsMedium,
         "E": boobsBig,
         "F": boobsBig,
-        "G": boobsBig,
-        "H": boobsBig,
-        "I": boobsBig,
-        "J": boobsBig
+        "G": boobsBig
     };
 
     const buttOptions = {
