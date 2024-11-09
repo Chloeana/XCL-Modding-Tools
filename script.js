@@ -1404,7 +1404,16 @@ const examplebgDanceFail = [
         return false;
     }
     return true;
-  }
+  };
+
+  function sanitizeNickname(input) {
+    const allowedCharacters = /^[a-zA-Z\s'-]+$/;
+    if (!allowedCharacters.test(input)) {
+        alert("Entry contains invalid characters...\n" + input + "\nEntry must only be one name. To add multiple names, add one name at a time.");
+        return false;
+    }
+    return true;
+  };
 
   // Function to checking tags
   function sanitizeTag(input) {
@@ -6685,7 +6694,7 @@ const examplebgDanceFail = [
 
   // Add Unfamiliar Name
   bgUnfamiliarNameButton.addEventListener("click", function(){
-    if (sanitizeName(bgUnfamiliarNameInput.value)) {
+    if (sanitizeNickname(bgUnfamiliarNameInput.value)) {
       addLine(bgUnfamiliarNameInput, bgUnfamiliarNameContainer);
   }
   });
