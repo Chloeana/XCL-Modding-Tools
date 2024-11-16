@@ -2187,7 +2187,7 @@ const examplebgDanceFail = [
 
   // Set up Default Values
   function setmcfDefaultValues() {
-    const name = mcfCharacterName.value.trim() || "character_id";
+    const name = mcfCharacterName.value.toLowerCase().trim() || "character_id";
 
     mcfShowerPrefix.value = "shower"
     mcfMorningPrefix.value = "morning"
@@ -2215,7 +2215,7 @@ const examplebgDanceFail = [
 
   // Add Character name into directories
   function setmcfDefaultDirectories() {
-    const name = mcfCharacterName.value.trim() || "character_id";
+    const name = mcfCharacterName.value.toLowerCase().trim() || "character_id";
 
     tooltipMCFForeplay.setContent(`This section is for groping and kissing. You need to have exactly 1 kiss video (kiss.mp4) and either an ass or tits grope.<br> You CANNOT have multiples of each.<br><br>This path is hardcoded for ${name}/foreplay. Please ensure your media files are in this location and are named 'kiss.mp4', 'grope ass.mp4', and/or 'grope tits.mp4'.`);
     tooltipSEPre1.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp4`);
@@ -2356,7 +2356,7 @@ const examplebgDanceFail = [
 
   // Generate MCF directories
   function gatherMCFDirectories() {
-    const characterName = mcfCharacterName.value;
+    const characterName = mcfCharacterName.value.toLowerCase();
 
     if (!mcfzip) {
       mcfzip = new JSZip();
@@ -2419,12 +2419,12 @@ const examplebgDanceFail = [
     mcfzip.folder(`img/characters/sex/insert`)
     mcfzip.folder(`img/characters/sex/missionary/moan`)
     mcfzip.folder(`img/places/club/dancers`)
-    mcfzip.folder(`img/scenes/characters/${mcfBJPath.value}`)
+    mcfzip.folder(`img/scenes/characters/${mcfBJPath.toLowerCase().value}`)
     mcfzip.folder(`img/scenes/characters/${characterName}/chores`)
-    mcfzip.folder(`img/scenes/characters/${mcfCumPath.value}`)
+    mcfzip.folder(`img/scenes/characters/${mcfCumPath.toLowerCase().value}`)
     mcfzip.folder(`img/scenes/characters/${characterName}/foreplay`)
-    mcfzip.folder(`img/scenes/characters/${mcfOralPath.value}`)
-    mcfzip.folder(`img/scenes/characters/${mcfDoggyPath.value}`)
+    mcfzip.folder(`img/scenes/characters/${mcfOralPath.value.toLowerCase()}`)
+    mcfzip.folder(`img/scenes/characters/${mcfDoggyPath.value.toLowerCase()}`)
     mcfzip.folder(`img/scenes/characters/${characterName}/sex/active/cowgirl`)
     mcfzip.folder(`img/scenes/characters/${characterName}/sex/active/doggy`)
     mcfzip.folder(`img/scenes/characters/${characterName}/sex/active/missionary`)
@@ -5611,7 +5611,7 @@ const examplebgDanceFail = [
 
   // Generate BG directories
   function gatherBGDirectories() {
-    const characterName = bgCharacterName.value;
+    const characterName = bgCharacterName.value.toLowerCase();
 
     if (!bgzip) {
       bgzip = new JSZip();
@@ -5841,6 +5841,7 @@ const examplebgDanceFail = [
     tweeContent += `        (if:$type is "pull out")[\n`;
     tweeContent += `            (replace:?screen)[\n`;
     tweeContent += `                ($vid:"npc/girls/" + $npc's "id" + "/sex/" + (text:$img) + "/pull out.mp4")\n`;
+    tweeContent += `                (set:$cum_img to "<video disableRemotePlayback src='img/npc/girls/" + $npc's "id" + "/sex/" + (text:$img) + "/pull out.mp4' autoplay='' loop='' muted='' playsinline/>")`
     tweeContent += `                (display:"register fuck girl")\n`;
     tweeContent += `                (twirl:"You nut","You blow your load","You unload your balls","Groaning loudly, you cum","You cum","You shoot your load","You finally empty your balls","You drain your balls") (twirl:"all over her","all over her beautiful body","all over her tits and stomach","all over her body").\n`;
     tweeContent += `                (nl:1)(if:(twist:1,2) is 1)["(twirl:"Wow, that's a lot...","So much cum...","Oh my god, so *much*...")" she (twirl:"breathes","says","murmurs").]\n`;
