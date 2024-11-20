@@ -2236,7 +2236,7 @@ const examplebgDanceFail = [
     tooltipSERiding.setContent(`Location: aud/se/sex/loops/riding/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc`);
     tooltipSEMissionary.setContent(`Location: aud/se/sex/loops/masturbate/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc`);
     tooltipSEOrgasm.setContent(`Location: aud/se/sex/orgasm/orgasm/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc`);
-    tooltipSEPenetration.setContent(`Location: aud/se/sex/penetration/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc`);
+    tooltipSEPenetration.setContent(`Location: aud/se/sex/penetration/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc<br><br>*Note, this total does not include the Pre-Penetration tracks.`);
     tooltipSECumDynamic.setContent(`Location: aud/se/sex/orgasm/cum/dynamic/<br><br>Files: ${name} 1.mp3<br>${name} 2.mp3<br>${name} 3.mp3, etc`);
     tooltipSECumPullOut.setContent(`Location: aud/se/sex/orgasm/cum/dynamic/<br><br>Files: ${name} body 1.mp3<br>${name} body 2.mp3<br>${name} body 3.mp3, etc`);
     tooltipSECumCreampie.setContent(`Location: aud/se/sex/orgasm/cum/dynamic/<br><br>Files: ${name} creampie 1.mp3<br>${name} creampie 2.mp3<br>${name} creampie 3.mp3, etc`);
