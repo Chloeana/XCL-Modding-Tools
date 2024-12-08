@@ -3161,14 +3161,14 @@ const examplebgDanceFail = [
     tweeContent += `:: 12-week prenatal appointment ${characterName}\n{\n`;
     tweeContent += `    "(twirl: "${pregnancyPrenatal.join('",\n    "')}")"\n}\n\n`;
 
-    tweeContent += `:: pregnancy first lactation character_id\n`;
+    tweeContent += `:: pregnancy first lactation ${characterName}\n`;
     if (race === "black") {
       tweeContent += `{($vid:"scenes/generic/pregnancy/vignette/first lactation/scarlit.mp4")}\n\n`;
     } else {
       tweeContent += `{($vid:"scenes/generic/pregnancy/vignette/first lactation/alina.mp4")}\n\n`;
     }
 
-    tweeContent += `:: Milk yourself character_id\n`;
+    tweeContent += `:: Milk yourself ${characterName}\n`;
     if (race === "black") {
       tweeContent += `{(set:$video to "scenes/generic/pregnancy/milking/scarlit.mp4")}\n\n`;
     } else if (!["A","B","C"].includes(breasts) && ["brown","black"].includes(hairColor)) {
