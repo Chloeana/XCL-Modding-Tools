@@ -4962,8 +4962,8 @@ const examplebgDanceFail = [
     metaContent += `author: "${author}"\n`;
     metaContent += `baseGameVersion:\n  atLeast: "${baseGameVersion}"\n`;
     metaContent += `requiredMods:\n`;
-    metaContent += `   - name: "${MCFModName}"\n    version:\n      atLeast: "${MCFModVersion}"\n`;
-    metaContent += `   - name: "BLACKED"\n    version:\n      atLeast: "${BLKVersion}"\n`;
+    metaContent += `  - name: "${MCFModName}"\n    version:\n      atLeast: "${MCFModVersion}"\n`;
+    metaContent += `  - name: "BLACKED"\n    version:\n      atLeast: "${BLKVersion}"\n`;
 
     // Add meta to the ZIP
     blkzip.folder("metas").file(`${characterName}.meta`, metaContent);
