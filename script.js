@@ -5767,15 +5767,15 @@ const examplebgDanceFail = [
     } else {
       tweeContent += `            "${traits2}",\n`;
     }
-    if (traits3 === "random") {
+    if (traits4 === "random") {
       tweeContent += `            (twirl: "nerdy", "sporty", "rich", "feminine", "bimbo"),\n`;
     } else {
-      tweeContent += `            "${traits3}",\n`;
+      tweeContent += `            "${traits4}",\n`;
     }
-    if (traits4 === "random") {
+    if (traits3 === "random") {
       tweeContent += `            (twirl: "pill", "no pill")),\n`;
     } else {
-      tweeContent += `            "${traits4}"),\n`;
+      tweeContent += `            "${traits3}"),\n`;
     }
     tweeContent += `            "events", (a:),\n`;
     tweeContent += `            "topics", (a:),\n`;
