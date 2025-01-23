@@ -5785,7 +5785,7 @@ const examplebgDanceFail = [
 
     if (traits5 === "random") {
       tweeContent += `        (if:_roll10 >= 4 and _roll10 <= 6)[(set:$npcs's "${characterName}"'s traits to it + (a:"size queen"))]\n`;
-      tweeContent += `        (else-if:_roll10 = 1 or _roll10 = 10)[(set:$npcs's "${characterName}"'s traits to it + (a:"tight"))]\n\n`;
+      tweeContent += `        (else-if:_roll10 is 1 or _roll10 is 10)[(set:$npcs's "${characterName}"'s traits to it + (a:"tight"))]\n\n`;
     } 
 
     if (traits6 === "random") {
