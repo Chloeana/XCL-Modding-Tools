@@ -1156,7 +1156,7 @@ const exampleDescribeBoobsMedium = [
   // #endregion --- Outfits ---
 
   // #region --- Vars - BLACKED ---
-  const blkCharacterName = document.getElementById("blkCharacterName")
+  const blkCharacterName = document.getElementById("blkCharacterName");
   const blkYourModBLKVersion = document.getElementById("blkYourModBLKVersion");
   const blkModAuthor = document.getElementById("blkModAuthor");
   const blkBaseGameVersion = document.getElementById("blkBaseGameVersion");
@@ -2297,7 +2297,7 @@ const examplebgDanceFail = [
 
   // Generate MCF Zip File
   function generateMCFZip(){
-    const characterName = mcfCharacterName.value;
+    const characterName = mcfCharacterName.value.toLowerCase();
 
     // Check if there are any files in the ZIP before generating
     if (Object.keys(mcfzip.files).length === 0) {
@@ -2311,6 +2311,8 @@ const examplebgDanceFail = [
       link.download = `${characterName}.zip`;
       link.click();
     });
+
+    mcfzip = null;
   };
 
   // Gather MCF Meta
@@ -2321,7 +2323,7 @@ const examplebgDanceFail = [
     } 
 
     // Collect input values from forms
-    const characterName = mcfCharacterName.value;
+    const characterName = mcfCharacterName.value.toLowerCase();
     const version = mcfYourModVersion.value;
     const author = mcfModAuthor.value;
     const baseGameVersion = mcfBaseGameVersion.value;
@@ -4790,12 +4792,12 @@ const examplebgDanceFail = [
             jsContent += `    "panties under": ${outfit.pantiesUnder !== undefined ? outfit.pantiesUnder : false},\n`;
             jsContent += `    "shoes": "${outfit.shoes !== undefined ? outfit.shoes : "none"}",\n`;
 
-            // Conditional logic based on descType
-            if (outfit.descType === "onePieceRadio") {
-                jsContent += `    "onepiece": "${outfit.onepiece}",\n`;
-            } else if (outfit.descType === "twoPieceRadio") {
-                jsContent += `    "top": "${outfit.top}",\n`;
-                jsContent += `    "bottom": "${outfit.bottom}",\n`;
+            // Conditional logic based on existing data
+            if (outfit.onepiece !== undefined && outfit.onepiece !== "") {
+              jsContent += `    "onepiece": "${outfit.onepiece}",\n`;
+            } else if ((outfit.top !== undefined && outfit.top !== "") || (outfit.bottom !== undefined && outfit.bottom !== "")) {
+              jsContent += `    "top": "${outfit.top}",\n`;
+              jsContent += `    "bottom": "${outfit.bottom}",\n`;
             }
 
             jsContent += `    "locations": [${(outfit.locations || [outfit.category]).map((loc) => `"${loc}"`).join(", ")}],\n`;
@@ -4912,7 +4914,7 @@ const examplebgDanceFail = [
 
   // Generate Blacked Zip
   function generateBlackedZip() {
-    const characterName = blkCharacterName.value;
+    const characterName = blkCharacterName.value.toLowerCase();
 
     // Check if there are any files in the ZIP before generating
     if (Object.keys(blkzip.files).length === 0) {
@@ -4926,6 +4928,8 @@ const examplebgDanceFail = [
       link.download = `BLACKED_${characterName}.zip`;
       link.click();
     });
+
+    blkzip = null;
   };
 
   // Gather BLACKED Meta and add to blkzip
@@ -4936,7 +4940,7 @@ const examplebgDanceFail = [
     } 
 
     // Collect input values from forms
-    const characterName = blkCharacterName.value;
+    const characterName = blkCharacterName.value.toLowerCase();
     const version = blkYourModBLKVersion.value;
     const author = blkModAuthor.value;
     const baseGameVersion = blkBaseGameVersion.value;
@@ -4977,7 +4981,7 @@ const examplebgDanceFail = [
 
   // Gather BLACKED directories and add to blkzip
   function gatherBlackedDirectories() {
-    const characterName = blkCharacterName.value;
+    const characterName = blkCharacterName.value.toLowerCase();
 
     if (!blkzip) {
       blkzip = new JSZip();
@@ -5552,7 +5556,7 @@ const examplebgDanceFail = [
 
   // Generate BG Zip File
   function generateBGZip(){
-    const characterName = bgCharacterName.value;
+    const characterName = bgCharacterName.value.toLowerCase();
 
     // Check if there are any files in the ZIP before generating
     if (Object.keys(bgzip.files).length === 0) {
@@ -5566,6 +5570,8 @@ const examplebgDanceFail = [
       link.download = `Bar Girl - ${characterName}.zip`;
       link.click();
     });
+
+    bgzip = null;
   };
 
   // Gather BG Meta
@@ -5576,7 +5582,7 @@ const examplebgDanceFail = [
     } 
 
     // Collect input values from forms
-    const characterName = bgCharacterName.value;
+    const characterName = bgCharacterName.value.toLowerCase();
     const version = bgYourModVersion.value;
     const author = bgModAuthor.value;
     const baseGameVersion = bgBaseGameVersion.value;
@@ -5955,6 +5961,8 @@ const examplebgDanceFail = [
       link.download = `${name}_meta.zip`; // Name of the ZIP file
       link.click();
     });
+
+    zip = null;
   };
   // #endregion --- Functions - MetaMaker
   
