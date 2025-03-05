@@ -5823,24 +5823,6 @@ const examplebgDanceFail = [
     tweeContent += `        "events",(a:)\n        ))\n\n`;
     tweeContent += `    ]\n}\n\n`;
 
-    tweeContent += `:: girl sex tracks ${characterName} [initialize init_new]\n{\n`;
-    tweeContent += `    (newtrack:'orgasm ${characterName} 1','aud/se/sex/${characterName}/orgasm/orgasm/${characterName} 1.mp3')\n`;
-    tweeContent += `    (newtrack:'orgasm ${characterName} 2','aud/se/sex/${characterName}/orgasm/orgasm/${characterName} 2.mp3')\n`;
-    tweeContent += `    (newtrack:'riding loop ${characterName} bbc','aud/se/sex/${characterName}/loops/riding/${characterName} bbc.mp3')\n`;
-    tweeContent += `    (newtrack:'riding loop ${characterName} bwc','aud/se/sex/${characterName}/loops/riding/${characterName} bwc.mp3')\n`;
-    tweeContent += `    (newtrack:'licking loop ${characterName} bbc','aud/se/sex/${characterName}/loops/licking/${characterName} bbc.mp3')\n`;
-    tweeContent += `    (newtrack:'licking loop ${characterName} bwc','aud/se/sex/${characterName}/loops/licking/${characterName} bwc.mp3')\n`;
-    tweeContent += `    (newtrack:'cum moan ${characterName} bbc','aud/se/sex/${characterName}/orgasm/cum/${characterName} bbc.mp3')\n`;
-    tweeContent += `    (newtrack:'cum moan ${characterName} bwc','aud/se/sex/${characterName}/orgasm/cum/${characterName} bwc.mp3')\n`;
-    tweeContent += `    (newtrack:'bj loop ${characterName} bbc','aud/se/sex/${characterName}/loops/bj/${characterName} bbc.mp3')\n`;
-    tweeContent += `    (newtrack:'bj loop ${characterName} bwc','aud/se/sex/${characterName}/loops/bj/${characterName} bwc.mp3')\n`;
-    tweeContent += `    (newtrack:'doggy loop ${characterName} bbc','aud/se/sex/${characterName}/loops/doggy/${characterName} bbc.mp3')\n`;
-    tweeContent += `    (newtrack:'doggy loop ${characterName} bwc','aud/se/sex/${characterName}/loops/doggy/${characterName} bwc.mp3')\n`;
-    tweeContent += `    (newtrack:'missionary loop ${characterName} bbc','aud/se/sex/${characterName}/loops/missionary/${characterName} bbc.mp3')\n`;
-    tweeContent += `    (newtrack:'missionary loop ${characterName} bwc','aud/se/sex/${characterName}/loops/missionary/${characterName} bwc.mp3')\n`;
-    tweeContent += `    (newtrack:'penetration ${characterName} bbc','aud/se/sex/${characterName}/penetration/${characterName} bbc.mp3')\n`;
-    tweeContent += `    (newtrack:'penetration ${characterName} bwc','aud/se/sex/${characterName}/penetration/${characterName} bwc.mp3')\n}\n`;
-
     tweeContent += `:: girl cum [around]\n{\n`;
     tweeContent += `    (display:_around)\n`;
     tweeContent += `    (if:$npc's "id" is "${characterName}")[\n`;
@@ -5855,7 +5837,7 @@ const examplebgDanceFail = [
     tweeContent += `                (set:$today_events to $today_events + (a:"orgasm"))(dec:'action_points')(display:"update action points orgasm")\n`;
     tweeContent += `                (if:$status's "status" is "sexually frustrated" or $status's "status" is "very sexually frustrated" and $character's "arousal" is 0 or $today_events contains "orgasm")[(display:"reset status")]\n`;
     tweeContent += `                ($remember:"cum girl",14,$npc's name,$cum_img,$type,(cond:$type is "creampie" and $npc's traits contains "no pill","unhappy creampie","normal"),...$npc's traits)\n`;
-    tweeContent += `            ]]]\n}\n`;
+    tweeContent += `            ]]]\n}\n\n`;
 
     tweeContent += `:: club dance result text ${characterName}\n{\n`;
     tweeContent += `    (set:$npc_select to "${characterName}")(display:"load relationship")\n`;
