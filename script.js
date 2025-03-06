@@ -1268,6 +1268,40 @@ const exampleDescribeBoobsMedium = [
   const clearbgDanceFail = document.getElementById("clearbgDanceFail");
   const bgDanceFailContainer = document.getElementById("bgDanceFailContainer");
 
+  const bgCustomTraitsHelp = document.getElementById("bgCustomTraitsHelp");
+  const bgCustomTopicsHelp = document.getElementById("bgCustomTopicsHelp");
+
+  const bgCustomTraitInput = document.getElementById("bgCustomTraitInput");
+  const bgCustomTraitFemButton = document.getElementById("bgCustomTraitFemButton");
+  const bgCustomTraitFemInput = document.getElementById("bgCustomTraitFemInput");
+  const clearbgCustomTraitFem = document.getElementById("clearbgCustomTraitFem");
+  const bgCustomTraitFemResponseContainer = document.getElementById("bgCustomTraitFemResponseContainer");
+  const bgCustomTraitMaleButton = document.getElementById("bgCustomTraitMaleButton");
+  const bgCustomTraitMaleInput = document.getElementById("bgCustomTraitMaleInput");
+  const clearbgCustomTraitMale = document.getElementById("clearbgCustomTraitMale");
+  const bgCustomTraitMaleResponseContainer = document.getElementById("bgCustomTraitMaleResponseContainer");
+
+  const bgCustomTopicInput = document.getElementById("bgCustomTopicInput");
+  const bgCustomQuestionInput = document.getElementById("bgCustomQuestionInput");
+  const bgCustomTopicRightAnswerInput = document.getElementById("bgCustomTopicRightAnswerInput");
+  const bgCustomTopicWrongAnswerInput = document.getElementById("bgCustomTopicWrongAnswerInput");
+  const bgCustomTopicFemRightResponseInput = document.getElementById("bgCustomTopicFemRightResponseInput");
+  const bgCustomTopicFemRightButton = document.getElementById("bgCustomTopicFemRightButton");
+  const clearbgCustomTopicFemRight = document.getElementById("clearbgCustomTopicFemRight");
+  const bgCustomTopicFemRightResponseContainer = document.getElementById("bgCustomTopicFemRightResponseContainer");
+  const bgCustomTopicFemWrongResponseInput = document.getElementById("bgCustomTopicFemWrongResponseInput");
+  const bgCustomTopicFemWrongButton = document.getElementById("bgCustomTopicFemWrongButton");
+  const clearbgCustomTopicFemWrong = document.getElementById("clearbgCustomTopicFemWrong");
+  const bgCustomTopicFemWrongResponseContainer = document.getElementById("bgCustomTopicFemWrongResponseContainer");
+  const bgCustomTopicMaleRightResponseInput = document.getElementById("bgCustomTopicMaleRightResponseInput");
+  const bgCustomTopicMaleRightButton = document.getElementById("bgCustomTopicMaleRightButton");
+  const clearbgCustomTopicMaleRight = document.getElementById("clearbgCustomTopicMaleRight");
+  const bgCustomTopicMaleRightResponseContainer = document.getElementById("bgCustomTopicMaleRightResponseContainer");
+  const bgCustomTopicMaleWrongResponseInput = document.getElementById("bgCustomTopicMaleWrongResponseInput");
+  const bgCustomTopicMaleWrongButton = document.getElementById("bgCustomTopicMaleWrongButton");
+  const clearbgCustomTopicMaleWrong = document.getElementById("clearbgCustomTopicMaleWrong");
+  const bgCustomTopicMaleWrongResponseContainer = document.getElementById("bgCustomTopicMaleWrongResponseContainer");
+
   const examplebgDanceSuccess = [
     "Following the rhythm of the club music, you glide your fingers over the smooth bare skin of $her_name's waist, pulling her closer. Her body fits perfectly against yours, her ample chest brushing against you with every swaying move. Her eyes sparkle with delight, making her even more alluring under the club lights.",
     "Your hands on $her_name's slender waist guide her through the rhythm, her body moving in sync with yours. The feeling of her breasts pressing against you is intoxicating, distracting you from everything but her captivating eyes. With every beat, the spark between you grows, fueled by her infectious smile.",
@@ -5673,24 +5707,59 @@ const examplebgDanceFail = [
     const traits4 = bgTraits4.value;
     const traits5 = bgTraits5.value;
     const traits6 = bgTraits6.value;
+    const customTrait = bgCustomTraitInput.value;
+    const customTopic = bgCustomTopicInput.value;
+    const question = bgCustomQuestionInput.value;
+    const rightanswer = bgCustomTopicRightAnswerInput.value;
+    const wronganswer = bgCustomTopicWrongAnswerInput.value;
 
     const possibleNames = extractTags(bgPossibleNameContainer).map(name => toProperCase(name));
     const unfamiliarNames = extractTags(bgUnfamiliarNameContainer).map(name => toProperCase(name));
     const danceSuccess = extractTags(bgDanceSuccessContainer);
     const danceFail = extractTags(bgDanceFailContainer);
+    const traitResponseFem = extractTags(bgCustomTraitFemResponseContainer);
+    const traitResponseMale = extractTags(bgCustomTraitMaleResponseContainer);
+    const topicRightReponseFem = extractTags(bgCustomTopicFemRightResponseContainer);
+    const topicRightReponseMale = extractTags(bgCustomTopicMaleRightResponseContainer);
+    const topicWrongReponseFem = extractTags(bgCustomTopicFemWrongResponseContainer);
+    const topicWrongReponseMale = extractTags(bgCustomTopicMaleWrongResponseContainer);
 
-    // Field validation
-    if (!characterName,
+    // Field validation for required fields
+    if (
+      !characterName ||
       possibleNames.length === 0 ||
       unfamiliarNames.length === 0 ||
       danceSuccess.length === 0 ||
       danceFail.length === 0
     ) {
-      console.error("All fields are required.");
-      alert("All fields are required.");
+      console.error("All required fields must be filled.");
+      alert("All required fields must be filled.");
       return;
     }
 
+    // Optional Section: Traits (Check only if custom trait field is filled)
+    if (
+      (!customTrait || traitResponseFem.length > 0 || traitResponseMale.length > 0) && 
+      (!customTrait || traitResponseFem.length === 0 || traitResponseMale.length === 0)
+    ) {
+      console.error("If adding a Trait, all trait fields must be filled.");
+      alert("If adding a Trait, all trait fields must be filled.");
+      return;
+    }
+
+    // Optional Section: Topics (Check only if custom topic field is filled)
+    if (
+      (!customTopic || !question || !rightanswer || !wronganswer || 
+       topicRightReponseFem.length > 0 || topicRightReponseMale.length > 0 || 
+       topicWrongReponseFem.length > 0 || topicWrongReponseMale.length > 0) &&
+      (!customTopic || !question || !rightanswer || !wronganswer || 
+       topicRightReponseFem.length === 0 || topicRightReponseMale.length === 0 || 
+       topicWrongReponseFem.length === 0 || topicWrongReponseMale.length === 0)
+    ) {
+      console.error("If adding a Topic, all topic fields must be filled.");
+      alert("If adding a Topic, all topic fields must be filled.");
+      return;
+    }
 
     // twee building section
     let tweeContent = `:: add ${characterName} [initialize init_new]\n{\n`;
@@ -5855,6 +5924,65 @@ const examplebgDanceFail = [
     } else {
       tweeContent += `        (twirl:"${danceFail.join('",\n        "')}")]\n}\n\n`;
     }
+
+    if (customTopic) {
+      tweeContent += `:: bar girl topic ${characterName} [bar_girl_topics]\n{\n`;
+      tweeContent += `    (if:$npc's "id" is "${characterName}")[(set:$topics to it + (a:"${customTopic}"))]\n}\n\n`;
+
+      tweeContent += `:: bar girl interests ${characterName} [bar_girl_interests]\n{\n`;
+      tweeContent += `    (if:$topic is "${customTopic}")[\n`;
+      tweeContent += `        (set:$right_answer to "${rightanswer}")\n`;
+      tweeContent += `        (set:$wrong_answer to "${wronganswer}")\n`;
+      if (topicRightReponseMale.length === 1) {
+        tweeContent += `        (set:$right_response to "${topicRightReponseMale}")\n`;
+      } else {
+        tweeContent += `        (set:$right_response to (twirl:"${topicRightReponseMale.join('",\n        "')}"))\n`;
+      }
+      if (topicWrongReponseMale.length === 1) {
+        tweeContent += `        (set:$wrong_response to "${topicWrongReponseMale}")\n`;
+      } else {
+        tweeContent += `        (set:$wrong_response to (twirl:"${topicWrongReponseMale.join('",\n        "')}"))\n`;
+      }
+      tweeContent += `        (set:$question_bonus to 3)\n`;
+      tweeContent += `        (set:$response to "true")\n    ]\n}\n\n`;
+
+      tweeContent += `:: bar girl interest female ${characterName} [bar_girl_interests_female]\n{\n`;
+      tweeContent += `    (if:$topic is "${customTopic}")[\n`;
+      tweeContent += `        (set:$right_answer to "${rightanswer}")\n`;
+      tweeContent += `        (set:$wrong_answer to "${wronganswer}")\n`;
+      if (topicRightReponseFem.length === 1) {
+        tweeContent += `        (set:$right_response to "${topicRightReponseFem}")\n`;
+      } else {
+        tweeContent += `        (set:$right_response to (twirl:"${topicRightReponseFem.join('",\n        "')}"))\n`;
+      }
+      if (topicWrongReponseFem.length === 1) {
+        tweeContent += `        (set:$wrong_response to "${topicWrongReponseFem}")\n`;
+      } else {
+        tweeContent += `        (set:$wrong_response to (twirl:"${topicWrongReponseFem.join('",\n        "')}"))\n`;
+      }
+      tweeContent += `        (set:$question_bonus to 3)\n`;
+      tweeContent += `        (set:$response to "true")\n    ]\n}\n\n`;
+    }
+
+    if (customTrait) {
+      tweeContent += `:: bar girl chat ${characterName} [bar_girl_personality]\n{\n`;
+      tweeContent += `    (if:_topic is "${customTrait}")[\n`;
+      if (traitResponseMale.length === 1) {
+        tweeContent += `        (set:$response to "${traitResponseMale}")\n    ]\n}\n\n`;
+      } else {
+        tweeContent += `        (set:$response to (twirl:"${traitResponseMale.join('",\n        "')}"))\n    ]\n}\n\n`;
+      }
+
+      tweeContent += `:: bar girl chat fem ${characterName} [bar_girl_talk] \n{\n`;
+      tweeContent += `    (if:_topic is "${customTrait}")[\n`;
+      if (traitResponseFem.length === 1) {
+        tweeContent += `        (set:$response to "${traitResponseFem}")\n    ]\n}\n\n`;
+      } else {
+        tweeContent += `        (set:$response to (twirl:"${traitResponseFem.join('",\n        "')}"))\n    ]\n}\n\n`;
+    }
+  }
+
+
 
     // Add files to the ZIP
     bgzip.file(`${characterName}.twee`, tweeContent);
@@ -6682,6 +6810,66 @@ const examplebgDanceFail = [
     clearElement(bgUnfamiliarNameContainer)
   });
 
+  // Add Custom Trait Fem Response
+  bgCustomTraitFemButton.addEventListener("click", function(){
+    addLine(bgCustomTraitFemInput, bgCustomTraitFemResponseContainer);
+  });
+
+  // Clear Custom Trait Fem Response
+  clearbgCustomTraitFem.addEventListener("click", function(){
+    clearElement(bgCustomTraitFemResponseContainer)
+  });
+
+  // Add Custom Trait Male Response
+  bgCustomTraitMaleButton.addEventListener("click", function(){
+    addLine(bgCustomTraitMaleInput, bgCustomTraitMaleResponseContainer);
+  });
+
+  // Clear Custom Trait Male Response
+  clearbgCustomTraitMale.addEventListener("click", function(){
+    clearElement(bgCustomTraitMaleResponseContainer)
+  });
+
+  // Add Custom Topic Fem Right Response
+  bgCustomTopicFemRightButton.addEventListener("click", function(){
+    addLine(bgCustomTopicFemRightResponseInput, bgCustomTopicFemRightResponseContainer);
+  });
+
+  // Clear Custom Topic Fem Right Response
+  clearbgCustomTopicFemRight.addEventListener("click", function(){
+    clearElement(bgCustomTopicFemRightResponseContainer)
+  });
+
+  // Add Custom Topic Fem Wrong Response
+  bgCustomTopicFemWrongButton.addEventListener("click", function(){
+    addLine(bgCustomTopicFemWrongResponseInput, bgCustomTopicFemWrongResponseContainer);
+  });
+
+  // Clear Custom Topic Fem Wrong Response
+  clearbgCustomTopicFemWrong.addEventListener("click", function(){
+    clearElement(bgCustomTopicFemWrongResponseContainer)
+  });
+
+  // Add Custom Topic Male Right Response
+  bgCustomTopicMaleRightButton.addEventListener("click", function(){
+    addLine(bgCustomTopicMaleRightResponseInput, bgCustomTopicMaleRightResponseContainer);
+  });
+
+  // Clear Custom Topic Male Right Response
+  clearbgCustomTopicMaleRight.addEventListener("click", function(){
+    clearElement(bgCustomTopicMaleRightResponseContainer)
+  });
+
+  // Add Custom Topic Male Wrong Response
+  bgCustomTopicMaleWrongButton.addEventListener("click", function(){
+    addLine(bgCustomTopicMaleWrongResponseInput, bgCustomTopicMaleWrongResponseContainer);
+  });
+
+  // Clear Custom Topic Male Wrong Response
+  clearbgCustomTopicMaleWrong.addEventListener("click", function(){
+    clearElement(bgCustomTopicMaleWrongResponseContainer)
+  });
+
   // Event listener for when bgPartnerRace changes
   bgPartnerRace.addEventListener("change", toggleBBCTag);
 
@@ -7366,7 +7554,59 @@ const examplebgDanceFail = [
   tippy([bgDanceFailInput],{
     content: "This is what shows up on the screen at the club after failing dance skill check when dancing with this girl."
   })
-  
+
+  tippy([bgCustomTraitsHelp],{
+    content: "While chatting with a bar girl, when you select 'Ask about her', one of her 'traits' are chosen, then the related dialog is what appears on screen."
+  })
+
+  tippy([bgCustomTopicsHelp],{
+    content: "While chatting with a bar girl, when you select 'Mutual Interests', a topic is chosen, and she asks you a question about the topic. Depending on the girl, there will be a right and wrong answer, as well as responses she gives based on whether you get it right or wrong."
+  })
+
+  tippy([bgCustomTraitInput],{
+    content: "This is a custom trait specific to this bar girl. <br>It will be used in dialog when you ask her about herself.<br><br> Example: 'Likes to read'"
+  })
+
+  tippy([bgCustomTraitFemInput],{
+    content: "These are responses she gives when you ask about her and the custom trait is selected. <br>This is specifically for when YOU are female. <br>It should be a short sentence she would say about herself. (You can submit multiple entries)<br><br> Example: 'Have you read the latest cheesy romance novel? I just love them!'"
+  })
+
+  tippy([bgCustomTraitMaleInput],{
+    content: "These are responses she gives when you ask about her and the custom trait is selected. <br>This is specifically for when YOU are male. <br>It should be a short sentence she would say about herself. (You can submit multiple entries)<br><br> Example: 'I just love cuddling up with a good book to read on a rainy day.'"
+  })
+
+  tippy([bgCustomTopicInput],{
+    content: "This is a custom topic specific to this bar girl. <br>It will be used in dialog when you ask her about mutual interests.<br><br> Example: 'job'"
+  })
+
+  tippy([bgCustomQuestionInput],{
+    content: "This is the question she asks you when you ask about mutual interests and the custom topic is selected. <br>It should be a question she would ask you about the topic. It needs to have a single RIGHT and a single WRONG answer. Like a Yes/No or a Good/Bad question. <br><br>Example: 'Working in the fertility clinic, I get asked about the Breeder pill a lot. Do you think they're a good idea?'"
+  })
+
+  tippy([bgCustomTopicRightAnswerInput],{
+    content: "This is the right answer that the player can select, to the question being asked."
+  })
+
+  tippy([bgCustomTopicWrongAnswerInput],{
+    content: "This is the wrong answer that the player can select, to the question being asked."
+  })
+
+  tippy([bgCustomTopicFemRightResponseInput],{
+    content: "These are responses she gives when you answer the question correctly. <br>This is specifically for when YOU are female. <br>It should be a short sentence she would say about your response. (You can submit multiple entries)<br><br> Example: 'I think so too! It's such a great way to help people who can't have kids.'"
+  })
+
+  tippy([bgCustomTopicFemWrongResponseInput],{
+    content: "These are the responses she gives when you answer the question incorrectly. <br>This is specifically for when YOU you are female. <br>It should be a short sentence she would say about your response. (You can submit multiple entries)<br><br> Example: 'Oh, that's too bad... I thought you would want to help other women.'"
+  })
+
+  tippy([bgCustomTopicMaleRightResponseInput],{
+    content: "These are the responses she gives when you answer the question correctly. <br>This is specifically for when YOU you are male. <br>It should be a short sentence she would say about your response. (You can submit multiple entries)<br><br> Example: 'I think so too! It's such a great way to help people who can't have kids.'"
+  })
+
+  tippy([bgCustomTopicMaleWrongResponseInput],{
+    content: "These are the responses she gives when you answer the question incorrectly. <br>This is specifically for when YOU you are male. <br>It should be a short sentence she would say about your response. (You can submit multiple entries)<br><br> Example: 'Oh, that's too bad... I thought you would want to help couples have kids.'"
+  })
+
   /*
   tippy([],{
     content: ""

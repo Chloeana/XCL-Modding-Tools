@@ -690,7 +690,6 @@ input[name="penetrationTiming"] {
 .w-70 {
     width: 70%;
     margin: 0 auto;
-    
 }
 
 .w-80 {
@@ -907,6 +906,12 @@ input[name="penetrationTiming"] {
     margin-top: 10px;
 }
 
-#bgTraitsHelp {
+#bgTraitsHelp, 
+#bgCustomTraitsHelp,
+#bgCustomTopicsHelp {
     float:none;
+}
+
+#bgCustomQuestionInput {
+    width: 60%;
 }
