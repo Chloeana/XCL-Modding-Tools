@@ -5974,7 +5974,7 @@ const examplebgDanceFail = [
       }
 
       tweeContent += `:: bar girl chat fem ${characterName} [bar_girl_talk] \n{\n`;
-      tweeContent += `    (if:_topic is "${customTrait}")[\n`;
+      tweeContent += `    (if:$topic is "${customTrait}")[\n`;
       if (traitResponseFem.length === 1) {
         tweeContent += `        (set:$response to "${traitResponseFem}")\n    ]\n}\n\n`;
       } else {
