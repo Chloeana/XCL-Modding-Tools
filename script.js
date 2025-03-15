@@ -5434,7 +5434,7 @@ const examplebgDanceFail = [
     tweeContent += `](else:)[(display:_around)]\n}\n\n`;
 
     // Kiss
-    tweeContent += `:: sex transactional kiss ${characterName} \n`;
+    tweeContent += `:: sex transactional kiss ${characterName} [around]\n`;
     tweeContent += `{\n(if:(checkdm: $npc, "race", "is", "black"))[\n`;
     if (kissVidInt === 1){
       tweeContent += `    (set:$kiss_variant to "${kissPrefix} 1")\n`;
