@@ -2148,7 +2148,8 @@ const examplebgDanceFail = [
         if (!isNaN(timingValue) && timingValue >= 3000 && timingValue <= 15000) {
             timings.push(timingValue);
         } else {
-            console.warn(`Timing value is out of bounds or invalid: ${field.value}`);
+            console.error(`Timing value is out of bounds or invalid: ${field.value}`);
+            alert(`Timing value is out of bounds or invalid: ${field.value}`);
         }
     });
 
@@ -2807,6 +2808,11 @@ const examplebgDanceFail = [
       return;
     } 
 
+    if (seInsert1Int === 0 || seInsert2Int === 0 || seInsert3Int === 0) {
+      console.error("Insert timings are required.");
+      alert("Insert timings are required.");
+      return;
+    }
 
     // Collect tag data from Transactional Doggy
     const doggyTags = collectTags(mcfDoggyContainer, mcfDoggyVidPrefix);
