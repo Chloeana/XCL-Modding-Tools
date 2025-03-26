@@ -3077,7 +3077,7 @@ const examplebgDanceFail = [
     tweeContent += `    $type is "machines", (twirl:"Use the machines","Use machines","Use the main gym"),\n`;
     tweeContent += `    $type is "pt", (twirl:"High-Intensity Interval Training","Train"),\n`;
     tweeContent += `    (twirl:"Let's Sweat","Workout","Hit the gym")))\n\n`;
-    tweeContent += `    (link:$gym_options)[(set:$next to "gym female workout")(display:"change screen")]\n}\n\n`;
+    tweeContent += `    (link:$gym_options)[(display:"gym female workout check")]\n}\n\n`;
 
     //  Breathing
     tweeContent += `:: breathing ambience ${characterName}\n`;
