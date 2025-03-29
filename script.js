@@ -3526,24 +3526,24 @@ const examplebgDanceFail = [
       tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} body " + (text:(twist:1,${seCumPullOut})))]\n`;
     }
     if (seCumCreampie === 1) {
-      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} creampie 1")]\n`;
+      tweeContent += `    (if:$his_choice is "creampie" and (twist:1,2) is 1)[(set:$line to "${characterName} creampie 1")]\n`;
     } else if (seCumCreampie > 1) {
-      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} creampie " + (text:(twist:1,${seCumCreampie})))]\n`;
+      tweeContent += `    (if:$his_choice is "creampie" and (twist:1,2) is 1)[(set:$line to "${characterName} creampie " + (text:(twist:1,${seCumCreampie})))]\n`;
     }
     if (seCumTits === 1) {
-      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} tits 1")]\n`;
+      tweeContent += `    (if:$his_choice is "tits" and (twist:1,2) is 1)[(set:$line to "${characterName} tits 1")]\n`;
     } else if (seCumTits > 1) {
-      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} tits " + (text:(twist:1,${seCumTits})))]\n`;
+      tweeContent += `    (if:$his_choice is "tits" and (twist:1,2) is 1)[(set:$line to "${characterName} tits " + (text:(twist:1,${seCumTits})))]\n`;
     }
     if (seCumMouth === 1) {
-      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} mouth 1")]\n`;
+      tweeContent += `    (if:$his_choice is "mouth" and (twist:1,2) is 1)[(set:$line to "${characterName} mouth 1")]\n`;
     } else if (seCumMouth > 1) {
-      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} mouth " + (text:(twist:1,${seCumMouth})))]\n`;
+      tweeContent += `    (if:$his_choice is "mouth" and (twist:1,2) is 1)[(set:$line to "${characterName} mouth " + (text:(twist:1,${seCumMouth})))]\n`;
     }
     if (seCumFace === 1) {
-      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} face 1")]\n`;
+      tweeContent += `    (if:$his_choice is "face" and (twist:1,2) is 1)[(set:$line to "${characterName} face 1")]\n`;
     } else if (seCumFace > 1) {
-      tweeContent += `    (if:$his_choice is "pull out" and (twist:1,2) is 1)[(set:$line to "${characterName} face " + (text:(twist:1,${seCumFace})))]\n`;
+      tweeContent += `    (if:$his_choice is "face" and (twist:1,2) is 1)[(set:$line to "${characterName} face " + (text:(twist:1,${seCumFace})))]\n`;
     }
     tweeContent += `}\n\n`;
 
