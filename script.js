@@ -3605,7 +3605,6 @@ const examplebgDanceFail = [
     const positionNameValue = positionName.value;
     const otherFields = [
       document.getElementById("positionCharacterName").value,
-      positionFlavor.value,
       document.getElementById("position").value,
       // Add other fields here
     ];
@@ -3626,6 +3625,11 @@ const examplebgDanceFail = [
     // Check if positionName or any other field contains invalid characters
     if (!sanitizeFilename(positionNameValue)) {
       alert("Position name contains invalid characters.");
+      return false;
+    }
+
+    if (!sanitizeTag(positionFlavor.value)) {
+      alert("Position flavor contains invalid characters.");
       return false;
     }
   
