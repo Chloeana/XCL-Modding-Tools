@@ -5941,6 +5941,7 @@ const examplebgDanceFail = [
 
       tweeContent += `:: bar girl interests ${characterName} [bar_girl_interests]\n{\n`;
       tweeContent += `    (if:$topic is "${customTopic}")[\n`;
+      tweeContent += `        ${question}\n`;
       tweeContent += `        (set:$right_answer to "${rightanswer}")\n`;
       tweeContent += `        (set:$wrong_answer to "${wronganswer}")\n`;
       if (topicRightReponseMale.length === 1) {
@@ -5958,6 +5959,7 @@ const examplebgDanceFail = [
 
       tweeContent += `:: bar girl interest female ${characterName} [bar_girl_interests_female]\n{\n`;
       tweeContent += `    (if:$topic is "${customTopic}")[\n`;
+      tweeContent += `        ${question}\n`;
       tweeContent += `        (set:$right_answer to "${rightanswer}")\n`;
       tweeContent += `        (set:$wrong_answer to "${wronganswer}")\n`;
       if (topicRightReponseFem.length === 1) {
