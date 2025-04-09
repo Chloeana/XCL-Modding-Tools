@@ -3104,7 +3104,8 @@ const examplebgDanceFail = [
     tweeContent += `    (set:$text to (twirl:"${describeBody.join('",\n    "')}"))\n}\n\n`;
 
     tweeContent += `:: describe butt ${characterName}\n{\n`;
-    tweeContent += `    (set:$phat to (twirl:"${describeButt.join('",\n    "')}"))\n}\n\n`;
+    tweeContent += `    (set:$phat to (twirl:"${describeButt.join('",\n    "')}"))\n}\n`;
+    tweeContent += `    (set:$butt to (twirl:"butt", "ass", "derriere", "booty", "behind", "rear"))\n\n;`
 
     tweeContent += `:: sex transactional tits comment ${characterName}\n{\n`;
     tweeContent += `    (set:$tits to (twirl:"${describeBoobs.join('",\n    "')}"))\n}\n\n`;
