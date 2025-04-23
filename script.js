@@ -2253,9 +2253,9 @@ const examplebgDanceFail = [
     const name = mcfCharacterName.value.toLowerCase().trim() || "character_id";
 
     tooltipMCFForeplay.setContent(`This section is for groping and kissing. You need to have exactly 1 kiss video (kiss.mp4) and either an ass or tits grope.<br> You CANNOT have multiples of each.<br><br>This path is hardcoded for ${name}/foreplay. Please ensure your media files are in this location and are named 'kiss.mp4', 'grope ass.mp4', and/or 'grope tits.mp4'.`);
-    tooltipSEPre1.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp4`);
-    tooltipSEPre2.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp4`);
-    tooltipSEPre3.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp4`);
+    tooltipSEPre1.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp3`);
+    tooltipSEPre2.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp3`);
+    tooltipSEPre3.setContent(`These are the length (in milliseconds) of the 3 sound files in: <u>aud/se/sex/penetration/pre/</u><br><br>They should be simply:<br>${name} 1.mp4<br>${name} 2.mp4<br>${name} 3.mp3`);
     tooltipShower.setContent(`This is the prefix for your Showering videos.<br><br> This goes in the chores folder: img/scenes/characters/${name}/chores/<br><br> If you only have one video, it should still be "${mcfShowerPrefix.value} 1.mp4"`)
     tooltipMorning.setContent(`This is the prefix for your Morning videos. This would be videos that play in the morning. Your character might be getting dressed, making breakfast, etc...<br><br> This goes in the chores folder: img/scenes/characters/${name}/chores/<br><br> If you only have one video, it should still be "${mcfMorningPrefix.value} 1.mp4"`)
     tooltipBathroom.setContent(`This is the prefix for your Bathroom videos. This would be videos that play in the morning when you are in the bathroom, getting dressed or putting on makeup in the mirror, etc...<br><br> This goes in the chores folder: img/scenes/characters/${name}/chores/<br><br> If you only have one video, it should still be "${mcfBathroomPrefix.value} 1.mp4"`)
@@ -3315,7 +3315,7 @@ const examplebgDanceFail = [
     if (grope === "both") {
       tweeContent += `{(set:$grope to (twirl:"ass","tits"))}\n\n`
     } else {
-      tweeContent += `{(set:$grope to "${grope}")}`
+      tweeContent += `{(set:$grope to "${grope}")}\n\n`
     }
 
     //  Creampie
